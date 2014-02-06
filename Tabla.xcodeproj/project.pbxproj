@@ -18,7 +18,6 @@
 		BEC07119189C541D00505F7D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC070F8189C541D00505F7D /* Cocoa.framework */; };
 		BEC07121189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC0711F189C541D00505F7D /* InfoPlist.strings */; };
 		BEC07123189C541D00505F7D /* TablaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07122189C541D00505F7D /* TablaTests.m */; };
-		BEC225C718A1B28800DE83E8 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = BEC225C618A1B28800DE83E8 /* circle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +50,7 @@
 		BEC0711E189C541D00505F7D /* TablaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TablaTests-Info.plist"; sourceTree = "<group>"; };
 		BEC07120189C541D00505F7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEC07122189C541D00505F7D /* TablaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TablaTests.m; sourceTree = "<group>"; };
-		BEC225C618A1B28800DE83E8 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		BEC225C818A1C28600DE83E8 /* TestProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +119,7 @@
 				BEC225C418A1B28800DE83E8 /* Resources */,
 				BEC0710A189C541D00505F7D /* AppDelegate.h */,
 				BEC0710B189C541D00505F7D /* AppDelegate.m */,
+				BEC225C818A1C28600DE83E8 /* TestProtocol.h */,
 				BEC0710D189C541D00505F7D /* MainMenu.xib */,
 				BEC07110189C541D00505F7D /* Images.xcassets */,
 				BEC070FF189C541D00505F7D /* Supporting Files */,
@@ -168,7 +168,6 @@
 		BEC225C518A1B28800DE83E8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				BEC225C618A1B28800DE83E8 /* circle.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -251,7 +250,6 @@
 			files = (
 				BEC07103189C541D00505F7D /* InfoPlist.strings in Resources */,
 				BEC07111189C541D00505F7D /* Images.xcassets in Resources */,
-				BEC225C718A1B28800DE83E8 /* circle.png in Resources */,
 				BEC07109189C541D00505F7D /* Credits.rtf in Resources */,
 				BEC0710F189C541D00505F7D /* MainMenu.xib in Resources */,
 			);
