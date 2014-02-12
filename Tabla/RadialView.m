@@ -16,7 +16,7 @@
         return nil;
     
     // Seed the random number generator
-    srandom(time(NULL));
+    srandom((int)time(NULL));
     
     // Create a path object
     path = [[NSBezierPath alloc] init];
