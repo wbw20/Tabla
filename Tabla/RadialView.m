@@ -36,8 +36,8 @@
     NSPoint center;
     NSRect box = [self bounds];
 
-    center.x = box.size.width;
-    center.y = box.size.height;
+    center.x = box.size.width / 2;
+    center.y = box.size.height / 2;
     return center;
 }
 
