@@ -23,7 +23,6 @@
 		BEC07121189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC0711F189C541D00505F7D /* InfoPlist.strings */; };
 		BEC07123189C541D00505F7D /* TablaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07122189C541D00505F7D /* TablaTests.m */; };
 		BEE9818118A5366500143D57 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE9818018A5366500143D57 /* WindowController.m */; };
-		BEE9818418A5931800143D57 /* Radial.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE9818318A5931800143D57 /* Radial.xib */; };
 		BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootVIew.m */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +66,6 @@
 		BEC225C818A1C28600DE83E8 /* TestProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestProtocol.h; sourceTree = "<group>"; };
 		BEE9817F18A5366500143D57 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		BEE9818018A5366500143D57 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
-		BEE9818318A5931800143D57 /* Radial.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Radial.xib; sourceTree = "<group>"; };
 		BEEDCBB018A7FE3300B5D047 /* RootVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootVIew.h; sourceTree = "<group>"; };
 		BEEDCBB118A7FE3300B5D047 /* RootVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootVIew.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -223,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				BEC0710D189C541D00505F7D /* MainMenu.xib */,
-				BEE9818318A5931800143D57 /* Radial.xib */,
 			);
 			name = Layouts;
 			sourceTree = "<group>";
@@ -308,7 +305,6 @@
 				BEC07111189C541D00505F7D /* Images.xcassets in Resources */,
 				BEC07109189C541D00505F7D /* Credits.rtf in Resources */,
 				BEC0710F189C541D00505F7D /* MainMenu.xib in Resources */,
-				BEE9818418A5931800143D57 /* Radial.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

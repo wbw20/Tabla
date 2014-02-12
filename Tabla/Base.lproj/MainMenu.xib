@@ -658,7 +658,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="710" height="697"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFJ-QA-5T4">
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFJ-QA-5T4" customClass="RadialView">
                         <rect key="frame" x="105" y="98" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>

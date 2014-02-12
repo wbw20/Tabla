@@ -17,7 +17,6 @@ NSString *const kViewTitle		= @"CustomImageView";
 // -------------------------------------------------------------------------------
 - initWithPath:(NSString *)newPath
 {
-    NSLog(@"fuck");
     return [super initWithWindowNibName:@"Tabla"];
 }
 
