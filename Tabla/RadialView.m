@@ -8,16 +8,21 @@
 
 #import "RadialView.h"
 
+#define RADIUS 200
+
 @implementation RadialView
 
 - (id)initWithFrame:(NSRect)rect
 {
     if (![super initWithFrame:rect])
         return nil;
+    
+    NSPoint center = [self center];
+    
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
     CGContextMoveToPoint(context, 10, 500);
-    CGContextAddArc(context, 60, 500, 50, M_PI * 2, M_PI, 0);
+    CGContextAddArc(context, center.x, center.y, RADIUS, M_PI * 2, M_PI, 0);
     CGContextStrokePath(context);
 
     

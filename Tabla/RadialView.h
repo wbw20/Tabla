@@ -12,6 +12,6 @@
 {
     NSBezierPath *path;
 }
-- (NSPoint)randomPoint;
+- (NSPoint)center;
 
 @end
