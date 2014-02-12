@@ -14,11 +14,12 @@
 {
     if (![super initWithFrame:rect])
         return nil;
-    
-    NSRect test = [self bounds];
-    
-    NSLog(@"Height: %f", test.size.height);
-    NSLog(@"Width: %f", test.size.width);
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextSetLineWidth(context, 2);
+    CGContextMoveToPoint(context, 10, 500);
+    CGContextAddArc(context, 60, 500, 50, M_PI * 2, M_PI, 0);
+    CGContextStrokePath(context);
+
     
     // Seed the random number generator
     srandom((int)time(NULL));
@@ -49,14 +50,17 @@
     return self;
 }
 
-// randomPoint returns a random point inside the view
-- (NSPoint)randomPoint
+/**
+ *  Returns the center of the view
+ **/
+- (NSPoint)center
 {
-    NSPoint result;
-    NSRect r = [self bounds];
-    result.x = r.origin.x + random() % (int)r.size.width;
-    result.y = r.origin.y + random() % (int)r.size.height;
-    return result;
+    NSPoint center;
+    NSRect box = [self bounds];
+
+    center.x = box.size.width;
+    center.y = box.size.height;
+    return center;
 }
 
 - (void)drawRect:(NSRect)rect
