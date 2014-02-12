@@ -19,10 +19,11 @@
     
     NSPoint center = [self center];
     
+    // Start with a single, full-circle zone
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
     [[NSColor whiteColor] setStroke];
-    CGContextAddArc(context, center.x, center.y, RADIUS, M_PI * 2, M_PI, 0);
+    CGContextAddArc(context, center.x, center.y, RADIUS, 0, 2 * M_PI, 0);
     CGContextStrokePath(context);
     
     return self;
