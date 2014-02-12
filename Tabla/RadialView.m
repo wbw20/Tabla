@@ -22,7 +22,7 @@
     // Start with a single, full-circle zone
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
-    [[NSColor whiteColor] setStroke];
+    [[NSColor grayColor] setStroke];
     CGContextAddArc(context, center.x, center.y, RADIUS, 0, 2 * M_PI, 0);
     CGContextStrokePath(context);
     
@@ -47,7 +47,7 @@
     NSRect bounds = [self bounds];
     
     // Fill the view with green
-    [[NSColor blueColor] set];
+    [[NSColor whiteColor] set];
     [NSBezierPath fillRect: bounds];
 }
 
