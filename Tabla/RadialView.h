@@ -9,5 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface RadialView : NSView
+{
+    NSBezierPath *path;
+}
+- (NSPoint)randomPoint;
 
 @end

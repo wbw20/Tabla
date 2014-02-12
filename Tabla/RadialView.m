@@ -10,22 +10,49 @@
 
 @implementation RadialView
 
-- (void)drawRect:(NSRect)rect {
-    NSLog(@"mnbmb");
-//    NSBezierPath *aPath = [NSBezierPath bezierPath];
+- (id)initWithFrame:(NSRect)rect
+{
+    if (![super initWithFrame:rect])
+        return nil;
     
-//    [aPath moveToPoint:NSMakePoint(0.0, 0.0)];
-//    [aPath lineToPoint:NSMakePoint(10.0, 10.0)];
-//    [aPath curveToPoint:NSMakePoint(18.0, 21.0)
-//          controlPoint1:NSMakePoint(6.0, 2.0)
-//          controlPoint2:NSMakePoint(28.0, 10.0)];
-//    
-//    [aPath appendBezierPathWithRect:NSMakeRect(2.0, 16.0, 8.0, 5.0)];
+    // Seed the random number generator
+    srandom(time(NULL));
+    
+    // Create a path object
+    path = [[NSBezierPath alloc] init];
+    [path setLineWidth:3.0];
+    NSPoint p = [self randomPoint];
+    [path moveToPoint:p];
+    int i;
+    for (i = 0; i < 15; i++) {
+        p = [self randomPoint];
+        [path lineToPoint:p];
+    }
+    [path closePath];
+    return self;
+}
 
-    
+// randomPoint returns a random point inside the view
+- (NSPoint)randomPoint
+{
+    NSPoint result;
+    NSRect r = [self bounds];
+    result.x = r.origin.x + random() % (int)r.size.width;
+    result.y = r.origin.y + random() % (int)r.size.height;
+    return result;
+}
+
+- (void)drawRect:(NSRect)rect
+{
     NSRect bounds = [self bounds];
+    
+    // Fill the view with green
     [[NSColor greenColor] set];
-    [NSBezierPath fillRect:bounds];
+    [NSBezierPath fillRect: bounds];
+    
+    // Draw the path in white
+    [[NSColor whiteColor] set];
+    [path stroke];
 }
 
 @end
