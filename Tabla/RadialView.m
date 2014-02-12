@@ -34,6 +34,18 @@
         [path lineToPoint:p];
     }
     [path closePath];
+    
+    NSBezierPath* aPath = [NSBezierPath bezierPath];
+    [aPath setLineWidth:3.0];
+    
+    [aPath moveToPoint:NSMakePoint(0.0, 0.0)];
+    [aPath lineToPoint:NSMakePoint(100.0, 100.0)];
+    [aPath curveToPoint:NSMakePoint(108.0, 210.0)
+          controlPoint1:NSMakePoint(60.0, 20.0)
+          controlPoint2:NSMakePoint(280.0, 100.0)];
+    [aPath stroke];
+
+    
     return self;
 }
 
