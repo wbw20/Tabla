@@ -21,7 +21,7 @@
     
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
-    CGContextMoveToPoint(context, 10, 500);
+    [[NSColor whiteColor] setStroke];
     CGContextAddArc(context, center.x, center.y, RADIUS, M_PI * 2, M_PI, 0);
     CGContextStrokePath(context);
     
