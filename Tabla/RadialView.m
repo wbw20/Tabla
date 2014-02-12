@@ -15,17 +15,22 @@
     if (![super initWithFrame:rect])
         return nil;
     
+    NSRect test = [self bounds];
+    
+    NSLog(@"Height: %f", test.size.height);
+    NSLog(@"Width: %f", test.size.width);
+    
     // Seed the random number generator
     srandom((int)time(NULL));
     
     // Create a path object
     path = [[NSBezierPath alloc] init];
     [path setLineWidth:3.0];
-    NSPoint p = [self randomPoint];
+    NSPoint p = NSMakePoint(0.0, 0.0);
     [path moveToPoint:p];
     int i;
-    for (i = 0; i < 15; i++) {
-        p = [self randomPoint];
+    for (i = 0; i < 500; i+= 100) {
+        p = NSMakePoint(i, i + 43);
         [path lineToPoint:p];
     }
     [path closePath];
