@@ -47,7 +47,7 @@
     NSRect bounds = [self bounds];
     
     // Fill the view with green
-    [[NSColor greenColor] set];
+    [[NSColor blueColor] set];
     [NSBezierPath fillRect: bounds];
     
     // Draw the path in white
