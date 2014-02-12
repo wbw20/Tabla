@@ -24,6 +24,7 @@
 		BEC07123189C541D00505F7D /* TablaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07122189C541D00505F7D /* TablaTests.m */; };
 		BEE9818118A5366500143D57 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE9818018A5366500143D57 /* WindowController.m */; };
 		BEE9818418A5931800143D57 /* Radial.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEE9818318A5931800143D57 /* Radial.xib */; };
+		BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootVIew.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		BEE9817F18A5366500143D57 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		BEE9818018A5366500143D57 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 		BEE9818318A5931800143D57 /* Radial.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Radial.xib; sourceTree = "<group>"; };
+		BEEDCBB018A7FE3300B5D047 /* RootVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootVIew.h; sourceTree = "<group>"; };
+		BEEDCBB118A7FE3300B5D047 /* RootVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootVIew.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,8 @@
 			children = (
 				BE7F1ED818A481E500F5567E /* RadialView.h */,
 				BE7F1ED918A481E500F5567E /* RadialView.m */,
+				BEEDCBB018A7FE3300B5D047 /* RootVIew.h */,
+				BEEDCBB118A7FE3300B5D047 /* RootVIew.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -158,7 +163,6 @@
 				BEC0710A189C541D00505F7D /* AppDelegate.h */,
 				BEC0710B189C541D00505F7D /* AppDelegate.m */,
 				BEC225C818A1C28600DE83E8 /* TestProtocol.h */,
-				BEC0710D189C541D00505F7D /* MainMenu.xib */,
 				BEC07110189C541D00505F7D /* Images.xcassets */,
 				BEC070FF189C541D00505F7D /* Supporting Files */,
 				BE7F1ED318A47C0100F5567E /* RadialLayer.h */,
@@ -218,6 +222,7 @@
 		BEE9818218A5923F00143D57 /* Layouts */ = {
 			isa = PBXGroup;
 			children = (
+				BEC0710D189C541D00505F7D /* MainMenu.xib */,
 				BEE9818318A5931800143D57 /* Radial.xib */,
 			);
 			name = Layouts;
@@ -325,6 +330,7 @@
 				BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */,
 				BEE9818118A5366500143D57 /* WindowController.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
+				BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */,
 				BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */,
 				BEC07105189C541D00505F7D /* main.m in Sources */,
 				BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */,
@@ -372,6 +378,7 @@
 				BEC0710E189C541D00505F7D /* Base */,
 			);
 			name = MainMenu.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		BEC0711F189C541D00505F7D /* InfoPlist.strings */ = {

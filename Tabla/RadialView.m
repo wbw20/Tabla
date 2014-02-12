@@ -11,8 +11,16 @@
 @implementation RadialView
 
 - (void)drawRect:(NSRect)dirtyRect {
-  CGContextRef myContext = [[NSGraphicsContext currentContext] graphicsPort];
-  CGContextSetRGBFillColor (myContext, 1, 0, 0, 1);
+    NSBezierPath *aPath = [NSBezierPath bezierPath];
+    
+    [aPath moveToPoint:NSMakePoint(0.0, 0.0)];
+    [aPath lineToPoint:NSMakePoint(10.0, 10.0)];
+    [aPath curveToPoint:NSMakePoint(18.0, 21.0)
+          controlPoint1:NSMakePoint(6.0, 2.0)
+          controlPoint2:NSMakePoint(28.0, 10.0)];
+    
+    [aPath appendBezierPathWithRect:NSMakeRect(2.0, 16.0, 8.0, 5.0)];
+
 }
 
 @end
