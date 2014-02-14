@@ -654,7 +654,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <value key="minSize" type="size" width="436" height="504"/>
             <value key="maxSize" type="size" width="436" height="504"/>
-            <view key="contentView" id="372" customClass="RadialView">
+            <view key="contentView" id="372" customClass="RootView">
                 <rect key="frame" x="0.0" y="0.0" width="710" height="697"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
