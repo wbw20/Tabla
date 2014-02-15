@@ -35,10 +35,14 @@
 - (NSPoint)center
 {
     NSPoint center;
-    NSRect box = [self bounds];
+    
+//    center.x = (self.frame.origin.x + (self.frame.size.width / 2));
+//    center.y = (self.frame.origin.y + (self.frame.size.height / 2));
+    
+    // hard coded for now :(
+    center.x = 105 + 250;
+    center.y = 98 + 250;
 
-    center.x = box.size.width / 2;
-    center.y = box.size.height / 2;
     return center;
 }
 
