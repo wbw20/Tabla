@@ -8,8 +8,6 @@
 
 #import "RadialView.h"
 
-#define RADIUS 250
-
 @implementation RadialView
 
 - (id)initWithFrame:(NSRect)rect
@@ -17,14 +15,9 @@
     if (![super initWithFrame:rect])
         return nil;
     
-    NSPoint center = [self center];
-    
     // Start with a single, full-circle zone
-    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    CGContextSetLineWidth(context, 2);
-    [[NSColor grayColor] setStroke];
-    CGContextAddArc(context, center.x, center.y, RADIUS, 0, 2 * M_PI, 0);
-    CGContextStrokePath(context);
+    [self drawCircleWithCenter:[self center] andRadius:self.frame.size.width/2];
+
     
     return self;
 }
@@ -36,6 +29,17 @@
     // Fill the view with green
     [[NSColor whiteColor] set];
     [NSBezierPath fillRect: bounds];
+}
+
+/**
+ *  Draws a circle to the current graphics context
+ */
+- (void)drawCircleWithCenter:(NSPoint)center andRadius:(int)radius {
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextSetLineWidth(context, 2);
+    [[NSColor grayColor] setStroke];
+    CGContextAddArc(context, center.x, center.y, radius, 0, 2 * M_PI, 0);
+    CGContextStrokePath(context);
 }
 
 /**
