@@ -29,6 +29,15 @@
     return self;
 }
 
+- (void)drawRect:(NSRect)rect
+{
+    NSRect bounds = [self bounds];
+    
+    // Fill the view with green
+    [[NSColor whiteColor] set];
+    [NSBezierPath fillRect: bounds];
+}
+
 /**
  *  Returns the center of the view
  **/
@@ -44,15 +53,6 @@
     center.y = 98 + 250;
 
     return center;
-}
-
-- (void)drawRect:(NSRect)rect
-{
-    NSRect bounds = [self bounds];
-    
-    // Fill the view with green
-    [[NSColor whiteColor] set];
-    [NSBezierPath fillRect: bounds];
 }
 
 @end
