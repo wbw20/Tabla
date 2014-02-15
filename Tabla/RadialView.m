@@ -18,7 +18,7 @@
     // Start with a single, full-circle zone
     [self drawCircleWithCenter:[self center] andRadius:self.frame.size.width/2];
 
-    
+
     return self;
 }
 
@@ -29,6 +29,16 @@
     // Fill the view with green
     [[NSColor whiteColor] set];
     [NSBezierPath fillRect: bounds];
+}
+
+/**
+ *  Responds to click events
+ */
+- (void)mouseUp: (NSEvent *)event {
+    NSPoint eventLocation = [event locationInWindow];
+    NSPoint center = [self convertPoint:eventLocation fromView:nil];
+    
+    NSLog(@"%f", center.x);
 }
 
 /**
