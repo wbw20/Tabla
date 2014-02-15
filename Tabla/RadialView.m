@@ -8,7 +8,7 @@
 
 #import "RadialView.h"
 
-#define RADIUS 200
+#define RADIUS 250
 
 @implementation RadialView
 
