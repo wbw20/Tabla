@@ -112,6 +112,13 @@
 }
 
 /**
+ *  Translates a line downwards with respect to the kerf
+ **/
+- (float)translateDownwardsByKerf:(float)kerf {
+    return 0.0f;
+}
+
+/**
  *  Return the radius for concentric circle with a given index.  Indexes
  *  start with 0 and go from the outside in.
  **/

@@ -24,6 +24,7 @@
 		BEC07123189C541D00505F7D /* TablaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07122189C541D00505F7D /* TablaTests.m */; };
 		BEE9818118A5366500143D57 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE9818018A5366500143D57 /* WindowController.m */; };
 		BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootVIew.m */; };
+		BEEDCBB618B1270900B5D047 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB518B1270900B5D047 /* Line.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		BEE9818018A5366500143D57 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 		BEEDCBB018A7FE3300B5D047 /* RootVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootVIew.h; sourceTree = "<group>"; };
 		BEEDCBB118A7FE3300B5D047 /* RootVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootVIew.m; sourceTree = "<group>"; };
+		BEEDCBB418B1270900B5D047 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		BEEDCBB518B1270900B5D047 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,7 @@
 		BEC070FE189C541D00505F7D /* Tabla */ = {
 			isa = PBXGroup;
 			children = (
+				BEEDCBB318B126F000B5D047 /* Geometry */,
 				BE7F1EDC18A48B4600F5567E /* Controllers */,
 				BE7F1EDB18A48B3100F5567E /* Views */,
 				BEC225C418A1B28800DE83E8 /* Resources */,
@@ -223,6 +227,15 @@
 				BEC0710D189C541D00505F7D /* MainMenu.xib */,
 			);
 			name = Layouts;
+			sourceTree = "<group>";
+		};
+		BEEDCBB318B126F000B5D047 /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				BEEDCBB418B1270900B5D047 /* Line.h */,
+				BEEDCBB518B1270900B5D047 /* Line.m */,
+			);
+			name = Geometry;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */,
+				BEEDCBB618B1270900B5D047 /* Line.m in Sources */,
 				BEE9818118A5366500143D57 /* WindowController.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
 				BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */,
