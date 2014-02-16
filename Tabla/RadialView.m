@@ -6,7 +6,13 @@
 //  Copyright (c) 2014 William Wettersten. All rights reserved.
 //
 
+#import "math.h"
+
 #import "RadialView.h"
+
+#define RADIUS 200.0f
+#define KERF 70.0f
+#define ZONES 2
 
 @implementation RadialView
 
@@ -42,13 +48,23 @@
 }
 
 /**
+ *  Get the arclength in radians for any zone
+ **/
+- (float)arclength {
+    float arc = 2.0f*M_PI/ZONES;
+    
+    //we will remove some of the arc to account for the rounded corners
+    return arc - 2*asinf(KERF/RADIUS);
+}
+
+/**
  *  Draws a circle to the current graphics context
  */
 - (void)drawCircleWithCenter:(NSPoint)center andRadius:(int)radius {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
-    CGContextAddArc(context, center.x, center.y, radius, 0, 2 * M_PI, 0);
+    CGContextAddArc(context, center.x, center.y, radius, 0, [self arclength], 0);
     CGContextStrokePath(context);
 }
 
