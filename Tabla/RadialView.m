@@ -13,6 +13,7 @@
 #define RADIUS 200.0f
 #define KERF 20.0f
 #define ZONES 5
+#define RINGS 2
 
 @implementation RadialView
 
@@ -56,7 +57,7 @@
         start += [self arcTrim];
         float end = start + [self arclength];
         [self drawArcFrom:start to:end withRadius:RADIUS];
-        [self drawLinesFrom:start to:end forCircle:1];
+        [self drawLinesFrom:start to:end forZone:1];
         start = end + [self arcTrim];
     }
 }
@@ -70,19 +71,6 @@
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
     CGContextAddArc(context, center.x, center.y, radius, start, end, 0);
-    CGContextStrokePath(context);
-}
-
-/**
- *  Draws the straight lines for a given zone
- **/
-- (void)drawLinesFrom:(float)start to:(float)end forCircle:(int)circle {
-    NSPoint center = [self center];
-    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    CGContextSetLineWidth(context, 2);
-    [[NSColor grayColor] setStroke];
-    CGPoint points[] = {CGPointMake(center.x, center.y), CGPointMake(center.x + RADIUS*cos(end), center.y + RADIUS*sin(end))};
-    CGContextAddLines(context, points, 2);
     CGContextStrokePath(context);
 }
 
@@ -101,6 +89,55 @@
  **/
 - (float)arcTrim {
     return asinf(KERF/RADIUS);
+}
+
+/**
+ *  Get the Cartesian point on a circle for any radian value and circle index
+ **/
+- (CGPoint)getPointOnCircleAt:(float)radians for:(int)index {
+    NSPoint center = [self center];
+    NSPoint point;
+    
+    // get the radius of the concentric circle for the given index
+    float radius = [self getRadiusFor:index];
+    
+    point.x = center.x + radius*cos(radians);
+    point.y = center.x + radius*sin(radians);
+    
+    NSLog(@"%f", point.x);
+    NSLog(@"%f", point.y);
+    NSLog(@"\n");
+    
+    return CGPointMake(center.x, center.y);
+}
+
+/**
+ *  Return the radius for concentric circle with a given index.  Indexes
+ *  start with 0 and go from the outside in.
+ **/
+- (float)getRadiusFor:(int)index {
+    return (RADIUS * (ZONES - index) / ZONES) - [self arcTrim];
+}
+
+/**
+ *  Draws the straight lines for a given zone
+ **/
+- (void)drawLinesFrom:(float)start to:(float)end forZone:(int)zone {
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextSetLineWidth(context, 2);
+    [[NSColor grayColor] setStroke];
+    
+    //Get the cartesian point in the center of the kerf for this circle
+    CGPoint right[] = {[self getPointOnCircleAt:start for:zone], [self getPointOnCircleAt:start for:zone + 1]};
+    CGContextAddLines(context, right, 2);
+    CGContextStrokePath(context);
+}
+
+/**
+ *  Finds the line length for any zone
+ **/
+- (float)linelength {
+    return (RADIUS / ZONES) - 2*KERF;
 }
 
 /**
