@@ -25,6 +25,7 @@
 		BEE9818118A5366500143D57 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE9818018A5366500143D57 /* WindowController.m */; };
 		BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootVIew.m */; };
 		BEEDCBB618B1270900B5D047 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB518B1270900B5D047 /* Line.m */; };
+		BEEDCBB918B134F200B5D047 /* LineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB818B134F200B5D047 /* LineTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		BEEDCBB118A7FE3300B5D047 /* RootVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootVIew.m; sourceTree = "<group>"; };
 		BEEDCBB418B1270900B5D047 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
 		BEEDCBB518B1270900B5D047 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
+		BEEDCBB818B134F200B5D047 /* LineTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineTests.m; sourceTree = "<group>"; };
+		BEEDCBBA18B1356500B5D047 /* LineTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineTests.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,7 @@
 		BEC0711C189C541D00505F7D /* TablaTests */ = {
 			isa = PBXGroup;
 			children = (
+				BEEDCBB718B134D300B5D047 /* GeometryTests */,
 				BEC07122189C541D00505F7D /* TablaTests.m */,
 				BEC0711D189C541D00505F7D /* Supporting Files */,
 			);
@@ -236,6 +240,15 @@
 				BEEDCBB518B1270900B5D047 /* Line.m */,
 			);
 			name = Geometry;
+			sourceTree = "<group>";
+		};
+		BEEDCBB718B134D300B5D047 /* GeometryTests */ = {
+			isa = PBXGroup;
+			children = (
+				BEEDCBBA18B1356500B5D047 /* LineTests.h */,
+				BEEDCBB818B134F200B5D047 /* LineTests.m */,
+			);
+			name = GeometryTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEC07123189C541D00505F7D /* TablaTests.m in Sources */,
+				BEEDCBB918B134F200B5D047 /* LineTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

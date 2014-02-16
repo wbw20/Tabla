@@ -8,6 +8,7 @@
 
 #import "math.h"
 
+#import "Line.h"
 #import "RadialView.h"
 
 #define RADIUS 200.0f
@@ -114,8 +115,9 @@
 /**
  *  Translates a line downwards with respect to the kerf
  **/
-- (float)translateDownwardsByKerf:(float)kerf {
-    return 0.0f;
+- (float)translateLine:(Line*)line downwardsByKerf:(float)kerf {
+    float theta = atan([line slope]);
+    return (kerf/2)/sin(theta);
 }
 
 /**

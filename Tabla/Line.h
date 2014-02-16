@@ -13,6 +13,7 @@
 @property NSPoint start;
 @property NSPoint end;
 
+- (id)initWithStart:(NSPoint)start andEnd:(NSPoint)end;
 - (float)slope;
 
 @end
