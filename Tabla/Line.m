@@ -14,7 +14,7 @@
  *  Return the scalar distance that a line must be translated for a
  *  given kerf value.
  **/
-+ (float)getTranslationLineFor:(Line*)line andKerf:(float)kerf {
++ (float)getTranslationFor:(Line*)line andKerf:(float)kerf {
     float angle = (M_PI/2) - atan(line.slope);
     return kerf / sin(angle);
 }

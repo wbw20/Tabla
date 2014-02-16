@@ -23,7 +23,7 @@
     CGPoint end = CGPointMake(10.0f, 0.0f);
     Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
     
-    XCTAssert([Line getTranslationLineFor:line andKerf:0.0f] == 0.0f, @"Kerf translation failed for no kerf.");
+    XCTAssert([Line getTranslationFor:line andKerf:0.0f] == 0.0f, @"Kerf translation failed for no kerf.");
 }
 
 - (void)testKerfWithFlatLine
@@ -32,7 +32,7 @@
     CGPoint end = CGPointMake(10.0f, 0.0f);
     Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
     
-    XCTAssert([Line getTranslationLineFor:line andKerf:1.0f] == 1.0f, @"Kerf translation failed for a flat line.");
+    XCTAssert([Line getTranslationFor:line andKerf:1.0f] == 1.0f, @"Kerf translation failed for a flat line.");
 }
 
 - (void)testKerfWithDiagonalLine
@@ -41,8 +41,8 @@
     CGPoint end = CGPointMake(10.0f, 10.0f);
     Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
     
-    XCTAssert([Line getTranslationLineFor:line andKerf:1.0f] > 1.41421f, @"Kerf translation failed for a diagonal line.");
-    XCTAssert([Line getTranslationLineFor:line andKerf:1.0f] < 1.41422f, @"Kerf translation failed for a diagonal line.");
+    XCTAssert([Line getTranslationFor:line andKerf:1.0f] > 1.41421f, @"Kerf translation failed for a diagonal line.");
+    XCTAssert([Line getTranslationFor:line andKerf:1.0f] < 1.41422f, @"Kerf translation failed for a diagonal line.");
 }
 
 /**
