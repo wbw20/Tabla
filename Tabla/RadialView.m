@@ -113,14 +113,6 @@
 }
 
 /**
- *  Translates a line downwards with respect to the kerf
- **/
-- (float)translateLine:(Line*)line downwardsByKerf:(float)kerf {
-    float theta = atan([line slope]);
-    return (kerf/2)/sin(theta);
-}
-
-/**
  *  Return the radius for concentric circle with a given index.  Indexes
  *  start with 0 and go from the outside in.
  **/

@@ -13,6 +13,8 @@
 @property CGPoint start;
 @property CGPoint end;
 
++ (float)getTranslationLineFor:(Line*)line andKerf:(float)kerf;
+
 - (id)initWithStart:(NSPoint)start andEnd:(NSPoint)end;
 - (float)slope;
 

@@ -10,6 +10,15 @@
 
 @implementation Line
 
+/**
+ *  Return the scalar distance that a line must be translated for a
+ *  given kerf value.
+ **/
++ (float)getTranslationLineFor:(Line*)line andKerf:(float)kerf {
+    float angle = (M_PI/2) - abs(atan(line.slope));
+    return kerf / sin(angle);
+}
+
 - (id)initWithStart:(CGPoint)start andEnd:(CGPoint)end {
     self = [super init];
     
