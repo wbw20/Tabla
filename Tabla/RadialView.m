@@ -81,7 +81,7 @@
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
-    CGPoint points[] = {CGPointMake(center.x + RADIUS*cos(start), center.y + RADIUS*sin(start)), CGPointMake(center.x + RADIUS*cos(end), center.y + RADIUS*sin(end))};
+    CGPoint points[] = {CGPointMake(center.x, center.y), CGPointMake(center.x + RADIUS*cos(end), center.y + RADIUS*sin(end))};
     CGContextAddLines(context, points, 2);
     CGContextStrokePath(context);
 }
