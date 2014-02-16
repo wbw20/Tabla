@@ -17,8 +17,8 @@
  *
  **/
 
-- (void)testPointOnCircleAtZero {
-//    Circle *circle = [[c]]
+- (void)testPointOnCircleAtZeroRadians {
+    Circle *circle = [[Circle alloc] init];
 }
 
 @end

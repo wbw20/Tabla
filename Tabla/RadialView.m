@@ -94,26 +94,6 @@
 }
 
 /**
- *  Get the Cartesian point on a circle for any radian value and circle index
- **/
-- (CGPoint)getPointOnCircleAt:(float)radians for:(int)index {
-    NSPoint center = [self center];
-    NSPoint point;
-    
-    // get the radius of the concentric circle for the given index
-    float radius = [self getRadiusFor:index];
-    
-    point.x = center.x + radius*cos(radians);
-    point.y = center.y + radius*sin(radians);
-    
-    NSLog(@"%f", point.x);
-    NSLog(@"%f", point.y);
-    NSLog(@"\n");
-    
-    return CGPointMake(center.x, center.y);
-}
-
-/**
  *  Return the radius for concentric circle with a given index.  Indexes
  *  start with 0 and go from the outside in.
  **/
@@ -130,9 +110,9 @@
     [[NSColor grayColor] setStroke];
     
     //Get the cartesian point in the center of the kerf for this circle
-    CGPoint right[] = {[self getPointOnCircleAt:radial for:zone], [self getPointOnCircleAt:radial for:zone + 1]};
-    CGContextAddLines(context, right, 2);
-    CGContextStrokePath(context);
+//    CGPoint right[] = {[self getPointOnCircleAt:radial for:zone], [self getPointOnCircleAt:radial for:zone + 1]};
+//    CGContextAddLines(context, right, 2);
+//    CGContextStrokePath(context);
 }
 
 /**

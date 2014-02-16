@@ -13,6 +13,7 @@
 @property CGPoint center;
 @property float radius;
 
+- (id)initWithCenter:(CGPoint)center andRadius:(float)radius;
 - (CGPoint) pointOnCircleFor:(float)radians;
 
 @end
