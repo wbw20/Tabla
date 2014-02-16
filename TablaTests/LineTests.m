@@ -13,7 +13,42 @@
 
 /**
  *
- *  Slope()
+ *  getTranslationLineFor:(Line*)line andKerf:(float)kerf
+ *
+ **/
+
+- (void)testNoKerf
+{
+    CGPoint start = CGPointMake(0.0f, 0.0f);
+    CGPoint end = CGPointMake(10.0f, 0.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    
+    XCTAssert([Line getTranslationLineFor:line andKerf:0.0f] == 0.0f, @"Kerf translation failed for no kerf.");
+}
+
+- (void)testKerfWithFlatLine
+{
+    CGPoint start = CGPointMake(0.0f, 0.0f);
+    CGPoint end = CGPointMake(10.0f, 0.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    
+    XCTAssert([Line getTranslationLineFor:line andKerf:1.0f] == 1.0f, @"Kerf translation failed for a flat line.");
+}
+
+- (void)testKerfWithDiagonalLine
+{
+    CGPoint start = CGPointMake(0.0f, 0.0f);
+    CGPoint end = CGPointMake(10.0f, 10.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    
+    NSLog(@"%f", [Line getTranslationLineFor:line andKerf:1.0f]);
+    
+    XCTAssert([Line getTranslationLineFor:line andKerf:1.0f] == sqrt(2.0f), @"Kerf translation failed for a diagonal line.");
+}
+
+/**
+ *
+ *  slope
  *
  **/
 
