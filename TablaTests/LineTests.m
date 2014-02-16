@@ -11,25 +11,37 @@
 
 @implementation LineTests
 
-- (void)setUp
+/**
+ *
+ *  Slope()
+ *
+ **/
+
+- (void)testZero
 {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    CGPoint start = CGPointMake(0.0f, 0.0f);
+    CGPoint end = CGPointMake(0.0f, 0.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    
+    XCTAssert([line slope] == 0.0f, @"Slope failed for zero slope.");
 }
 
-- (void)tearDown
-{
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
-}
-
-- (void)testSlope
+- (void)testOriginToQuadrantOne
 {
     CGPoint start = CGPointMake(0.0f, 0.0f);
     CGPoint end = CGPointMake(10.0f, 10.0f);
     Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
     
-    XCTAssert([line slope] == 1.0f, @"Slope test failed.");
+    XCTAssert([line slope] == 1.0f, @"Slope failed for first quadrant.");
+}
+
+- (void)testQuadrantOneToQuadrantOne
+{
+    CGPoint start = CGPointMake(5.0f, 0.0f);
+    CGPoint end = CGPointMake(10.0f, 10.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    
+    XCTAssert([line slope] == 2.0f, @"Slope failed for first quadrant.");
 }
 
 @end

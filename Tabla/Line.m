@@ -10,7 +10,7 @@
 
 @implementation Line
 
-- (id)initWithStart:(NSPoint)start andEnd:(NSPoint)end {
+- (id)initWithStart:(CGPoint)start andEnd:(CGPoint)end {
     self = [super init];
     
     if (self) {
@@ -25,7 +25,15 @@
  *  Returns the slope of this line
  **/
 - (float)slope {
+    if ([self pointsEqual]) { return 0.0f; }
     return (self.end.y - self.start.y) / (self.end.x - self.start.x);
+}
+
+/**
+ *  Checks if the end points of the line are the same
+ **/
+- (BOOL)pointsEqual {
+    return self.start.x == self.end.x && self.start.y == self.end.y;
 }
 
 @end

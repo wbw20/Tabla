@@ -10,8 +10,8 @@
 
 @interface Line : NSObject
 
-@property NSPoint start;
-@property NSPoint end;
+@property CGPoint start;
+@property CGPoint end;
 
 - (id)initWithStart:(NSPoint)start andEnd:(NSPoint)end;
 - (float)slope;
