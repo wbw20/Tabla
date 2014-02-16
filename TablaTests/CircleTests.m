@@ -24,4 +24,17 @@
     XCTAssert(CGPointEqualToPoint([circle pointOnCircleFor:0.0f], correct), @"Point on circle failed for radian 0.");
 }
 
+- (void)testPointOnCircleAtPiOver2Radians {
+    Circle *circle = [[Circle alloc] initWithCenter:CGPointMake(50.0f, 50.0f) andRadius:10.0f];
+    CGPoint correct = CGPointMake(50.0f, 60.0f);
+    
+    NSLog(@"%f", [circle pointOnCircleFor:M_PI/2].x);
+        NSLog(@"%f", [circle pointOnCircleFor:M_PI/2].y);
+    
+    NSLog(@"%f", correct.x);
+    NSLog(@"%f", correct.y);
+    
+    XCTAssert(CGPointEqualToPoint([circle pointOnCircleFor:M_PI/2], correct), @"Point on circle failed for radian pi/2.");
+}
+
 @end
