@@ -7,6 +7,7 @@
 //
 
 #import "RadialView.h"
+#import "RadialViewController.h"
 
 @implementation RadialView
 
@@ -35,10 +36,9 @@
  *  Responds to click events
  */
 - (void)mouseUp: (NSEvent *)event {
-    NSPoint eventLocation = [event locationInWindow];
-    NSPoint center = [self convertPoint:eventLocation fromView:nil];
+    NSPoint location = [self convertPoint:[event locationInWindow] fromView:nil];
     
-    NSLog(@"%f", center.x);
+    [controller test];
 }
 
 /**

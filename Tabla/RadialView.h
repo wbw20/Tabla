@@ -8,9 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class RadialViewController;
+
 @interface RadialView : NSView
 {
-    NSBezierPath *path;
+    IBOutlet RadialViewController *controller;
 }
 - (NSPoint)center;
 

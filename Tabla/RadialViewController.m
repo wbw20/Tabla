@@ -23,4 +23,8 @@
     return self;
 }
 
+- (void) test {
+    NSLog(@"it works");
+}
+
 @end

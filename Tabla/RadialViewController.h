@@ -10,4 +10,6 @@
 
 @interface RadialViewController : NSViewController
 
+- (void) test;
+
 @end
