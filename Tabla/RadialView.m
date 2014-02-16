@@ -14,7 +14,7 @@
 #define RADIUS 200.0f
 #define KERF 20.0f
 #define ZONES 5
-#define RINGS 2
+#define RINGS 3
 
 @implementation RadialView
 
