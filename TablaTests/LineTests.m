@@ -56,9 +56,49 @@
     CGPoint start = CGPointMake(0.0f, 0.0f);
     CGPoint end = CGPointMake(10.0f, 10.0f);
     Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    Line *translated = [Line getTranslatedLineFor:(line) andTranslation:(0.0f)];
+    
+    XCTAssert([translated offset] == 0.0f, @"Line translation failed for zero translation.");
+}
+
+- (void)testLineTranslationFromOrigin
+{
+    CGPoint start = CGPointMake(0.0f, 0.0f);
+    CGPoint end = CGPointMake(10.0f, 10.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
     Line *translated = [Line getTranslatedLineFor:(line) andTranslation:(4.0f)];
     
     XCTAssert([translated offset] == 4.0f, @"Line translation failed for positive translation from origin.");
+}
+
+- (void)testLineTranslationFromPositive
+{
+    CGPoint start = CGPointMake(0.0f, 5.0f);
+    CGPoint end = CGPointMake(10.0f, 10.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    Line *translated = [Line getTranslatedLineFor:(line) andTranslation:(4.0f)];
+    
+    XCTAssert([translated offset] == 9.0f, @"Line translation failed for positive translation from positive offset.");
+}
+
+- (void)testNegativeLineTranslationFromPositive
+{
+    CGPoint start = CGPointMake(0.0f, 5.0f);
+    CGPoint end = CGPointMake(10.0f, 10.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    Line *translated = [Line getTranslatedLineFor:(line) andTranslation:(-4.0f)];
+    
+    XCTAssert([translated offset] == 1.0f, @"Line translation failed for negative translation from positie offset.");
+}
+
+- (void)testPositiveLineTranslationWithNegativeSlope
+{
+    CGPoint start = CGPointMake(-10.0f, 10.0f);
+    CGPoint end = CGPointMake(0.0f, 5.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    Line *translated = [Line getTranslatedLineFor:(line) andTranslation:(4.0f)];
+    
+    XCTAssert([translated offset] == 9.0f, @"Line translation failed for positive translation of a negative sloped line.");
 }
 
 /**

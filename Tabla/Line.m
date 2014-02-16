@@ -51,7 +51,7 @@
  *  Returns the y-offset (b in 'y=mx + b')
  **/
 - (float)offset {
-    return self.start.y + (self.start.x * [self slope]);
+    return self.start.y + (fabsf(self.start.x) * [self slope]);
 }
 
 /**
