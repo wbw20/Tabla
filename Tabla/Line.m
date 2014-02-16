@@ -19,6 +19,15 @@
     return kerf / sin(angle);
 }
 
+/**
+ *  Return a line with the same slope as line but a y-translated offset
+ **/
++ (Line*)getTranslatedLineFor:(Line*)line andTranslation:(float)translation {
+    CGPoint start = CGPointMake(line.start.x, line.start.y + translation);
+    CGPoint end = CGPointMake(line.end.x, line.end.y + translation);
+    return [[Line alloc] initWithStart:start andEnd:end];
+}
+
 - (id)initWithStart:(CGPoint)start andEnd:(CGPoint)end {
     self = [super init];
     
@@ -39,10 +48,24 @@
 }
 
 /**
+ *  Returns the y-offset (b in 'y=mx + b')
+ **/
+- (float)offset {
+    return self.start.y + (self.start.x * [self slope]);
+}
+
+/**
  *  Checks if the end points of the line are the same
  **/
 - (BOOL)pointsEqual {
     return self.start.x == self.end.x && self.start.y == self.end.y;
+}
+
+/**
+ *  Checks if slopes and offsets are the same
+ **/
+- (BOOL)equals:(Line*)other {
+    return [self slope] == [other slope] && [self offset] == [other offset];
 }
 
 @end

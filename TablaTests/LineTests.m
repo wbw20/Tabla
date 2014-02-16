@@ -13,7 +13,7 @@
 
 /**
  *
- *  getTranslationLineFor:(Line*)line andKerf:(float)kerf
+ *  + (float)getTranslationLineFor:(Line*)line andKerf:(float)kerf
  *
  **/
 
@@ -47,7 +47,23 @@
 
 /**
  *
- *  slope
+ *  + (Line*)getTranslatedLineFor:(Line*)line andTranslation:(float)translation
+ *
+ **/
+
+- (void)testLineTranslationWithZero
+{
+    CGPoint start = CGPointMake(0.0f, 0.0f);
+    CGPoint end = CGPointMake(10.0f, 10.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    Line *translated = [Line getTranslatedLineFor:(line) andTranslation:(4.0f)];
+    
+    XCTAssert([translated offset] == 4.0f, @"Line translation failed for positive translation from origin.");
+}
+
+/**
+ *
+ *  - (float)slope
  *
  **/
 
