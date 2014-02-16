@@ -7,7 +7,7 @@
 //
 
 #import "CircleTests.h"
-#import "Line.h"
+#import "Circle.h"
 
 @implementation CircleTests
 
@@ -18,7 +18,10 @@
  **/
 
 - (void)testPointOnCircleAtZeroRadians {
-    Circle *circle = [[Circle alloc] init];
+    Circle *circle = [[Circle alloc] initWithCenter:CGPointMake(50.0f, 50.0f) andRadius:10.0f];
+    CGPoint correct = CGPointMake(60.0f, 50.0f);
+    
+    XCTAssert(CGPointEqualToPoint([circle pointOnCircleFor:0.0f], correct), @"Point on circle failed for radian 0.");
 }
 
 @end
