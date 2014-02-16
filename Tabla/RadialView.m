@@ -11,7 +11,7 @@
 #import "RadialView.h"
 
 #define RADIUS 200.0f
-#define KERF 70.0f
+#define KERF 5.0f
 #define ZONES 2
 
 @implementation RadialView
@@ -22,7 +22,7 @@
         return nil;
     
     // Start with a single, full-circle zone
-    [self drawCircleWithCenter:[self center] andRadius:self.frame.size.width/2];
+    [self drawZones];
 
 
     return self;
@@ -48,6 +48,25 @@
 }
 
 /**
+ *  Draws zones to the graphics context
+ **/
+- (void)drawZones {
+    [self drawArcFrom:0.0f to:[self arclength] withRadius:RADIUS];
+}
+
+/**
+ *  Draws an arcs from a start radian to an end radian
+ **/
+- (void)drawArcFrom:(float)start to:(float)end withRadius:(float)radius {
+    NSPoint center = [self center];
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextSetLineWidth(context, 2);
+    [[NSColor grayColor] setStroke];
+    CGContextAddArc(context, center.x, center.y, radius, 0, [self arclength], 0);
+    CGContextStrokePath(context);
+}
+
+/**
  *  Get the arclength in radians for any zone
  **/
 - (float)arclength {
@@ -60,7 +79,7 @@
 /**
  *  Draws a circle to the current graphics context
  */
-- (void)drawCircleWithCenter:(NSPoint)center andRadius:(int)radius {
+- (void)drawCircleWithCenter:(NSPoint)center andRadius:(float)radius {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
