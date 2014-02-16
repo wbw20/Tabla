@@ -57,8 +57,9 @@
     while (start < 2*M_PI) {
         start += [self arcTrim];
         float end = start + [self arclength];
+        [self drawLineFor:(start) andZone:1];
+        [self drawLineFor:(end) andZone:1];
         [self drawArcFrom:start to:end withRadius:RADIUS];
-        [self drawLinesFrom:start to:end forZone:1];
         start = end + [self arcTrim];
     }
 }
@@ -103,7 +104,7 @@
     float radius = [self getRadiusFor:index];
     
     point.x = center.x + radius*cos(radians);
-    point.y = center.x + radius*sin(radians);
+    point.y = center.y + radius*sin(radians);
     
     NSLog(@"%f", point.x);
     NSLog(@"%f", point.y);
@@ -121,15 +122,15 @@
 }
 
 /**
- *  Draws the straight lines for a given zone
+ *  Draws a line for a concentric zone at a given radial mark
  **/
-- (void)drawLinesFrom:(float)start to:(float)end forZone:(int)zone {
+- (void)drawLineFor:(float)radial andZone:(int)zone {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
     
     //Get the cartesian point in the center of the kerf for this circle
-    CGPoint right[] = {[self getPointOnCircleAt:start for:zone], [self getPointOnCircleAt:start for:zone + 1]};
+    CGPoint right[] = {[self getPointOnCircleAt:radial for:zone], [self getPointOnCircleAt:radial for:zone + 1]};
     CGContextAddLines(context, right, 2);
     CGContextStrokePath(context);
 }
