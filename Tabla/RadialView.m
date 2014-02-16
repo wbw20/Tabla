@@ -11,8 +11,8 @@
 #import "RadialView.h"
 
 #define RADIUS 200.0f
-#define KERF 50.0f
-#define ZONES 2
+#define KERF 20.0f
+#define ZONES 3
 
 @implementation RadialView
 
@@ -56,6 +56,7 @@
         start += [self arcTrim];
         float end = start + [self arclength];
         [self drawArcFrom:start to:end withRadius:RADIUS];
+        [self drawLinesFrom:start to:end forCircle:1];
         start = end + [self arcTrim];
     }
 }
@@ -69,6 +70,19 @@
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
     CGContextAddArc(context, center.x, center.y, radius, start, end, 0);
+    CGContextStrokePath(context);
+}
+
+/**
+ *  Draws the straight lines for a given zone
+ **/
+- (void)drawLinesFrom:(float)start to:(float)end forCircle:(int)circle {
+    NSPoint center = [self center];
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextSetLineWidth(context, 2);
+    [[NSColor grayColor] setStroke];
+    CGPoint points[] = {CGPointMake(center.x + RADIUS*cos(start), center.y + RADIUS*sin(start)), CGPointMake(center.x + RADIUS*cos(end), center.y + RADIUS*sin(end))};
+    CGContextAddLines(context, points, 2);
     CGContextStrokePath(context);
 }
 
