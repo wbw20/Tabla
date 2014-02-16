@@ -41,9 +41,8 @@
     CGPoint end = CGPointMake(10.0f, 10.0f);
     Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
     
-    NSLog(@"%f", [Line getTranslationLineFor:line andKerf:1.0f]);
-    
-    XCTAssert([Line getTranslationLineFor:line andKerf:1.0f] == sqrt(2.0f), @"Kerf translation failed for a diagonal line.");
+    XCTAssert([Line getTranslationLineFor:line andKerf:1.0f] > 1.41421f, @"Kerf translation failed for a diagonal line.");
+    XCTAssert([Line getTranslationLineFor:line andKerf:1.0f] < 1.41422f, @"Kerf translation failed for a diagonal line.");
 }
 
 /**

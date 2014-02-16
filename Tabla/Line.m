@@ -15,7 +15,7 @@
  *  given kerf value.
  **/
 + (float)getTranslationLineFor:(Line*)line andKerf:(float)kerf {
-    float angle = (M_PI/2) - abs(atan(line.slope));
+    float angle = (M_PI/2) - atan(line.slope);
     return kerf / sin(angle);
 }
 
