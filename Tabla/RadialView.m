@@ -11,7 +11,7 @@
 #import "RadialView.h"
 
 #define RADIUS 200.0f
-#define KERF 5.0f
+#define KERF 50.0f
 #define ZONES 2
 
 @implementation RadialView
@@ -51,7 +51,13 @@
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
-    [self drawArcFrom:0.0f to:[self arclength] withRadius:RADIUS];
+    float start = 0.0f;
+    while (start < 2*M_PI) {
+        start += [self arcTrim];
+        float end = start + [self arclength];
+        [self drawArcFrom:start to:end withRadius:RADIUS];
+        start = end + [self arcTrim];
+    }
 }
 
 /**
@@ -62,7 +68,7 @@
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
-    CGContextAddArc(context, center.x, center.y, radius, 0, [self arclength], 0);
+    CGContextAddArc(context, center.x, center.y, radius, start, end, 0);
     CGContextStrokePath(context);
 }
 
@@ -73,7 +79,14 @@
     float arc = 2.0f*M_PI/ZONES;
     
     //we will remove some of the arc to account for the rounded corners
-    return arc - 2*asinf(KERF/RADIUS);
+    return arc - 2*[self arcTrim];
+}
+
+/**
+ *  Return the amount of arc to trim for a given rounded corner
+ **/
+- (float)arcTrim {
+    return asinf(KERF/RADIUS);
 }
 
 /**
