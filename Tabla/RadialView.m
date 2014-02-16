@@ -12,7 +12,7 @@
 
 #define RADIUS 200.0f
 #define KERF 20.0f
-#define ZONES 3
+#define ZONES 5
 
 @implementation RadialView
 
