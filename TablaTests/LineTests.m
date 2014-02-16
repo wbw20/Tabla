@@ -44,4 +44,13 @@
     XCTAssert([line slope] == 2.0f, @"Slope failed for first quadrant.");
 }
 
+- (void)testNegativeSlope
+{
+    CGPoint start = CGPointMake(5.0f, 0.0f);
+    CGPoint end = CGPointMake(-5.0f, 10.0f);
+    Line *line = [[Line alloc] initWithStart:(start) andEnd:(end)];
+    
+    XCTAssert([line slope] == -1.0f, @"Slope failed for negative slope.");
+}
+
 @end
