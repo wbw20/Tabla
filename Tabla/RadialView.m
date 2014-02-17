@@ -119,8 +119,8 @@
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
 
-    Circle *inner = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone - 1)] + KERF/2];
-    Circle *outer = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone)] - KERF/2];
+    Circle *inner = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone - 1)] + KERF];
+    Circle *outer = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone)]];
 
     CGPoint right[] = {[inner pointOnCircleFor:(radial)], [outer pointOnCircleFor:(radial)]};
     CGContextAddLines(context, right, 2);
