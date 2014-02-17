@@ -15,8 +15,8 @@
 
 #define RADIUS 200.0f
 #define KERF 20.0f
-#define ZONES 8
-#define RINGS 5 // rings are indexed from the inside out
+#define ZONES 5
+#define RINGS 3 // rings are indexed from the inside out
 
 @implementation RadialView
 
@@ -64,14 +64,15 @@
             float end = start + [self arclength];
             [self drawLineFor:(start) andZone:zone];
             [self drawLineFor:(end) andZone:zone];
-            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(zone)]];
+            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(zone)] + KERF/2];
+            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(zone)] - KERF/2];
             start = end + [self arcTrim];
         }
     }
 }
 
 /**
- *  Draws an arcs from a start radian to an end radian
+ *  Draws an arc from a start radian to an end radian
  **/
 - (void)drawArcFrom:(float)start to:(float)end withRadius:(float)radius {
     NSPoint center = [self center];
