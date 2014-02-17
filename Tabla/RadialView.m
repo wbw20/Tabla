@@ -54,8 +54,7 @@
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
-    for (int zone = 0; zone < RINGS; zone++) {
-        NSLog(@"%u", zone);
+    for (int zone = 0; zone <= RINGS; zone++) {
         float start = 0.0f;
         while (start < 2*M_PI) {
             start += [self arcTrim];
