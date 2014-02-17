@@ -50,6 +50,18 @@ static int radial = 1;
 //    NSPoint location = [self convertPoint:[event locationInWindow] fromView:nil];
 //    
 //    [controller test];
+//    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    NSRect rect;
+    rect.size.height = 200;
+    rect.size.width = 200;
+    rect.origin.x = 0;
+    rect.origin.y = 0;
+//    CGContextClearRect(context, rect);
+    [self setNeedsDisplayInRect:rect];
+//    [self setNeedsDisplay:NO];
+    
+    radial = 3;
+    [self drawZones];
 }
 
 /**
@@ -116,6 +128,8 @@ static int radial = 1;
  **/
 - (void)drawLineFor:(float)radial andZone:(int)zone {
     if (zone == 1) return; // innermost circle has no radial lines
+    
+    NSLog(@"sdfdf");
 
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
