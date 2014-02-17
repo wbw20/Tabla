@@ -64,8 +64,8 @@
             float end = start + [self arclength];
             [self drawLineFor:(start) andZone:zone];
             [self drawLineFor:(end) andZone:zone];
-            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(zone)] + KERF/2];
-            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(zone)] - KERF/2];
+            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(zone -1)] + KERF];
+            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(zone)]];
             start = end + [self arcTrim];
         }
     }
