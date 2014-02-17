@@ -14,11 +14,13 @@
 #import "RadialViewController.h"
 
 #define RADIUS 200.0f
-#define KERF 20.0f
-#define ZONES 5
-#define RINGS 3 // rings are indexed from the inside out
+#define KERF 10.0f
 
 @implementation RadialView
+
+//TODO: move state to controller
+static int concentric = 1;
+static int radial = 1;
 
 - (id)initWithFrame:(NSRect)rect
 {
@@ -57,7 +59,7 @@
     // draw innermost zone
     [self drawArcFrom:0.0f to:2*M_PI withRadius:[self getRadiusFor:(1)]];
     
-    for (int zone = 2; zone <= RINGS; zone++) {
+    for (int zone = 2; zone <= radial; zone++) {
         float start = 0.0f;
         while (start < 2*M_PI) {
             start += [self arcTrim];
@@ -87,7 +89,7 @@
  *  Get the arclength in radians for any zone
  **/
 - (float)arclength {
-    float arc = 2.0f*M_PI/ZONES;
+    float arc = 2.0f*M_PI/concentric;
     
     //we will remove some of the arc to account for the rounded corners
     return arc - 2*[self arcTrim];
@@ -105,7 +107,7 @@
  *  start with 0 and go from the inside out.
  **/
 - (float)getRadiusFor:(int)index {
-    float width = RADIUS / (RINGS); // the width of a ring
+    float width = RADIUS / radial; // the width of a ring
     return width * (index);
 }
 
@@ -131,7 +133,7 @@
  *  Finds the line length for any zone
  **/
 - (float)linelength {
-    return (RADIUS / ZONES) - 2*KERF;
+    return (RADIUS / concentric) - 2*KERF;
 }
 
 /**
