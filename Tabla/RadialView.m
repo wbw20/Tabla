@@ -15,7 +15,7 @@
 #define RADIUS 200.0f
 #define KERF 20.0f
 #define ZONES 5
-#define RINGS 3 // rings are indexed from the inside out
+#define RINGS 2 // rings are indexed from the inside out
 
 @implementation RadialView
 
@@ -54,7 +54,10 @@
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
-    for (int zone = 1; zone <= RINGS; zone++) {
+    // draw innermost zone
+    [self drawArcFrom:0.0f to:2*M_PI withRadius:[self getRadiusFor:(1)]];
+    
+    for (int zone = 2; zone <= RINGS; zone++) {
         float start = 0.0f;
         while (start < 2*M_PI) {
             start += [self arcTrim];
@@ -109,15 +112,14 @@
  *  Draws a line for a concentric zone at a given radial mark
  **/
 - (void)drawLineFor:(float)radial andZone:(int)zone {
-//    NSLog(@"%u", zone);
-    if (zone == 0) return; // innermost circle has no radial lines
+    if (zone == 1) return; // innermost circle has no radial lines
 
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
 
-    Circle *inner = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone)]];
-    Circle *outer = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone + 1)]];
+    Circle *inner = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone - 1)]];
+    Circle *outer = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone)]];
 
     CGPoint right[] = {[inner pointOnCircleFor:(radial)], [outer pointOnCircleFor:(radial)]};
     CGContextAddLines(context, right, 2);
