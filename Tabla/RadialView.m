@@ -14,8 +14,8 @@
 
 #define RADIUS 200.0f
 #define KERF 20.0f
-#define ZONES 5
-#define RINGS 2 // rings are indexed from the inside out
+#define ZONES 8
+#define RINGS 5 // rings are indexed from the inside out
 
 @implementation RadialView
 
