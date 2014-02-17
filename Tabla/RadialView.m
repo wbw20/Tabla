@@ -101,7 +101,8 @@
  *  start with 0 and go from the outside in.
  **/
 - (float)getRadiusFor:(int)index {
-    return (RADIUS * (ZONES - index) / ZONES) - [self arcTrim];
+    float width = RADIUS / (RINGS + 0.5); // the width of a ring
+    return width * (index - 0.5);
 }
 
 /**
@@ -115,15 +116,8 @@
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
 
-    float width = RADIUS / (RINGS + 0.5); // the width of a ring
-    float innerRadius = width * (zone - 0.5);
-    float outerRadius = width * (zone + 0.5);
-    
-    NSLog(@"inner: %f", innerRadius);
-    NSLog(@"outer: %f", outerRadius);
-
-    Circle *inner = [[Circle alloc] initWithCenter:[self center] andRadius:innerRadius];
-    Circle *outer = [[Circle alloc] initWithCenter:[self center] andRadius:outerRadius];
+    Circle *inner = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone)]];
+    Circle *outer = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone + 1)]];
 
     CGPoint right[] = {[inner pointOnCircleFor:(radial)], [outer pointOnCircleFor:(radial)]};
     CGContextAddLines(context, right, 2);
