@@ -9,12 +9,13 @@
 #import "math.h"
 
 #import "Line.h"
+#import "Circle.h"
 #import "RadialView.h"
 
 #define RADIUS 200.0f
 #define KERF 20.0f
 #define ZONES 5
-#define RINGS 3
+#define RINGS 2 // rings are indexed from the inside out
 
 @implementation RadialView
 
@@ -53,14 +54,17 @@
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
-    float start = 0.0f;
-    while (start < 2*M_PI) {
-        start += [self arcTrim];
-        float end = start + [self arclength];
-        [self drawLineFor:(start) andZone:1];
-        [self drawLineFor:(end) andZone:1];
-        [self drawArcFrom:start to:end withRadius:RADIUS];
-        start = end + [self arcTrim];
+    for (int zone = 0; zone < RINGS; zone++) {
+        NSLog(@"%u", zone);
+        float start = 0.0f;
+        while (start < 2*M_PI) {
+            start += [self arcTrim];
+            float end = start + [self arclength];
+            [self drawLineFor:(start) andZone:zone];
+            [self drawLineFor:(end) andZone:zone];
+            [self drawArcFrom:start to:end withRadius:RADIUS];
+            start = end + [self arcTrim];
+        }
     }
 }
 
@@ -105,14 +109,26 @@
  *  Draws a line for a concentric zone at a given radial mark
  **/
 - (void)drawLineFor:(float)radial andZone:(int)zone {
+//    NSLog(@"%u", zone);
+    if (zone == 0) return; // innermost circle has no radial lines
+
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
     [[NSColor grayColor] setStroke];
+
+    float width = RADIUS / (RINGS + 0.5); // the width of a ring
+    float innerRadius = width * (zone - 0.5);
+    float outerRadius = width * (zone + 0.5);
     
-    //Get the cartesian point in the center of the kerf for this circle
-//    CGPoint right[] = {[self getPointOnCircleAt:radial for:zone], [self getPointOnCircleAt:radial for:zone + 1]};
-//    CGContextAddLines(context, right, 2);
-//    CGContextStrokePath(context);
+    NSLog(@"inner: %f", innerRadius);
+    NSLog(@"outer: %f", outerRadius);
+
+    Circle *inner = [[Circle alloc] initWithCenter:[self center] andRadius:innerRadius];
+    Circle *outer = [[Circle alloc] initWithCenter:[self center] andRadius:outerRadius];
+
+    CGPoint right[] = {[inner pointOnCircleFor:(radial)], [outer pointOnCircleFor:(radial)]};
+    CGContextAddLines(context, right, 2);
+    CGContextStrokePath(context);
 }
 
 /**
