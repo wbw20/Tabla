@@ -15,7 +15,7 @@
 #define RADIUS 200.0f
 #define KERF 20.0f
 #define ZONES 5
-#define RINGS 2 // rings are indexed from the inside out
+#define RINGS 3 // rings are indexed from the inside out
 
 @implementation RadialView
 
@@ -54,14 +54,14 @@
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
-    for (int zone = 0; zone <= RINGS; zone++) {
+    for (int zone = 1; zone <= RINGS; zone++) {
         float start = 0.0f;
         while (start < 2*M_PI) {
             start += [self arcTrim];
             float end = start + [self arclength];
             [self drawLineFor:(start) andZone:zone];
             [self drawLineFor:(end) andZone:zone];
-            [self drawArcFrom:start to:end withRadius:RADIUS];
+            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(zone)]];
             start = end + [self arcTrim];
         }
     }
@@ -98,11 +98,11 @@
 
 /**
  *  Return the radius for concentric circle with a given index.  Indexes
- *  start with 0 and go from the outside in.
+ *  start with 0 and go from the inside out.
  **/
 - (float)getRadiusFor:(int)index {
-    float width = RADIUS / (RINGS + 0.5); // the width of a ring
-    return width * (index - 0.5);
+    float width = RADIUS / (RINGS); // the width of a ring
+    return width * (index);
 }
 
 /**
