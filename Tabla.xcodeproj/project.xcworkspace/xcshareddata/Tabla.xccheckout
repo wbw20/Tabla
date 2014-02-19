@@ -10,6 +10,8 @@
 	<string>Tabla</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>DA9594F3-B9D2-4590-B581-2AE0BC76C382</key>
+		<string>ssh://github.com/cwilso/MIDIDrums.git</string>
 		<key>E8AAC2AC-348F-4337-860F-150327245FFA</key>
 		<string>ssh://github.com/wbw20/Tabla.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>Tabla.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>DA9594F3-B9D2-4590-B581-2AE0BC76C382</key>
+		<string>../../../MIDIDrums</string>
 		<key>E8AAC2AC-348F-4337-860F-150327245FFA</key>
 		<string>../..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>E8AAC2AC-348F-4337-860F-150327245FFA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DA9594F3-B9D2-4590-B581-2AE0BC76C382</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MIDIDrums</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

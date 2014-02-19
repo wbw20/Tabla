@@ -28,6 +28,7 @@
 		BEEDCBB918B134F200B5D047 /* LineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB818B134F200B5D047 /* LineTests.m */; };
 		BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBBC18B15C5300B5D047 /* Circle.m */; };
 		BEEDCBC018B15D1800B5D047 /* CircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBBF18B15D1800B5D047 /* CircleTests.m */; };
+		BEEDCBCD18B4334E00B5D047 /* tom1.aif in Resources */ = {isa = PBXBuildFile; fileRef = BEEDCBCC18B4334E00B5D047 /* tom1.aif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		BEEDCBBC18B15C5300B5D047 /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Circle.m; sourceTree = "<group>"; };
 		BEEDCBBE18B15D1800B5D047 /* CircleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTests.h; sourceTree = "<group>"; };
 		BEEDCBBF18B15D1800B5D047 /* CircleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTests.m; sourceTree = "<group>"; };
+		BEEDCBCC18B4334E00B5D047 /* tom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = tom1.aif; path = "../../MIDIDrums/sounds/drum-samples/breakbeat9/tom1.aif"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 		BEC070FE189C541D00505F7D /* Tabla */ = {
 			isa = PBXGroup;
 			children = (
+				BEEDCBCB18B4318500B5D047 /* Sounds */,
 				BEEDCBB318B126F000B5D047 /* Geometry */,
 				BE7F1EDC18A48B4600F5567E /* Controllers */,
 				BE7F1EDB18A48B3100F5567E /* Views */,
@@ -261,6 +264,14 @@
 			name = GeometryTests;
 			sourceTree = "<group>";
 		};
+		BEEDCBCB18B4318500B5D047 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				BEEDCBCC18B4334E00B5D047 /* tom1.aif */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -341,6 +352,7 @@
 				BEC07111189C541D00505F7D /* Images.xcassets in Resources */,
 				BEC07109189C541D00505F7D /* Credits.rtf in Resources */,
 				BEC0710F189C541D00505F7D /* MainMenu.xib in Resources */,
+				BEEDCBCD18B4334E00B5D047 /* tom1.aif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

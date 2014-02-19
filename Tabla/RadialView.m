@@ -47,21 +47,13 @@ static int radial = 1;
  *  Responds to click events
  */
 - (void)mouseUp: (NSEvent *)event {
-//    NSPoint location = [self convertPoint:[event locationInWindow] fromView:nil];
-//    
-//    [controller test];
-//    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    NSRect rect;
-    rect.size.height = 200;
-    rect.size.width = 200;
-    rect.origin.x = 0;
-    rect.origin.y = 0;
-//    CGContextClearRect(context, rect);
-    [self setNeedsDisplayInRect:rect];
-//    [self setNeedsDisplay:NO];
-    
-    radial = 3;
-    [self drawZones];
+    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"tom1" ofType:@"aif"];
+    NSSound *sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
+
+    for (int i = 0; i < 10; i++) {
+        [sound play];
+        sleep(1);
+    }
 }
 
 /**
