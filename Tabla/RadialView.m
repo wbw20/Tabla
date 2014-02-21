@@ -24,9 +24,6 @@
 {
     if (![super initWithFrame:rect])
         return nil;
-    
-    // Start with a single, full-circle zone
-    [self drawZones];
 
 
     return self;
@@ -39,6 +36,9 @@
     // Fill the view with green
     [[NSColor whiteColor] set];
     [NSBezierPath fillRect: bounds];
+    
+    // Start with a single, full-circle zone
+    [self drawZones];
 }
 
 /**
@@ -155,9 +155,8 @@
 //    center.x = (self.frame.origin.x + (self.frame.size.width / 2));
 //    center.y = (self.frame.origin.y + (self.frame.size.height / 2));
     
-    // hard coded for now :(
-    center.x = 105 + 250;
-    center.y = 98 + 250;
+    center.x = 250;
+    center.y = 250;
 
     return center;
 }
