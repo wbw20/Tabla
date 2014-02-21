@@ -11,6 +11,8 @@
 		BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED418A47C0100F5567E /* RadialLayer.m */; };
 		BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED918A481E500F5567E /* RadialView.m */; };
 		BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1EDE18A48B6300F5567E /* RadialViewController.m */; };
+		BEAC982D18B6CCC8003C319C /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAC982C18B6CCC8003C319C /* OpenAL.framework */; };
+		BEAC983D18B6E72F003C319C /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAC983C18B6E72F003C319C /* Player.m */; };
 		BEC070F9189C541D00505F7D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC070F8189C541D00505F7D /* Cocoa.framework */; };
 		BEC07103189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC07101189C541D00505F7D /* InfoPlist.strings */; };
 		BEC07105189C541D00505F7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07104189C541D00505F7D /* main.m */; };
@@ -49,6 +51,9 @@
 		BE7F1ED918A481E500F5567E /* RadialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialView.m; sourceTree = "<group>"; };
 		BE7F1EDD18A48B6300F5567E /* RadialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialViewController.h; sourceTree = "<group>"; };
 		BE7F1EDE18A48B6300F5567E /* RadialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialViewController.m; sourceTree = "<group>"; };
+		BEAC982C18B6CCC8003C319C /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		BEAC983B18B6E72F003C319C /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		BEAC983C18B6E72F003C319C /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		BEC070F5189C541D00505F7D /* Tabla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tabla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC070F8189C541D00505F7D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		BEC070FB189C541D00505F7D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -81,7 +86,7 @@
 		BEEDCBBC18B15C5300B5D047 /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Circle.m; sourceTree = "<group>"; };
 		BEEDCBBE18B15D1800B5D047 /* CircleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTests.h; sourceTree = "<group>"; };
 		BEEDCBBF18B15D1800B5D047 /* CircleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTests.m; sourceTree = "<group>"; };
-		BEEDCBCC18B4334E00B5D047 /* tom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = tom1.aif; path = "../../MIDIDrums/sounds/drum-samples/breakbeat9/tom1.aif"; sourceTree = "<group>"; };
+		BEEDCBCC18B4334E00B5D047 /* tom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; name = tom1.aif; path = "../../../MIDIDrums/sounds/drum-samples/breakbeat9/tom1.aif"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEAC982D18B6CCC8003C319C /* OpenAL.framework in Frameworks */,
 				BE7F1ED218A46A2F00F5567E /* Quartz.framework in Frameworks */,
 				BEC070F9189C541D00505F7D /* Cocoa.framework in Frameworks */,
 			);
@@ -126,6 +132,14 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		BEAC983A18B6E6D5003C319C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				BEEDCBCC18B4334E00B5D047 /* tom1.aif */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
 		BEC070EC189C541D00505F7D = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +162,7 @@
 		BEC070F7189C541D00505F7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BEAC982C18B6CCC8003C319C /* OpenAL.framework */,
 				BE7F1ED118A46A2F00F5567E /* Quartz.framework */,
 				BEC070F8189C541D00505F7D /* Cocoa.framework */,
 				BEC07117189C541D00505F7D /* XCTest.framework */,
@@ -221,6 +236,7 @@
 		BEC225C418A1B28800DE83E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BEAC983A18B6E6D5003C319C /* Sounds */,
 				BEE9818218A5923F00143D57 /* Layouts */,
 				BEC225C518A1B28800DE83E8 /* Images */,
 			);
@@ -267,7 +283,8 @@
 		BEEDCBCB18B4318500B5D047 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				BEEDCBCC18B4334E00B5D047 /* tom1.aif */,
+				BEAC983B18B6E72F003C319C /* Player.h */,
+				BEAC983C18B6E72F003C319C /* Player.m */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -375,6 +392,7 @@
 				BEEDCBB618B1270900B5D047 /* Line.m in Sources */,
 				BEE9818118A5366500143D57 /* WindowController.m in Sources */,
 				BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */,
+				BEAC983D18B6E72F003C319C /* Player.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
 				BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */,
 				BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */,

@@ -52,7 +52,6 @@ static int radial = 1;
 
     for (int i = 0; i < 10; i++) {
         [sound play];
-        sleep(1);
     }
 }
 
