@@ -14,17 +14,27 @@
 
 @implementation RadialViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)init {
+    self = [super init];
     if (self) {
-        // Initialization code here.
+        NSView *view = [self view];
     }
     return self;
 }
 
 - (void) test {
     NSLog(@"it works");
+}
+
+/**
+ *  Responds to click events
+ */
+- (void)mouseUp: (NSEvent *)event {
+    [self test];
+    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"tom1" ofType:@"aif"];
+    NSSound *sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
+    
+    [sound play];
 }
 
 @end

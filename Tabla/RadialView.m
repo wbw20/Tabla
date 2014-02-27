@@ -19,8 +19,8 @@
 @implementation RadialView
 
 //TODO: move state to controller
-static int concentric = 1;
-static int radial = 1;
+static int concentric = 7;
+static int radial = 4;
 
 - (id)initWithFrame:(NSRect)rect
 {
@@ -41,16 +41,6 @@ static int radial = 1;
     // Fill the view with green
     [[NSColor whiteColor] set];
     [NSBezierPath fillRect: bounds];
-}
-
-/**
- *  Responds to click events
- */
-- (void)mouseUp: (NSEvent *)event {
-    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"tom1" ofType:@"aif"];
-    NSSound *sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
-
-    [sound play];
 }
 
 /**
@@ -117,8 +107,6 @@ static int radial = 1;
  **/
 - (void)drawLineFor:(float)radial andZone:(int)zone {
     if (zone == 1) return; // innermost circle has no radial lines
-    
-    NSLog(@"sdfdf");
 
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
