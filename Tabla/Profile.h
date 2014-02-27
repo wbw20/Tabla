@@ -10,6 +10,6 @@
 
 @interface Profile : NSObject
 
-NSDictionary *samples;
+@property (nonatomic, retain) NSDictionary *samples;
 
 @end
