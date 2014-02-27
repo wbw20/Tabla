@@ -50,10 +50,7 @@ static int radial = 1;
     NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"tom1" ofType:@"aif"];
     NSSound *sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
 
-    for (int i = 0; i < 10; i++) {
-        [sound play];
-        sleep(1);
-    }
+    [sound play];
 }
 
 /**
