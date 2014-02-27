@@ -169,7 +169,6 @@
 		BEC070FE189C541D00505F7D /* Tabla */ = {
 			isa = PBXGroup;
 			children = (
-				BEEDCBCB18B4318500B5D047 /* Sounds */,
 				BEEDCBB318B126F000B5D047 /* Geometry */,
 				BE7F1EDC18A48B4600F5567E /* Controllers */,
 				BE7F1EDB18A48B3100F5567E /* Views */,
@@ -221,6 +220,7 @@
 		BEC225C418A1B28800DE83E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BEEDCBCB18B4318500B5D047 /* Sounds */,
 				BEE9818218A5923F00143D57 /* Layouts */,
 				BEC225C518A1B28800DE83E8 /* Images */,
 			);
@@ -270,6 +270,7 @@
 				BEEDCBCC18B4334E00B5D047 /* tom1.aif */,
 			);
 			name = Sounds;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
