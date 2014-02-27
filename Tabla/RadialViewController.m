@@ -22,10 +22,6 @@
     return self;
 }
 
-- (void) test {
-    NSLog(@"it works");
-}
-
 /**
  *  Responds to click events
  */
