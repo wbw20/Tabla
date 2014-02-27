@@ -22,6 +22,9 @@
 		BEC07119189C541D00505F7D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC070F8189C541D00505F7D /* Cocoa.framework */; };
 		BEC07121189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC0711F189C541D00505F7D /* InfoPlist.strings */; };
 		BEC07123189C541D00505F7D /* TablaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07122189C541D00505F7D /* TablaTests.m */; };
+		BEC7A8CE18BEB8FF007ED7ED /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7A8CD18BEB8FF007ED7ED /* Player.m */; };
+		BEC7A8D218BEB923007ED7ED /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7A8D118BEB923007ED7ED /* Sample.m */; };
+		BEC7A8D518BEB931007ED7ED /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7A8D418BEB931007ED7ED /* Profile.m */; };
 		BEE9818118A5366500143D57 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE9818018A5366500143D57 /* WindowController.m */; };
 		BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootVIew.m */; };
 		BEEDCBB618B1270900B5D047 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB518B1270900B5D047 /* Line.m */; };
@@ -69,6 +72,12 @@
 		BEC07120189C541D00505F7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEC07122189C541D00505F7D /* TablaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TablaTests.m; sourceTree = "<group>"; };
 		BEC225C818A1C28600DE83E8 /* TestProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestProtocol.h; sourceTree = "<group>"; };
+		BEC7A8CC18BEB8FF007ED7ED /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		BEC7A8CD18BEB8FF007ED7ED /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		BEC7A8D018BEB923007ED7ED /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
+		BEC7A8D118BEB923007ED7ED /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
+		BEC7A8D318BEB931007ED7ED /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		BEC7A8D418BEB931007ED7ED /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		BEE9817F18A5366500143D57 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		BEE9818018A5366500143D57 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 		BEEDCBB018A7FE3300B5D047 /* RootVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootVIew.h; sourceTree = "<group>"; };
@@ -169,6 +178,8 @@
 		BEC070FE189C541D00505F7D /* Tabla */ = {
 			isa = PBXGroup;
 			children = (
+				BEC7A8CF18BEB906007ED7ED /* Models */,
+				BEC7A8CB18BEB8DC007ED7ED /* Sound */,
 				BEEDCBB318B126F000B5D047 /* Geometry */,
 				BE7F1EDC18A48B4600F5567E /* Controllers */,
 				BE7F1EDB18A48B3100F5567E /* Views */,
@@ -232,6 +243,26 @@
 			children = (
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		BEC7A8CB18BEB8DC007ED7ED /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				BEC7A8CC18BEB8FF007ED7ED /* Player.h */,
+				BEC7A8CD18BEB8FF007ED7ED /* Player.m */,
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
+		BEC7A8CF18BEB906007ED7ED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BEC7A8D018BEB923007ED7ED /* Sample.h */,
+				BEC7A8D118BEB923007ED7ED /* Sample.m */,
+				BEC7A8D318BEB931007ED7ED /* Profile.h */,
+				BEC7A8D418BEB931007ED7ED /* Profile.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		BEE9818218A5923F00143D57 /* Layouts */ = {
@@ -376,10 +407,13 @@
 				BEEDCBB618B1270900B5D047 /* Line.m in Sources */,
 				BEE9818118A5366500143D57 /* WindowController.m in Sources */,
 				BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */,
+				BEC7A8CE18BEB8FF007ED7ED /* Player.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
 				BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */,
 				BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */,
 				BEC07105189C541D00505F7D /* main.m in Sources */,
+				BEC7A8D518BEB931007ED7ED /* Profile.m in Sources */,
+				BEC7A8D218BEB923007ED7ED /* Sample.m in Sources */,
 				BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
