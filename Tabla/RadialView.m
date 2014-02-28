@@ -20,14 +20,45 @@
 
 @implementation RadialView
 
+NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
+
 - (id)initWithFrame:(NSRect)rect
 {
     if (![super initWithFrame:rect])
         return nil;
-
-
+    if(self) {
+        // register file URL drag type
+        [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
+    }
     return self;
 }
+
+#pragma mark - Dragging Operations
+
+-(NSDragOperation) draggingEntered:(id<NSDraggingInfo>)sender
+{
+    NSLog(@"Drag enter");
+    return NSDragOperationCopy;
+}
+
+-(void) draggingExited:(id<NSDraggingInfo>)sender
+{
+    NSLog(@"Drag exit");
+}
+
+- (BOOL)performDragOperation:(id<NSDraggingInfo>)sender
+{
+    NSURL* fileURL = [NSURL URLFromPasteboard: [sender draggingPasteboard]];
+    if(fileURL != NULL) {
+        NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
+        mouseLoc = [self convertPoint:mouseLoc fromView:nil];
+        NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
+        return YES;
+    }
+    return NO;
+}
+
+#pragma mark - Drawing Operations
 
 - (void)drawRect:(NSRect)rect
 {
