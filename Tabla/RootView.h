@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface RootVIew : NSView
+@interface RootView : NSView
 
 //-(IBAction)digitPressed:(UIButton *)sender;
 

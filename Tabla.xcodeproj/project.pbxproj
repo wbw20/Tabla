@@ -26,7 +26,7 @@
 		BEC7A8D218BEB923007ED7ED /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7A8D118BEB923007ED7ED /* Sample.m */; };
 		BEC7A8D518BEB931007ED7ED /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7A8D418BEB931007ED7ED /* Profile.m */; };
 		BEE9818118A5366500143D57 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE9818018A5366500143D57 /* WindowController.m */; };
-		BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootVIew.m */; };
+		BEEDCBB218A7FE3300B5D047 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootView.m */; };
 		BEEDCBB618B1270900B5D047 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB518B1270900B5D047 /* Line.m */; };
 		BEEDCBB918B134F200B5D047 /* LineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB818B134F200B5D047 /* LineTests.m */; };
 		BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBBC18B15C5300B5D047 /* Circle.m */; };
@@ -80,8 +80,8 @@
 		BEC7A8D418BEB931007ED7ED /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		BEE9817F18A5366500143D57 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		BEE9818018A5366500143D57 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
-		BEEDCBB018A7FE3300B5D047 /* RootVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootVIew.h; sourceTree = "<group>"; };
-		BEEDCBB118A7FE3300B5D047 /* RootVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootVIew.m; sourceTree = "<group>"; };
+		BEEDCBB018A7FE3300B5D047 /* RootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootView.h; sourceTree = "<group>"; };
+		BEEDCBB118A7FE3300B5D047 /* RootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootView.m; sourceTree = "<group>"; };
 		BEEDCBB418B1270900B5D047 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
 		BEEDCBB518B1270900B5D047 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		BEEDCBB818B134F200B5D047 /* LineTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineTests.m; sourceTree = "<group>"; };
@@ -120,8 +120,8 @@
 			children = (
 				BE7F1ED818A481E500F5567E /* RadialView.h */,
 				BE7F1ED918A481E500F5567E /* RadialView.m */,
-				BEEDCBB018A7FE3300B5D047 /* RootVIew.h */,
-				BEEDCBB118A7FE3300B5D047 /* RootVIew.m */,
+				BEEDCBB018A7FE3300B5D047 /* RootView.h */,
+				BEEDCBB118A7FE3300B5D047 /* RootView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -129,8 +129,8 @@
 		BE7F1EDC18A48B4600F5567E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BEE9818018A5366500143D57 /* WindowController.m */,
 				BEE9817F18A5366500143D57 /* WindowController.h */,
+				BEE9818018A5366500143D57 /* WindowController.m */,
 				BE7F1EDD18A48B6300F5567E /* RadialViewController.h */,
 				BE7F1EDE18A48B6300F5567E /* RadialViewController.m */,
 			);
@@ -409,7 +409,7 @@
 				BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */,
 				BEC7A8CE18BEB8FF007ED7ED /* Player.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
-				BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */,
+				BEEDCBB218A7FE3300B5D047 /* RootView.m in Sources */,
 				BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */,
 				BEC07105189C541D00505F7D /* main.m in Sources */,
 				BEC7A8D518BEB931007ED7ED /* Profile.m in Sources */,

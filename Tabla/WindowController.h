@@ -1,8 +1,9 @@
 #import <Cocoa/Cocoa.h>
+#import "RootView.h"
 
 @interface WindowController : NSWindowController
 {
-	IBOutlet NSView*	myTargetView;				// the host view
+	IBOutlet RootView*	myTargetView;				// the host view
 	NSViewController*	myCurrentViewController;	// the current view controller
 }
 

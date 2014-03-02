@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 William Wettersten. All rights reserved.
 //
 
-#import "RootVIew.h"
+#import "RootView.h"
 
-@implementation RootVIew
+@implementation RootView
 
 - (id)initWithFrame:(NSRect)frame
 {
