@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE24EB4218C3EF230084FDFE /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE24EB4118C3EF230084FDFE /* RootViewController.m */; };
 		BE7F1ED218A46A2F00F5567E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7F1ED118A46A2F00F5567E /* Quartz.framework */; };
 		BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED418A47C0100F5567E /* RadialLayer.m */; };
 		BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED918A481E500F5567E /* RadialView.m */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE24EB4018C3EF230084FDFE /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		BE24EB4118C3EF230084FDFE /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		BE7F1ED118A46A2F00F5567E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BE7F1ED318A47C0100F5567E /* RadialLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialLayer.h; sourceTree = "<group>"; };
 		BE7F1ED418A47C0100F5567E /* RadialLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialLayer.m; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				BEE9818018A5366500143D57 /* WindowController.m */,
 				BE7F1EDD18A48B6300F5567E /* RadialViewController.h */,
 				BE7F1EDE18A48B6300F5567E /* RadialViewController.m */,
+				BE24EB4018C3EF230084FDFE /* RootViewController.h */,
+				BE24EB4118C3EF230084FDFE /* RootViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -413,6 +418,7 @@
 				BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */,
 				BEC07105189C541D00505F7D /* main.m in Sources */,
 				BEC7A8D518BEB931007ED7ED /* Profile.m in Sources */,
+				BE24EB4218C3EF230084FDFE /* RootViewController.m in Sources */,
 				BEC7A8D218BEB923007ED7ED /* Sample.m in Sources */,
 				BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */,
 			);

@@ -32,22 +32,22 @@ NSString *const kViewTitle		= @"CustomImageView";
 	// this prepares our title's value binding to change with it
 	[self willChangeValueForKey:@"viewController"];
 	
-	if ([myCurrentViewController view] != nil)
-		[[myCurrentViewController view] removeFromSuperview];	// remove the current view
+	if ([controller view] != nil)
+		[[controller view] removeFromSuperview];	// remove the current view
     
-	if (myCurrentViewController != nil)
+	if (controller != nil)
 //		[myCurrentViewController release];		// remove the current view controller
 	
 	
 	// embed the current view to our host view
-	[myTargetView addSubview: [myCurrentViewController view]];
+	[root addSubview: [controller view]];
 	
 	// make sure we automatically resize the controller's view to the current window size
-	[[myCurrentViewController view] setFrame: [myTargetView bounds]];
+	[[controller view] setFrame: [root bounds]];
 	
 	// set the view controller's represented object to the number of subviews in that controller
 	// (our NSTextField's value binding will reflect this value)
-	[myCurrentViewController setRepresentedObject: [NSNumber numberWithUnsignedInt: [[[myCurrentViewController view] subviews] count]]];
+	[controller setRepresentedObject: [NSNumber numberWithUnsignedInt: [[[myCurrentViewController view] subviews] count]]];
 	
 	[self didChangeValueForKey:@"viewController"];	// this will trigger the NSTextField's value binding to change
 }
