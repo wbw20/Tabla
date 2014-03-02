@@ -103,6 +103,13 @@ static int radial = 4;
 }
 
 /**
+ *  Responds to click events
+ */
+- (void)mouseUp: (NSEvent *)event {
+    [controller test];
+}
+
+/**
  *  Draws a line for a concentric zone at a given radial mark
  **/
 - (void)drawLineFor:(float)radial andZone:(int)zone {

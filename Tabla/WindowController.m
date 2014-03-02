@@ -47,7 +47,7 @@ NSString *const kViewTitle		= @"CustomImageView";
 	
 	// set the view controller's represented object to the number of subviews in that controller
 	// (our NSTextField's value binding will reflect this value)
-	[controller setRepresentedObject: [NSNumber numberWithUnsignedInt: [[[myCurrentViewController view] subviews] count]]];
+	[controller setRepresentedObject: [NSNumber numberWithUnsignedInt: [[[controller view] subviews] count]]];
 	
 	[self didChangeValueForKey:@"viewController"];	// this will trigger the NSTextField's value binding to change
 }
@@ -73,7 +73,7 @@ NSString *const kViewTitle		= @"CustomImageView";
 // -------------------------------------------------------------------------------
 - (NSViewController*)viewController
 {
-	return myCurrentViewController;
+	return controller;
 }
 
 @end

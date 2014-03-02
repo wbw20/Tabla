@@ -14,19 +14,10 @@
 
 @implementation RadialViewController
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        NSView *view = [self view];
-    }
-    return self;
-}
-
 /**
  *  Responds to click events
  */
-- (void)mouseUp: (NSEvent *)event {
-    [self test];
+- (void)test {
     NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"tom1" ofType:@"aif"];
     NSSound *sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
     

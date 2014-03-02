@@ -661,6 +661,9 @@
                     <customView identifier="radial" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFJ-QA-5T4" customClass="RadialView">
                         <rect key="frame" x="105" y="98" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <outlet property="controller" destination="b5i-ce-vFh" id="nH3-XQ-G0d"/>
+                        </connections>
                     </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwK-QK-Z8J">
                         <rect key="frame" x="573" y="18" width="117" height="46"/>
@@ -695,5 +698,6 @@
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
+        <customObject id="b5i-ce-vFh" customClass="RadialViewController"/>
     </objects>
 </document>
