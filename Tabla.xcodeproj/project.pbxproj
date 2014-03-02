@@ -129,6 +129,8 @@
 		BE7F1EDC18A48B4600F5567E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BEE9818018A5366500143D57 /* WindowController.m */,
+				BEE9817F18A5366500143D57 /* WindowController.h */,
 				BE7F1EDD18A48B6300F5567E /* RadialViewController.h */,
 				BE7F1EDE18A48B6300F5567E /* RadialViewController.m */,
 			);
@@ -191,8 +193,6 @@
 				BEC070FF189C541D00505F7D /* Supporting Files */,
 				BE7F1ED318A47C0100F5567E /* RadialLayer.h */,
 				BE7F1ED418A47C0100F5567E /* RadialLayer.m */,
-				BEE9817F18A5366500143D57 /* WindowController.h */,
-				BEE9818018A5366500143D57 /* WindowController.m */,
 			);
 			path = Tabla;
 			sourceTree = "<group>";

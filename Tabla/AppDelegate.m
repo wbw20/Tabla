@@ -14,7 +14,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification*)notification
 {
 	if (windowController == NULL)
-		windowController = [[WindowController alloc] initWithWindowNibName:@"Root"];
+		windowController = [[WindowController alloc] initWithWindowNibName:@"Radial"];
 	
 	[windowController showWindow:self];
 }
