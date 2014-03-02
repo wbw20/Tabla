@@ -35,19 +35,16 @@
 }
 
 -(void)awakeFromNib {
-    SoundModel *s = [[SoundModel alloc] init];
-    s.name = @"First Sound";
-    s.filepath = [NSURL fileURLWithPath:@"~\\npm-debug.log"];
-    NSMutableArray * tempData = [NSMutableArray arrayWithObjects:s, nil];
+    NSMutableArray * tempData = [[NSMutableArray alloc] init];
     [self setSoundData:tempData];
 }
 
 -(void)addSound:(NSURL *) url{
-    SoundModel *s = [[SoundModel alloc] init];
-    s.name = @"New Sound";
-    s.filepath = url;
-    NSLog(@"add sound");
     NSMutableArray * tempData = [NSMutableArray arrayWithArray:self.soundData];
+    SoundModel *s = [[SoundModel alloc] init];
+    s.name = [NSString stringWithFormat:@"Sound %lu", (unsigned long)tempData.count];
+    s.filepath = url;
+    NSLog(@"Added %@", s.name);
     [tempData addObject:s];
     [self setSoundData:tempData];
 }

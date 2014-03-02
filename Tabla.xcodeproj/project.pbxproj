@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE26B4C318C3F048008FF722 /* SoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26B4C218C3F048008FF722 /* SoundView.m */; };
 		BE52D77718C327C4008C3C81 /* SoundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52D77618C327C4008C3C81 /* SoundModel.m */; };
 		BE7F1ED218A46A2F00F5567E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7F1ED118A46A2F00F5567E /* Quartz.framework */; };
 		BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED418A47C0100F5567E /* RadialLayer.m */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE26B4C118C3F048008FF722 /* SoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundView.h; sourceTree = "<group>"; };
+		BE26B4C218C3F048008FF722 /* SoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundView.m; sourceTree = "<group>"; };
 		BE52D77518C327C4008C3C81 /* SoundModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundModel.h; sourceTree = "<group>"; };
 		BE52D77618C327C4008C3C81 /* SoundModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundModel.m; sourceTree = "<group>"; };
 		BE7F1ED118A46A2F00F5567E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -123,6 +126,8 @@
 				BE7F1ED918A481E500F5567E /* RadialView.m */,
 				BEEDCBB018A7FE3300B5D047 /* RootVIew.h */,
 				BEEDCBB118A7FE3300B5D047 /* RootVIew.m */,
+				BE26B4C118C3F048008FF722 /* SoundView.h */,
+				BE26B4C218C3F048008FF722 /* SoundView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				BE52D77718C327C4008C3C81 /* SoundModel.m in Sources */,
 				BEEDCBB218A7FE3300B5D047 /* RootVIew.m in Sources */,
 				BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */,
+				BE26B4C318C3F048008FF722 /* SoundView.m in Sources */,
 				BEC07105189C541D00505F7D /* main.m in Sources */,
 				BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */,
 			);

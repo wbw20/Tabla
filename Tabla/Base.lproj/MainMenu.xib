@@ -661,6 +661,9 @@
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFJ-QA-5T4" customClass="RadialView">
                         <rect key="frame" x="280" y="28" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <outlet property="controller" destination="OTH-Vp-fQQ" id="8TY-6j-yhG"/>
+                        </connections>
                     </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwK-QK-Z8J">
                         <rect key="frame" x="20" y="26" width="252" height="46"/>
@@ -732,7 +735,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kev-z9-ghh">
-                    <rect key="frame" x="18" y="20" width="80" height="17"/>
+                    <rect key="frame" x="10" y="30" width="231" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Name Label" placeholderString="" usesSingleLineMode="YES" id="Sep-kJ-Gfc">
                         <font key="font" metaFont="systemBold"/>
@@ -744,10 +747,10 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHl-tF-3PJ">
-                    <rect key="frame" x="102" y="20" width="124" height="17"/>
+                    <rect key="frame" x="10" y="5" width="231" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Filepath Label" usesSingleLineMode="YES" id="kD1-Fp-Y1Y">
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="miniSystem"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -766,6 +769,7 @@
                 <binding destination="494" name="contentArray" keyPath="soundData" id="i9n-TS-iAi"/>
             </connections>
         </arrayController>
+        <customObject id="OTH-Vp-fQQ" customClass="RadialViewController"/>
         <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
     </objects>
 </document>

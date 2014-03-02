@@ -10,6 +10,6 @@
 
 @interface RadialViewController : NSViewController
 
-+ (void) addSound:(NSURL *)url;
+- (void) addSound:(NSURL *)url;
 
 @end

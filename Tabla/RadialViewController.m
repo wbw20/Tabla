@@ -24,7 +24,8 @@
     return self;
 }
 
-+ (void) addSound:(NSURL *) url{
+- (void) addSound:(NSURL *) url{
+    NSLog(@"WHAT");
     AppDelegate * ad = (AppDelegate *)[[NSApplication sharedApplication] delegate];
     [ad addSound:url];
 }
