@@ -7,6 +7,7 @@
 //
 
 #import "RadialViewController.h"
+#import "AppDelegate.h"
 
 @interface RadialViewController ()
 
@@ -23,8 +24,9 @@
     return self;
 }
 
-- (void) test {
-    NSLog(@"it works");
++ (void) addSound:(NSURL *) url{
+    AppDelegate * ad = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    [ad addSound:url];
 }
 
 @end

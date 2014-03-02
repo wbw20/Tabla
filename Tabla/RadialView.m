@@ -53,6 +53,7 @@ NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
         NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
         mouseLoc = [self convertPoint:mouseLoc fromView:nil];
         NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
+        [RadialViewController addSound:fileURL];
         return YES;
     }
     return NO;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
@@ -663,7 +663,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwK-QK-Z8J">
-                        <rect key="frame" x="20" y="26" width="204" height="46"/>
+                        <rect key="frame" x="20" y="26" width="252" height="46"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="squareTextured" title="UPLOAD" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yxt-wn-xwr">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -671,7 +671,7 @@
                         </buttonCell>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61u-3E-DAF">
-                        <rect key="frame" x="124" y="466" width="102" height="64"/>
+                        <rect key="frame" x="148" y="466" width="126" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AIt-Zr-F2C">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -679,35 +679,36 @@
                         </buttonCell>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yiZ-he-uHD">
-                        <rect key="frame" x="18" y="466" width="102" height="64"/>
+                        <rect key="frame" x="18" y="466" width="126" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2q8-Fl-NPV">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system" size="10"/>
                         </buttonCell>
                     </button>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1G-kL-jKS">
-                        <rect key="frame" x="20" y="79" width="204" height="382"/>
+                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wft-X1-dp4">
+                        <rect key="frame" x="20" y="79" width="252" height="382"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="K7h-mc-0Oj">
-                            <rect key="frame" x="1" y="1" width="202" height="380"/>
+                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="KPx-sd-Xy2">
+                            <rect key="frame" x="1" y="1" width="250" height="380"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <collectionView ambiguous="YES" id="11v-u9-3yC">
-                                    <rect key="frame" x="0.0" y="0.0" width="202" height="380"/>
+                                <collectionView ambiguous="YES" id="22H-gN-zfq">
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="380"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <connections>
-                                        <outlet property="itemPrototype" destination="zzP-0z-FKG" id="U5h-6y-eQy"/>
+                                        <binding destination="XeX-Ds-zON" name="content" keyPath="arrangedObjects" id="QkL-Tn-Afh"/>
+                                        <outlet property="itemPrototype" destination="7oY-3l-xGS" id="jvi-rC-xQm"/>
                                     </connections>
                                 </collectionView>
                             </subviews>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="g3R-aF-0gQ">
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="apM-QU-wgM">
                             <rect key="frame" x="1" y="144" width="233" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="IXj-0Z-ESB">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="E8r-pH-zy7">
                             <rect key="frame" x="234" y="1" width="15" height="143"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -721,6 +722,50 @@
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
-        <collectionViewItem id="zzP-0z-FKG"/>
+        <collectionViewItem id="7oY-3l-xGS">
+            <connections>
+                <outlet property="view" destination="YS3-u5-X6i" id="NpM-YJ-R9P"/>
+            </connections>
+        </collectionViewItem>
+        <view id="YS3-u5-X6i">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="52"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kev-z9-ghh">
+                    <rect key="frame" x="18" y="20" width="80" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Name Label" placeholderString="" usesSingleLineMode="YES" id="Sep-kJ-Gfc">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="7oY-3l-xGS" name="value" keyPath="representedObject.name" id="6Vw-oX-9Xp"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHl-tF-3PJ">
+                    <rect key="frame" x="102" y="20" width="124" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Filepath Label" usesSingleLineMode="YES" id="kD1-Fp-Y1Y">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="7oY-3l-xGS" name="value" keyPath="representedObject.filepath" id="47t-c9-RyZ"/>
+                    </connections>
+                </textField>
+            </subviews>
+        </view>
+        <arrayController objectClassName="SoundModel" id="XeX-Ds-zON">
+            <declaredKeys>
+                <string>name</string>
+                <string>filepath</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="494" name="contentArray" keyPath="soundData" id="i9n-TS-iAi"/>
+            </connections>
+        </arrayController>
+        <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
     </objects>
 </document>
