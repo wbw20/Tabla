@@ -12,7 +12,6 @@
 
 @interface SerialDelegate : NSObject {
     char serialport[BUFFER_SIZE];
-    char buffer[BUFFER_SIZE];
 }
 
 @end

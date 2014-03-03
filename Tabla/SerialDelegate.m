@@ -12,13 +12,8 @@
 
 @implementation SerialDelegate
 
-static int BAUDRATE = 9600;
-
 int code = -1;
 char quiet=0;
-char eolchar = '\n';
-int timeout = 5000;
-int rc,n;
 
 - (id) init {
     return self;
@@ -29,16 +24,37 @@ int rc,n;
         NSLog(@"serial port not opened");
     }
 
-    [self open];
+    code = [self connect];
     
-    memset(buffer, 0, BUFFER_SIZE);
-//    read(code, buffer, eolchar, BUFFER_SIZE, timeout);
+//    memset(buffer, 0, BUFFER_SIZE);
 
-    printf("%s\n", buffer);
+    printf("%c\n", [self read_char]);
 }
 
-- (int) open {
-    return -1;
+- (char) read_char {
+    char single[1]; // single char array at a time
+    int i = 0;
+    while(i < BUFFER_SIZE) {
+        long result = read(code, single, 1);
+
+        if (result == -1) {
+            return -1;
+        }
+
+        if (result != 0) {
+            return single[0];
+        }
+    }
+    
+    return -1; // this should never happen
+}
+
+- (int) connect {
+    return open(serialport, O_RDWR | O_NONBLOCK );
+}
+
+- (int) disconnect {
+    return close(code);
 }
 
 @end
