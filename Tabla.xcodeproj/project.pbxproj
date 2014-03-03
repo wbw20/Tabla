@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE24EB4218C3EF230084FDFE /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE24EB4118C3EF230084FDFE /* RootViewController.m */; };
-		BE24EB4518C41EF90084FDFE /* Serial.c in Sources */ = {isa = PBXBuildFile; fileRef = BE24EB4418C41EF90084FDFE /* Serial.c */; };
+		BE24EB4918C420650084FDFE /* SerialDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE24EB4818C420650084FDFE /* SerialDelegate.m */; };
 		BE7F1ED218A46A2F00F5567E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7F1ED118A46A2F00F5567E /* Quartz.framework */; };
 		BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED418A47C0100F5567E /* RadialLayer.m */; };
 		BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED918A481E500F5567E /* RadialView.m */; };
@@ -49,8 +49,8 @@
 /* Begin PBXFileReference section */
 		BE24EB4018C3EF230084FDFE /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BE24EB4118C3EF230084FDFE /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		BE24EB4418C41EF90084FDFE /* Serial.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Serial.c; sourceTree = "<group>"; };
-		BE24EB4618C41F030084FDFE /* Serial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Serial.h; sourceTree = "<group>"; };
+		BE24EB4718C420650084FDFE /* SerialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialDelegate.h; sourceTree = "<group>"; };
+		BE24EB4818C420650084FDFE /* SerialDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialDelegate.m; sourceTree = "<group>"; };
 		BE7F1ED118A46A2F00F5567E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BE7F1ED318A47C0100F5567E /* RadialLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialLayer.h; sourceTree = "<group>"; };
 		BE7F1ED418A47C0100F5567E /* RadialLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialLayer.m; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 		BE24EB4318C41EC40084FDFE /* Serial */ = {
 			isa = PBXGroup;
 			children = (
-				BE24EB4618C41F030084FDFE /* Serial.h */,
-				BE24EB4418C41EF90084FDFE /* Serial.c */,
+				BE24EB4718C420650084FDFE /* SerialDelegate.h */,
+				BE24EB4818C420650084FDFE /* SerialDelegate.m */,
 			);
 			name = Serial;
 			sourceTree = "<group>";
@@ -428,8 +428,8 @@
 				BEC7A8CE18BEB8FF007ED7ED /* Player.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
 				BEEDCBB218A7FE3300B5D047 /* RootView.m in Sources */,
-				BE24EB4518C41EF90084FDFE /* Serial.c in Sources */,
 				BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */,
+				BE24EB4918C420650084FDFE /* SerialDelegate.m in Sources */,
 				BEC07105189C541D00505F7D /* main.m in Sources */,
 				BEC7A8D518BEB931007ED7ED /* Profile.m in Sources */,
 				BE24EB4218C3EF230084FDFE /* RootViewController.m in Sources */,
