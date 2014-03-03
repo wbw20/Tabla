@@ -8,6 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SerialDelegate : NSObjet
+#define BUFFER_SIZE 256
+
+@interface SerialDelegate : NSObject {
+    char serialport[BUFFER_SIZE];
+    char buffer[BUFFER_SIZE];
+}
 
 @end
