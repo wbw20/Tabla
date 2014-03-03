@@ -51,10 +51,37 @@ NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
         NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
         mouseLoc = [self convertPoint:mouseLoc fromView:nil];
         NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
+        NSLog(@"Located in ring %d zone %d", [self getRing:mouseLoc], [self getZone:mouseLoc]);
         [controller addSound:fileURL];
         return YES;
     }
     return NO;
+}
+
+-(int)getRing:(NSPoint)loc {
+    loc.x -= 250;
+    loc.y -= 250;
+    float r = sqrt(pow(loc.x, 2) + pow(loc.y, 2));
+    float ringSize = RADIUS / RINGS;
+    int ringNum = floor(r / ringSize);
+    float ringMod = r - (ringNum * ringSize);
+    if(ringNum == 0 || (ringMod >= KERF && ringNum < RINGS))
+        return ringNum + 1;
+    return 0;
+}
+
+-(int)getZone:(NSPoint)loc {
+    loc.x -= 250;
+    loc.y -= 250;
+    float rad = atanf(loc.y / loc.x);
+    if(loc.x < 0) rad += M_PI;
+    else if(loc.x > 0 && loc.y < 0) rad += 2.0f * M_PI;
+    float zoneSize = 2.0f * M_PI / ZONES;
+    int zoneNum = floor(rad / zoneSize);
+    float zoneMod = rad - (zoneNum * zoneSize);
+    if(zoneMod >= [self arcTrim] && zoneMod <= [self arcTrim] + [self arclength])
+        return zoneNum + 1;
+    return 0;
 }
 
 #pragma mark - Drawing Operations
@@ -75,8 +102,13 @@ NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
  *  Responds to click events
  */
 - (void)mouseUp: (NSEvent *)event {
-//    NSPoint location = [self convertPoint:[event locationInWindow] fromView:nil];
-//    
+    NSPoint location = [self convertPoint:[event locationInWindow] fromView:nil];
+    int r = [self getRing:location];
+    int z = [self getZone:location];
+    if(r > 0 && z > 0)
+        NSLog(@"Located in ring %d zone %d", r, z);
+    else
+        NSLog(@"Not located in a zone");
 //    [controller test];
 }
 
