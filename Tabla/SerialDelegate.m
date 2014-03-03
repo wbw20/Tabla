@@ -35,16 +35,20 @@ char quiet=0;
 
 - (char) read_char {
     char single[1]; // single char array at a time
-    int i = 0;
-    while(i < BUFFER_SIZE) {
-        long result = read(code, single, 1);
 
-        if (result == -1) {
-            return -1;
-        }
+    while(1) {
+        NSLog(@"Reading...");
+        long result = read(code, single, 1);
+                NSLog(@"Done...");
+
+//        if (result == -1) {
+//            NSLog(@"negative one");
+//            return -1;
+//        }
 
         if (result != 0) {
-            return single[0];
+                            NSLog(@"%c\n", single[0]);
+//            return single[0];
         }
     }
     

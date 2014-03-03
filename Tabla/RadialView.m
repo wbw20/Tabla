@@ -30,7 +30,6 @@ static int radial = 4;
     // Start with a single, full-circle zone
     [self drawZones];
 
-
     return self;
 }
 

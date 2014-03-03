@@ -14,14 +14,14 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification*)notification
 {
-    SerialDelegate *serial = [[SerialDelegate alloc] init];
-    
-    [serial listen];
-    
 	if (windowController == NULL)
 		windowController = [[WindowController alloc] initWithWindowNibName:@"Radial"];
 	
 	[windowController showWindow:self];
+    
+    SerialDelegate *serial = [[SerialDelegate alloc] init];
+    
+    [serial listen];
 }
 
 @end
