@@ -14,7 +14,7 @@
 
 static int BAUDRATE = 9600;
 
-int fd = -1;
+int code = -1;
 char quiet=0;
 char eolchar = '\n';
 int timeout = 5000;
@@ -25,11 +25,20 @@ int rc,n;
 }
 
 - (void) listen {
-    if( fd == -1 ) error("serial port not opened");
-    memset(buffer,0,BUFFER_SIZE);  //
-    serialport_read_until(fd, buffer, eolchar, BUFFER_SIZE, timeout);
-    if( !quiet ) printf("read string:");
+    if( code == -1 ) {
+        NSLog(@"serial port not opened");
+    }
+
+    [self open];
+    
+    memset(buffer, 0, BUFFER_SIZE);
+//    read(code, buffer, eolchar, BUFFER_SIZE, timeout);
+
     printf("%s\n", buffer);
+}
+
+- (int) open {
+    return -1;
 }
 
 @end
