@@ -16,7 +16,7 @@ int code = -1;
 char quiet=0;
 
 - (id) init {
-    port = @"/dev/tty.usbmodem1421";
+    port = @"/dev/tty.usbmodem1411";
     
     return self;
 }
