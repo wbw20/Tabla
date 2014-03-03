@@ -11,7 +11,9 @@
 #define BUFFER_SIZE 256
 
 @interface SerialDelegate : NSObject {
-    char serialport[BUFFER_SIZE];
+    NSString *port;
 }
+
+- (void) listen;
 
 @end

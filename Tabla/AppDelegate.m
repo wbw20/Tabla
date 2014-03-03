@@ -8,11 +8,16 @@
 
 #import "AppDelegate.h"
 #import "WindowController.h"
+#import "SerialDelegate.h"
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification*)notification
 {
+    SerialDelegate *serial = [[SerialDelegate alloc] init];
+    
+    [serial listen];
+    
 	if (windowController == NULL)
 		windowController = [[WindowController alloc] initWithWindowNibName:@"Radial"];
 	

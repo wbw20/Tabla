@@ -16,15 +16,17 @@ int code = -1;
 char quiet=0;
 
 - (id) init {
+    port = @"/dev/tty.usbmodem1421";
+    
     return self;
 }
 
 - (void) listen {
+    code = [self connect];
+
     if( code == -1 ) {
         NSLog(@"serial port not opened");
     }
-
-    code = [self connect];
     
 //    memset(buffer, 0, BUFFER_SIZE);
 
@@ -50,7 +52,7 @@ char quiet=0;
 }
 
 - (int) connect {
-    return open(serialport, O_RDWR | O_NONBLOCK );
+    return open([port UTF8String], O_RDWR | O_NONBLOCK );
 }
 
 - (int) disconnect {
