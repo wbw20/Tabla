@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WindowController.h"
-#import "SerialDelegate.h"
+#import "SerialThread.h"
 
 @implementation AppDelegate
 
@@ -17,11 +17,10 @@
 	if (windowController == NULL)
 		windowController = [[WindowController alloc] initWithWindowNibName:@"Radial"];
 	
+    SerialThread *thread = [[SerialThread alloc] init];
+    [thread start];
+    
 	[windowController showWindow:self];
-    
-    SerialDelegate *serial = [[SerialDelegate alloc] init];
-    
-    [serial listen];
 }
 
 @end

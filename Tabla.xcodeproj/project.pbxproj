@@ -28,6 +28,7 @@
 		BEC7A8D218BEB923007ED7ED /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7A8D118BEB923007ED7ED /* Sample.m */; };
 		BEC7A8D518BEB931007ED7ED /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC7A8D418BEB931007ED7ED /* Profile.m */; };
 		BEE9818118A5366500143D57 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE9818018A5366500143D57 /* WindowController.m */; };
+		BEEB250C18C6AAF6000DB2D5 /* SerialThread.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB250B18C6AAF6000DB2D5 /* SerialThread.m */; };
 		BEEDCBB218A7FE3300B5D047 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootView.m */; };
 		BEEDCBB618B1270900B5D047 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB518B1270900B5D047 /* Line.m */; };
 		BEEDCBB918B134F200B5D047 /* LineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB818B134F200B5D047 /* LineTests.m */; };
@@ -86,6 +87,8 @@
 		BEC7A8D418BEB931007ED7ED /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		BEE9817F18A5366500143D57 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		BEE9818018A5366500143D57 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
+		BEEB250A18C6AAF6000DB2D5 /* SerialThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialThread.h; sourceTree = "<group>"; };
+		BEEB250B18C6AAF6000DB2D5 /* SerialThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialThread.m; sourceTree = "<group>"; };
 		BEEDCBB018A7FE3300B5D047 /* RootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootView.h; sourceTree = "<group>"; };
 		BEEDCBB118A7FE3300B5D047 /* RootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootView.m; sourceTree = "<group>"; };
 		BEEDCBB418B1270900B5D047 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 			children = (
 				BE24EB4718C420650084FDFE /* SerialDelegate.h */,
 				BE24EB4818C420650084FDFE /* SerialDelegate.m */,
+				BEEB250A18C6AAF6000DB2D5 /* SerialThread.h */,
+				BEEB250B18C6AAF6000DB2D5 /* SerialThread.m */,
 			);
 			name = Serial;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				BEC07105189C541D00505F7D /* main.m in Sources */,
 				BEC7A8D518BEB931007ED7ED /* Profile.m in Sources */,
 				BE24EB4218C3EF230084FDFE /* RootViewController.m in Sources */,
+				BEEB250C18C6AAF6000DB2D5 /* SerialThread.m in Sources */,
 				BEC7A8D218BEB923007ED7ED /* Sample.m in Sources */,
 				BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */,
 			);
