@@ -27,8 +27,6 @@ char quiet=0;
     if( code == -1 ) {
         NSLog(@"serial port not opened");
     }
-    
-//    memset(buffer, 0, BUFFER_SIZE);
 
     printf("%c\n", [self read_char]);
 }
@@ -37,18 +35,10 @@ char quiet=0;
     char single[1]; // single char array at a time
 
     while(1) {
-        NSLog(@"Reading...");
         long result = read(code, single, 1);
-                NSLog(@"Done...");
-
-//        if (result == -1) {
-//            NSLog(@"negative one");
-//            return -1;
-//        }
 
         if (result != 0) {
-                            NSLog(@"%c\n", single[0]);
-//            return single[0];
+            NSLog(@"%c\n", single[0]);
         }
     }
     
