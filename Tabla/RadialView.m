@@ -21,17 +21,69 @@
 //TODO: move state to controller
 static int concentric = 7;
 static int radial = 4;
+NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
 
 - (id)initWithFrame:(NSRect)rect
 {
     if (![super initWithFrame:rect])
         return nil;
-    
-    // Start with a single, full-circle zone
-    [self drawZones];
-
+    if(self) {
+        // register file URL drag type
+        [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
+    }
     return self;
 }
+
+#pragma mark - Dragging Operations
+
+-(NSDragOperation) draggingEntered:(id<NSDraggingInfo>)sender {
+    return NSDragOperationCopy;
+}
+
+-(void) draggingExited:(id<NSDraggingInfo>)sender {
+}
+
+- (BOOL)performDragOperation:(id<NSDraggingInfo>)sender
+{
+    NSURL* fileURL = [NSURL URLFromPasteboard: [sender draggingPasteboard]];
+    if(fileURL != NULL) {
+        NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
+        mouseLoc = [self convertPoint:mouseLoc fromView:nil];
+        NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
+        NSLog(@"Located in ring %d zone %d", [self getRing:mouseLoc], [self getZone:mouseLoc]);
+        [controller addSound:fileURL];
+        return YES;
+    }
+    return NO;
+}
+
+-(int)getRing:(NSPoint)loc {
+    loc.x -= 250;
+    loc.y -= 250;
+    float r = sqrt(pow(loc.x, 2) + pow(loc.y, 2));
+    float ringSize = RADIUS / concentric;
+    int ringNum = floor(r / ringSize);
+    float ringMod = r - (ringNum * ringSize);
+    if(ringNum == 0 || (ringMod >= KERF && ringNum < concentric))
+        return ringNum + 1;
+    return 0;
+}
+
+-(int)getZone:(NSPoint)loc {
+    loc.x -= 250;
+    loc.y -= 250;
+    float rad = atanf(loc.y / loc.x);
+    if(loc.x < 0) rad += M_PI;
+    else if(loc.x > 0 && loc.y < 0) rad += 2.0f * M_PI;
+    float zoneSize = 2.0f * M_PI / radial;
+    int zoneNum = floor(rad / zoneSize);
+    float zoneMod = rad - (zoneNum * zoneSize);
+    if(zoneMod >= [self arcTrim] && zoneMod <= [self arcTrim] + [self arclength])
+        return zoneNum + 1;
+    return 0;
+}
+
+#pragma mark - Drawing Operations
 
 - (void)drawRect:(NSRect)rect
 {
@@ -40,6 +92,23 @@ static int radial = 4;
     // Fill the view with green
     [[NSColor whiteColor] set];
     [NSBezierPath fillRect: bounds];
+    
+    // Start with a single, full-circle zone
+    [self drawZones];
+}
+
+/**
+ *  Responds to click events
+ */
+- (void)mouseUp: (NSEvent *)event {
+    NSPoint location = [self convertPoint:[event locationInWindow] fromView:nil];
+    int r = [self getRing:location];
+    int z = [self getZone:location];
+    if(r > 0 && z > 0)
+        NSLog(@"Located in ring %d zone %d", r, z);
+    else
+        NSLog(@"Not located in a zone");
+//    [controller test];
 }
 
 /**
@@ -102,13 +171,6 @@ static int radial = 4;
 }
 
 /**
- *  Responds to click events
- */
-- (void)mouseUp: (NSEvent *)event {
-    [controller test];
-}
-
-/**
  *  Draws a line for a concentric zone at a given radial mark
  **/
 - (void)drawLineFor:(float)radial andZone:(int)zone {
@@ -154,9 +216,8 @@ static int radial = 4;
 //    center.x = (self.frame.origin.x + (self.frame.size.width / 2));
 //    center.y = (self.frame.origin.y + (self.frame.size.height / 2));
     
-    // hard coded for now :(
-    center.x = 105 + 250;
-    center.y = 98 + 250;
+    center.x = 250;
+    center.y = 250;
 
     return center;
 }

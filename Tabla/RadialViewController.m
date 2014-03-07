@@ -7,12 +7,22 @@
 //
 
 #import "RadialViewController.h"
+#import "AppDelegate.h"
 
 @interface RadialViewController ()
 
 @end
 
 @implementation RadialViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Initialization code here.
+    }
+    return self;
+}
 
 /**
  *  Responds to click events
@@ -22,6 +32,11 @@
     NSSound *sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
     
     [sound play];
+}
+
+- (void) addSound:(NSURL *) url {
+    AppDelegate * ad = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    [ad addSound:url];
 }
 
 @end
