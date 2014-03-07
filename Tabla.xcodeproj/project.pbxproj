@@ -29,6 +29,7 @@
 		BEEB251518C94817000DB2D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251218C94817000DB2D5 /* Profile.m */; };
 		BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */; };
 		BEEB252018C9483A000DB2D5 /* SerialThread.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251D18C9483A000DB2D5 /* SerialThread.m */; };
+		BEEB252218C988D2000DB2D5 /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB252118C988D2000DB2D5 /* ChromiumTabs.framework */; };
 		BEEDCBB218A7FE3300B5D047 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootView.m */; };
 		BEEDCBB618B1270900B5D047 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB518B1270900B5D047 /* Line.m */; };
 		BEEDCBB918B134F200B5D047 /* LineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB818B134F200B5D047 /* LineTests.m */; };
@@ -89,6 +90,7 @@
 		BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialDelegate.m; sourceTree = "<group>"; };
 		BEEB251C18C9483A000DB2D5 /* SerialThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialThread.h; sourceTree = "<group>"; };
 		BEEB251D18C9483A000DB2D5 /* SerialThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialThread.m; sourceTree = "<group>"; };
+		BEEB252118C988D2000DB2D5 /* ChromiumTabs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChromiumTabs.framework; path = "../../Library/Developer/Xcode/DerivedData/chromium-tabs-agfwhpjrhxckukfivczxbfdordwa/Build/Products/Debug/ChromiumTabs.framework"; sourceTree = "<group>"; };
 		BEEDCBB018A7FE3300B5D047 /* RootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootView.h; sourceTree = "<group>"; };
 		BEEDCBB118A7FE3300B5D047 /* RootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootView.m; sourceTree = "<group>"; };
 		BEEDCBB418B1270900B5D047 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			files = (
 				BE7F1ED218A46A2F00F5567E /* Quartz.framework in Frameworks */,
 				BEC070F9189C541D00505F7D /* Cocoa.framework in Frameworks */,
+				BEEB252218C988D2000DB2D5 /* ChromiumTabs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +184,7 @@
 		BEC070F7189C541D00505F7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BEEB252118C988D2000DB2D5 /* ChromiumTabs.framework */,
 				BE7F1ED118A46A2F00F5567E /* Quartz.framework */,
 				BEC070F8189C541D00505F7D /* Cocoa.framework */,
 				BEC07117189C541D00505F7D /* XCTest.framework */,
@@ -574,6 +578,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/chromium-tabs-agfwhpjrhxckukfivczxbfdordwa/Build/Products/Debug",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tabla/Tabla-Prefix.pch";
 				INFOPLIST_FILE = "Tabla/Tabla-Info.plist";
@@ -587,6 +595,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/chromium-tabs-agfwhpjrhxckukfivczxbfdordwa/Build/Products/Debug",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tabla/Tabla-Prefix.pch";
 				INFOPLIST_FILE = "Tabla/Tabla-Info.plist";
