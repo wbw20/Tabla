@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 William Wettersten. All rights reserved.
 //
 
-#import "SoundModel.h"
+#import "Sound.h"
 
-@implementation SoundModel
+@implementation Sound
 
 @synthesize name;
 @synthesize filepath;

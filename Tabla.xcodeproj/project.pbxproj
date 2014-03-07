@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE26B4C318C3F048008FF722 /* SoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26B4C218C3F048008FF722 /* SoundView.m */; };
-		BE52D77718C327C4008C3C81 /* SoundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52D77618C327C4008C3C81 /* SoundModel.m */; };
+		BE52D77718C327C4008C3C81 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52D77618C327C4008C3C81 /* Sound.m */; };
 		BE7F1ED218A46A2F00F5567E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7F1ED118A46A2F00F5567E /* Quartz.framework */; };
 		BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED418A47C0100F5567E /* RadialLayer.m */; };
 		BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED918A481E500F5567E /* RadialView.m */; };
@@ -27,8 +27,6 @@
 		BEE9818118A5366500143D57 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE9818018A5366500143D57 /* WindowController.m */; };
 		BEEB251018C947F6000DB2D5 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB250F18C947F6000DB2D5 /* Player.m */; };
 		BEEB251518C94817000DB2D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251218C94817000DB2D5 /* Profile.m */; };
-		BEEB251618C94817000DB2D5 /* Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251418C94817000DB2D5 /* Sample.m */; };
-		BEEB251E18C9483A000DB2D5 /* Serial.c in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251818C9483A000DB2D5 /* Serial.c */; };
 		BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */; };
 		BEEB252018C9483A000DB2D5 /* SerialThread.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251D18C9483A000DB2D5 /* SerialThread.m */; };
 		BEEDCBB218A7FE3300B5D047 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootView.m */; };
@@ -52,8 +50,8 @@
 /* Begin PBXFileReference section */
 		BE26B4C118C3F048008FF722 /* SoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundView.h; sourceTree = "<group>"; };
 		BE26B4C218C3F048008FF722 /* SoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundView.m; sourceTree = "<group>"; };
-		BE52D77518C327C4008C3C81 /* SoundModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundModel.h; sourceTree = "<group>"; };
-		BE52D77618C327C4008C3C81 /* SoundModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundModel.m; sourceTree = "<group>"; };
+		BE52D77518C327C4008C3C81 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
+		BE52D77618C327C4008C3C81 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
 		BE7F1ED118A46A2F00F5567E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BE7F1ED318A47C0100F5567E /* RadialLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialLayer.h; sourceTree = "<group>"; };
 		BE7F1ED418A47C0100F5567E /* RadialLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialLayer.m; sourceTree = "<group>"; };
@@ -87,10 +85,6 @@
 		BEEB250F18C947F6000DB2D5 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		BEEB251118C94817000DB2D5 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		BEEB251218C94817000DB2D5 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
-		BEEB251318C94817000DB2D5 /* Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sample.h; sourceTree = "<group>"; };
-		BEEB251418C94817000DB2D5 /* Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sample.m; sourceTree = "<group>"; };
-		BEEB251818C9483A000DB2D5 /* Serial.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Serial.c; sourceTree = "<group>"; };
-		BEEB251918C9483A000DB2D5 /* Serial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Serial.h; sourceTree = "<group>"; };
 		BEEB251A18C9483A000DB2D5 /* SerialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialDelegate.h; sourceTree = "<group>"; };
 		BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialDelegate.m; sourceTree = "<group>"; };
 		BEEB251C18C9483A000DB2D5 /* SerialThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialThread.h; sourceTree = "<group>"; };
@@ -135,10 +129,8 @@
 			children = (
 				BEEB251118C94817000DB2D5 /* Profile.h */,
 				BEEB251218C94817000DB2D5 /* Profile.m */,
-				BEEB251318C94817000DB2D5 /* Sample.h */,
-				BEEB251418C94817000DB2D5 /* Sample.m */,
-				BE52D77518C327C4008C3C81 /* SoundModel.h */,
-				BE52D77618C327C4008C3C81 /* SoundModel.m */,
+				BE52D77518C327C4008C3C81 /* Sound.h */,
+				BE52D77618C327C4008C3C81 /* Sound.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -296,8 +288,6 @@
 		BEEB251718C94826000DB2D5 /* Serial */ = {
 			isa = PBXGroup;
 			children = (
-				BEEB251818C9483A000DB2D5 /* Serial.c */,
-				BEEB251918C9483A000DB2D5 /* Serial.h */,
 				BEEB251A18C9483A000DB2D5 /* SerialDelegate.h */,
 				BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */,
 				BEEB251C18C9483A000DB2D5 /* SerialThread.h */,
@@ -440,14 +430,12 @@
 				BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */,
 				BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */,
 				BEEB251518C94817000DB2D5 /* Profile.m in Sources */,
-				BEEB251E18C9483A000DB2D5 /* Serial.c in Sources */,
-				BEEB251618C94817000DB2D5 /* Sample.m in Sources */,
 				BEEB252018C9483A000DB2D5 /* SerialThread.m in Sources */,
 				BEEDCBB618B1270900B5D047 /* Line.m in Sources */,
 				BEE9818118A5366500143D57 /* WindowController.m in Sources */,
 				BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
-				BE52D77718C327C4008C3C81 /* SoundModel.m in Sources */,
+				BE52D77718C327C4008C3C81 /* Sound.m in Sources */,
 				BEEDCBB218A7FE3300B5D047 /* RootView.m in Sources */,
 				BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */,
 				BE26B4C318C3F048008FF722 /* SoundView.m in Sources */,

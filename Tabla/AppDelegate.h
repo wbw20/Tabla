@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SoundModel.h"
+#import "Sound.h"
 
 @class WindowController;
 
@@ -17,7 +17,7 @@
     NSMutableArray * soundData;
 }
 
--(void)insertObject:(SoundModel *)s inSoundDataAtIndex:(NSInteger)index;
+-(void)insertObject:(Sound *)s inSoundDataAtIndex:(NSInteger)index;
 -(void)removeObjectFromSoundDataAtIndx:(NSUInteger)index;
 -(void)setSoundData:(NSMutableArray *) a;
 -(NSArray *)soundData;

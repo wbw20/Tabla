@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SoundModel : NSObject {
+@interface Sound : NSObject {
     NSString * name;
     NSURL * filepath;
 }
