@@ -7,6 +7,7 @@
 //
 
 #import "RadialViewController.h"
+#import "AppDelegate.h"
 
 @interface RadialViewController ()
 
@@ -23,8 +24,19 @@
     return self;
 }
 
-- (void) test {
-    NSLog(@"it works");
+/**
+ *  Responds to click events
+ */
+- (void)test {
+    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"tom1" ofType:@"aif"];
+    NSSound *sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
+    
+    [sound play];
+}
+
+- (void) addSound:(NSURL *) url {
+    AppDelegate * ad = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    [ad addSound:url];
 }
 
 @end

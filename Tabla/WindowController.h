@@ -1,9 +1,11 @@
 #import <Cocoa/Cocoa.h>
+#import "RootView.h"
+#import "RootViewController.h"
 
 @interface WindowController : NSWindowController
 {
-	IBOutlet NSView*	myTargetView;				// the host view
-	NSViewController*	myCurrentViewController;	// the current view controller
+	IBOutlet RootView*	root;
+	RootViewController*	controller;	// the current view controller
 }
 
 - (IBAction)viewChoicePopupAction:(id)sender;

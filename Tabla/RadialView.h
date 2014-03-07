@@ -10,7 +10,7 @@
 
 @class RadialViewController;
 
-@interface RadialView : NSView
+@interface RadialView : NSView <NSDraggingDestination>
 {
     IBOutlet RadialViewController *controller;
 }

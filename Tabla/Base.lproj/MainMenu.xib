@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
@@ -649,21 +649,24 @@
         </menu>
         <window title="Tabla" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="710" height="697"/>
+            <windowPositionMask key="initialPositionMask" topStrut="YES"/>
+            <rect key="contentRect" x="335" y="390" width="800" height="548"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <value key="minSize" type="size" width="436" height="504"/>
-            <value key="maxSize" type="size" width="436" height="504"/>
+            <value key="minSize" type="size" width="800" height="548"/>
+            <value key="maxSize" type="size" width="800" height="548"/>
             <view key="contentView" id="372" customClass="RootView">
-                <rect key="frame" x="0.0" y="0.0" width="710" height="697"/>
+                <rect key="frame" x="0.0" y="0.0" width="800" height="548"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFJ-QA-5T4" customClass="RadialView">
-                        <rect key="frame" x="105" y="98" width="500" height="500"/>
+                        <rect key="frame" x="280" y="28" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <outlet property="controller" destination="OTH-Vp-fQQ" id="8TY-6j-yhG"/>
+                        </connections>
                     </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwK-QK-Z8J">
-                        <rect key="frame" x="573" y="18" width="117" height="46"/>
+                        <rect key="frame" x="20" y="26" width="252" height="46"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="squareTextured" title="UPLOAD" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yxt-wn-xwr">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -671,7 +674,7 @@
                         </buttonCell>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="61u-3E-DAF">
-                        <rect key="frame" x="628" y="615" width="64" height="64"/>
+                        <rect key="frame" x="148" y="466" width="126" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AIt-Zr-F2C">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -679,13 +682,40 @@
                         </buttonCell>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yiZ-he-uHD">
-                        <rect key="frame" x="543" y="615" width="64" height="64"/>
+                        <rect key="frame" x="18" y="466" width="126" height="64"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2q8-Fl-NPV">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system" size="10"/>
                         </buttonCell>
                     </button>
+                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wft-X1-dp4">
+                        <rect key="frame" x="20" y="79" width="252" height="382"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="KPx-sd-Xy2">
+                            <rect key="frame" x="1" y="1" width="250" height="380"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <collectionView ambiguous="YES" id="22H-gN-zfq">
+                                    <rect key="frame" x="0.0" y="0.0" width="250" height="380"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <connections>
+                                        <binding destination="XeX-Ds-zON" name="content" keyPath="arrangedObjects" id="QkL-Tn-Afh"/>
+                                        <outlet property="itemPrototype" destination="7oY-3l-xGS" id="jvi-rC-xQm"/>
+                                    </connections>
+                                </collectionView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="apM-QU-wgM">
+                            <rect key="frame" x="1" y="144" width="233" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="E8r-pH-zy7">
+                            <rect key="frame" x="234" y="1" width="15" height="143"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
                 </subviews>
             </view>
         </window>
@@ -695,5 +725,51 @@
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
+        <collectionViewItem id="7oY-3l-xGS">
+            <connections>
+                <outlet property="view" destination="YS3-u5-X6i" id="NpM-YJ-R9P"/>
+            </connections>
+        </collectionViewItem>
+        <view id="YS3-u5-X6i">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="52"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kev-z9-ghh">
+                    <rect key="frame" x="10" y="30" width="231" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Name Label" placeholderString="" usesSingleLineMode="YES" id="Sep-kJ-Gfc">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="7oY-3l-xGS" name="value" keyPath="representedObject.name" id="6Vw-oX-9Xp"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHl-tF-3PJ">
+                    <rect key="frame" x="10" y="5" width="231" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Filepath Label" usesSingleLineMode="YES" id="kD1-Fp-Y1Y">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="7oY-3l-xGS" name="value" keyPath="representedObject.filepath" id="47t-c9-RyZ"/>
+                    </connections>
+                </textField>
+            </subviews>
+        </view>
+        <arrayController objectClassName="SoundModel" id="XeX-Ds-zON">
+            <declaredKeys>
+                <string>name</string>
+                <string>filepath</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="494" name="contentArray" keyPath="soundData" id="i9n-TS-iAi"/>
+            </connections>
+        </arrayController>
+        <customObject id="OTH-Vp-fQQ" customClass="RadialViewController"/>
+        <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
     </objects>
 </document>
