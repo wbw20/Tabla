@@ -15,14 +15,14 @@
 
 #define RADIUS 200.0f
 #define KERF 8.0f
-#define ZONES 8
-#define RINGS 4 // rings are indexed from the inside out
+#define ZONES 8     // zones are indexed counter-clockwise
+#define RINGS 4     // rings are indexed from the inside out
 
 @implementation RadialView
 
-//TODO: move state to controller
-static int concentric = 7;
-static int radial = 4;
+//@TODO: move state to controller
+static int concentric = RINGS;
+static int radial = ZONES;
 NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
 NSInteger hoverZone = 0;
 NSInteger hoverRing = 0;
@@ -50,10 +50,12 @@ NSInteger hoverRing = 0;
 {
     NSURL* fileURL = [NSURL URLFromPasteboard: [sender draggingPasteboard]];
     if(fileURL != NULL) {
+        // get mouse location
         NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
         mouseLoc = [self convertPoint:mouseLoc fromView:nil];
         mouseLoc.x -= 250;
         mouseLoc.y -= 250;
+        // locate the corresponding zone
         int ring = [self getRing:mouseLoc];
         int zone = [self getZone:mouseLoc];
         NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
@@ -148,12 +150,8 @@ NSInteger hoverRing = 0;
 - (void)drawRect:(NSRect)rect
 {
     NSRect bounds = [self bounds];
-    
-    // Fill the view with green
     [[NSColor whiteColor] set];
     [NSBezierPath fillRect: bounds];
-    
-    // Start with a single, full-circle zone
     [self drawZones];
 }
 
@@ -168,6 +166,7 @@ NSInteger hoverRing = 0;
         [[NSColor grayColor] setStroke];
     [self drawArcFrom:0.0f to:2*M_PI withRadius:[self getRadiusFor:(1)]];
     
+    // draw zones
     for (int ring = 2; ring <= RINGS; ring++) {
         float start = 0.0f;
         int zone = 1;
@@ -196,7 +195,6 @@ NSInteger hoverRing = 0;
     NSPoint center = [self center];
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
-    //[[NSColor grayColor] setStroke];
     CGContextAddArc(context, center.x, center.y, radius, start, end, 0);
     CGContextStrokePath(context);
 }
@@ -235,7 +233,6 @@ NSInteger hoverRing = 0;
 
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
-    //[[NSColor grayColor] setStroke];
     Circle *inner = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone - 1)] + KERF];
     Circle *outer = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone)]];
 
@@ -248,7 +245,7 @@ NSInteger hoverRing = 0;
  *  Finds the line length for any zone
  **/
 - (float)linelength {
-    return (RADIUS / ZONES) - 2*KERF;
+    return (RADIUS / ZONES) - 2 * KERF;
 }
 
 /**
@@ -257,7 +254,6 @@ NSInteger hoverRing = 0;
 - (void)drawCircleWithCenter:(NSPoint)center andRadius:(float)radius {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
-    //[[NSColor grayColor] setStroke];
     CGContextAddArc(context, center.x, center.y, radius, 0, [self arclength], 0);
     CGContextStrokePath(context);
 }
@@ -268,13 +264,8 @@ NSInteger hoverRing = 0;
 - (NSPoint)center
 {
     NSPoint center;
-    
-//    center.x = (self.frame.origin.x + (self.frame.size.width / 2));
-//    center.y = (self.frame.origin.y + (self.frame.size.height / 2));
-    
     center.x = 250;
     center.y = 250;
-
     return center;
 }
 

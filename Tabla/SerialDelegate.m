@@ -28,12 +28,11 @@ char quiet=0;
         NSLog(@"serial port not opened");
     }
 
-    printf("%c\n", [self read_char]);
+    // printf("%c\n", [self read_char]);
 }
 
 - (char) read_char {
     char single[1]; // single char array at a time
-
     while(1) {
         long result = read(code, single, 1);
 
