@@ -14,13 +14,15 @@
 #import "RadialViewController.h"
 
 #define RADIUS 200.0f
-#define KERF 20.0f
-#define ZONES 5
-#define RINGS 3 // rings are indexed from the inside out
+#define KERF 8.0f
+#define ZONES 8
+#define RINGS 4 // rings are indexed from the inside out
 
 @implementation RadialView
 
 NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
+NSInteger hoverZone = 0;
+NSInteger hoverRing = 0;
 
 - (id)initWithFrame:(NSRect)rect
 {
@@ -50,17 +52,21 @@ NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
     if(fileURL != NULL) {
         NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
         mouseLoc = [self convertPoint:mouseLoc fromView:nil];
+        mouseLoc.x -= 250;
+        mouseLoc.y -= 250;
+        int ring = [self getRing:mouseLoc];
+        int zone = [self getZone:mouseLoc];
         NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
-        NSLog(@"Located in ring %d zone %d", [self getRing:mouseLoc], [self getZone:mouseLoc]);
-        [controller addSound:fileURL];
-        return YES;
+        NSLog(@"Located in ring %d zone %d", ring, zone);
+        if(ring > 0 && zone > 0) {
+            [controller addSound:fileURL];
+            return YES;
+        }
     }
     return NO;
 }
 
 -(int)getRing:(NSPoint)loc {
-    loc.x -= 250;
-    loc.y -= 250;
     float r = sqrt(pow(loc.x, 2) + pow(loc.y, 2));
     float ringSize = RADIUS / RINGS;
     int ringNum = floor(r / ringSize);
@@ -71,8 +77,6 @@ NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
 }
 
 -(int)getZone:(NSPoint)loc {
-    loc.x -= 250;
-    loc.y -= 250;
     float rad = atanf(loc.y / loc.x);
     if(loc.x < 0) rad += M_PI;
     else if(loc.x > 0 && loc.y < 0) rad += 2.0f * M_PI;
@@ -82,6 +86,61 @@ NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
     if(zoneMod >= [self arcTrim] && zoneMod <= [self arcTrim] + [self arclength])
         return zoneNum + 1;
     return 0;
+}
+
+#pragma mark - Mouse Events
+
+/**
+ *  Responds to click events
+ */
+- (void)mouseUp: (NSEvent *)event {
+    NSPoint location = [self convertPoint:[event locationInWindow] fromView:nil];
+    location.x -= 250;
+    location.y -= 250;
+    int r = [self getRing:location];
+    int z = [self getZone:location];
+    if(r > 0 && z > 0) {
+        if(r == 1) z = 1;
+        NSLog(@"Located in ring %d zone %d", r, z);
+    } else {
+        NSLog(@"Not located in a zone");
+    }
+}
+
+- (void)updateTrackingAreas {
+    [super updateTrackingAreas];
+    if(trackingArea) {
+        [self removeTrackingArea: trackingArea];
+    }
+    
+    NSTrackingAreaOptions options = NSTrackingInVisibleRect | NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow | NSTrackingMouseMoved;
+    trackingArea = [[NSTrackingArea alloc] initWithRect:NSZeroRect options:options owner:self userInfo:nil];
+    [self addTrackingArea:trackingArea];
+}
+
+- (void)mouseEntered:(NSEvent *)e {
+    NSLog(@"Enter");
+}
+
+- (void)mouseExited:(NSEvent *)e {
+    NSLog(@"Exit");
+}
+
+- (void)mouseMoved:(NSEvent *)e {
+    NSPoint loc = [self convertPoint:[e locationInWindow] fromView:nil];
+    loc.x -= 250;
+    loc.y -= 250;
+    int r = [self getRing:loc];
+    int z = [self getZone:loc];
+    if(r != hoverRing || z != hoverZone) {
+        if(hoverRing != 0 && hoverZone != 0 && (r == 0 || z == 0))
+            NSLog(@"-(r:%ld, z:%ld)", (long) hoverRing, (long) hoverZone);
+        else if(r > 0 && z > 0)
+            NSLog(@"+(r:%d, z:%d)", r, z);
+        hoverRing = r;
+        hoverZone = z;
+        [self setNeedsDisplay:YES];
+    }
 }
 
 #pragma mark - Drawing Operations
@@ -99,36 +158,33 @@ NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
 }
 
 /**
- *  Responds to click events
- */
-- (void)mouseUp: (NSEvent *)event {
-    NSPoint location = [self convertPoint:[event locationInWindow] fromView:nil];
-    int r = [self getRing:location];
-    int z = [self getZone:location];
-    if(r > 0 && z > 0)
-        NSLog(@"Located in ring %d zone %d", r, z);
-    else
-        NSLog(@"Not located in a zone");
-//    [controller test];
-}
-
-/**
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
     // draw innermost zone
+    if(1 == hoverRing)
+        [[NSColor redColor] setStroke];
+    else
+        [[NSColor grayColor] setStroke];
     [self drawArcFrom:0.0f to:2*M_PI withRadius:[self getRadiusFor:(1)]];
     
-    for (int zone = 2; zone <= RINGS; zone++) {
+    for (int ring = 2; ring <= RINGS; ring++) {
         float start = 0.0f;
-        while (start < 2*M_PI) {
+        int zone = 1;
+        while (start < 2 * M_PI - [self arcTrim]) {
             start += [self arcTrim];
             float end = start + [self arclength];
-            [self drawLineFor:(start) andZone:zone];
-            [self drawLineFor:(end) andZone:zone];
-            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(zone -1)] + KERF];
-            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(zone)]];
+            if(zone == hoverZone && ring == hoverRing) {
+                [[NSColor redColor] setStroke];
+            } else {
+                [[NSColor grayColor] setStroke];
+            }
+            [self drawLineFor:(start) andZone:ring];
+            [self drawLineFor:(end) andZone:ring];
+            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(ring -1)] + KERF];
+            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(ring)]];
             start = end + [self arcTrim];
+            zone++;
         }
     }
 }
@@ -140,7 +196,7 @@ NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
     NSPoint center = [self center];
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
-    [[NSColor grayColor] setStroke];
+    //[[NSColor grayColor] setStroke];
     CGContextAddArc(context, center.x, center.y, radius, start, end, 0);
     CGContextStrokePath(context);
 }
@@ -179,8 +235,7 @@ NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
 
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
-    [[NSColor grayColor] setStroke];
-
+    //[[NSColor grayColor] setStroke];
     Circle *inner = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone - 1)] + KERF];
     Circle *outer = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone)]];
 
@@ -202,7 +257,7 @@ NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
 - (void)drawCircleWithCenter:(NSPoint)center andRadius:(float)radius {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
-    [[NSColor grayColor] setStroke];
+    //[[NSColor grayColor] setStroke];
     CGContextAddArc(context, center.x, center.y, radius, 0, [self arclength], 0);
     CGContextStrokePath(context);
 }
