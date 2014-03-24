@@ -659,21 +659,21 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFJ-QA-5T4" customClass="RadialView">
-                        <rect key="frame" x="280" y="20" width="500" height="508"/>
+                        <rect key="frame" x="266" y="7" width="526" height="533"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YA2-VK-X9F">
-                                <rect key="frame" x="352" y="438" width="64" height="58"/>
+                                <rect key="frame" x="352" y="451" width="78" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Radial Icon" id="13J-II-4V9"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xte-cQ-Tuj">
-                                <rect key="frame" x="424" y="438" width="64" height="58"/>
+                                <rect key="frame" x="438" y="451" width="78" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Concentric Icon" id="3GW-Cg-EGJ"/>
                             </imageView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwK-QK-Z8J">
-                                <rect key="frame" x="355" y="13" width="130" height="46"/>
+                                <rect key="frame" x="355" y="9" width="161" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="squareTextured" title="UPLOAD" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yxt-wn-xwr">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -686,14 +686,14 @@
                         </connections>
                     </customView>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wft-X1-dp4">
-                        <rect key="frame" x="20" y="20" width="252" height="508"/>
+                        <rect key="frame" x="7" y="7" width="251" height="533"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" ambiguous="YES" misplaced="YES" id="KPx-sd-Xy2">
-                            <rect key="frame" x="1" y="1" width="250" height="506"/>
+                            <rect key="frame" x="1" y="1" width="249" height="531"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <collectionView ambiguous="YES" id="22H-gN-zfq">
-                                    <rect key="frame" x="0.0" y="0.0" width="250" height="506"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="249" height="531"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <connections>
