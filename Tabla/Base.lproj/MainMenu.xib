@@ -674,6 +674,9 @@
                                 <rect key="frame" x="438" y="451" width="78" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Concentric Icon" id="3GW-Cg-EGJ"/>
+                                <connections>
+                                    <outlet property="label" destination="Py1-Ih-H55" id="jpd-XO-X84"/>
+                                </connections>
                             </imageView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwK-QK-Z8J">
                                 <rect key="frame" x="355" y="9" width="161" height="46"/>
@@ -697,24 +700,33 @@
                                     <outlet property="parent" destination="YA2-VK-X9F" id="qua-nc-aTa"/>
                                 </connections>
                             </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xpl-mY-Vc4" customClass="UpView">
-                                <rect key="frame" x="493" y="454" width="20" height="65"/>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Flp-la-W2i" customClass="DownView">
+                                <rect key="frame" x="441" y="454" width="36" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <outlet property="parent" destination="xte-cQ-Tuj" id="I1d-9r-VXn"/>
+                                    <outlet property="parent" destination="xte-cQ-Tuj" id="Vmk-vL-4vS"/>
                                 </connections>
                             </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="na7-Mi-jgW" customClass="DownView">
-                                <rect key="frame" x="441" y="454" width="20" height="65"/>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rq2-89-fm1" customClass="UpView">
+                                <rect key="frame" x="477" y="454" width="36" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <outlet property="parent" destination="xte-cQ-Tuj" id="5xS-ZU-3AT"/>
+                                    <outlet property="parent" destination="xte-cQ-Tuj" id="Zvl-1S-kMr"/>
                                 </connections>
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yB-MY-X3w">
                                 <rect key="frame" x="374" y="478" width="34" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="NV5-9F-YPb">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="NV5-9F-YPb">
+                                    <font key="font" size="24" name="GillSans-Light"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Py1-Ih-H55">
+                                <rect key="frame" x="460" y="478" width="34" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="OoH-2Q-FLd">
                                     <font key="font" size="24" name="GillSans-Light"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
