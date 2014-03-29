@@ -75,3 +75,42 @@ static void initialize_navigationBarImages() {
 }
 
 @end
+
+@interface RadialCounterView : CounterView
+@end
+
+@implementation RadialCounterView
+
+- (void)up {
+    [super up];
+    [[self pad] setRadial:[[self pad] radial] + 1];
+    [[self pad] drawZones];
+}
+
+- (void)down {
+    [super up];
+    [[self pad] setRadial:[[self pad] radial] - 1];
+    [[self pad] drawZones];
+}
+
+@end
+
+@interface ConcentricCounterView : CounterView
+@end
+
+@implementation ConcentricCounterView
+
+- (void)up {
+    [super up];
+    [[self pad] setConcentric:[[self pad] concentric] + 1];
+    [[self pad] drawZones];
+}
+
+- (void)down {
+    [super up];
+    [[self pad] setConcentric:[[self pad] concentric] - 1];
+    [[self pad] drawZones];
+}
+
+@end
+

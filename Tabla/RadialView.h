@@ -15,6 +15,11 @@
     IBOutlet RadialViewController *controller;
     NSTrackingArea *trackingArea;
 }
+
+@property int radial;
+@property int concentric;
+
 - (NSPoint)center;
+- (void)drawZones;
 
 @end

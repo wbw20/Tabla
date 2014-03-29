@@ -15,14 +15,10 @@
 
 #define RADIUS 200.0f
 #define KERF 8.0f
-#define ZONES 8     // zones are indexed counter-clockwise
-#define RINGS 4     // rings are indexed from the inside out
 
 @implementation RadialView
 
 //@TODO: move state to controller
-static int concentric = RINGS;
-static int radial = ZONES;
 NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
 NSInteger hoverZone = 0;
 NSInteger hoverRing = 0;
@@ -33,6 +29,8 @@ NSInteger hoverRing = 0;
     if(self) {
         // register file URL drag type
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
+        [self setConcentric:1];
+        [self setRadial:1];
     }
     return self;
 }
@@ -70,10 +68,10 @@ NSInteger hoverRing = 0;
 
 -(int)getRing:(NSPoint)loc {
     float r = sqrt(pow(loc.x, 2) + pow(loc.y, 2));
-    float ringSize = RADIUS / concentric;
+    float ringSize = RADIUS / [self concentric];
     int ringNum = floor(r / ringSize);
     float ringMod = r - (ringNum * ringSize);
-    if(ringNum == 0 || (ringMod >= KERF && ringNum < concentric))
+    if(ringNum == 0 || (ringMod >= KERF && ringNum < [self concentric]))
         return ringNum + 1;
     return 0;
 }
@@ -82,7 +80,7 @@ NSInteger hoverRing = 0;
     float rad = atanf(loc.y / loc.x);
     if(loc.x < 0) rad += M_PI;
     else if(loc.x > 0 && loc.y < 0) rad += 2.0f * M_PI;
-    float zoneSize = 2.0f * M_PI / radial;
+    float zoneSize = 2.0f * M_PI / [self radial];
     int zoneNum = floor(rad / zoneSize);
     float zoneMod = rad - (zoneNum * zoneSize);
     if(zoneMod >= [self arcTrim] && zoneMod <= [self arcTrim] + [self arclength])
@@ -167,7 +165,7 @@ NSInteger hoverRing = 0;
     [self drawArcFrom:0.0f to:2*M_PI withRadius:[self getRadiusFor:(1)]];
     
     // draw zones
-    for (int ring = 2; ring <= RINGS; ring++) {
+    for (int ring = 2; ring <= [self concentric]; ring++) {
         float start = 0.0f;
         int zone = 1;
         while (start < 2 * M_PI - [self arcTrim]) {
@@ -203,7 +201,7 @@ NSInteger hoverRing = 0;
  *  Get the arclength in radians for any zone
  **/
 - (float)arclength {
-    float arc = 2.0f*M_PI/ZONES;
+    float arc = 2.0f*M_PI/[self radial];
     
     //we will remove some of the arc to account for the rounded corners
     return arc - 2*[self arcTrim];
@@ -221,7 +219,7 @@ NSInteger hoverRing = 0;
  *  start with 0 and go from the inside out.
  **/
 - (float)getRadiusFor:(int)index {
-    float width = RADIUS / (RINGS); // the width of a ring
+    float width = RADIUS / ([self radial]); // the width of a ring
     return width * (index);
 }
 
@@ -245,7 +243,7 @@ NSInteger hoverRing = 0;
  *  Finds the line length for any zone
  **/
 - (float)linelength {
-    return (RADIUS / ZONES) - 2 * KERF;
+    return (RADIUS / [self radial]) - 2 * KERF;
 }
 
 /**
