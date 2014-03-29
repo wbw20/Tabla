@@ -8,12 +8,7 @@
 
 #import "CounterView.h"
 
-@interface UpView : NSView
-@end
-
 static NSColor *darkColor = nil;
-
-@implementation UpView
 
 // runs on class load
 __attribute__((constructor))
@@ -21,11 +16,32 @@ static void initialize_navigationBarImages() {
     darkColor = [NSColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.3f];
 }
 
+@implementation UpView
+
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[super drawRect:dirtyRect];
     [darkColor set];
     [NSBezierPath fillRect: [self bounds]];
+}
+
+- (void) mouseUp:(NSEvent *)event {
+    [[self parent] up];
+}
+
+@end
+
+@implementation DownView
+
+- (void)drawRect:(NSRect)dirtyRect
+{
+	[super drawRect:dirtyRect];
+    [darkColor set];
+    [NSBezierPath fillRect: [self bounds]];
+}
+
+- (void) mouseUp:(NSEvent *)event {
+    [[self parent] down];
 }
 
 @end
@@ -46,6 +62,14 @@ static void initialize_navigationBarImages() {
 	[super drawRect:dirtyRect];
 	
     // Drawing code here.
+}
+
+- (void)up {
+    NSLog(@"UP");
+}
+
+- (void)down {
+    NSLog(@"Down");
 }
 
 @end

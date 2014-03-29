@@ -8,6 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface CounterView : NSView
+@interface CounterView : NSImageView
+    @property int value;
 
+    - (void) up;
+    - (void) down;
+@end
+
+@interface UpView : NSView
+    @property (nonatomic, retain) IBOutlet CounterView* parent;
+@end
+
+@interface DownView : NSView
+    @property (nonatomic, retain) IBOutlet CounterView* parent;
 @end

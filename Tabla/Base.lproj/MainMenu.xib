@@ -662,7 +662,7 @@
                         <rect key="frame" x="266" y="7" width="526" height="533"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YA2-VK-X9F">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YA2-VK-X9F" customClass="CounterView">
                                 <rect key="frame" x="352" y="451" width="78" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Radial Icon" id="13J-II-4V9"/>
@@ -683,10 +683,16 @@
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O0y-rk-92I" customClass="UpView">
                                 <rect key="frame" x="407" y="454" width="20" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <outlet property="parent" destination="YA2-VK-X9F" id="TDr-jN-koF"/>
+                                </connections>
                             </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2P-m7-qEi" customClass="UpView">
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2P-m7-qEi" customClass="DownView">
                                 <rect key="frame" x="355" y="454" width="20" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <outlet property="parent" destination="YA2-VK-X9F" id="qua-nc-aTa"/>
+                                </connections>
                             </customView>
                         </subviews>
                         <connections>
