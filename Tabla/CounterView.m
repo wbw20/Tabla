@@ -66,12 +66,12 @@ static void initialize_navigationBarImages() {
 
 - (void)up {
     [self setValue:[self value] + 1];
-    NSLog(@"%d", [self value]);
+    [[self label] setStringValue:[NSString stringWithFormat:@"%d", [self value]]];
 }
 
 - (void)down {
     [self setValue:[self value] - 1];
-    NSLog(@"%d", [self value]);
+    [[self label] setStringValue:[NSString stringWithFormat:@"%d", [self value]]];
 }
 
 @end

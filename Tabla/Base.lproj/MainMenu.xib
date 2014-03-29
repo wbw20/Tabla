@@ -666,6 +666,9 @@
                                 <rect key="frame" x="352" y="451" width="78" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Radial Icon" id="13J-II-4V9"/>
+                                <connections>
+                                    <outlet property="label" destination="5yB-MY-X3w" id="v4q-XI-sYB"/>
+                                </connections>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xte-cQ-Tuj" customClass="CounterView">
                                 <rect key="frame" x="438" y="451" width="78" height="71"/>
@@ -680,15 +683,15 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O0y-rk-92I" customClass="UpView">
-                                <rect key="frame" x="407" y="454" width="20" height="65"/>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O0y-rk-92I" customClass="DownView">
+                                <rect key="frame" x="355" y="454" width="36" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <outlet property="parent" destination="YA2-VK-X9F" id="TDr-jN-koF"/>
                                 </connections>
                             </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2P-m7-qEi" customClass="DownView">
-                                <rect key="frame" x="355" y="454" width="20" height="65"/>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2P-m7-qEi" customClass="UpView">
+                                <rect key="frame" x="391" y="454" width="36" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <outlet property="parent" destination="YA2-VK-X9F" id="qua-nc-aTa"/>
@@ -708,6 +711,15 @@
                                     <outlet property="parent" destination="xte-cQ-Tuj" id="5xS-ZU-3AT"/>
                                 </connections>
                             </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yB-MY-X3w">
+                                <rect key="frame" x="374" y="478" width="34" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="NV5-9F-YPb">
+                                    <font key="font" size="24" name="GillSans-Light"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <connections>
                             <outlet property="controller" destination="OTH-Vp-fQQ" id="8TY-6j-yhG"/>
