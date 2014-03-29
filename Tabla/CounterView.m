@@ -52,7 +52,7 @@ static void initialize_navigationBarImages() {
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code here.
+        [self setValue:0];
     }
     return self;
 }
@@ -65,11 +65,13 @@ static void initialize_navigationBarImages() {
 }
 
 - (void)up {
-    NSLog(@"UP");
+    [self setValue:[self value] + 1];
+    NSLog(@"%d", [self value]);
 }
 
 - (void)down {
-    NSLog(@"Down");
+    [self setValue:[self value] - 1];
+    NSLog(@"%d", [self value]);
 }
 
 @end
