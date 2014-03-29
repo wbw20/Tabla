@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE26B4C318C3F048008FF722 /* SoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26B4C218C3F048008FF722 /* SoundView.m */; };
+		BE2CD57118E0D0CC00490820 /* CounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CD57018E0D0CC00490820 /* CounterView.m */; };
 		BE52D77718C327C4008C3C81 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52D77618C327C4008C3C81 /* Sound.m */; };
 		BE7F1ED218A46A2F00F5567E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7F1ED118A46A2F00F5567E /* Quartz.framework */; };
 		BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED418A47C0100F5567E /* RadialLayer.m */; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		BE26B4C118C3F048008FF722 /* SoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundView.h; sourceTree = "<group>"; };
 		BE26B4C218C3F048008FF722 /* SoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundView.m; sourceTree = "<group>"; };
+		BE2CD56F18E0D0CC00490820 /* CounterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounterView.h; sourceTree = "<group>"; };
+		BE2CD57018E0D0CC00490820 /* CounterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CounterView.m; sourceTree = "<group>"; };
 		BE52D77518C327C4008C3C81 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
 		BE52D77618C327C4008C3C81 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
 		BE7F1ED118A46A2F00F5567E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -148,6 +151,8 @@
 				BE26B4C218C3F048008FF722 /* SoundView.m */,
 				BEAE962618E0A6A200F56944 /* Window.h */,
 				BEAE962718E0A6A200F56944 /* Window.m */,
+				BE2CD56F18E0D0CC00490820 /* CounterView.h */,
+				BE2CD57018E0D0CC00490820 /* CounterView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				BEEB252018C9483A000DB2D5 /* SerialThread.m in Sources */,
 				BEEDCBB618B1270900B5D047 /* Line.m in Sources */,
 				BEE9818118A5366500143D57 /* WindowController.m in Sources */,
+				BE2CD57118E0D0CC00490820 /* CounterView.m in Sources */,
 				BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
 				BE52D77718C327C4008C3C81 /* Sound.m in Sources */,
