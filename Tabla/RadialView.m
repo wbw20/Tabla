@@ -209,7 +209,7 @@ NSInteger hoverRing = 0;
  *  start with 0 and go from the inside out.
  **/
 - (float)getRadiusFor:(int)index {
-    float width = [self radius] / ([self radial]); // the width of a ring
+    float width = [self radius] / ([self concentric]); // the width of a ring
     return width * (index);
 }
 
