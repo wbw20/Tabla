@@ -117,14 +117,6 @@ NSInteger hoverRing = 0;
     [self addTrackingArea:trackingArea];
 }
 
-- (void)mouseEntered:(NSEvent *)e {
-//    NSLog(@"Enter");
-}
-
-- (void)mouseExited:(NSEvent *)e {
-//    NSLog(@"Exit");
-}
-
 - (void)mouseMoved:(NSEvent *)e {
     NSPoint loc = [self convertPoint:[e locationInWindow] fromView:nil];
     loc.x -= 250;
