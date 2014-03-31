@@ -134,7 +134,7 @@ NSInteger hoverRing = 0;
 
 - (void)clear {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    CGContextClearRect(context, [self bounds]);
+    CGContextClearRect(context, [self frame]);
 }
 
 /**
