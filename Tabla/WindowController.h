@@ -1,9 +1,9 @@
 #import <Cocoa/Cocoa.h>
-#import "RootView.h"
+#import "Window.h"
 
 @interface WindowController : NSWindowController
 {
-	IBOutlet RootView*	root;
+	IBOutlet Window* root;
 }
 
 @end

@@ -32,7 +32,6 @@
 		BEEB251518C94817000DB2D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251218C94817000DB2D5 /* Profile.m */; };
 		BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */; };
 		BEEB252018C9483A000DB2D5 /* SerialThread.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251D18C9483A000DB2D5 /* SerialThread.m */; };
-		BEEDCBB218A7FE3300B5D047 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB118A7FE3300B5D047 /* RootView.m */; };
 		BEEDCBB618B1270900B5D047 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB518B1270900B5D047 /* Line.m */; };
 		BEEDCBB918B134F200B5D047 /* LineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB818B134F200B5D047 /* LineTests.m */; };
 		BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBBC18B15C5300B5D047 /* Circle.m */; };
@@ -97,8 +96,6 @@
 		BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialDelegate.m; sourceTree = "<group>"; };
 		BEEB251C18C9483A000DB2D5 /* SerialThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialThread.h; sourceTree = "<group>"; };
 		BEEB251D18C9483A000DB2D5 /* SerialThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialThread.m; sourceTree = "<group>"; };
-		BEEDCBB018A7FE3300B5D047 /* RootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootView.h; sourceTree = "<group>"; };
-		BEEDCBB118A7FE3300B5D047 /* RootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootView.m; sourceTree = "<group>"; };
 		BEEDCBB418B1270900B5D047 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
 		BEEDCBB518B1270900B5D047 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		BEEDCBB818B134F200B5D047 /* LineTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineTests.m; sourceTree = "<group>"; };
@@ -147,8 +144,6 @@
 			children = (
 				BE7F1ED818A481E500F5567E /* PadView.h */,
 				BE7F1ED918A481E500F5567E /* PadView.m */,
-				BEEDCBB018A7FE3300B5D047 /* RootView.h */,
-				BEEDCBB118A7FE3300B5D047 /* RootView.m */,
 				BE26B4C118C3F048008FF722 /* SoundView.h */,
 				BE26B4C218C3F048008FF722 /* SoundView.m */,
 				BEAE962618E0A6A200F56944 /* Window.h */,
@@ -449,7 +444,6 @@
 				BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
 				BE52D77718C327C4008C3C81 /* Sound.m in Sources */,
-				BEEDCBB218A7FE3300B5D047 /* RootView.m in Sources */,
 				BEAE962818E0A6A200F56944 /* Window.m in Sources */,
 				BE7F1EDF18A48B6300F5567E /* PadViewController.m in Sources */,
 				BE26B4C318C3F048008FF722 /* SoundView.m in Sources */,
