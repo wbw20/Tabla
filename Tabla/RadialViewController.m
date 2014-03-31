@@ -9,10 +9,6 @@
 #import "RadialViewController.h"
 #import "AppDelegate.h"
 
-@interface RadialViewController ()
-
-@end
-
 @implementation RadialViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
