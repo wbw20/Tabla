@@ -1,6 +1,5 @@
 #import <Cocoa/Cocoa.h>
 #import "RootView.h"
-#import "RootViewController.h"
 
 @interface WindowController : NSWindowController
 {
