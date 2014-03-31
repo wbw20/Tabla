@@ -196,7 +196,7 @@ NSInteger hoverRing = 0;
  *  Get global radius
  **/
 - (float)radius {
-    return [self frame].size.width * 0.5;
+    return [self frame].size.width * 0.4;
 }
 
 /**
@@ -236,7 +236,7 @@ NSInteger hoverRing = 0;
  **/
 - (NSPoint)center
 {
-    return CGPointMake((self.frame.origin.x + (self.frame.size.width / 2)),
+    return CGPointMake(((self.frame.size.width / 2)),
                        (self.frame.origin.y + (self.frame.size.height / 2)));
 }
 
