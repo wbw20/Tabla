@@ -30,8 +30,14 @@ NSInteger hoverRing = 0;
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
         [self setConcentric:3];
         [self setRadial:1];
+        [self drawZones];
     }
     return self;
+}
+
+- (void) mouseUp:(NSEvent *)event {
+    NSLog(@"click");
+    
 }
 
 #pragma mark - Dragging Operations
@@ -89,23 +95,6 @@ NSInteger hoverRing = 0;
 
 #pragma mark - Mouse Events
 
-/**
- *  Responds to click events
- */
-- (void)mouseUp: (NSEvent *)event {
-    NSPoint location = [self convertPoint:[event locationInWindow] fromView:nil];
-    location.x -= 250;
-    location.y -= 250;
-    int r = [self getRing:location];
-    int z = [self getZone:location];
-    if(r > 0 && z > 0) {
-        if(r == 1) z = 1;
-//        NSLog(@"Located in ring %d zone %d", r, z);
-    } else {
-//        NSLog(@"Not located in a zone");
-    }
-}
-
 - (void)updateTrackingAreas {
     [super updateTrackingAreas];
     if(trackingArea) {
@@ -141,13 +130,19 @@ NSInteger hoverRing = 0;
     NSRect bounds = [self bounds];
     [[NSColor whiteColor] set];
     [NSBezierPath fillRect: bounds];
-    [self drawZones];
+}
+
+- (void)clear {
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    CGContextClearRect(context, [self bounds]);
 }
 
 /**
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
+    [self clear];
+
     // draw innermost zone
     [[NSColor grayColor] setStroke];
     [self drawArcFrom:0.0f to:2*M_PI withRadius:[self getRadiusFor:(1)]];
