@@ -139,7 +139,7 @@ NSInteger hoverRing = 0;
 //            NSLog(@"+(r:%d, z:%d)", r, z);
         hoverRing = r;
         hoverZone = z;
-        [self setNeedsDisplay:YES];
+//        [self setNeedsDisplay:YES];
     }
 }
 
