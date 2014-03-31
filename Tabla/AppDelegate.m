@@ -16,7 +16,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification*)notification {
 	if (windowController == NULL)
-		windowController = [[WindowController alloc] initWithWindowNibName:@"Radial"];
+		windowController = [[WindowController alloc] initWithWindowNibName:@"Window"];
 	
     SerialThread *thread = [[SerialThread alloc] init];
     [thread start];
