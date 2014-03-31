@@ -7,8 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
-@class RadialViewController;
+#import "RadialViewController.h"
 
 @interface RadialView : NSView <NSDraggingDestination>
 {
@@ -17,10 +16,14 @@
     NSTrackingArea *trackingArea;
 }
 
-@property int radial;
-@property int concentric;
-
 - (NSPoint)center;
 - (void)redraw;
+
+//TODO -- remove these
+- (int) radial;
+- (void) setRadial:(int)value;
+- (int) concentric;
+- (void) setConcentric:(int)value;
+//END TODO
 
 @end

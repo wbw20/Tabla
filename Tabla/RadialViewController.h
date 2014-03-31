@@ -10,6 +10,9 @@
 
 @interface RadialViewController : NSViewController
 
+    @property int radial;
+    @property int concentric;
+
 - (void) addSound:(NSURL *)url;
 
 @end

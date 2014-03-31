@@ -658,88 +658,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="800" height="548"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFJ-QA-5T4" customClass="RadialView">
-                        <rect key="frame" x="266" y="7" width="526" height="533"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YA2-VK-X9F" customClass="RadialCounterView">
-                                <rect key="frame" x="352" y="451" width="78" height="71"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Radial Icon" id="13J-II-4V9"/>
-                                <connections>
-                                    <outlet property="label" destination="5yB-MY-X3w" id="v4q-XI-sYB"/>
-                                    <outlet property="pad" destination="lFJ-QA-5T4" id="qYF-hy-dYm"/>
-                                </connections>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xte-cQ-Tuj" customClass="ConcentricCounterView">
-                                <rect key="frame" x="438" y="451" width="78" height="71"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Concentric Icon" id="3GW-Cg-EGJ"/>
-                                <connections>
-                                    <outlet property="label" destination="Py1-Ih-H55" id="jpd-XO-X84"/>
-                                    <outlet property="pad" destination="lFJ-QA-5T4" id="pQz-gi-A5R"/>
-                                </connections>
-                            </imageView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwK-QK-Z8J">
-                                <rect key="frame" x="355" y="9" width="161" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="squareTextured" title="UPLOAD" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Yxt-wn-xwr">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O0y-rk-92I" customClass="DownView">
-                                <rect key="frame" x="355" y="454" width="36" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <outlet property="parent" destination="YA2-VK-X9F" id="TDr-jN-koF"/>
-                                </connections>
-                            </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2P-m7-qEi" customClass="UpView">
-                                <rect key="frame" x="391" y="454" width="36" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <outlet property="parent" destination="YA2-VK-X9F" id="qua-nc-aTa"/>
-                                </connections>
-                            </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Flp-la-W2i" customClass="DownView">
-                                <rect key="frame" x="441" y="454" width="36" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <outlet property="parent" destination="xte-cQ-Tuj" id="Vmk-vL-4vS"/>
-                                </connections>
-                            </customView>
-                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rq2-89-fm1" customClass="UpView">
-                                <rect key="frame" x="477" y="454" width="36" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <connections>
-                                    <outlet property="parent" destination="xte-cQ-Tuj" id="Zvl-1S-kMr"/>
-                                </connections>
-                            </customView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yB-MY-X3w">
-                                <rect key="frame" x="374" y="478" width="34" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="1" id="NV5-9F-YPb">
-                                    <font key="font" size="24" name="GillSans-Light"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Py1-Ih-H55">
-                                <rect key="frame" x="460" y="478" width="34" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="2" id="OoH-2Q-FLd">
-                                    <font key="font" size="24" name="GillSans-Light"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <connections>
-                            <outlet property="controller" destination="OTH-Vp-fQQ" id="8TY-6j-yhG"/>
-                            <outlet property="window" destination="371" id="XIF-oF-7pK"/>
-                        </connections>
-                    </customView>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wft-X1-dp4">
                         <rect key="frame" x="7" y="7" width="251" height="533"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -820,11 +738,6 @@
                 <binding destination="494" name="contentArray" keyPath="soundData" id="i9n-TS-iAi"/>
             </connections>
         </arrayController>
-        <customObject id="OTH-Vp-fQQ" customClass="RadialViewController"/>
         <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
     </objects>
-    <resources>
-        <image name="Concentric Icon" width="741.1199951171875" height="741.1199951171875"/>
-        <image name="Radial Icon" width="733" height="741.5999755859375"/>
-    </resources>
 </document>
