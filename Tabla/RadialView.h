@@ -21,6 +21,6 @@
 @property int concentric;
 
 - (NSPoint)center;
-- (void)drawZones;
+- (void)redraw;
 
 @end

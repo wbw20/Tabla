@@ -85,13 +85,13 @@ static void initialize_navigationBarImages() {
 - (void)up {
     [super up];
     [[self pad] setRadial:[[self pad] radial] + 1];
-    [[self pad] drawZones];
+    [[self pad] redraw];
 }
 
 - (void)down {
     [super up];
     [[self pad] setRadial:[[self pad] radial] - 1];
-    [[self pad] drawZones];
+    [[self pad] redraw];
 }
 
 @end
@@ -105,13 +105,13 @@ static void initialize_navigationBarImages() {
 - (void)up {
     [super up];
     [[self pad] setConcentric:[[self pad] concentric] + 1];
-    [[self pad] drawZones];
+    [[self pad] redraw];
 }
 
 - (void)down {
     [super up];
     [[self pad] setConcentric:[[self pad] concentric] - 1];
-    [[self pad] drawZones];
+    [[self pad] redraw];
 }
 
 @end

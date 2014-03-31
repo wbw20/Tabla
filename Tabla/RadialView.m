@@ -130,19 +130,19 @@ NSInteger hoverRing = 0;
     NSRect bounds = [self bounds];
     [[NSColor whiteColor] set];
     [NSBezierPath fillRect: bounds];
+    [self drawZones];
 }
 
-- (void)clear {
+- (void)redraw {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextClearRect(context, [self frame]);
+    [self setNeedsDisplay:YES];
 }
 
 /**
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
-    [self clear];
-
     // draw innermost zone
     [[NSColor grayColor] setStroke];
     [self drawArcFrom:0.0f to:2*M_PI withRadius:[self getRadiusFor:(1)]];
