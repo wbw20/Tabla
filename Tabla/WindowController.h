@@ -5,7 +5,6 @@
 @interface WindowController : NSWindowController
 {
 	IBOutlet RootView*	root;
-	RootViewController*	controller;	// the current view controller
 }
 
 @end
