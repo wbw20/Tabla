@@ -27,6 +27,7 @@
 		BEC07121189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC0711F189C541D00505F7D /* InfoPlist.strings */; };
 		BEC07123189C541D00505F7D /* TablaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07122189C541D00505F7D /* TablaTests.m */; };
 		BEC9529D18E9C91B0027B62F /* PadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC9529C18E9C91B0027B62F /* PadView.xib */; };
+		BEC9529F18E9D4B20027B62F /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC9529E18E9D4B20027B62F /* Window.xib */; };
 		BEE9818118A5366500143D57 /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE9818018A5366500143D57 /* WindowController.m */; };
 		BEEB251018C947F6000DB2D5 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB250F18C947F6000DB2D5 /* Player.m */; };
 		BEEB251518C94817000DB2D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251218C94817000DB2D5 /* Profile.m */; };
@@ -86,6 +87,7 @@
 		BEC07122189C541D00505F7D /* TablaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TablaTests.m; sourceTree = "<group>"; };
 		BEC225C818A1C28600DE83E8 /* TestProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestProtocol.h; sourceTree = "<group>"; };
 		BEC9529C18E9C91B0027B62F /* PadView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PadView.xib; sourceTree = "<group>"; };
+		BEC9529E18E9D4B20027B62F /* Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
 		BEE9817F18A5366500143D57 /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		BEE9818018A5366500143D57 /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 		BEEB250E18C947F6000DB2D5 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				BEC0710D189C541D00505F7D /* MainMenu.xib */,
+				BEC9529E18E9D4B20027B62F /* Window.xib */,
 				BEC9529C18E9C91B0027B62F /* PadView.xib */,
 			);
 			name = Layouts;
@@ -415,6 +418,7 @@
 				BEC07109189C541D00505F7D /* Credits.rtf in Resources */,
 				BEC0710F189C541D00505F7D /* MainMenu.xib in Resources */,
 				BEC9529D18E9C91B0027B62F /* PadView.xib in Resources */,
+				BEC9529F18E9D4B20027B62F /* Window.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

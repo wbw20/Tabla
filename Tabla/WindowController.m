@@ -2,9 +2,8 @@
 
 @implementation WindowController
 
-- initWithPath:(NSString *)newPath
-{
-    return [super initWithWindowNibName:@"Tabla"];
+- (id)initWithWindowNibName:(NSString *)windowNibName {
+    return [super initWithWindowNibName:windowNibName];
 }
 
 @end

@@ -14,8 +14,7 @@
 
 @synthesize soundData;
 
-- (void)applicationDidFinishLaunching:(NSNotification*)notification
-{
+- (void)applicationDidFinishLaunching:(NSNotification*)notification {
 	if (windowController == NULL)
 		windowController = [[WindowController alloc] initWithWindowNibName:@"Radial"];
 	

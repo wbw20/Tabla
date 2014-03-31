@@ -338,37 +338,17 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Font" systemMenu="font" id="388">
                                     <items>
-                                        <menuItem title="Show Fonts" keyEquivalent="t" id="389">
-                                            <connections>
-                                                <action selector="orderFrontFontPanel:" target="420" id="424"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Bold" tag="2" keyEquivalent="b" id="390">
-                                            <connections>
-                                                <action selector="addFontTrait:" target="420" id="421"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Italic" tag="1" keyEquivalent="i" id="391">
-                                            <connections>
-                                                <action selector="addFontTrait:" target="420" id="422"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Show Fonts" keyEquivalent="t" id="389"/>
+                                        <menuItem title="Bold" tag="2" keyEquivalent="b" id="390"/>
+                                        <menuItem title="Italic" tag="1" keyEquivalent="i" id="391"/>
                                         <menuItem title="Underline" keyEquivalent="u" id="392">
                                             <connections>
                                                 <action selector="underline:" target="-1" id="432"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="393"/>
-                                        <menuItem title="Bigger" tag="3" keyEquivalent="+" id="394">
-                                            <connections>
-                                                <action selector="modifyFont:" target="420" id="425"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Smaller" tag="4" keyEquivalent="-" id="395">
-                                            <connections>
-                                                <action selector="modifyFont:" target="420" id="423"/>
-                                            </connections>
-                                        </menuItem>
+                                        <menuItem title="Bigger" tag="3" keyEquivalent="+" id="394"/>
+                                        <menuItem title="Smaller" tag="4" keyEquivalent="-" id="395"/>
                                         <menuItem isSeparatorItem="YES" id="396"/>
                                         <menuItem title="Kern" id="397">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -647,97 +627,8 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="Tabla" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371" customClass="Window">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <windowPositionMask key="initialPositionMask" topStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="800" height="548"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
-            <value key="minSize" type="size" width="800" height="548"/>
-            <value key="maxSize" type="size" width="800" height="548"/>
-            <view key="contentView" id="372">
-                <rect key="frame" x="0.0" y="0.0" width="800" height="548"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                <subviews>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wft-X1-dp4">
-                        <rect key="frame" x="7" y="7" width="251" height="533"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="KPx-sd-Xy2">
-                            <rect key="frame" x="1" y="1" width="249" height="531"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <collectionView ambiguous="YES" id="22H-gN-zfq">
-                                    <rect key="frame" x="0.0" y="0.0" width="249" height="531"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <connections>
-                                        <binding destination="XeX-Ds-zON" name="content" keyPath="arrangedObjects" id="QkL-Tn-Afh"/>
-                                        <outlet property="itemPrototype" destination="7oY-3l-xGS" id="jvi-rC-xQm"/>
-                                    </connections>
-                                </collectionView>
-                            </subviews>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="apM-QU-wgM">
-                            <rect key="frame" x="1" y="144" width="233" height="15"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="E8r-pH-zy7">
-                            <rect key="frame" x="234" y="1" width="15" height="143"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                </subviews>
-            </view>
-        </window>
-        <customObject id="494" customClass="AppDelegate">
-            <connections>
-                <outlet property="window" destination="371" id="532"/>
-            </connections>
-        </customObject>
-        <customObject id="420" customClass="NSFontManager"/>
-        <collectionViewItem id="7oY-3l-xGS">
-            <connections>
-                <outlet property="view" destination="YS3-u5-X6i" id="NpM-YJ-R9P"/>
-            </connections>
-        </collectionViewItem>
-        <view id="YS3-u5-X6i">
-            <rect key="frame" x="0.0" y="0.0" width="250" height="52"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kev-z9-ghh">
-                    <rect key="frame" x="10" y="30" width="231" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Name Label" placeholderString="" usesSingleLineMode="YES" id="Sep-kJ-Gfc">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="7oY-3l-xGS" name="value" keyPath="representedObject.name" id="6Vw-oX-9Xp"/>
-                    </connections>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zHl-tF-3PJ">
-                    <rect key="frame" x="10" y="5" width="231" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Filepath Label" usesSingleLineMode="YES" id="kD1-Fp-Y1Y">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="7oY-3l-xGS" name="value" keyPath="representedObject.filepath" id="47t-c9-RyZ"/>
-                    </connections>
-                </textField>
-            </subviews>
-        </view>
-        <arrayController objectClassName="SoundModel" id="XeX-Ds-zON">
-            <declaredKeys>
-                <string>name</string>
-                <string>filepath</string>
-            </declaredKeys>
-            <connections>
-                <binding destination="494" name="contentArray" keyPath="soundData" id="i9n-TS-iAi"/>
-            </connections>
-        </arrayController>
+        <customObject id="494" customClass="AppDelegate"/>
         <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
+        <customObject id="qJn-js-SIJ" customClass="NSFontManager"/>
     </objects>
 </document>
