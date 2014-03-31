@@ -237,21 +237,10 @@ NSInteger hoverRing = 0;
 }
 
 /**
- *  Draws a circle to the current graphics context
- */
-- (void)drawCircleWithCenter:(NSPoint)center andRadius:(float)radius {
-    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    CGContextSetLineWidth(context, 2);
-    CGContextAddArc(context, center.x, center.y, radius, 0, [self arclength], 0);
-    CGContextStrokePath(context);
-}
-
-/**
  *  Returns the center of the view
  **/
 - (NSPoint)center
 {
-    NSLog(@"%f, %f", self.frame.origin.x + (self.frame.size.width / 2), self.frame.origin.y + (self.frame.size.height / 2));
     return CGPointMake((self.frame.origin.x + (self.frame.size.width / 2)),
                        (self.frame.origin.y + (self.frame.size.height / 2)));
 }
