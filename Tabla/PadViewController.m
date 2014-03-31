@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 William Wettersten. All rights reserved.
 //
 
-#import "RadialViewController.h"
+#import "PadViewController.h"
 #import "AppDelegate.h"
 
-@implementation RadialViewController
+@implementation PadViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

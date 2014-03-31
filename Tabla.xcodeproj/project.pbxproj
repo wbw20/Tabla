@@ -12,8 +12,8 @@
 		BE52D77718C327C4008C3C81 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52D77618C327C4008C3C81 /* Sound.m */; };
 		BE7F1ED218A46A2F00F5567E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7F1ED118A46A2F00F5567E /* Quartz.framework */; };
 		BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED418A47C0100F5567E /* RadialLayer.m */; };
-		BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED918A481E500F5567E /* RadialView.m */; };
-		BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1EDE18A48B6300F5567E /* RadialViewController.m */; };
+		BE7F1EDA18A481E500F5567E /* PadView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED918A481E500F5567E /* PadView.m */; };
+		BE7F1EDF18A48B6300F5567E /* PadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1EDE18A48B6300F5567E /* PadViewController.m */; };
 		BEAE962818E0A6A200F56944 /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAE962718E0A6A200F56944 /* Window.m */; };
 		BEC070F9189C541D00505F7D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC070F8189C541D00505F7D /* Cocoa.framework */; };
 		BEC07103189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC07101189C541D00505F7D /* InfoPlist.strings */; };
@@ -59,10 +59,10 @@
 		BE7F1ED118A46A2F00F5567E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		BE7F1ED318A47C0100F5567E /* RadialLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialLayer.h; sourceTree = "<group>"; };
 		BE7F1ED418A47C0100F5567E /* RadialLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialLayer.m; sourceTree = "<group>"; };
-		BE7F1ED818A481E500F5567E /* RadialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialView.h; sourceTree = "<group>"; };
-		BE7F1ED918A481E500F5567E /* RadialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialView.m; sourceTree = "<group>"; };
-		BE7F1EDD18A48B6300F5567E /* RadialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialViewController.h; sourceTree = "<group>"; };
-		BE7F1EDE18A48B6300F5567E /* RadialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialViewController.m; sourceTree = "<group>"; };
+		BE7F1ED818A481E500F5567E /* PadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadView.h; sourceTree = "<group>"; };
+		BE7F1ED918A481E500F5567E /* PadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadView.m; sourceTree = "<group>"; };
+		BE7F1EDD18A48B6300F5567E /* PadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadViewController.h; sourceTree = "<group>"; };
+		BE7F1EDE18A48B6300F5567E /* PadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadViewController.m; sourceTree = "<group>"; };
 		BEAE962618E0A6A200F56944 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
 		BEAE962718E0A6A200F56944 /* Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Window.m; sourceTree = "<group>"; };
 		BEB2F1DE18DD0E4000443F79 /* tom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = tom1.aif; sourceTree = "<group>"; };
@@ -145,8 +145,8 @@
 		BE7F1EDB18A48B3100F5567E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BE7F1ED818A481E500F5567E /* RadialView.h */,
-				BE7F1ED918A481E500F5567E /* RadialView.m */,
+				BE7F1ED818A481E500F5567E /* PadView.h */,
+				BE7F1ED918A481E500F5567E /* PadView.m */,
 				BEEDCBB018A7FE3300B5D047 /* RootView.h */,
 				BEEDCBB118A7FE3300B5D047 /* RootView.m */,
 				BE26B4C118C3F048008FF722 /* SoundView.h */,
@@ -164,8 +164,8 @@
 			children = (
 				BEE9817F18A5366500143D57 /* WindowController.h */,
 				BEE9818018A5366500143D57 /* WindowController.m */,
-				BE7F1EDD18A48B6300F5567E /* RadialViewController.h */,
-				BE7F1EDE18A48B6300F5567E /* RadialViewController.m */,
+				BE7F1EDD18A48B6300F5567E /* PadViewController.h */,
+				BE7F1EDE18A48B6300F5567E /* PadViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -451,10 +451,10 @@
 				BE52D77718C327C4008C3C81 /* Sound.m in Sources */,
 				BEEDCBB218A7FE3300B5D047 /* RootView.m in Sources */,
 				BEAE962818E0A6A200F56944 /* Window.m in Sources */,
-				BE7F1EDF18A48B6300F5567E /* RadialViewController.m in Sources */,
+				BE7F1EDF18A48B6300F5567E /* PadViewController.m in Sources */,
 				BE26B4C318C3F048008FF722 /* SoundView.m in Sources */,
 				BEC07105189C541D00505F7D /* main.m in Sources */,
-				BE7F1EDA18A481E500F5567E /* RadialView.m in Sources */,
+				BE7F1EDA18A481E500F5567E /* PadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

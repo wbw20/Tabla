@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-#import "RadialView.h"
+#import "PadView.h"
 
 @interface CounterView : NSImageView
     @property int value;

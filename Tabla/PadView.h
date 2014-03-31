@@ -7,11 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "RadialViewController.h"
+#import "PadViewController.h"
 
-@interface RadialView : NSView <NSDraggingDestination>
+@interface PadView : NSView <NSDraggingDestination>
 {
-    IBOutlet RadialViewController *controller;
+    IBOutlet PadViewController *controller;
     IBOutlet NSWindow *window;
     NSTrackingArea *trackingArea;
 }

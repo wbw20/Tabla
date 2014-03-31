@@ -83,7 +83,7 @@ static void initialize_navigationBarImages() {
 @end
 
 @interface RadialCounterView : CounterView
-    @property (nonatomic) IBOutlet RadialView* pad;
+    @property (nonatomic) IBOutlet PadView* pad;
 @end
 
 @implementation RadialCounterView
@@ -106,7 +106,7 @@ static void initialize_navigationBarImages() {
 @end
 
 @interface ConcentricCounterView : CounterView
-    @property (nonatomic) IBOutlet RadialView* pad;
+    @property (nonatomic) IBOutlet PadView* pad;
 @end
 
 @implementation ConcentricCounterView

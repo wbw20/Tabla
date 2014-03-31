@@ -10,12 +10,12 @@
 
 #import "Line.h"
 #import "Circle.h"
-#import "RadialView.h"
-#import "RadialViewController.h"
+#import "PadView.h"
+#import "PadViewController.h"
 
 #define KERF 8.0f
 
-@implementation RadialView
+@implementation PadView
 
 //@TODO: move state to controller
 NSString *kPrivateDragUTI = @"com.tabla.radialDnD";

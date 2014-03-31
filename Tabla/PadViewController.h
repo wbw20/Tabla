@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface RadialViewController : NSViewController
+@interface PadViewController : NSViewController
 
     @property int radial;
     @property int concentric;
