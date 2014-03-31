@@ -8,7 +8,4 @@
 	RootViewController*	controller;	// the current view controller
 }
 
-- (IBAction)viewChoicePopupAction:(id)sender;
-- (NSViewController*)viewController;
-
 @end

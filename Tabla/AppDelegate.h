@@ -8,8 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Sound.h"
-
-@class WindowController;
+#import "WindowController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
