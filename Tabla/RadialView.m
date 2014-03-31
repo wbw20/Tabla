@@ -28,7 +28,7 @@ NSInteger hoverRing = 0;
     if(self) {
         // register file URL drag type
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
-        [self setConcentric:3];
+        [self setConcentric:2];
         [self setRadial:1];
         [self drawZones];
     }

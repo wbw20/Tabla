@@ -10,6 +10,12 @@
 
 static NSColor *darkColor = nil;
 
+//bounds
+static int RADIAL_LOWER_BOUND = 1;
+static int RADIAL_UPPER_BOUND = 8;
+static int CONCENTRIC_LOWER_BOUND = 2;
+static int CONCENTRIC_UPPER_BOUND = 4;
+
 // runs on class load
 __attribute__((constructor))
 static void initialize_navigationBarImages() {
@@ -83,13 +89,16 @@ static void initialize_navigationBarImages() {
 @implementation RadialCounterView
 
 - (void)up {
+    NSLog(@"UP: %d", [[self pad] radial]);
+    if ([[self pad] radial] >= RADIAL_UPPER_BOUND) { return; } // bounds check
     [super up];
     [[self pad] setRadial:[[self pad] radial] + 1];
     [[self pad] redraw];
 }
 
 - (void)down {
-    [super up];
+    if ([[self pad] radial] <= RADIAL_LOWER_BOUND) { return; } // bounds check
+    [super down];
     [[self pad] setRadial:[[self pad] radial] - 1];
     [[self pad] redraw];
 }
@@ -103,13 +112,15 @@ static void initialize_navigationBarImages() {
 @implementation ConcentricCounterView
 
 - (void)up {
+    if ([[self pad] concentric] >= CONCENTRIC_UPPER_BOUND) { return; } // bounds check
     [super up];
     [[self pad] setConcentric:[[self pad] concentric] + 1];
     [[self pad] redraw];
 }
 
 - (void)down {
-    [super up];
+    if ([[self pad] concentric] <= CONCENTRIC_LOWER_BOUND) { return; } // bounds check
+    [super down];
     [[self pad] setConcentric:[[self pad] concentric] - 1];
     [[self pad] redraw];
 }
