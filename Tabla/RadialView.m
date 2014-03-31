@@ -13,7 +13,6 @@
 #import "RadialView.h"
 #import "RadialViewController.h"
 
-#define RADIUS 200.0f
 #define KERF 8.0f
 
 @implementation RadialView
@@ -68,7 +67,7 @@ NSInteger hoverRing = 0;
 
 -(int)getRing:(NSPoint)loc {
     float r = sqrt(pow(loc.x, 2) + pow(loc.y, 2));
-    float ringSize = RADIUS / [self concentric];
+    float ringSize = [self radius] / [self concentric];
     int ringNum = floor(r / ringSize);
     float ringMod = r - (ringNum * ringSize);
     if(ringNum == 0 || (ringMod >= KERF && ringNum < [self concentric]))
@@ -158,10 +157,7 @@ NSInteger hoverRing = 0;
  **/
 - (void)drawZones {
     // draw innermost zone
-    if(1 == hoverRing)
-        [[NSColor redColor] setStroke];
-    else
-        [[NSColor grayColor] setStroke];
+    [[NSColor grayColor] setStroke];
     [self drawArcFrom:0.0f to:2*M_PI withRadius:[self getRadiusFor:(1)]];
     
     // draw zones
@@ -171,11 +167,6 @@ NSInteger hoverRing = 0;
         while (start < 2 * M_PI - [self arcTrim]) {
             start += [self arcTrim];
             float end = start + [self arclength];
-            if(zone == hoverZone && ring == hoverRing) {
-                [[NSColor redColor] setStroke];
-            } else {
-                [[NSColor grayColor] setStroke];
-            }
             [self drawLineFor:(start) andZone:ring];
             [self drawLineFor:(end) andZone:ring];
             [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(ring -1)] + KERF];
@@ -211,7 +202,14 @@ NSInteger hoverRing = 0;
  *  Return the amount of arc to trim for a given rounded corner
  **/
 - (float)arcTrim {
-    return asinf(KERF/RADIUS);
+    return asinf(KERF/[self radius]);
+}
+
+/*
+ *  Get global radius
+ **/
+- (float)radius {
+    return [self frame].size.width * 0.5;
 }
 
 /**
@@ -219,7 +217,7 @@ NSInteger hoverRing = 0;
  *  start with 0 and go from the inside out.
  **/
 - (float)getRadiusFor:(int)index {
-    float width = RADIUS / ([self radial]); // the width of a ring
+    float width = [self radius] / ([self radial]); // the width of a ring
     return width * (index);
 }
 
@@ -243,7 +241,7 @@ NSInteger hoverRing = 0;
  *  Finds the line length for any zone
  **/
 - (float)linelength {
-    return (RADIUS / [self radial]) - 2 * KERF;
+    return ([self radius] / [self radial]) - 2 * KERF;
 }
 
 /**
