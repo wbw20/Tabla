@@ -29,7 +29,7 @@ NSInteger hoverRing = 0;
     if(self) {
         // register file URL drag type
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
-        [self setConcentric:1];
+        [self setConcentric:3];
         [self setRadial:1];
     }
     return self;
@@ -56,8 +56,8 @@ NSInteger hoverRing = 0;
         // locate the corresponding zone
         int ring = [self getRing:mouseLoc];
         int zone = [self getZone:mouseLoc];
-        NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
-        NSLog(@"Located in ring %d zone %d", ring, zone);
+//        NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
+//        NSLog(@"Located in ring %d zone %d", ring, zone);
         if(ring > 0 && zone > 0) {
             [controller addSound:fileURL];
             return YES;
@@ -101,9 +101,9 @@ NSInteger hoverRing = 0;
     int z = [self getZone:location];
     if(r > 0 && z > 0) {
         if(r == 1) z = 1;
-        NSLog(@"Located in ring %d zone %d", r, z);
+//        NSLog(@"Located in ring %d zone %d", r, z);
     } else {
-        NSLog(@"Not located in a zone");
+//        NSLog(@"Not located in a zone");
     }
 }
 
@@ -119,11 +119,11 @@ NSInteger hoverRing = 0;
 }
 
 - (void)mouseEntered:(NSEvent *)e {
-    NSLog(@"Enter");
+//    NSLog(@"Enter");
 }
 
 - (void)mouseExited:(NSEvent *)e {
-    NSLog(@"Exit");
+//    NSLog(@"Exit");
 }
 
 - (void)mouseMoved:(NSEvent *)e {
@@ -133,10 +133,10 @@ NSInteger hoverRing = 0;
     int r = [self getRing:loc];
     int z = [self getZone:loc];
     if(r != hoverRing || z != hoverZone) {
-        if(hoverRing != 0 && hoverZone != 0 && (r == 0 || z == 0))
-            NSLog(@"-(r:%ld, z:%ld)", (long) hoverRing, (long) hoverZone);
-        else if(r > 0 && z > 0)
-            NSLog(@"+(r:%d, z:%d)", r, z);
+//        if(hoverRing != 0 && hoverZone != 0 && (r == 0 || z == 0))
+//            NSLog(@"-(r:%ld, z:%ld)", (long) hoverRing, (long) hoverZone);
+//        else if(r > 0 && z > 0)
+//            NSLog(@"+(r:%d, z:%d)", r, z);
         hoverRing = r;
         hoverZone = z;
         [self setNeedsDisplay:YES];
@@ -261,10 +261,9 @@ NSInteger hoverRing = 0;
  **/
 - (NSPoint)center
 {
-    NSPoint center;
-    center.x = 250;
-    center.y = 250;
-    return center;
+    NSLog(@"%f, %f", self.frame.origin.x + (self.frame.size.width / 2), self.frame.origin.y + (self.frame.size.height / 2));
+    return CGPointMake((self.frame.origin.x + (self.frame.size.width / 2)),
+                       (self.frame.origin.y + (self.frame.size.height / 2)));
 }
 
 @end

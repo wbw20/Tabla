@@ -13,6 +13,7 @@
 @interface RadialView : NSView <NSDraggingDestination>
 {
     IBOutlet RadialViewController *controller;
+    IBOutlet NSWindow *window;
     NSTrackingArea *trackingArea;
 }
 

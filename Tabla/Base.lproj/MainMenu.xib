@@ -662,22 +662,22 @@
                         <rect key="frame" x="266" y="7" width="526" height="533"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YA2-VK-X9F" customClass="CounterView">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YA2-VK-X9F" customClass="RadialCounterView">
                                 <rect key="frame" x="352" y="451" width="78" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Radial Icon" id="13J-II-4V9"/>
                                 <connections>
                                     <outlet property="label" destination="5yB-MY-X3w" id="v4q-XI-sYB"/>
-                                    <outlet property="radial" destination="lFJ-QA-5T4" id="UEz-b8-asE"/>
+                                    <outlet property="pad" destination="lFJ-QA-5T4" id="qYF-hy-dYm"/>
                                 </connections>
                             </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xte-cQ-Tuj" customClass="CounterView">
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xte-cQ-Tuj" customClass="ConcentricCounterView">
                                 <rect key="frame" x="438" y="451" width="78" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Concentric Icon" id="3GW-Cg-EGJ"/>
                                 <connections>
                                     <outlet property="label" destination="Py1-Ih-H55" id="jpd-XO-X84"/>
-                                    <outlet property="radial" destination="lFJ-QA-5T4" id="BeU-8O-hJU"/>
+                                    <outlet property="pad" destination="lFJ-QA-5T4" id="pQz-gi-A5R"/>
                                 </connections>
                             </imageView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XwK-QK-Z8J">
@@ -737,6 +737,7 @@
                         </subviews>
                         <connections>
                             <outlet property="controller" destination="OTH-Vp-fQQ" id="8TY-6j-yhG"/>
+                            <outlet property="window" destination="371" id="XIF-oF-7pK"/>
                         </connections>
                     </customView>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wft-X1-dp4">

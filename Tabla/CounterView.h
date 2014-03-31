@@ -13,7 +13,6 @@
 @interface CounterView : NSImageView
     @property int value;
     @property (nonatomic, retain) IBOutlet NSTextField* label;
-    @property (nonatomic) IBOutlet RadialView* pad;
 
     - (void) up;
     - (void) down;
