@@ -13,7 +13,7 @@ static NSColor *darkColor = nil;
 //bounds
 static int RADIAL_LOWER_BOUND = 1;
 static int RADIAL_UPPER_BOUND = 8;
-static int CONCENTRIC_LOWER_BOUND = 2;
+static int CONCENTRIC_LOWER_BOUND = 1;
 static int CONCENTRIC_UPPER_BOUND = 4;
 
 // runs on class load
@@ -70,14 +70,8 @@ static void initialize_navigationBarImages() {
     // Drawing code here.
 }
 
-- (void)up {
-    [self setValue:[self value] + 1];
-    [[self label] setStringValue:[NSString stringWithFormat:@"%d", [self value]]];
-}
-
-- (void)down {
-    [self setValue:[self value] - 1];
-    [[self label] setStringValue:[NSString stringWithFormat:@"%d", [self value]]];
+- (void)displayValue:(int)value {
+    [[self label] setStringValue:[NSString stringWithFormat:@"%d", value]];
 }
 
 @end
@@ -90,15 +84,15 @@ static void initialize_navigationBarImages() {
 
 - (void)up {
     if ([[super controller] radial] >= RADIAL_UPPER_BOUND) { return; } // bounds check
-    [super up];
     [[super controller] setRadial:[[super controller] radial] + 1];
+    [super displayValue:[[super controller] radial]];
     [[self pad] redraw];
 }
 
 - (void)down {
     if ([[super controller] radial] <= RADIAL_LOWER_BOUND) { return; } // bounds check
-    [super down];
     [[super controller] setRadial:[[super controller] radial] - 1];
+    [super displayValue:[[super controller] radial]];
     [[self pad] redraw];
 }
 
@@ -112,15 +106,15 @@ static void initialize_navigationBarImages() {
 
 - (void)up {
     if ([[super controller] concentric] >= CONCENTRIC_UPPER_BOUND) { return; } // bounds check
-    [super up];
     [[super controller] setConcentric:[[super controller] concentric] + 1];
+    [super displayValue:[[super controller] concentric]];
     [[self pad] redraw];
 }
 
 - (void)down {
     if ([[super controller] concentric] <= CONCENTRIC_LOWER_BOUND) { return; } // bounds check
-    [super down];
     [[super controller] setConcentric:[[super controller] concentric] - 1];
+    [super displayValue:[[super controller] concentric]];
     [[self pad] redraw];
 }
 

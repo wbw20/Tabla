@@ -11,7 +11,6 @@
 #import "PadView.h"
 
 @interface CounterView : NSImageView
-    @property int value;
     @property IBOutlet PadViewController *controller;
     @property (nonatomic, retain) IBOutlet NSTextField* label;
 
