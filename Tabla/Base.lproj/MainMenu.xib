@@ -630,5 +630,85 @@
         <customObject id="494" customClass="AppDelegate"/>
         <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
         <customObject id="qJn-js-SIJ" customClass="NSFontManager"/>
+        <customObject id="Pge-VH-kzi" customClass="PadViewController">
+            <connections>
+                <outlet property="view" destination="bkL-34-Vjb" id="85n-Wm-nPu"/>
+            </connections>
+        </customObject>
+        <window title="Tabla" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="o3e-Cs-hA4" customClass="Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+            <windowPositionMask key="initialPositionMask" topStrut="YES"/>
+            <rect key="contentRect" x="335" y="390" width="800" height="548"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <value key="minSize" type="size" width="800" height="548"/>
+            <value key="maxSize" type="size" width="800" height="548"/>
+            <view key="contentView" id="CNa-RQ-bea">
+                <rect key="frame" x="0.0" y="0.0" width="800" height="548"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dj9-D3-JYN">
+                        <rect key="frame" x="7" y="7" width="251" height="533"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" ambiguous="YES" misplaced="YES" id="Wf6-ew-dkD">
+                            <rect key="frame" x="1" y="1" width="249" height="531"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <collectionView ambiguous="YES" id="dB4-BB-54S">
+                                    <rect key="frame" x="0.0" y="0.0" width="249" height="531"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </collectionView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Stl-c4-2TM">
+                            <rect key="frame" x="1" y="144" width="233" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="nX2-ba-ND7">
+                            <rect key="frame" x="234" y="1" width="15" height="143"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkL-34-Vjb" customClass="PadView">
+                        <rect key="frame" x="266" y="7" width="527" height="533"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <outlet property="controller" destination="Pge-VH-kzi" id="IL3-Qf-a7e"/>
+                        </connections>
+                    </customView>
+                </subviews>
+            </view>
+        </window>
+        <view id="SXA-OS-6Es">
+            <rect key="frame" x="0.0" y="0.0" width="250" height="52"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dS3-U1-KOi">
+                    <rect key="frame" x="10" y="30" width="231" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Name Label" placeholderString="" usesSingleLineMode="YES" id="xer-My-WrM">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22p-VL-How">
+                    <rect key="frame" x="10" y="5" width="231" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Filepath Label" usesSingleLineMode="YES" id="moC-o5-ycT">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+        </view>
+        <collectionViewItem id="WPX-g0-pRv"/>
+        <arrayController objectClassName="SoundModel" id="yzg-9D-62H">
+            <declaredKeys>
+                <string>name</string>
+                <string>filepath</string>
+            </declaredKeys>
+        </arrayController>
     </objects>
 </document>

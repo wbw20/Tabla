@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "WindowController.h"
+#import "PadViewController.h"
 #import "SerialThread.h"
 
 @implementation AppDelegate
@@ -15,13 +15,8 @@
 @synthesize soundData;
 
 - (void)applicationDidFinishLaunching:(NSNotification*)notification {
-	if (windowController == NULL)
-		windowController = [[WindowController alloc] initWithWindowNibName:@"Window"];
-	
     SerialThread *thread = [[SerialThread alloc] init];
     [thread start];
-    
-	[windowController showWindow:self];
 }
 
 -(void)insertObject:(Sound *)s inSoundDataAtIndex:(NSInteger)index {

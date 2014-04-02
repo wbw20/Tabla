@@ -8,11 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Sound.h"
-#import "WindowController.h"
+#import "PadViewController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
-    WindowController* windowController;
+    NSWindowController* windowController;
+    IBOutlet PadViewController* padViewController;
     NSMutableArray * soundData;
 }
 

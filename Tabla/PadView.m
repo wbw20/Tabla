@@ -11,7 +11,6 @@
 #import "Line.h"
 #import "Circle.h"
 #import "PadView.h"
-#import "PadViewController.h"
 
 #define KERF 8.0f
 
@@ -30,7 +29,7 @@ NSInteger hoverRing = 0;
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
         [controller setConcentric:2];
         [controller setRadial:1];
-        [self redraw];
+//        [self redraw];
     }
     return self;
 }
@@ -155,7 +154,6 @@ NSInteger hoverRing = 0;
 }
 
 - (void)redraw {
-    int test = [controller concentric];
     [self setNeedsDisplay:YES];
 }
 
@@ -191,6 +189,7 @@ NSInteger hoverRing = 0;
     NSPoint center = [self center];
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
+    
     CGContextAddArc(context, center.x, center.y, radius, start, end, 0);
     CGContextStrokePath(context);
 }
@@ -224,7 +223,7 @@ NSInteger hoverRing = 0;
  *  start with 0 and go from the inside out.
  **/
 - (float)getRadiusFor:(int)index {
-    float width = [self radius] / ([controller concentric]); // the width of a ring
+    float width = [self radius] / ([controller concentric] || 1); // the width of a ring
     return width * (index);
 }
 
