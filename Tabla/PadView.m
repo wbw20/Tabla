@@ -39,24 +39,6 @@ NSInteger hoverRing = 0;
     
 }
 
-// TODO -- remove these
-- (int) radial {
-    return [controller radial];
-}
-
-- (void) setRadial:(int)value {
-    return [controller setRadial:value];
-}
-
-- (int) concentric {
-    return [controller concentric];
-}
-
-- (void) setConcentric:(int)value {
-    return [controller setConcentric:value];
-}
-// END TODO
-
 #pragma mark - Dragging Operations
 
 -(NSDragOperation) draggingEntered:(id<NSDraggingInfo>)sender {
