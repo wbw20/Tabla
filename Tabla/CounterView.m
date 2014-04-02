@@ -89,7 +89,6 @@ static void initialize_navigationBarImages() {
 @implementation RadialCounterView
 
 - (void)up {
-    NSLog(@"UP: %d", [[self pad] radial]);
     if ([[self pad] radial] >= RADIAL_UPPER_BOUND) { return; } // bounds check
     [super up];
     [[self pad] setRadial:[[self pad] radial] + 1];
