@@ -678,6 +678,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Concentric Icon" id="pZn-b2-Pud"/>
                                 <connections>
+                                    <outlet property="controller" destination="Pge-VH-kzi" id="0OG-Nz-Okt"/>
                                     <outlet property="label" destination="Cgz-kf-QRJ" id="gaR-3L-ihB"/>
                                     <outlet property="pad" destination="bkL-34-Vjb" id="z7D-Ci-mcP"/>
                                 </connections>
@@ -687,6 +688,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Radial Icon" id="AYz-ab-Dwc"/>
                                 <connections>
+                                    <outlet property="controller" destination="Pge-VH-kzi" id="1OJ-kF-ZNA"/>
                                     <outlet property="label" destination="xu7-Fs-VJ6" id="Kr7-RH-QD7"/>
                                     <outlet property="pad" destination="bkL-34-Vjb" id="bLm-cz-YYk"/>
                                 </connections>

@@ -19,11 +19,4 @@
 - (NSPoint)center;
 - (void)redraw;
 
-//TODO -- remove these
-- (int) radial;
-- (void) setRadial:(int)value;
-- (int) concentric;
-- (void) setConcentric:(int)value;
-//END TODO
-
 @end

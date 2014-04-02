@@ -89,16 +89,16 @@ static void initialize_navigationBarImages() {
 @implementation RadialCounterView
 
 - (void)up {
-    if ([[self pad] radial] >= RADIAL_UPPER_BOUND) { return; } // bounds check
+    if ([[super controller] radial] >= RADIAL_UPPER_BOUND) { return; } // bounds check
     [super up];
-    [[self pad] setRadial:[[self pad] radial] + 1];
+    [[super controller] setRadial:[[super controller] radial] + 1];
     [[self pad] redraw];
 }
 
 - (void)down {
-    if ([[self pad] radial] <= RADIAL_LOWER_BOUND) { return; } // bounds check
+    if ([[super controller] radial] <= RADIAL_LOWER_BOUND) { return; } // bounds check
     [super down];
-    [[self pad] setRadial:[[self pad] radial] - 1];
+    [[super controller] setRadial:[[super controller] radial] - 1];
     [[self pad] redraw];
 }
 
@@ -111,16 +111,16 @@ static void initialize_navigationBarImages() {
 @implementation ConcentricCounterView
 
 - (void)up {
-    if ([[self pad] concentric] >= CONCENTRIC_UPPER_BOUND) { return; } // bounds check
+    if ([[super controller] concentric] >= CONCENTRIC_UPPER_BOUND) { return; } // bounds check
     [super up];
-    [[self pad] setConcentric:[[self pad] concentric] + 1];
+    [[super controller] setConcentric:[[super controller] concentric] + 1];
     [[self pad] redraw];
 }
 
 - (void)down {
-    if ([[self pad] concentric] <= CONCENTRIC_LOWER_BOUND) { return; } // bounds check
+    if ([[super controller] concentric] <= CONCENTRIC_LOWER_BOUND) { return; } // bounds check
     [super down];
-    [[self pad] setConcentric:[[self pad] concentric] - 1];
+    [[super controller] setConcentric:[[super controller] concentric] - 1];
     [[self pad] redraw];
 }
 
