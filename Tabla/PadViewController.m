@@ -11,6 +11,17 @@
 
 @implementation PadViewController
 
+- (id) init {
+    self = [super init];
+    
+    if (self) {
+        [self setConcentric:1];
+        [self setRadial:1];
+    }
+    
+    return self;
+}
+
 /**
  *  Responds to click events
  */
