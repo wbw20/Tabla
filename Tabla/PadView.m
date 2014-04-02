@@ -27,7 +27,7 @@ NSInteger hoverRing = 0;
     if(self) {
         // register file URL drag type
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
-        [controller setConcentric:2];
+        [controller setConcentric:1];
         [controller setRadial:1];
 //        [self redraw];
     }
@@ -223,7 +223,8 @@ NSInteger hoverRing = 0;
  *  start with 0 and go from the inside out.
  **/
 - (float)getRadiusFor:(int)index {
-    float width = [self radius] / ([controller concentric] || 1); // the width of a ring
+    int rings = [controller concentric] == 0 ? 1: [controller concentric];
+    float width = [self radius] / rings; // the width of a ring
     return width * (index);
 }
 
