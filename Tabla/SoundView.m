@@ -20,14 +20,6 @@ NSString *drag_id = @"com.tabla.soundDnD";
     return self;
 }
 
--(void)drawRect:(NSRect)rect {
-    NSRect bounds = [self bounds];
-    
-    // Fill the view with green
-    [[NSColor blueColor] set];
-    [NSBezierPath fillRect: bounds];
-}
-
 -(NSDragOperation) draggingEntered:(id<NSDraggingInfo>)sender {
     NSLog(@"Enter");
     return NSDragOperationCopy;
