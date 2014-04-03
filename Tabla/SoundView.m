@@ -20,19 +20,6 @@ NSString *drag_id = @"com.tabla.soundDnD";
     return self;
 }
 
--(NSDragOperation) draggingEntered:(id<NSDraggingInfo>)sender {
-    NSLog(@"Enter");
-    return NSDragOperationCopy;
-}
-
--(void) draggingExited:(id<NSDraggingInfo>)sender {
-    NSLog(@"Exit");
-}
-
--(void) draggingEnded:(id<NSDraggingInfo>)sender {
-    NSLog(@"Ended");
-}
-
 - (BOOL)performDragOperation:(id<NSDraggingInfo>)sender {
     NSURL* fileURL = [NSURL URLFromPasteboard: [sender draggingPasteboard]];
     if(fileURL != NULL) {
