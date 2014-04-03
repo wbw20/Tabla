@@ -15,8 +15,18 @@
 @synthesize soundData;
 
 - (void)applicationDidFinishLaunching:(NSNotification*)notification {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(close)
+                                                 name:NSWindowWillCloseNotification
+                                               object:window];
+    
+    
     SerialThread *thread = [[SerialThread alloc] init];
     [thread start];
+}
+
+- (void) close {
+    [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
 }
 
 -(void)insertObject:(Sound *)s inSoundDataAtIndex:(NSInteger)index {

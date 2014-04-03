@@ -12,8 +12,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
-    NSWindowController* windowController;
-    IBOutlet PadViewController* padViewController;
+    IBOutlet NSWindow* window;
     NSMutableArray * soundData;
 }
 

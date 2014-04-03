@@ -627,7 +627,11 @@
                 </menuItem>
             </items>
         </menu>
-        <customObject id="494" customClass="AppDelegate"/>
+        <customObject id="494" customClass="AppDelegate">
+            <connections>
+                <outlet property="window" destination="o3e-Cs-hA4" id="ia2-8A-4eI"/>
+            </connections>
+        </customObject>
         <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
         <customObject id="qJn-js-SIJ" customClass="NSFontManager"/>
         <customObject id="BOY-y1-sfv" customClass="WindowController"/>
