@@ -12,8 +12,7 @@
 @implementation WindowController
 
 - (void) addSound:(NSURL *) url {
-    AppDelegate * ad = (AppDelegate *)[[NSApplication sharedApplication] delegate];
-    [ad addSound:url];
+    [[self profile] addSound:url];
 }
 
 @end

@@ -10,7 +10,12 @@
 
 @implementation Sound
 
-@synthesize name;
-@synthesize filepath;
+- (id) initWithPath:(NSURL*)path {
+    if ([super init]) {
+        [self setFilepath:path];
+    }
+
+    return self;
+}
 
 @end

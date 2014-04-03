@@ -14,4 +14,8 @@
     return [self.samples objectForKey:(address)];
 }
 
+-(void)addSound:(NSURL *) url {
+    Sound *s = [[Sound alloc] initWithPath:url];
+}
+
 @end

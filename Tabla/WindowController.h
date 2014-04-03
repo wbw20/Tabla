@@ -7,8 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Profile.h"
 
 @interface WindowController : NSWindowController
+
+@property Profile *profile;
 
 - (void) addSound:(NSURL *)url;
 

@@ -13,17 +13,6 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
     IBOutlet NSWindow* window;
-    NSMutableArray * soundData;
 }
-
--(void)insertObject:(Sound *)s inSoundDataAtIndex:(NSInteger)index;
--(void)removeObjectFromSoundDataAtIndx:(NSUInteger)index;
--(void)setSoundData:(NSMutableArray *) a;
--(NSArray *)soundData;
-
--(void)awakeFromNib;
--(void)addSound:(NSURL *)url;
-
-@property(retain, readwrite) NSMutableArray * soundData;
 
 @end

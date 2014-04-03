@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import "Sound.h"
+
 @interface Profile : NSObject
 
 @property (nonatomic, retain) NSDictionary *samples;
+
+-(void)addSound:(NSURL *) url;
 
 @end
