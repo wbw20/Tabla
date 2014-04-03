@@ -10,6 +10,17 @@
 
 @implementation Profile
 
+- (id) init {
+    self = [super init];
+    
+    if (self) {
+        [self setConcentric:1];
+        [self setRadial:1];
+    }
+    
+    return self;
+}
+
 - (NSSound*) soundFor:(NSNumber*)address {
     return [self.samples objectForKey:(address)];
 }

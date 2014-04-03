@@ -15,4 +15,20 @@
     [[self profile] addSound:url];
 }
 
+- (NSInteger) radial {
+    return [[self profile] radial];
+}
+
+- (void) setRadial:(NSInteger)radial {
+    [[self profile] setRadial:radial];
+}
+
+- (NSInteger) concentric {
+    return [[self profile] concentric];
+}
+
+- (void) setConcentric:(NSInteger)concencric {
+    [[self profile] setConcentric:concencric];
+}
+
 @end

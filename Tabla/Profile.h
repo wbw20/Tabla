@@ -12,6 +12,8 @@
 
 @interface Profile : NSObject
 
+@property NSInteger radial;
+@property NSInteger concentric;
 @property (nonatomic, retain) NSDictionary *samples;
 
 -(void)addSound:(NSURL *) url;

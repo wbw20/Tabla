@@ -13,9 +13,13 @@
     IBOutlet WindowController *windowController;
 }
 
-    @property int radial;
-    @property int concentric;
-
 - (void) addSound:(NSURL *)url;
+
+// I'm not a huge fan of this
+- (NSInteger) radial;
+- (void) setRadial:(NSInteger)radial;
+- (NSInteger) concentric;
+- (void) setConcentric:(NSInteger)concentric;
+// END I'm not a huge fan of this
 
 @end

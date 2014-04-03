@@ -11,17 +11,6 @@
 
 @implementation PadViewController
 
-- (id) init {
-    self = [super init];
-    
-    if (self) {
-        [self setConcentric:1];
-        [self setRadial:1];
-    }
-    
-    return self;
-}
-
 /**
  *  Responds to click events
  */
@@ -34,6 +23,22 @@
 
 - (void) addSound:(NSURL *) url {
     return [windowController addSound:url];
+}
+
+- (NSInteger) radial {
+    return [windowController radial];
+}
+
+- (void) setRadial:(NSInteger)radial {
+    [windowController setRadial:radial];
+}
+
+- (NSInteger) concentric {
+    return [windowController concentric];
+}
+
+- (void) setConcentric:(NSInteger)concencric {
+    [windowController setConcentric:concencric];
 }
 
 @end

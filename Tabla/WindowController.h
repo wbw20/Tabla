@@ -15,4 +15,9 @@
 
 - (void) addSound:(NSURL *)url;
 
+- (NSInteger) radial;
+- (void) setRadial:(NSInteger)radial;
+- (NSInteger) concentric;
+- (void) setConcentric:(NSInteger)concentric;
+
 @end

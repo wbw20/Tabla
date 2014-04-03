@@ -70,8 +70,8 @@ static void initialize_navigationBarImages() {
     // Drawing code here.
 }
 
-- (void)displayValue:(int)value {
-    [[self label] setStringValue:[NSString stringWithFormat:@"%d", value]];
+- (void)displayValue:(NSInteger)value {
+    [[self label] setStringValue:@(value).stringValue];
 }
 
 @end
