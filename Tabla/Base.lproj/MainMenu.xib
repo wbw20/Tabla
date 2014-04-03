@@ -630,9 +630,11 @@
         <customObject id="494" customClass="AppDelegate"/>
         <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
         <customObject id="qJn-js-SIJ" customClass="NSFontManager"/>
+        <customObject id="BOY-y1-sfv" customClass="WindowController"/>
         <customObject id="Pge-VH-kzi" customClass="PadViewController">
             <connections>
                 <outlet property="view" destination="bkL-34-Vjb" id="85n-Wm-nPu"/>
+                <outlet property="windowController" destination="BOY-y1-sfv" id="oVz-QH-kcA"/>
             </connections>
         </customObject>
         <window title="Tabla" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="o3e-Cs-hA4" customClass="Window">

@@ -26,6 +26,7 @@
 		BEC07119189C541D00505F7D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC070F8189C541D00505F7D /* Cocoa.framework */; };
 		BEC07121189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC0711F189C541D00505F7D /* InfoPlist.strings */; };
 		BEC07123189C541D00505F7D /* TablaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07122189C541D00505F7D /* TablaTests.m */; };
+		BED9544118ED6020001337AE /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED9544018ED6020001337AE /* WindowController.m */; };
 		BEEB251018C947F6000DB2D5 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB250F18C947F6000DB2D5 /* Player.m */; };
 		BEEB251518C94817000DB2D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251218C94817000DB2D5 /* Profile.m */; };
 		BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */; };
@@ -83,6 +84,8 @@
 		BEC07120189C541D00505F7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEC07122189C541D00505F7D /* TablaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TablaTests.m; sourceTree = "<group>"; };
 		BEC225C818A1C28600DE83E8 /* TestProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestProtocol.h; sourceTree = "<group>"; };
+		BED9543F18ED6020001337AE /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
+		BED9544018ED6020001337AE /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
 		BEEB250E18C947F6000DB2D5 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		BEEB250F18C947F6000DB2D5 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		BEEB251118C94817000DB2D5 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 			children = (
 				BE7F1EDD18A48B6300F5567E /* PadViewController.h */,
 				BE7F1EDE18A48B6300F5567E /* PadViewController.m */,
+				BED9543F18ED6020001337AE /* WindowController.h */,
+				BED9544018ED6020001337AE /* WindowController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				BE2CD57118E0D0CC00490820 /* CounterView.m in Sources */,
 				BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
+				BED9544118ED6020001337AE /* WindowController.m in Sources */,
 				BE52D77718C327C4008C3C81 /* Sound.m in Sources */,
 				BEAE962818E0A6A200F56944 /* Window.m in Sources */,
 				BE7F1EDF18A48B6300F5567E /* PadViewController.m in Sources */,

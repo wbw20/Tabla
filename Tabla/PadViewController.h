@@ -7,8 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "WindowController.h"
 
-@interface PadViewController : NSViewController
+@interface PadViewController : NSViewController {
+    IBOutlet WindowController *windowController;
+}
 
     @property int radial;
     @property int concentric;
