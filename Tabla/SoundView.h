@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SoundView : NSCollectionView
+@interface SoundView : NSScrollView <NSDraggingDestination>
 
 @end
