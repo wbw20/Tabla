@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "WindowController.h"
 
-@interface SoundView : NSScrollView <NSDraggingDestination>
+@interface SoundView : NSScrollView <NSDraggingDestination> {
+    IBOutlet WindowController *windowController;
+}
 
 @end

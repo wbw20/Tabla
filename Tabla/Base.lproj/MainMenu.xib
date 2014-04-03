@@ -670,6 +670,9 @@
                             <rect key="frame" x="234" y="1" width="15" height="143"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
+                        <connections>
+                            <outlet property="windowController" destination="BOY-y1-sfv" id="oWj-Ot-AfY"/>
+                        </connections>
                     </scrollView>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkL-34-Vjb" customClass="PadView">
                         <rect key="frame" x="266" y="7" width="527" height="533"/>
