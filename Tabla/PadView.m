@@ -147,12 +147,17 @@ NSInteger hoverRing = 0;
     // draw zones
     for (int ring = 2; ring <= [controller concentric]; ring++) {
         float start = 0.0f;
-        int zone = 1;
+        int zone = 1; float end;
         while (start < 2 * M_PI - [self arcTrim]) {
-            start += [self arcTrim];
-            float end = start + [self arclength];
-            [self drawLineFor:(start) andZone:ring];
-            [self drawLineFor:(end) andZone:ring];
+            if ([controller radial] == 1) {
+                end = 2 * M_PI;
+            } else {
+                start += [self arcTrim];
+                end = start + [self arclength];
+                [self drawLineFor:(start) andZone:ring];
+                [self drawLineFor:(end) andZone:ring];
+            }
+
             [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(ring -1)] + KERF];
             [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(ring)]];
             start = end + [self arcTrim];
