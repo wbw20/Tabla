@@ -11,6 +11,27 @@
 
 @implementation WindowController
 
+/*
+ *  Default constructor uses a new profile
+ */
+- (id) init {
+    Profile* model = [[Profile alloc] init];
+
+    if ([super init]) {
+        [self setProfile:model];
+    }
+    
+    return self;
+}
+
+- (id) initWithProfile:(Profile*)model {
+    if ([super init]) {
+        [self setProfile:model];
+    }
+
+    return self;
+}
+
 - (void) addSound:(NSURL *) url {
     [[self profile] addSound:url];
 }
