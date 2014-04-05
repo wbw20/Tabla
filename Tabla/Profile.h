@@ -14,8 +14,8 @@
 
 @property NSInteger radial;
 @property NSInteger concentric;
-@property (nonatomic, retain) NSDictionary *samples;
+@property (nonatomic, retain) NSMutableDictionary *sounds;
 
--(void)addSound:(NSURL *) url;
+-(void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
 
 @end

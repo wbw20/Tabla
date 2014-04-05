@@ -21,10 +21,6 @@
     [sound play];
 }
 
-- (void) addSound:(NSURL *) url {
-    return [windowController addSound:url];
-}
-
 - (NSInteger) radial {
     return [windowController radial];
 }

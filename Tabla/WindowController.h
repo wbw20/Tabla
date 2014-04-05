@@ -13,7 +13,7 @@
 
 @property Profile *profile;
 
-- (void) addSound:(NSURL *)url;
+-(void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
 
 - (NSInteger) radial;
 - (void) setRadial:(NSInteger)radial;
