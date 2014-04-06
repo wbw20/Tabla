@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Sound : NSObject
+@interface Sound : NSSound
 
 @property NSString * name;
 @property NSURL * filepath;
 
-- (id) initWithPath:(NSURL*)path;
+- (id) initWithPath:(NSURL*)filepath;
 
 @end

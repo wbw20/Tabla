@@ -36,6 +36,10 @@
     [[self profile] addSound:url atRadial:radial andContentric:concentric];
 }
 
+- (BOOL)playSoundForRadial:(NSInteger)radial andConcentric:(NSInteger)concentric {
+    return [[[self profile] soundFor:radial andConcentric:concentric] play];
+}
+
 - (NSInteger) radial {
     return [[self profile] radial];
 }

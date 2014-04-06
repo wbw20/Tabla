@@ -10,9 +10,9 @@
 
 @implementation Sound
 
-- (id) initWithPath:(NSURL*)path {
-    if ([super init]) {
-        [self setFilepath:path];
+- (id) initWithPath:(NSURL*)filepath {
+    if ([super initWithContentsOfFile:[filepath path] byReference:YES]) {
+        // nothing for now
     }
 
     return self;

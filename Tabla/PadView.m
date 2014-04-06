@@ -32,8 +32,16 @@ NSInteger hoverRing = 0;
 }
 
 - (void) mouseUp:(NSEvent *)event {
-    NSLog(@"click");
-    
+    // get mouse location
+    NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
+    mouseLoc = [self convertPoint:mouseLoc fromView:nil];
+    mouseLoc.x -= 250;
+    mouseLoc.y -= 250;
+    // locate the corresponding zone
+    int concentric = [self getRing:mouseLoc];
+    int radial = [self getZone:mouseLoc];
+
+    [controller playSoundForRadial:radial andConcentric:concentric];
 }
 
 #pragma mark - Dragging Operations

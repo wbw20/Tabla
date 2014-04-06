@@ -21,7 +21,11 @@
     [sound play];
 }
 
--(void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric {
+- (BOOL)playSoundForRadial:(NSInteger)radial andConcentric:(NSInteger)concentric {
+    return [windowController playSoundForRadial:radial andConcentric:concentric];
+}
+
+- (void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric {
     [windowController addSound:url atRadial:radial andContentric:concentric];
 }
 
