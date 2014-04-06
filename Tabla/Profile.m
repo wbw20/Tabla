@@ -10,15 +10,13 @@
 
 @implementation Profile
 
-NSMutableArray *map;
-
 - (id) init {
     self = [super init];
     
     if (self) {
         [self setConcentric:1];
         [self setRadial:1];
-        map = [NSMutableArray alloc];
+        [self setSounds:[[NSMutableDictionary alloc] init]];
     }
     
     return self;
@@ -33,11 +31,7 @@ NSMutableArray *map;
 }
 
 -(void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric {
-    Sound *sound = [[Sound alloc] initWithPath:url];
-    
-    [self sounds][@([self hash:radial andConcentric:concentric])] = sound;
-    
-//    [[self sounds] insertValue:sound inPropertyWithKey:@([self hash:radial andConcentric:concentric])];
+    [self sounds][@([self hash:radial andConcentric:concentric])] = [[Sound alloc] initWithPath:url];
 }
 
 @end
