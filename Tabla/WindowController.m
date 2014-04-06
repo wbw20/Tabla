@@ -32,7 +32,7 @@
     return self;
 }
 
--(void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric {
+- (void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric {
     [[self profile] addSound:url atRadial:radial andContentric:concentric];
 }
 

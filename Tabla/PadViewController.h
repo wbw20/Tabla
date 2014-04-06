@@ -13,7 +13,7 @@
     IBOutlet WindowController *windowController;
 }
 
-- (void) addSound:(NSURL *)url;
+-(void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
 
 // I'm not a huge fan of this
 - (NSInteger) radial;

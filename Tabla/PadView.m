@@ -55,12 +55,12 @@ NSInteger hoverRing = 0;
         mouseLoc.x -= 250;
         mouseLoc.y -= 250;
         // locate the corresponding zone
-        int ring = [self getRing:mouseLoc];
-        int zone = [self getZone:mouseLoc];
-//        NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
-//        NSLog(@"Located in ring %d zone %d", ring, zone);
-        if(ring > 0 && zone > 0) {
-            [controller addSound:fileURL];
+        int concentric = [self getRing:mouseLoc];
+        int radial = [self getZone:mouseLoc];
+        NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
+        NSLog(@"Located in ring %d zone %d", concentric, radial);
+        if(concentric > 0 && radial > 0) {
+            [controller addSound:fileURL atRadial:radial andContentric:concentric];
             return YES;
         }
     }
