@@ -22,16 +22,16 @@
     return self;
 }
 
-- (NSSound*) soundFor:(NSNumber*)address {
-    return [self.sounds objectForKey:(address)];
-}
-
-- (NSInteger) hash:(NSInteger)radial andConcentric:(NSInteger)concentric {
-    return (1000 * radial) + concentric; // uniquely maps up to 1000 radial zones
+- (Sound*)soundFor:(NSInteger)radial andConcentric:(NSInteger)concentric {
+    return [self sounds][@([self hash:radial andConcentric:concentric])];
 }
 
 -(void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric {
     [self sounds][@([self hash:radial andConcentric:concentric])] = [[Sound alloc] initWithPath:url];
+}
+
+- (NSInteger) hash:(NSInteger)radial andConcentric:(NSInteger)concentric {
+    return (1000 * radial) + concentric; // uniquely maps up to 1000 radial zones
 }
 
 @end

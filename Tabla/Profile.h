@@ -16,6 +16,7 @@
 @property NSInteger concentric;
 @property (nonatomic, retain) NSMutableDictionary *sounds;
 
--(void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
+- (Sound*)soundFor:(NSInteger)radial andConcentric:(NSInteger)concentric;
+- (void) addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
 
 @end
