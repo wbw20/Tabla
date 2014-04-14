@@ -11,6 +11,8 @@
 
 @implementation WindowController
 
+static NSString *DATA_FOLDER = @"/Tabla";
+
 /*
  *  Default constructor uses a new profile
  */
@@ -19,6 +21,7 @@
 
     if ([super init]) {
         [self setProfile:model];
+        [self saveProfile:NULL];
     }
     
     return self;
@@ -54,6 +57,29 @@
 
 - (void) setConcentric:(NSInteger)concencric {
     [[self profile] setConcentric:concencric];
+}
+
+- (NSString*) findOrCreateDataFolder {
+    NSString *folder = [[NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+                        stringByAppendingString:DATA_FOLDER];
+    NSError *error;
+    
+    if(![[NSFileManager defaultManager] fileExistsAtPath:folder]) {
+        BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:&error];
+    }
+    
+    return folder;
+}
+
+- (void) saveProfile:(Profile*)profile {
+    NSError *error;
+    BOOL succeed = [@"testing" writeToFile:[[self findOrCreateDataFolder] stringByAppendingPathComponent:@"test.json"]
+                                atomically:YES encoding:NSUTF8StringEncoding error:&error];
+
+}
+
+- (Profile*) loadFromURL:(NSURL*)url {
+    return NULL;
 }
 
 @end
