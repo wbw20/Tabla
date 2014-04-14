@@ -18,4 +18,18 @@
     return self;
 }
 
+- (id) initWithString:(NSString *)json {
+    NSArray* values = [json componentsSeparatedByString:@":"];
+
+    if ([super initWithContentsOfFile:values[1] byReference:YES]) {
+        [self setName:values[0]];
+    }
+    
+    return self;
+}
+
+- (NSString*) toString {
+    return [NSString stringWithFormat:@"%@:%@", [self name], [[self filepath] path]];
+}
+
 @end

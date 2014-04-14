@@ -14,5 +14,7 @@
 @property NSURL * filepath;
 
 - (id) initWithPath:(NSURL*)filepath;
+- (id) initWithString:(NSString*)json;
+- (NSString*) toString;
 
 @end

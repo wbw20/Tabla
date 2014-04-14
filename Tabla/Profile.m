@@ -34,4 +34,20 @@
     return [NSString stringWithFormat:@"%ld", ((1000 * radial) + concentric)]; // uniquely maps up to 1000 radial zones
 }
 
+- (NSString*) json {
+    NSMutableDictionary* copy = [[self sounds] mutableCopy];
+    
+    for (NSString* key in copy) {
+        copy[key] = (Sound*)[copy[key]
+    }
+    
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self sounds] options:NSJSONWritingPrettyPrinted error:NULL];
+    
+    if (jsonData) {
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
+    
+    return NULL;
+}
+
 @end

@@ -18,5 +18,6 @@
 
 - (Sound*)soundFor:(NSInteger)radial andConcentric:(NSInteger)concentric;
 - (void) addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
+- (NSString*) json;
 
 @end

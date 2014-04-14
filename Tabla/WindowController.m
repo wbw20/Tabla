@@ -21,7 +21,6 @@ static NSString *DATA_FOLDER = @"/Tabla";
 
     if ([super init]) {
         [self setProfile:model];
-        [self saveProfile:NULL];
     }
     
     return self;
@@ -37,6 +36,7 @@ static NSString *DATA_FOLDER = @"/Tabla";
 
 - (void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric {
     [[self profile] addSound:url atRadial:radial andContentric:concentric];
+    [self saveProfile:[self profile]];
 }
 
 - (BOOL)playSoundForRadial:(NSInteger)radial andConcentric:(NSInteger)concentric {
@@ -59,23 +59,29 @@ static NSString *DATA_FOLDER = @"/Tabla";
     [[self profile] setConcentric:concencric];
 }
 
+/*
+ *  If ~/Library/Application Support/Tabla does not exist, it creates it and returns the name
+ */
 - (NSString*) findOrCreateDataFolder {
     NSString *folder = [[NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) objectAtIndex:0]
                         stringByAppendingString:DATA_FOLDER];
-    NSError *error;
     
     if(![[NSFileManager defaultManager] fileExistsAtPath:folder]) {
-        BOOL result = [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:&error];
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:&error];
+
+        if (error) {
+            return NULL;
+        }
     }
     
     return folder;
 }
 
-- (void) saveProfile:(Profile*)profile {
-    NSError *error;
-    BOOL succeed = [@"testing" writeToFile:[[self findOrCreateDataFolder] stringByAppendingPathComponent:@"test.json"]
-                                atomically:YES encoding:NSUTF8StringEncoding error:&error];
+- (BOOL) saveProfile:(Profile*)profile {
 
+    
+    return FALSE;
 }
 
 - (Profile*) loadFromURL:(NSURL*)url {
