@@ -35,10 +35,10 @@
 }
 
 - (NSString*) json {
-    NSMutableDictionary* copy = [[self sounds] mutableCopy];
+    NSMutableDictionary* copy = [[NSMutableDictionary alloc] init];
     
-    for (NSString* key in copy) {
-        copy[key] = (Sound*)[copy[key]
+    for (NSString* key in [self sounds]) {
+        copy[key] = [copy[key] toString];
     }
     
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self sounds] options:NSJSONWritingPrettyPrinted error:NULL];
