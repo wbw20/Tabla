@@ -756,21 +756,6 @@
                     </customView>
                 </subviews>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="54B0F449-867C-473E-9BF4-D89A40198B55" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Ohu-2T-hJj">
-                <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="e8f-Cd-nqf"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="ZmZ-EF-Gea"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="9TT-gW-TqW"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="33n-Au-qQj"/>
-                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="6KF-2j-FgL"/>
-                    <toolbarItem implicitItemIdentifier="2F109426-C0BD-4E51-A05C-29DBF3F811B5" label="UPLOAD" paletteLabel="Toolbar Item" tag="-1" image="upload" selectable="YES" id="8Pp-Yn-4lH" customClass="UplaodButton"/>
-                </allowedToolbarItems>
-                <defaultToolbarItems>
-                    <toolbarItem reference="6KF-2j-FgL"/>
-                    <toolbarItem reference="8Pp-Yn-4lH"/>
-                    <toolbarItem reference="33n-Au-qQj"/>
-                </defaultToolbarItems>
-            </toolbar>
         </window>
         <view id="SXA-OS-6Es">
             <rect key="frame" x="0.0" y="0.0" width="250" height="52"/>
@@ -807,6 +792,5 @@
     <resources>
         <image name="Concentric Icon" width="741.1199951171875" height="741.1199951171875"/>
         <image name="Radial Icon" width="733" height="741.5999755859375"/>
-        <image name="upload" width="371.51998901367188" height="197.75999450683594"/>
     </resources>
 </document>
