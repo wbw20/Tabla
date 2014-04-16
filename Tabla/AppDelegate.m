@@ -28,6 +28,18 @@
 	window.fullScreenButtonRightMargin = 7.0;
 	window.centerFullScreenButton = YES;
 	window.titleBarHeight = 55.0;
+    
+    //Draw the upload icon
+    NSView *titleBarView = window.titleBarView;
+	NSSize segmentSize = NSMakeSize(104, 25);
+	NSRect segmentFrame = NSMakeRect(NSMidX(titleBarView.bounds) - (segmentSize.width / 2.f),
+                                     NSMidY(titleBarView.bounds) - (segmentSize.height / 2.f),
+                                     segmentSize.width, segmentSize.height);
+    
+    NSImageView* upload = [[NSImageView alloc] initWithFrame:segmentFrame];
+    [upload setImage:[NSImage imageNamed:@"upload"]];
+    [titleBarView addSubview:upload];
+//    [segmentFrame add]
 }
 
 - (void) close {
