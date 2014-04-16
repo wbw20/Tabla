@@ -79,9 +79,8 @@ static NSString *DATA_FOLDER = @"/Tabla";
 }
 
 - (BOOL) saveProfile:(Profile*)profile {
-
-    
-    return FALSE;
+    return [[profile json] writeToFile:[[self findOrCreateDataFolder] stringByAppendingPathComponent:@"test.json"] atomically:YES
+                       encoding:NSUTF8StringEncoding error:NULL];
 }
 
 - (Profile*) loadFromURL:(NSURL*)url {

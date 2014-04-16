@@ -38,10 +38,10 @@
     NSMutableDictionary* copy = [[NSMutableDictionary alloc] init];
     
     for (NSString* key in [self sounds]) {
-        copy[key] = [copy[key] toString];
+        copy[key] = [[self sounds][key] toString];
     }
     
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self sounds] options:NSJSONWritingPrettyPrinted error:NULL];
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:copy options:NSJSONWritingPrettyPrinted error:NULL];
     
     if (jsonData) {
         return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
