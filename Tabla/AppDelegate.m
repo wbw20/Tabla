@@ -17,6 +17,12 @@
                                                  name:NSWindowWillCloseNotification
                                                object:window];
     
+    // The class of the window has been set in INAppStoreWindow in Interface Builder
+	window.trafficLightButtonsLeftMargin = 7.0;
+	window.fullScreenButtonRightMargin = 7.0;
+	window.centerFullScreenButton = YES;
+	window.titleBarHeight = 50.0;
+    
     
     SerialThread *thread = [[SerialThread alloc] init];
     [thread start];
