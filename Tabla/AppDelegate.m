@@ -37,7 +37,6 @@
     NSImageView* upload = [[NSImageView alloc] initWithFrame:segmentFrame];
     [upload setImage:[NSImage imageNamed:@"upload"]];
     [titleBarView addSubview:upload];
-//    [segmentFrame add]
 }
 
 - (void) close {
