@@ -10,8 +10,7 @@
 
 @implementation UploadButton
 
-- (id)initWithFrame:(NSRect)frame
-{
+- (id) initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self setImage:[NSImage imageNamed:@"upload"]];
@@ -19,11 +18,8 @@
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-	[super drawRect:dirtyRect];
-	
-    // Drawing code here.
+- (void) mouseDown:(NSEvent *)theEvent {
+    NSLog(@"testing");
 }
 
 @end
