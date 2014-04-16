@@ -36,7 +36,7 @@ static NSString *DATA_FOLDER = @"/Tabla";
 
 - (void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric {
     [[self profile] addSound:url atRadial:radial andContentric:concentric];
-    [self saveProfile:[self profile]];
+    [self saveProfile];
 }
 
 - (BOOL)playSoundForRadial:(NSInteger)radial andConcentric:(NSInteger)concentric {
@@ -78,12 +78,12 @@ static NSString *DATA_FOLDER = @"/Tabla";
     return folder;
 }
 
-- (BOOL) saveProfile:(Profile*)profile {
-    return [[profile json] writeToFile:[[self findOrCreateDataFolder] stringByAppendingPathComponent:@"test.json"] atomically:YES
+- (BOOL) saveProfile {
+    return [[[self profile] json] writeToFile:[[self findOrCreateDataFolder] stringByAppendingPathComponent:@"test.json"] atomically:YES
                        encoding:NSUTF8StringEncoding error:NULL];
 }
 
-- (Profile*) loadFromURL:(NSURL*)url {
+- loadFromURL:(NSURL*)url {
     return NULL;
 }
 

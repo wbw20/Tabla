@@ -22,7 +22,7 @@
 - (void) setConcentric:(NSInteger)concentric;
 
 /* save and load profiles */
-- (BOOL) saveProfile:(Profile*)profile;
-- (Profile*) loadFromURL:(NSURL*)url;
+- (BOOL) saveProfile;
+- loadFromURL:(NSURL*)url;
 
 @end
