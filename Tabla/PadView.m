@@ -135,7 +135,7 @@ NSInteger hoverRing = 0;
     CGContextClearRect(context, [self frame]);
 
     NSRect bounds = [self bounds];
-    [[NSColor whiteColor] set];
+    [[NSColor windowBackgroundColor] set];
     [NSBezierPath fillRect: bounds];
     [self drawZones];
 }
