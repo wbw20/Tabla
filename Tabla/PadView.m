@@ -20,14 +20,16 @@
 NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
 NSInteger hoverZone = 0;
 NSInteger hoverRing = 0;
+NSPoint center;
 
 - (id)initWithFrame:(NSRect)rect {
     if (![super initWithFrame:rect])
         return nil;
-    if(self) {
+    if (self)
         // register file URL drag type
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
-    }
+    // locate the center of the view
+    center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
     return self;
 }
 
@@ -35,12 +37,9 @@ NSInteger hoverRing = 0;
     // get mouse location
     NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
     mouseLoc = [self convertPoint:mouseLoc fromView:nil];
-    mouseLoc.x -= 250;
-    mouseLoc.y -= 250;
     // locate the corresponding zone
     int concentric = [self getRing:mouseLoc];
     int radial = [self getZone:mouseLoc];
-
     [controller playSoundForRadial:radial andConcentric:concentric];
 }
 
@@ -50,8 +49,7 @@ NSInteger hoverRing = 0;
     return NSDragOperationCopy;
 }
 
--(void) draggingExited:(id<NSDraggingInfo>)sender {
-}
+-(void) draggingExited:(id<NSDraggingInfo>)sender { }
 
 - (BOOL)performDragOperation:(id<NSDraggingInfo>)sender
 {
@@ -60,8 +58,6 @@ NSInteger hoverRing = 0;
         // get mouse location
         NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
         mouseLoc = [self convertPoint:mouseLoc fromView:nil];
-        mouseLoc.x -= 250;
-        mouseLoc.y -= 250;
         // locate the corresponding zone
         int concentric = [self getRing:mouseLoc];
         int radial = [self getZone:mouseLoc];
@@ -76,6 +72,8 @@ NSInteger hoverRing = 0;
 }
 
 -(int)getRing:(NSPoint)loc {
+    loc.x -= center.x;
+    loc.y -= center.y;
     float r = sqrt(pow(loc.x, 2) + pow(loc.y, 2));
     float ringSize = [self radius] / [controller concentric];
     int ringNum = floor(r / ringSize);
@@ -86,6 +84,8 @@ NSInteger hoverRing = 0;
 }
 
 -(int)getZone:(NSPoint)loc {
+    loc.x -= center.x;
+    loc.y -= center.y;
     float rad = atanf(loc.y / loc.x);
     if(loc.x < 0) rad += M_PI;
     else if(loc.x > 0 && loc.y < 0) rad += 2.0f * M_PI;
@@ -112,18 +112,16 @@ NSInteger hoverRing = 0;
 
 - (void)mouseMoved:(NSEvent *)e {
     NSPoint loc = [self convertPoint:[e locationInWindow] fromView:nil];
-    loc.x -= 250;
-    loc.y -= 250;
     int r = [self getRing:loc];
     int z = [self getZone:loc];
     if(r != hoverRing || z != hoverZone) {
-//        if(hoverRing != 0 && hoverZone != 0 && (r == 0 || z == 0))
-//            NSLog(@"-(r:%ld, z:%ld)", (long) hoverRing, (long) hoverZone);
-//        else if(r > 0 && z > 0)
-//            NSLog(@"+(r:%d, z:%d)", r, z);
+        if(hoverRing != 0 && hoverZone != 0 && (r == 0 || z == 0))
+            NSLog(@"-(r:%ld, z:%ld)", (long) hoverRing, (long) hoverZone);
+        else if(r > 0 && z > 0)
+            NSLog(@"+(r:%d, z:%d)", r, z);
         hoverRing = r;
         hoverZone = z;
-//        [self setNeedsDisplay:YES];
+        [self setNeedsDisplay:YES];
     }
 }
 
@@ -149,7 +147,10 @@ NSInteger hoverRing = 0;
  **/
 - (void)drawZones {
     // draw innermost zone
-    [[NSColor grayColor] setStroke];
+    if(hoverRing == 1)
+        [[NSColor redColor] setStroke];
+    else
+        [[NSColor grayColor] setStroke];
     [self drawArcFrom:0.0f to:2*M_PI withRadius:[self getRadiusFor:(1)]];
     
     // draw zones
@@ -157,6 +158,11 @@ NSInteger hoverRing = 0;
         float start = 0.0f;
         int zone = 1; float end;
         while (start < 2 * M_PI - [self arcTrim]) {
+            if(hoverRing == ring && hoverZone == zone)
+                [[NSColor redColor] setStroke];
+            else
+                [[NSColor grayColor] setStroke];
+            
             if ([controller radial] == 1) {
                 end = 2 * M_PI;
             } else {
@@ -178,7 +184,6 @@ NSInteger hoverRing = 0;
  *  Draws an arc from a start radian to an end radian
  **/
 - (void)drawArcFrom:(float)start to:(float)end withRadius:(float)radius {
-    NSPoint center = [self center];
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
     
@@ -215,7 +220,7 @@ NSInteger hoverRing = 0;
  *  start with 0 and go from the inside out.
  **/
 - (float)getRadiusFor:(int)index {
-    int rings = [controller concentric] == 0 ? 1: [controller concentric];
+    NSInteger rings = [controller concentric] == 0 ? 1: [controller concentric];
     float width = [self radius] / rings; // the width of a ring
     return width * (index);
 }
@@ -228,8 +233,8 @@ NSInteger hoverRing = 0;
 
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
-    Circle *inner = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone - 1)] + KERF];
-    Circle *outer = [[Circle alloc] initWithCenter:[self center] andRadius:[self getRadiusFor:(zone)]];
+    Circle *inner = [[Circle alloc] initWithCenter:center andRadius:[self getRadiusFor:(zone - 1)] + KERF];
+    Circle *outer = [[Circle alloc] initWithCenter:center andRadius:[self getRadiusFor:(zone)]];
 
     CGPoint right[] = {[inner pointOnCircleFor:(radial)], [outer pointOnCircleFor:(radial)]};
     CGContextAddLines(context, right, 2);
@@ -241,15 +246,6 @@ NSInteger hoverRing = 0;
  **/
 - (float)linelength {
     return ([self radius] / [controller radial]) - 2 * KERF;
-}
-
-/**
- *  Returns the center of the view
- **/
-- (NSPoint)center
-{
-    return CGPointMake(((self.frame.size.width / 2)),
-                       (self.frame.origin.y + (self.frame.size.height / 2)));
 }
 
 @end

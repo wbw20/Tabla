@@ -16,7 +16,6 @@
     NSTrackingArea *trackingArea;
 }
 
-- (NSPoint)center;
 - (void)redraw;
 
 @end

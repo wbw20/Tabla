@@ -13,7 +13,6 @@
 @interface CounterView : NSImageView
     @property IBOutlet WindowController *controller;
     @property (nonatomic, retain) IBOutlet NSTextField* label;
-
     - (void) up;
     - (void) down;
 @end

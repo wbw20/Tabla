@@ -74,6 +74,10 @@ static void initialize_navigationBarImages() {
     [[self label] setStringValue:@(value).stringValue];
 }
 
+- (void)up {}
+
+- (void)down {}
+
 @end
 
 @interface RadialCounterView : CounterView
@@ -84,7 +88,6 @@ static void initialize_navigationBarImages() {
 
 - (void)up {
     if ([[super controller] radial] >= RADIAL_UPPER_BOUND) { return; } // bounds check
-    int x = [[super controller] radial];
     [[super controller] setRadial:[[super controller] radial] + 1];
     [super displayValue:[[super controller] radial]];
     [[self pad] redraw];
