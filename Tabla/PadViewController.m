@@ -11,16 +11,6 @@
 
 @implementation PadViewController
 
-/**
- *  Responds to click events
- */
-- (void)test {
-    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"tom1" ofType:@"aif"];
-    NSSound *sound = [[NSSound alloc] initWithContentsOfFile:resourcePath byReference:YES];
-    
-    [sound play];
-}
-
 - (BOOL)playSoundForRadial:(NSInteger)radial andConcentric:(NSInteger)concentric {
     return [windowController playSoundForRadial:radial andConcentric:concentric];
 }
