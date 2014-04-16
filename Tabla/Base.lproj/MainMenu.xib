@@ -652,19 +652,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="800" height="548"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dj9-D3-JYN" customClass="SoundView">
-                        <rect key="frame" x="7" y="7" width="251" height="533"/>
+                    <scrollView fixedFrame="YES" borderType="groove" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dj9-D3-JYN" customClass="SoundView">
+                        <rect key="frame" x="13" y="14" width="245" height="521"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" ambiguous="YES" misplaced="YES" id="Wf6-ew-dkD">
-                            <rect key="frame" x="1" y="1" width="249" height="531"/>
+                            <rect key="frame" x="2" y="2" width="241" height="517"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <collectionView ambiguous="YES" id="dB4-BB-54S">
-                                    <rect key="frame" x="0.0" y="0.0" width="249" height="531"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="241" height="517"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </collectionView>
                             </subviews>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Stl-c4-2TM">
                             <rect key="frame" x="1" y="144" width="233" height="15"/>
@@ -703,7 +704,7 @@
                                 </connections>
                             </imageView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QIi-lh-W42" customClass="DownView">
-                                <rect key="frame" x="400" y="470" width="24" height="20"/>
+                                <rect key="frame" x="400" y="470" width="25" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <outlet property="parent" destination="hEg-RK-GmA" id="AZD-AW-fWH"/>
