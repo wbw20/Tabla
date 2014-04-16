@@ -27,7 +27,7 @@
     window.centerTrafficLightButtons = FALSE;
 	window.fullScreenButtonRightMargin = 7.0;
 	window.centerFullScreenButton = YES;
-	window.titleBarHeight = 50.0;
+	window.titleBarHeight = 55.0;
 }
 
 - (void) close {
