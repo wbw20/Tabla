@@ -16,17 +16,18 @@
                                              selector:@selector(close)
                                                  name:NSWindowWillCloseNotification
                                                object:window];
+    [self setupToolbar];
     
-    // The class of the window has been set in INAppStoreWindow in Interface Builder
-	window.trafficLightButtonsLeftMargin = 7.0;
+    SerialThread *thread = [[SerialThread alloc] init];
+    [thread start];
+}
+
+- (void) setupToolbar {
+    window.trafficLightButtonsLeftMargin = 7.0;
     window.centerTrafficLightButtons = FALSE;
 	window.fullScreenButtonRightMargin = 7.0;
 	window.centerFullScreenButton = YES;
 	window.titleBarHeight = 50.0;
-    
-    
-    SerialThread *thread = [[SerialThread alloc] init];
-    [thread start];
 }
 
 - (void) close {
