@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BE228C7A18FEE7B400BBF265 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = BE228C7718FEE7B400BBF265 /* INAppStoreWindow.m */; };
 		BE228C7B18FEE7B400BBF265 /* INWindowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BE228C7918FEE7B400BBF265 /* INWindowButton.m */; };
+		BE228C8218FF4EF700BBF265 /* UploadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BE228C8118FF4EF700BBF265 /* UploadButton.m */; };
 		BE26B4C318C3F048008FF722 /* SoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26B4C218C3F048008FF722 /* SoundView.m */; };
 		BE2CD57118E0D0CC00490820 /* CounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CD57018E0D0CC00490820 /* CounterView.m */; };
 		BE52D77718C327C4008C3C81 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52D77618C327C4008C3C81 /* Sound.m */; };
@@ -53,6 +54,8 @@
 		BE228C7718FEE7B400BBF265 /* INAppStoreWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INAppStoreWindow.m; sourceTree = "<group>"; };
 		BE228C7818FEE7B400BBF265 /* INWindowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INWindowButton.h; sourceTree = "<group>"; };
 		BE228C7918FEE7B400BBF265 /* INWindowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INWindowButton.m; sourceTree = "<group>"; };
+		BE228C8018FF4EF700BBF265 /* UploadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadButton.h; sourceTree = "<group>"; };
+		BE228C8118FF4EF700BBF265 /* UploadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadButton.m; sourceTree = "<group>"; };
 		BE26B4C118C3F048008FF722 /* SoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundView.h; sourceTree = "<group>"; };
 		BE26B4C218C3F048008FF722 /* SoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundView.m; sourceTree = "<group>"; };
 		BE2CD56F18E0D0CC00490820 /* CounterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounterView.h; sourceTree = "<group>"; };
@@ -140,6 +143,15 @@
 			path = INAppStoreWindow;
 			sourceTree = "<group>";
 		};
+		BE228C7F18FF4ED600BBF265 /* toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				BE228C8018FF4EF700BBF265 /* UploadButton.h */,
+				BE228C8118FF4EF700BBF265 /* UploadButton.m */,
+			);
+			name = toolbar;
+			sourceTree = "<group>";
+		};
 		BE52D77418C321AA008C3C81 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +166,7 @@
 		BE7F1EDB18A48B3100F5567E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BE228C7F18FF4ED600BBF265 /* toolbar */,
 				BE7F1ED818A481E500F5567E /* PadView.h */,
 				BE7F1ED918A481E500F5567E /* PadView.m */,
 				BE26B4C118C3F048008FF722 /* SoundView.h */,
@@ -458,6 +471,7 @@
 				BE7F1EDF18A48B6300F5567E /* PadViewController.m in Sources */,
 				BE26B4C318C3F048008FF722 /* SoundView.m in Sources */,
 				BEC07105189C541D00505F7D /* main.m in Sources */,
+				BE228C8218FF4EF700BBF265 /* UploadButton.m in Sources */,
 				BE7F1EDA18A481E500F5567E /* PadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

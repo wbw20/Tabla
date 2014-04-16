@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SerialThread.h"
+#import "UploadButton.h"
 
 @implementation AppDelegate
 
@@ -34,8 +35,8 @@
 	NSSize segmentSize = NSMakeSize(40, 40);
 	NSRect segmentFrame = NSMakeRect(titleBarView.bounds.size.width - (segmentSize.width + 10.0), NSMidY(titleBarView.bounds) - (segmentSize.height / 2.f), segmentSize.width, segmentSize.height);
     
-    NSImageView* upload = [[NSImageView alloc] initWithFrame:segmentFrame];
-    [upload setImage:[NSImage imageNamed:@"upload"]];
+    UploadButton* upload = [[UploadButton alloc] initWithFrame:segmentFrame];
+    
     [titleBarView addSubview:upload];
 }
 
