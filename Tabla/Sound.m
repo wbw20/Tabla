@@ -12,7 +12,8 @@
 
 - (id) initWithPath:(NSURL*)filepath {
     if ([super initWithContentsOfFile:[filepath path] byReference:YES]) {
-        // nothing for now
+        [self setFilepath:filepath];
+        [self setName:[filepath path]];
     }
 
     return self;
