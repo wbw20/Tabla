@@ -16,7 +16,6 @@
 		BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED418A47C0100F5567E /* RadialLayer.m */; };
 		BE7F1EDA18A481E500F5567E /* PadView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED918A481E500F5567E /* PadView.m */; };
 		BE7F1EDF18A48B6300F5567E /* PadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1EDE18A48B6300F5567E /* PadViewController.m */; };
-		BEAE962818E0A6A200F56944 /* Window.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAE962718E0A6A200F56944 /* Window.m */; };
 		BEC070F9189C541D00505F7D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC070F8189C541D00505F7D /* Cocoa.framework */; };
 		BEC07103189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC07101189C541D00505F7D /* InfoPlist.strings */; };
 		BEC07105189C541D00505F7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07104189C541D00505F7D /* main.m */; };
@@ -37,7 +36,6 @@
 		BEEDCBB918B134F200B5D047 /* LineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB818B134F200B5D047 /* LineTests.m */; };
 		BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBBC18B15C5300B5D047 /* Circle.m */; };
 		BEEDCBC018B15D1800B5D047 /* CircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBBF18B15D1800B5D047 /* CircleTests.m */; };
-		BEF7FEA618FEDFD000F2F4A8 /* UplaodButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF7FEA518FEDFD000F2F4A8 /* UplaodButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,8 +66,6 @@
 		BE7F1ED918A481E500F5567E /* PadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadView.m; sourceTree = "<group>"; };
 		BE7F1EDD18A48B6300F5567E /* PadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadViewController.h; sourceTree = "<group>"; };
 		BE7F1EDE18A48B6300F5567E /* PadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadViewController.m; sourceTree = "<group>"; };
-		BEAE962618E0A6A200F56944 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
-		BEAE962718E0A6A200F56944 /* Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Window.m; sourceTree = "<group>"; };
 		BEB2F1DE18DD0E4000443F79 /* tom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = tom1.aif; sourceTree = "<group>"; };
 		BEC070F5189C541D00505F7D /* Tabla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tabla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC070F8189C541D00505F7D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -109,8 +105,6 @@
 		BEEDCBBC18B15C5300B5D047 /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Circle.m; sourceTree = "<group>"; };
 		BEEDCBBE18B15D1800B5D047 /* CircleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTests.h; sourceTree = "<group>"; };
 		BEEDCBBF18B15D1800B5D047 /* CircleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTests.m; sourceTree = "<group>"; };
-		BEF7FEA418FEDFD000F2F4A8 /* UplaodButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UplaodButton.h; sourceTree = "<group>"; };
-		BEF7FEA518FEDFD000F2F4A8 /* UplaodButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UplaodButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,13 +154,10 @@
 		BE7F1EDB18A48B3100F5567E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BEF7FEA318FEDFAA00F2F4A8 /* toolbar */,
 				BE7F1ED818A481E500F5567E /* PadView.h */,
 				BE7F1ED918A481E500F5567E /* PadView.m */,
 				BE26B4C118C3F048008FF722 /* SoundView.h */,
 				BE26B4C218C3F048008FF722 /* SoundView.m */,
-				BEAE962618E0A6A200F56944 /* Window.h */,
-				BEAE962718E0A6A200F56944 /* Window.m */,
 				BE2CD56F18E0D0CC00490820 /* CounterView.h */,
 				BE2CD57018E0D0CC00490820 /* CounterView.m */,
 			);
@@ -353,15 +344,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		BEF7FEA318FEDFAA00F2F4A8 /* toolbar */ = {
-			isa = PBXGroup;
-			children = (
-				BEF7FEA418FEDFD000F2F4A8 /* UplaodButton.h */,
-				BEF7FEA518FEDFD000F2F4A8 /* UplaodButton.m */,
-			);
-			name = toolbar;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -464,7 +446,6 @@
 				BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */,
 				BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */,
 				BEEB251518C94817000DB2D5 /* Profile.m in Sources */,
-				BEF7FEA618FEDFD000F2F4A8 /* UplaodButton.m in Sources */,
 				BEEB252018C9483A000DB2D5 /* SerialThread.m in Sources */,
 				BEEDCBB618B1270900B5D047 /* Line.m in Sources */,
 				BE228C7B18FEE7B400BBF265 /* INWindowButton.m in Sources */,
@@ -474,7 +455,6 @@
 				BED9544118ED6020001337AE /* WindowController.m in Sources */,
 				BE52D77718C327C4008C3C81 /* Sound.m in Sources */,
 				BE228C7A18FEE7B400BBF265 /* INAppStoreWindow.m in Sources */,
-				BEAE962818E0A6A200F56944 /* Window.m in Sources */,
 				BE7F1EDF18A48B6300F5567E /* PadViewController.m in Sources */,
 				BE26B4C318C3F048008FF722 /* SoundView.m in Sources */,
 				BEC07105189C541D00505F7D /* main.m in Sources */,
