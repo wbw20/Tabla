@@ -31,10 +31,8 @@
     
     //Draw the upload icon
     NSView *titleBarView = window.titleBarView;
-	NSSize segmentSize = NSMakeSize(104, 25);
-	NSRect segmentFrame = NSMakeRect(NSMidX(titleBarView.bounds) - (segmentSize.width / 2.f),
-                                     NSMidY(titleBarView.bounds) - (segmentSize.height / 2.f),
-                                     segmentSize.width, segmentSize.height);
+	NSSize segmentSize = NSMakeSize(40, 40);
+	NSRect segmentFrame = NSMakeRect(titleBarView.bounds.size.width - (segmentSize.width + 10.0), NSMidY(titleBarView.bounds) - (segmentSize.height / 2.f), segmentSize.width, segmentSize.height);
     
     NSImageView* upload = [[NSImageView alloc] initWithFrame:segmentFrame];
     [upload setImage:[NSImage imageNamed:@"upload"]];
