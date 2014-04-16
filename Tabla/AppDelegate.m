@@ -19,6 +19,7 @@
     
     // The class of the window has been set in INAppStoreWindow in Interface Builder
 	window.trafficLightButtonsLeftMargin = 7.0;
+    window.centerTrafficLightButtons = FALSE;
 	window.fullScreenButtonRightMargin = 7.0;
 	window.centerFullScreenButton = YES;
 	window.titleBarHeight = 50.0;
