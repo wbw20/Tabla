@@ -14,11 +14,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setImage:[NSImage imageNamed:@"upload"]];
+        
+        
+//        [aCursor setOnMouseEntered:YES];
     }
     return self;
 }
 
 - (void) mouseDown:(NSEvent *)theEvent {
+    [self addCursorRect:self.bounds cursor:[NSCursor pointingHandCursor]];
     NSLog(@"testing");
 }
 
