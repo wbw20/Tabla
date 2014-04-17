@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface UploadButton : NSImageView
+@interface UploadButton : NSImageView {
+    NSTrackingArea* area;
+}
 
 @end
