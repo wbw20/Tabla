@@ -15,6 +15,7 @@
     if (self) {
         [self setImage:[NSImage imageNamed:@"upload"]];
     }
+
     return self;
 }
 
