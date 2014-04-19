@@ -20,6 +20,7 @@
 NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
 NSInteger hoverZone = 0;
 NSInteger hoverRing = 0;
+NSInteger maxRadius;
 NSPoint center;
 
 - (id)initWithFrame:(NSRect)rect {
@@ -28,6 +29,8 @@ NSPoint center;
     if (self)
         // register file URL drag type
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
+    // set the radius of the entire pad
+    maxRadius = self.frame.size.width * .4;
     // locate the center of the view
     center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
     return self;
@@ -146,38 +149,35 @@ NSPoint center;
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
-    // draw innermost zone
-    if(hoverRing == 1)
-        [[NSColor redColor] setStroke];
-    else
-        [[NSColor grayColor] setStroke];
-    [self drawArcFrom:0.0f to:2*M_PI withRadius:[self getRadiusFor:(1)]];
-    
-    // draw zones
-    for (int ring = 2; ring <= [controller concentric]; ring++) {
-        float start = 0.0f;
-        int zone = 1; float end;
-        while (start < 2 * M_PI - [self arcTrim]) {
-            if(hoverRing == ring && hoverZone == zone)
-                [[NSColor redColor] setStroke];
-            else
-                [[NSColor grayColor] setStroke];
-            
-            if ([controller radial] == 1) {
-                end = 2 * M_PI;
-            } else {
-                start += [self arcTrim];
-                end = start + [self arclength];
-                [self drawLineFor:(start) andZone:ring];
-                [self drawLineFor:(end) andZone:ring];
-            }
-
-            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(ring -1)] + KERF];
-            [self drawArcFrom:start to:end withRadius:[self getRadiusFor:(ring)]];
-            start = end + [self arcTrim];
-            zone++;
+    for(int concentric = 2; concentric <= controller.concentric; concentric++) {
+        for(int radial = 1; radial <= controller.radial; radial++) {
+            [self drawZoneAtConcentric:concentric Radial:radial];
         }
     }
+}
+
+- (void)drawZoneAtConcentric:(int)c Radial:(int)r {
+    // get the current graphics context
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    
+    [[NSColor blueColor] setFill];
+    CGContextSetLineWidth(context, 2);
+    // radius of this zone
+    float rd = maxRadius / controller.concentric;
+    float r1 = rd * (c - 1) + 5;
+    float r2 = rd * c;
+    // angle in radians
+    float theta =  2 * M_PI / controller.radial;
+    float theta1 = theta * (r - 1);
+    float theta2 = theta * r;
+    if(controller.radial > 1) theta2 -= 0.05;
+    
+    NSLog(@"Arc from %f to %f", theta1, theta2);
+    
+    CGContextAddArc(context, center.x, center.y, r1, theta1, theta2, 0);
+    CGContextAddArc(context, center.x, center.y, r2, theta2, theta1, 1);
+    CGContextClosePath(context);
+    CGContextFillPath(context);
 }
 
 /**
@@ -186,7 +186,6 @@ NSPoint center;
 - (void)drawArcFrom:(float)start to:(float)end withRadius:(float)radius {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextSetLineWidth(context, 2);
-    
     CGContextAddArc(context, center.x, center.y, radius, start, end, 0);
     CGContextStrokePath(context);
 }
