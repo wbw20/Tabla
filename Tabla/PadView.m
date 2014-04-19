@@ -12,7 +12,7 @@
 #import "Circle.h"
 #import "PadView.h"
 
-#define KERF 8.0f
+#define KERF 2.0f
 
 @implementation PadView
 
@@ -36,7 +36,7 @@ NSPoint center;
     return self;
 }
 
-- (void) mouseUp:(NSEvent *)event {
+- (void)mouseUp:(NSEvent *)event {
     // get mouse location
     NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
     mouseLoc = [self convertPoint:mouseLoc fromView:nil];
@@ -48,11 +48,11 @@ NSPoint center;
 
 #pragma mark - Dragging Operations
 
--(NSDragOperation) draggingEntered:(id<NSDraggingInfo>)sender {
+- (NSDragOperation)draggingEntered:(id<NSDraggingInfo>)sender {
     return NSDragOperationCopy;
 }
 
--(void) draggingExited:(id<NSDraggingInfo>)sender { }
+- (void)draggingExited:(id<NSDraggingInfo>)sender { }
 
 - (BOOL)performDragOperation:(id<NSDraggingInfo>)sender
 {
@@ -74,11 +74,11 @@ NSPoint center;
     return NO;
 }
 
--(int)getRing:(NSPoint)loc {
+- (int)getRing:(NSPoint)loc {
     loc.x -= center.x;
     loc.y -= center.y;
     float r = sqrt(pow(loc.x, 2) + pow(loc.y, 2));
-    float ringSize = [self radius] / [controller concentric];
+    float ringSize = maxRadius / [controller concentric];
     int ringNum = floor(r / ringSize);
     float ringMod = r - (ringNum * ringSize);
     if(ringNum == 0 || (ringMod >= KERF && ringNum < [controller concentric]))
@@ -86,7 +86,7 @@ NSPoint center;
     return 0;
 }
 
--(int)getZone:(NSPoint)loc {
+- (int)getZone:(NSPoint)loc {
     loc.x -= center.x;
     loc.y -= center.y;
     float rad = atanf(loc.y / loc.x);
@@ -94,8 +94,8 @@ NSPoint center;
     else if(loc.x > 0 && loc.y < 0) rad += 2.0f * M_PI;
     float zoneSize = 2.0f * M_PI / [controller radial];
     int zoneNum = floor(rad / zoneSize);
-    float zoneMod = rad - (zoneNum * zoneSize);
-    if(zoneMod >= [self arcTrim] && zoneMod <= [self arcTrim] + [self arclength])
+//    float zoneMod = rad - (zoneNum * zoneSize);
+//    if(zoneMod >= [self arcTrim] && zoneMod <= [self arcTrim] + [self arclength])
         return zoneNum + 1;
     return 0;
 }
@@ -149,6 +149,7 @@ NSPoint center;
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
+    [self drawCenterZone];
     for(int concentric = 2; concentric <= controller.concentric; concentric++) {
         for(int radial = 1; radial <= controller.radial; radial++) {
             [self drawZoneAtConcentric:concentric Radial:radial];
@@ -156,95 +157,46 @@ NSPoint center;
     }
 }
 
+- (void)drawCenterZone {
+    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
+    
+    if(hoverRing == 1 && hoverZone == 1)
+        [[NSColor blueColor] setFill];
+    else
+        [[NSColor colorWithWhite:0.5 alpha:1] setFill];
+    
+    float r1 = maxRadius / controller.concentric;
+    CGContextAddArc(context, center.x, center.y, r1, 0, 2 * M_PI, 0);
+    CGContextFillPath(context);
+}
+
 - (void)drawZoneAtConcentric:(int)c Radial:(int)r {
     // get the current graphics context
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     
-    [[NSColor blueColor] setFill];
-    CGContextSetLineWidth(context, 2);
+    if(hoverRing == c && hoverZone == r)
+        [[NSColor blueColor] setFill];
+    else
+        [[NSColor colorWithWhite:0.5 alpha:1] setFill];
+    
     // radius of this zone
     float rd = maxRadius / controller.concentric;
-    float r1 = rd * (c - 1) + 5;
+    float r1 = rd * (c - 1) + KERF * 2;
     float r2 = rd * c;
     // angle in radians
     float theta =  2 * M_PI / controller.radial;
     float theta1 = theta * (r - 1);
     float theta2 = theta * r;
-    if(controller.radial > 1) theta2 -= 0.05;
     
-    NSLog(@"Arc from %f to %f", theta1, theta2);
+    float r1theta = controller.radial > 1 ? atanf(KERF / r1) : 0;
+    float r2theta = controller.radial > 1 ? atanf(KERF / r2) : 0;
     
-    CGContextAddArc(context, center.x, center.y, r1, theta1, theta2, 0);
-    CGContextAddArc(context, center.x, center.y, r2, theta2, theta1, 1);
+    CGContextAddArc(context, center.x, center.y, r1,
+                    theta1 + r1theta, theta2 - r1theta, 0);
+    CGContextAddArc(context, center.x, center.y, r2,
+                    theta2 - r2theta, theta1 + r2theta, 1);
     CGContextClosePath(context);
     CGContextFillPath(context);
-}
-
-/**
- *  Draws an arc from a start radian to an end radian
- **/
-- (void)drawArcFrom:(float)start to:(float)end withRadius:(float)radius {
-    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    CGContextSetLineWidth(context, 2);
-    CGContextAddArc(context, center.x, center.y, radius, start, end, 0);
-    CGContextStrokePath(context);
-}
-
-/**
- *  Get the arclength in radians for any zone
- **/
-- (float)arclength {
-    float arc = 2.0f*M_PI/[controller radial];
-    
-    //we will remove some of the arc to account for the rounded corners
-    return arc - 2*[self arcTrim];
-}
-
-/**
- *  Return the amount of arc to trim for a given rounded corner
- **/
-- (float)arcTrim {
-    return asinf(KERF/[self radius]);
-}
-
-/*
- *  Get global radius
- **/
-- (float)radius {
-    return [self frame].size.width * 0.4;
-}
-
-/**
- *  Return the radius for concentric circle with a given index.  Indexes
- *  start with 0 and go from the inside out.
- **/
-- (float)getRadiusFor:(int)index {
-    NSInteger rings = [controller concentric] == 0 ? 1: [controller concentric];
-    float width = [self radius] / rings; // the width of a ring
-    return width * (index);
-}
-
-/**
- *  Draws a line for a concentric zone at a given radial mark
- **/
-- (void)drawLineFor:(float)radial andZone:(int)zone {
-    if (zone == 1) return; // innermost circle has no radial lines
-
-    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    CGContextSetLineWidth(context, 2);
-    Circle *inner = [[Circle alloc] initWithCenter:center andRadius:[self getRadiusFor:(zone - 1)] + KERF];
-    Circle *outer = [[Circle alloc] initWithCenter:center andRadius:[self getRadiusFor:(zone)]];
-
-    CGPoint right[] = {[inner pointOnCircleFor:(radial)], [outer pointOnCircleFor:(radial)]};
-    CGContextAddLines(context, right, 2);
-    CGContextStrokePath(context);
-}
-
-/**
- *  Finds the line length for any zone
- **/
-- (float)linelength {
-    return ([self radius] / [controller radial]) - 2 * KERF;
 }
 
 @end
