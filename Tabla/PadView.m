@@ -18,27 +18,49 @@
 
 //@TODO: move state to controller
 NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
+NSInteger concentric = 1;
+NSInteger radial = 1;
 NSInteger hoverZone = 0;
 NSInteger hoverRing = 0;
-NSInteger maxRadius;
-NSPoint center;
+
+NSInteger maxRadius;            // maximum radius of the entire pad
+NSPoint center;                 // center coordinate of the view
+float rd;                       // radial width of each zone
+float theta;                    // angle of each zone
 
 - (id)initWithFrame:(NSRect)rect {
-    if (![super initWithFrame:rect])
-        return nil;
-    // register file URL drag type
-    [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
-    [[NSNotificationCenter defaultCenter]
-     addObserverForName:@"UpdateRadialNotification"
-     object:nil
-     queue:nil
-     usingBlock:^(NSNotification *note) {
-         NSLog(@"Radial Updated!");
-     }];
+    if (![super initWithFrame:rect]) return nil;
+
     // set the radius of the entire pad
     maxRadius = self.frame.size.width * .4;
     // locate the center of the view
     center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
+    
+    // execute when radial is updated
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"UpdateRadial"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         theta = 2 * M_PI / radial;
+         [self setNeedsDisplay:YES];
+     }];
+    
+    // execute when concentric is updated
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"UpdateConcentric"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         rd = maxRadius / concentric;
+         [self setNeedsDisplay:YES];
+     }];
+    
+    // register file URL drag type
+    [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
+    
     return self;
 }
 
@@ -47,8 +69,8 @@ NSPoint center;
     NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
     mouseLoc = [self convertPoint:mouseLoc fromView:nil];
     // locate the corresponding zone
-    int concentric = [self getRing:mouseLoc];
-    int radial = [self getZone:mouseLoc];
+    int concentric = [self getConcentric:mouseLoc];
+    int radial = [self getRadial:mouseLoc];
     [controller playSoundForRadial:radial andConcentric:concentric];
 }
 
@@ -68,8 +90,8 @@ NSPoint center;
         NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
         mouseLoc = [self convertPoint:mouseLoc fromView:nil];
         // locate the corresponding zone
-        int concentric = [self getRing:mouseLoc];
-        int radial = [self getZone:mouseLoc];
+        int concentric = [self getConcentric:mouseLoc];
+        int radial = [self getRadial:mouseLoc];
         NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
         NSLog(@"Located in ring %d zone %d", concentric, radial);
         if(concentric > 0 && radial > 0) {
@@ -80,29 +102,46 @@ NSPoint center;
     return NO;
 }
 
-- (int)getRing:(NSPoint)loc {
+#pragma mark - Hit Tests
+
+// returns the concentric index of loc, or 0 if it's not in a zone
+- (int)getConcentric:(NSPoint)loc {
+    // translate center of view to 0,0
     loc.x -= center.x;
     loc.y -= center.y;
+    // convert to circular radius
     float r = sqrt(pow(loc.x, 2) + pow(loc.y, 2));
-    float ringSize = maxRadius / [controller concentric];
-    int ringNum = floor(r / ringSize);
-    float ringMod = r - (ringNum * ringSize);
-    if(ringNum == 0 || (ringMod >= KERF && ringNum < [controller concentric]))
-        return ringNum + 1;
+    // get the concentric zone index
+    int cIndex = floor(r / rd);
+    // get distance from inner edge
+    float d = r - cIndex * rd;
+    // exact boundary test
+    if(cIndex == 0 || (d >= KERF && cIndex < concentric))
+        return cIndex + 1;
     return 0;
 }
 
-- (int)getZone:(NSPoint)loc {
+// returns the radial index of loc, or 0 if it's not in a zone
+- (int)getRadial:(NSPoint)loc {
+    // translate center of view to 0,0
     loc.x -= center.x;
     loc.y -= center.y;
-    float rad = atanf(loc.y / loc.x);
-    if(loc.x < 0) rad += M_PI;
-    else if(loc.x > 0 && loc.y < 0) rad += 2.0f * M_PI;
-    float zoneSize = 2.0f * M_PI / [controller radial];
-    int zoneNum = floor(rad / zoneSize);
-//    float zoneMod = rad - (zoneNum * zoneSize);
-//    if(zoneMod >= [self arcTrim] && zoneMod <= [self arcTrim] + [self arclength])
-        return zoneNum + 1;
+    // convert to circular coordinates
+    float r = sqrt(pow(loc.x, 2) + pow(loc.y, 2));
+    // special case for the center zone
+    if(r <= rd) return 1;
+    float angle = atanf(loc.y / loc.x);
+    if(loc.x < 0) angle += M_PI;
+    else if(loc.x > 0 && loc.y < 0) angle += 2 * M_PI;
+    // get the radial zone index
+    int rIndex = floor(angle / theta);
+    // get kerf angle for this radius
+    float kerfAngle = [self getKerfAngleForRadius:r];
+    // get angular distance from start
+    float d = angle - rIndex * theta;
+    // exact boundary test
+    if(d >= kerfAngle && d <= theta - kerfAngle)
+        return rIndex + 1;
     return 0;
 }
 
@@ -121,13 +160,9 @@ NSPoint center;
 
 - (void)mouseMoved:(NSEvent *)e {
     NSPoint loc = [self convertPoint:[e locationInWindow] fromView:nil];
-    int r = [self getRing:loc];
-    int z = [self getZone:loc];
+    int r = [self getConcentric:loc];
+    int z = [self getRadial:loc];
     if(r != hoverRing || z != hoverZone) {
-//        if(hoverRing != 0 && hoverZone != 0 && (r == 0 || z == 0))
-//            NSLog(@"-(r:%ld, z:%ld)", (long) hoverRing, (long) hoverZone);
-//        else if(r > 0 && z > 0)
-//            NSLog(@"+(r:%d, z:%d)", r, z);
         hoverRing = r;
         hoverZone = z;
         [self setNeedsDisplay:YES];
@@ -155,47 +190,45 @@ NSPoint center;
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
+    NSLog(@"Draw zones");
     [self drawCenterZone];
-    for(int concentric = 2; concentric <= controller.concentric; concentric++) {
-        for(int radial = 1; radial <= controller.radial; radial++) {
-            [self drawZoneAtConcentric:concentric Radial:radial];
+    for(int c = 2; c <= concentric; c++) {
+        for(int r = 1; r <= radial; r++) {
+            [self drawZoneAtConcentric:c Radial:r];
         }
     }
 }
 
 - (void)drawCenterZone {
+    NSLog(@"Draw center");
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     
     if(hoverRing == 1 && hoverZone == 1)
-        [[NSColor blueColor] setFill];
+        [[NSColor greenColor] setFill];
     else
         [[NSColor colorWithWhite:0.5 alpha:1] setFill];
     
-    float r1 = maxRadius / controller.concentric;
-    CGContextAddArc(context, center.x, center.y, r1, 0, 2 * M_PI, 0);
+    CGContextAddArc(context, center.x, center.y, rd, 0, 2 * M_PI, 0);
     CGContextFillPath(context);
 }
 
 - (void)drawZoneAtConcentric:(int)c Radial:(int)r {
-    // get the current graphics context
+    NSLog(@"Draw c:%d, r:%d", c, r);
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     
     if(hoverRing == c && hoverZone == r)
-        [[NSColor blueColor] setFill];
+        [[NSColor greenColor] setFill];
     else
         [[NSColor colorWithWhite:0.5 alpha:1] setFill];
     
-    // radius of this zone
-    float rd = maxRadius / controller.concentric;
-    float r1 = rd * (c - 1) + KERF * 2;
-    float r2 = rd * c;
-    // angle in radians
-    float theta =  2 * M_PI / controller.radial;
-    float theta1 = theta * (r - 1);
-    float theta2 = theta * r;
+    float r1 = rd * (c - 1) + KERF * 2; // inner radius
+    float r2 = rd * c;                  // outer radius
     
-    float r1theta = controller.radial > 1 ? atanf(KERF / r1) : 0;
-    float r2theta = controller.radial > 1 ? atanf(KERF / r2) : 0;
+    float theta1 = theta * (r - 1);     // start angle
+    float theta2 = theta * r;           // end angle
+    
+    float r1theta = [self getKerfAngleForRadius:r1];
+    float r2theta = [self getKerfAngleForRadius:r2];
     
     CGContextAddArc(context, center.x, center.y, r1,
                     theta1 + r1theta, theta2 - r1theta, 0);
@@ -203,6 +236,10 @@ NSPoint center;
                     theta2 - r2theta, theta1 + r2theta, 1);
     CGContextClosePath(context);
     CGContextFillPath(context);
+}
+
+- (float)getKerfAngleForRadius:(float)r {
+    return radial > 1 ? atanf(KERF / r) : 0;
 }
 
 @end

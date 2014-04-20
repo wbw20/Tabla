@@ -16,11 +16,4 @@
 - (BOOL)playSoundForRadial:(NSInteger)radial andConcentric:(NSInteger)concentric;
 - (void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
 
-// I'm not a huge fan of this
-- (NSInteger) radial;
-- (void) setRadial:(NSInteger)radial;
-- (NSInteger) concentric;
-- (void) setConcentric:(NSInteger)concentric;
-// END I'm not a huge fan of this
-
 @end

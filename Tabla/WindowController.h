@@ -16,11 +16,6 @@
 - (BOOL)playSoundForRadial:(NSInteger)radial andConcentric:(NSInteger)concentric;
 - (void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
 
-- (NSInteger) radial;
-- (void) setRadial:(NSInteger)radial;
-- (NSInteger) concentric;
-- (void) setConcentric:(NSInteger)concentric;
-
 /* save and load profiles */
 - (BOOL) saveProfile;
 - loadFromURL:(NSURL*)url;

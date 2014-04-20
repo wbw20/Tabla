@@ -12,9 +12,14 @@
 
 @interface Profile : NSObject
 
-@property NSInteger radial;
-@property NSInteger concentric;
+@property (nonatomic, readonly) NSInteger radial;
+@property (nonatomic, readonly) NSInteger concentric;
 @property (nonatomic, retain) NSMutableDictionary *sounds;
+
+extern const NSInteger MIN_RADIAL;
+extern const NSInteger MAX_RADIAL;
+extern const NSInteger MIN_CONCENTRIC;
+extern const NSInteger MAX_CONCENTRIC;
 
 - (Sound*)soundFor:(NSInteger)radial andConcentric:(NSInteger)concentric;
 - (void) addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;

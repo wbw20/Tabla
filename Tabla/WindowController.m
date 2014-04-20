@@ -16,7 +16,7 @@ static NSString *DATA_FOLDER = @"/Tabla";
 /*
  *  Default constructor uses a new profile
  */
-- (id) init {
+- (id)init {
     Profile* model = [[Profile alloc] init];
 
     if ([super init]) {
@@ -26,7 +26,7 @@ static NSString *DATA_FOLDER = @"/Tabla";
     return self;
 }
 
-- (id) initWithProfile:(Profile*)model {
+- (id)initWithProfile:(Profile*)model {
     if ([super init]) {
         [self setProfile:model];
     }
@@ -43,29 +43,10 @@ static NSString *DATA_FOLDER = @"/Tabla";
     return [[[self profile] soundFor:radial andConcentric:concentric] play];
 }
 
-- (NSInteger) radial {
-    return [[self profile] radial];
-}
-
-- (void) setRadial:(NSInteger)radial {
-    [[self profile] setRadial:radial];
-    NSLog(@"Set Radial");
-    NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInteger:radial]};
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateRadialNotification" object:self userInfo:userInfo];
-}
-
-- (NSInteger) concentric {
-    return [[self profile] concentric];
-}
-
-- (void) setConcentric:(NSInteger)concencric {
-    [[self profile] setConcentric:concencric];
-}
-
 /*
  *  If ~/Library/Application Support/Tabla does not exist, it creates it and returns the name
  */
-- (NSString*) findOrCreateDataFolder {
+- (NSString*)findOrCreateDataFolder {
     NSString *folder = [[NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) objectAtIndex:0]
                         stringByAppendingString:DATA_FOLDER];
     
@@ -81,7 +62,7 @@ static NSString *DATA_FOLDER = @"/Tabla";
     return folder;
 }
 
-- (BOOL) saveProfile {
+- (BOOL)saveProfile {
     return [[[self profile] json] writeToFile:[[self findOrCreateDataFolder] stringByAppendingPathComponent:@"test.json"] atomically:YES
                        encoding:NSUTF8StringEncoding error:NULL];
 }
