@@ -26,9 +26,15 @@ NSPoint center;
 - (id)initWithFrame:(NSRect)rect {
     if (![super initWithFrame:rect])
         return nil;
-    if (self)
-        // register file URL drag type
-        [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
+    // register file URL drag type
+    [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"UpdateRadialNotification"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         NSLog(@"Radial Updated!");
+     }];
     // set the radius of the entire pad
     maxRadius = self.frame.size.width * .4;
     // locate the center of the view
@@ -118,10 +124,10 @@ NSPoint center;
     int r = [self getRing:loc];
     int z = [self getZone:loc];
     if(r != hoverRing || z != hoverZone) {
-        if(hoverRing != 0 && hoverZone != 0 && (r == 0 || z == 0))
-            NSLog(@"-(r:%ld, z:%ld)", (long) hoverRing, (long) hoverZone);
-        else if(r > 0 && z > 0)
-            NSLog(@"+(r:%d, z:%d)", r, z);
+//        if(hoverRing != 0 && hoverZone != 0 && (r == 0 || z == 0))
+//            NSLog(@"-(r:%ld, z:%ld)", (long) hoverRing, (long) hoverZone);
+//        else if(r > 0 && z > 0)
+//            NSLog(@"+(r:%d, z:%d)", r, z);
         hoverRing = r;
         hoverZone = z;
         [self setNeedsDisplay:YES];

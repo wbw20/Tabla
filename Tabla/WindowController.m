@@ -49,6 +49,9 @@ static NSString *DATA_FOLDER = @"/Tabla";
 
 - (void) setRadial:(NSInteger)radial {
     [[self profile] setRadial:radial];
+    NSLog(@"Set Radial");
+    NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInteger:radial]};
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"UpdateRadialNotification" object:self userInfo:userInfo];
 }
 
 - (NSInteger) concentric {
