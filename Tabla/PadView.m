@@ -71,7 +71,15 @@ float theta;                    // angle of each zone
     // locate the corresponding zone
     int concentric = [self getConcentric:mouseLoc];
     int radial = [self getRadial:mouseLoc];
-    [controller playSoundForRadial:radial andConcentric:concentric];
+    if(radial != 0 && concentric != 0) {
+        // send a notification that a zone has been clicked
+        NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:radial],
+                                   @"concentric": [NSNumber numberWithInt:concentric]};
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"ZoneClicked"
+         object:self
+         userInfo:userInfo];
+    }
 }
 
 #pragma mark - Dragging Operations
@@ -190,17 +198,13 @@ float theta;                    // angle of each zone
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
-    NSLog(@"Draw zones");
     [self drawCenterZone];
-    for(int c = 2; c <= concentric; c++) {
-        for(int r = 1; r <= radial; r++) {
+    for(int c = 2; c <= concentric; c++)
+        for(int r = 1; r <= radial; r++)
             [self drawZoneAtConcentric:c Radial:r];
-        }
-    }
 }
 
 - (void)drawCenterZone {
-    NSLog(@"Draw center");
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     
     if(hoverRing == 1 && hoverZone == 1)
@@ -213,7 +217,6 @@ float theta;                    // angle of each zone
 }
 
 - (void)drawZoneAtConcentric:(int)c Radial:(int)r {
-    NSLog(@"Draw c:%d, r:%d", c, r);
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     
     if(hoverRing == c && hoverZone == r)

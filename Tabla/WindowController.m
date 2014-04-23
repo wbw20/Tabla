@@ -23,6 +23,18 @@ static NSString *DATA_FOLDER = @"/Tabla";
         [self setProfile:model];
     }
     
+    // register NSNotification for playing a sound
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"ZoneClicked"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         NSInteger radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         NSInteger concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         Sound *s = [self.profile soundFor:radial andConcentric:concentric];
+         if(s != nil) [s play];
+     }];
+    
     return self;
 }
 

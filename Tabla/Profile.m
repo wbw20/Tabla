@@ -11,9 +11,9 @@
 @implementation Profile
 
 const NSInteger MIN_RADIAL = 1;
-const NSInteger MAX_RADIAL = 8;
+const NSInteger MAX_RADIAL = 16;
 const NSInteger MIN_CONCENTRIC = 1;
-const NSInteger MAX_CONCENTRIC = 4;
+const NSInteger MAX_CONCENTRIC = 6;
 
 - (id) init {
     self = [super init];
