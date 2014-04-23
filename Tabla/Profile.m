@@ -93,7 +93,7 @@ const NSInteger MAX_CONCENTRIC = 6;
 }
 
 - (NSString*) hash:(NSInteger)radial andConcentric:(NSInteger)concentric {
-    return [NSString stringWithFormat:@"%ld", ((1000 * radial) + concentric)]; // uniquely maps up to 1000 radial zones
+    return [NSString stringWithFormat:@"%ld", ((1000 * concentric) + radial)]; // uniquely maps up to 1000 radial zones
 }
 
 - (NSString*) json {

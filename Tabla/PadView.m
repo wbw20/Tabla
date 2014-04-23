@@ -16,13 +16,12 @@
 
 @implementation PadView
 
-//@TODO: move state to controller
 NSString *kPrivateDragUTI = @"com.tabla.radialDnD";
-NSInteger concentric = 1;
-NSInteger radial = 1;
-NSInteger hoverZone = 0;
-NSInteger hoverRing = 0;
-
+NSInteger concentric;           // number of concentric rings
+NSInteger radial;               // number of radial slices
+NSInteger hoverRadial;          // radial index of zone under the mouse
+NSInteger hoverConcentric;      // concentric index of zone under the mouse
+NSMutableDictionary *colors;    // mapping of zones to colors
 NSInteger maxRadius;            // maximum radius of the entire pad
 NSPoint center;                 // center coordinate of the view
 float rd;                       // radial width of each zone
@@ -30,7 +29,12 @@ float theta;                    // angle of each zone
 
 - (id)initWithFrame:(NSRect)rect {
     if (![super initWithFrame:rect]) return nil;
-
+    
+    concentric = 1;
+    radial = 1;
+    hoverRadial = 0;
+    hoverConcentric = 0;
+    colors = [[NSMutableDictionary alloc] init];
     // set the radius of the entire pad
     maxRadius = self.frame.size.width * .4;
     // locate the center of the view
@@ -178,9 +182,9 @@ float theta;                    // angle of each zone
     NSPoint loc = [self convertPoint:[e locationInWindow] fromView:nil];
     int r = [self getConcentric:loc];
     int z = [self getRadial:loc];
-    if(r != hoverRing || z != hoverZone) {
-        hoverRing = r;
-        hoverZone = z;
+    if(r != hoverConcentric || z != hoverRadial) {
+        hoverConcentric = r;
+        hoverRadial = z;
         [self setNeedsDisplay:YES];
     }
 }
@@ -198,10 +202,6 @@ float theta;                    // angle of each zone
     [self drawZones];
 }
 
-- (void)redraw {
-    [self setNeedsDisplay:YES];
-}
-
 /**
  *  Draws zones to the graphics context
  **/
@@ -214,11 +214,7 @@ float theta;                    // angle of each zone
 
 - (void)drawCenterZone {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    
-    if(hoverRing == 1 && hoverZone == 1)
-        [[NSColor greenColor] setFill];
-    else
-        [[NSColor colorWithWhite:0.5 alpha:1] setFill];
+    [[self getColorForConcentric:1 Radial:1] setFill];
     
     CGContextAddArc(context, center.x, center.y, rd, 0, 2 * M_PI, 0);
     CGContextFillPath(context);
@@ -226,11 +222,7 @@ float theta;                    // angle of each zone
 
 - (void)drawZoneAtConcentric:(int)c Radial:(int)r {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    
-    if(hoverRing == c && hoverZone == r)
-        [[NSColor greenColor] setFill];
-    else
-        [[NSColor colorWithWhite:0.5 alpha:1] setFill];
+    [[self getColorForConcentric:c Radial:r] setFill];
     
     float r1 = rd * (c - 1) + KERF * 2; // inner radius
     float r2 = rd * c;                  // outer radius
@@ -247,6 +239,26 @@ float theta;                    // angle of each zone
                     theta2 - r2theta, theta1 + r2theta, 1);
     CGContextClosePath(context);
     CGContextFillPath(context);
+}
+
+- (void)setColor:(NSColor*)color ForConcentric:(int)c Radial:(int)r {
+    [colors setObject:color forKey:[self getHashForConcentric:c Radial:r]];
+}
+
+- (NSColor*)getColorForConcentric:(int)c Radial:(int)r {
+    // retrive entry from dictionary
+    id obj = [colors objectForKey:[self getHashForConcentric:c Radial:r]];
+    // if nil, just use grey
+    NSColor* color = obj == nil ? [NSColor colorWithWhite:0.5 alpha:1] : [obj color];
+    // if this zone is hovered over, blend with system highlight color
+    if(hoverConcentric == c && hoverRadial == r)
+        color = [color highlightWithLevel:0.5f];
+    return color;
+}
+
+- (NSString*)getHashForConcentric:(int)c Radial:(int)r {
+    // hash allows up to 1000 radial slices per concentric ring
+    return [NSString stringWithFormat:@"%d", 1000 * c + r];
 }
 
 - (float)getKerfAngleForRadius:(float)r {
