@@ -11,10 +11,11 @@
 
 @implementation WindowController
 
+@synthesize soundData;
 static NSString *DATA_FOLDER = @"/Tabla";
 
 /*
- *  Default constructor uses a new profile
+@property (nonatomic, (nonatomic, t constructor uses a new profile
  */
 - (id)init {
     Profile* model = [[Profile alloc] init];
@@ -45,6 +46,9 @@ static NSString *DATA_FOLDER = @"/Tabla";
          NSInteger concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
          NSURL *fileURL = [NSURL URLWithString:[[note userInfo] objectForKey:@"file"]];
          NSLog(@"(r:%ld,c:%ld):%@", radial, concentric, [fileURL absoluteString]);
+         // add sound to the library
+         [self addSound:fileURL];
+         // assign sound to zone
          [self.profile addSound:fileURL atRadial:radial andContentric:concentric];
          [self saveProfile];
      }];
@@ -91,6 +95,31 @@ static NSString *DATA_FOLDER = @"/Tabla";
 
 - loadFromURL:(NSURL*)url {
     return NULL;
+}
+
+#pragma mark - Sound Library
+
+- (void)insertObject:(Sound *)s inSoundDataAtIndex:(NSInteger)index {
+    [soundData insertObject:s atIndex:index];
+}
+
+- (void)removeObjectFromSoundDataAtIndex:(NSInteger)index {
+    [soundData removeObjectAtIndex:index];
+}
+
+- (void)setSoundData:(NSMutableArray *)a {
+    soundData = a;
+}
+
+- (void)addSound:(NSURL *)url {
+    Sound *s = [[Sound alloc] initWithPath:url];
+    NSMutableArray *tempData = [NSMutableArray arrayWithArray:soundData];
+    [tempData addObject:s];
+    [self setSoundData:tempData];
+}
+
+- (NSArray *)soundData {
+    return soundData;
 }
 
 @end

@@ -8,12 +8,21 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Profile.h"
+#import "Sound.h"
 
-@interface WindowController : NSWindowController
+@interface WindowController : NSWindowController {
+    NSMutableArray *soundData;
+}
 
-@property Profile *profile;
+@property(nonatomic, retain) Profile *profile;
+@property(nonatomic, retain) NSMutableArray *soundData;
 
-- (void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
+- (void)addSound:(NSURL *)url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
+- (void)addSound:(NSURL *)url;
+- (void)insertObject:(Sound *)s inSoundDataAtIndex:(NSInteger)index;
+- (void)removeObjectFromSoundDataAtIndex:(NSInteger)index;
+- (void)setSoundData:(NSMutableArray *) a;
+- (NSArray *)soundData;
 
 /* save and load profiles */
 - (BOOL) saveProfile;

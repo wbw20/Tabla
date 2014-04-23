@@ -16,6 +16,4 @@
     NSTrackingArea *trackingArea;
 }
 
-- (void)redraw;
-
 @end
