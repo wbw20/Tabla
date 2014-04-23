@@ -35,6 +35,20 @@ static NSString *DATA_FOLDER = @"/Tabla";
          if(s != nil) [s play];
      }];
     
+    // register NSNotification for dropping a sound
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"SoundDropped"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         NSInteger radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         NSInteger concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         NSURL *fileURL = [NSURL URLWithString:[[note userInfo] objectForKey:@"file"]];
+         NSLog(@"(r:%ld,c:%ld):%@", radial, concentric, [fileURL absoluteString]);
+         [self.profile addSound:fileURL atRadial:radial andContentric:concentric];
+         [self saveProfile];
+     }];
+    
     return self;
 }
 

@@ -103,7 +103,15 @@ float theta;                    // angle of each zone
         NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
         NSLog(@"Located in ring %d zone %d", concentric, radial);
         if(concentric > 0 && radial > 0) {
-            [controller addSound:fileURL atRadial:radial andContentric:concentric];
+            // send a notification that a sound has been dropped
+            NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:radial],
+                                       @"concentric": [NSNumber numberWithInt:concentric],
+                                       @"file": [fileURL absoluteString]};
+            NSLog(@"Notify %@", [fileURL absoluteString]);
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"SoundDropped"
+             object:self
+             userInfo:userInfo];
             return YES;
         }
     }
