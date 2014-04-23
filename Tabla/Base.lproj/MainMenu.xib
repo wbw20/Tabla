@@ -723,9 +723,6 @@
                                 </textFieldCell>
                             </textField>
                         </subviews>
-                        <connections>
-                            <outlet property="controller" destination="Pge-VH-kzi" id="IL3-Qf-a7e"/>
-                        </connections>
                     </customView>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YE-7l-0xX">
                         <rect key="frame" x="20" y="28" width="195" height="500"/>
@@ -767,7 +764,7 @@
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lk-5N-tUa">
-                    <rect key="frame" x="10" y="37" width="175" height="17"/>
+                    <rect key="frame" x="10" y="38" width="129" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Name" id="S11-Uk-xRk">
                         <font key="font" metaFont="systemBold"/>
@@ -779,7 +776,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j7j-OG-swB">
-                    <rect key="frame" x="10" y="10" width="175" height="17"/>
+                    <rect key="frame" x="10" y="10" width="129" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="filepath" id="aKk-6z-ngK">
                         <font key="font" metaFont="system"/>
@@ -787,9 +784,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="Nvy-lj-BAS" name="value" keyPath="representedObject.name" id="AOE-Ky-jz8"/>
+                        <binding destination="Nvy-lj-BAS" name="value" keyPath="representedObject.filepath" id="HGj-5U-IDT"/>
                     </connections>
                 </textField>
+                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0H-P3-hDr">
+                    <rect key="frame" x="145" y="10" width="44" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <binding destination="Nvy-lj-BAS" name="value" keyPath="representedObject.color" id="N6r-6B-mOE"/>
+                    </connections>
+                </colorWell>
             </subviews>
         </view>
         <arrayController id="j9i-kt-sFA">

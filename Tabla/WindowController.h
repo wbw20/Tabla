@@ -17,8 +17,7 @@
 @property(nonatomic, retain) Profile *profile;
 @property(nonatomic, retain) NSMutableArray *soundData;
 
-- (void)addSound:(NSURL *)url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
-- (void)addSound:(NSURL *)url;
+- (void)addSound:(Sound *)url;
 - (void)insertObject:(Sound *)s inSoundDataAtIndex:(NSInteger)index;
 - (void)removeObjectFromSoundDataAtIndex:(NSInteger)index;
 - (void)setSoundData:(NSMutableArray *) a;

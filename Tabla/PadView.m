@@ -62,6 +62,26 @@ float theta;                    // angle of each zone
          [self setNeedsDisplay:YES];
      }];
     
+    // execute when a sound gets mapped to a zone
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"SetZone"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         NSDictionary *ui = note.userInfo;
+         NSInteger c = [[ui objectForKey:@"concentric"] integerValue];
+         NSInteger r = [[ui objectForKey:@"radial"] integerValue];
+//         NSData *data = [[ui objectForKey:@"color"] data];
+//         NSColor *color = [NSUnarchiver unarchiveObjectWithData:data];
+         float red = [[ui objectForKey:@"red"] floatValue];
+         float green = [[ui objectForKey:@"green"] floatValue];
+         float blue = [[ui objectForKey:@"blue"] floatValue];
+         NSColor *color = [NSColor colorWithRed:red green:green blue:blue alpha:1.0f];
+         NSLog(@"Color at %ld, %ld is %@", c, r, color);
+         [self setColor:color ForConcentric:c Radial:r];
+         [self setNeedsDisplay:YES];
+     }];
+    
     // register file URL drag type
     [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
     
@@ -241,24 +261,26 @@ float theta;                    // angle of each zone
     CGContextFillPath(context);
 }
 
-- (void)setColor:(NSColor*)color ForConcentric:(int)c Radial:(int)r {
-    [colors setObject:color forKey:[self getHashForConcentric:c Radial:r]];
+- (void)setColor:(NSColor*)color ForConcentric:(NSInteger)c Radial:(NSInteger)r {
+    NSData *data = [NSArchiver archivedDataWithRootObject:color];
+    [colors setObject:data forKey:[self getHashForConcentric:c Radial:r]];
 }
 
 - (NSColor*)getColorForConcentric:(int)c Radial:(int)r {
+    NSLog(@"Getting color for c:%d, r:%d", c, r);
     // retrive entry from dictionary
-    id obj = [colors objectForKey:[self getHashForConcentric:c Radial:r]];
+    NSData *data = [colors objectForKey:[self getHashForConcentric:c Radial:r]];
     // if nil, just use grey
-    NSColor* color = obj == nil ? [NSColor colorWithWhite:0.5 alpha:1] : [obj color];
+    NSColor *color = data == nil ? [NSColor colorWithWhite:0.5 alpha:1] : [NSUnarchiver unarchiveObjectWithData:data];
     // if this zone is hovered over, blend with system highlight color
     if(hoverConcentric == c && hoverRadial == r)
         color = [color highlightWithLevel:0.5f];
     return color;
 }
 
-- (NSString*)getHashForConcentric:(int)c Radial:(int)r {
+- (NSString*)getHashForConcentric:(NSInteger)c Radial:(NSInteger)r {
     // hash allows up to 1000 radial slices per concentric ring
-    return [NSString stringWithFormat:@"%d", 1000 * c + r];
+    return [NSString stringWithFormat:@"%ld", 1000 * c + r];
 }
 
 - (float)getKerfAngleForRadius:(float)r {

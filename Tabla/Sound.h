@@ -10,11 +10,11 @@
 
 @interface Sound : NSSound
 
-@property NSString * name;
-@property NSURL * filepath;
+@property(nonatomic, retain) NSString *name;
+@property(nonatomic, retain) NSURL *filepath;
+@property(nonatomic, retain) NSColor *color;
 
 - (id) initWithPath:(NSURL*)filepath;
-- (id) initWithString:(NSString*)json;
 - (NSString*) toString;
 
 @end

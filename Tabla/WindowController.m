@@ -14,9 +14,6 @@
 @synthesize soundData;
 static NSString *DATA_FOLDER = @"/Tabla";
 
-/*
-@property (nonatomic, (nonatomic, t constructor uses a new profile
- */
 - (id)init {
     Profile* model = [[Profile alloc] init];
 
@@ -42,14 +39,16 @@ static NSString *DATA_FOLDER = @"/Tabla";
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
-         NSInteger radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
-         NSInteger concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
-         NSURL *fileURL = [NSURL URLWithString:[[note userInfo] objectForKey:@"file"]];
-         NSLog(@"(r:%ld,c:%ld):%@", radial, concentric, [fileURL absoluteString]);
+         NSInteger r = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         NSInteger c = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         NSURL *f = [NSURL URLWithString:[[note userInfo] objectForKey:@"file"]];
+         // create new sound from file
+         Sound *s = [[Sound alloc] initWithPath:f];
          // add sound to the library
-         [self addSound:fileURL];
+         [self addSound:s];
          // assign sound to zone
-         [self.profile addSound:fileURL atRadial:radial andContentric:concentric];
+         [self.profile setSound:s forConcentric:c andRadial:r];
+         // save the profile
          [self saveProfile];
      }];
     
@@ -62,11 +61,6 @@ static NSString *DATA_FOLDER = @"/Tabla";
     }
 
     return self;
-}
-
-- (void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric {
-    [[self profile] addSound:url atRadial:radial andContentric:concentric];
-    [self saveProfile];
 }
 
 /*
@@ -111,8 +105,7 @@ static NSString *DATA_FOLDER = @"/Tabla";
     soundData = a;
 }
 
-- (void)addSound:(NSURL *)url {
-    Sound *s = [[Sound alloc] initWithPath:url];
+- (void)addSound:(Sound *)s {
     NSMutableArray *tempData = [NSMutableArray arrayWithArray:soundData];
     [tempData addObject:s];
     [self setSoundData:tempData];

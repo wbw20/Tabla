@@ -10,22 +10,20 @@
 
 @implementation Sound
 
-- (id) initWithPath:(NSURL*)filepath {
-    if ([super initWithContentsOfFile:[filepath path] byReference:YES]) {
-        [self setFilepath:filepath];
-        [self setName:[filepath path]];
+@synthesize name;
+@synthesize filepath;
+@synthesize color;
+
+- (id) initWithPath:(NSURL*)url {
+    if ([super initWithContentsOfFile:[url path] byReference:YES]) {
+        self.filepath = url;
+        self.name = [url lastPathComponent];
+        float r = (float)rand() / RAND_MAX;
+        float g = (float)rand() / RAND_MAX;
+        float b = (float)rand() / RAND_MAX;
+        self.color = [NSColor colorWithRed:r green:g blue:b alpha:1.0f];
     }
 
-    return self;
-}
-
-- (id) initWithString:(NSString *)json {
-    NSArray* values = [json componentsSeparatedByString:@":"];
-
-    if ([super initWithContentsOfFile:values[1] byReference:YES]) {
-        [self setName:values[0]];
-    }
-    
     return self;
 }
 

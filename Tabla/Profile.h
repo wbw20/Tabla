@@ -22,7 +22,7 @@ extern const NSInteger MIN_CONCENTRIC;
 extern const NSInteger MAX_CONCENTRIC;
 
 - (Sound*)soundFor:(NSInteger)radial andConcentric:(NSInteger)concentric;
-- (void) addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
-- (NSString*) json;
+- (void)setSound:(Sound *)s forConcentric:(NSInteger)c andRadial:(NSInteger)r;
+- (NSString*)json;
 
 @end

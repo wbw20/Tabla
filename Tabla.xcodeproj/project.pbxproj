@@ -15,7 +15,6 @@
 		BE7F1ED218A46A2F00F5567E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7F1ED118A46A2F00F5567E /* Quartz.framework */; };
 		BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED418A47C0100F5567E /* RadialLayer.m */; };
 		BE7F1EDA18A481E500F5567E /* PadView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED918A481E500F5567E /* PadView.m */; };
-		BE7F1EDF18A48B6300F5567E /* PadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1EDE18A48B6300F5567E /* PadViewController.m */; };
 		BEC070F9189C541D00505F7D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC070F8189C541D00505F7D /* Cocoa.framework */; };
 		BEC07103189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC07101189C541D00505F7D /* InfoPlist.strings */; };
 		BEC07105189C541D00505F7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07104189C541D00505F7D /* main.m */; };
@@ -64,8 +63,6 @@
 		BE7F1ED418A47C0100F5567E /* RadialLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialLayer.m; sourceTree = "<group>"; };
 		BE7F1ED818A481E500F5567E /* PadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadView.h; sourceTree = "<group>"; };
 		BE7F1ED918A481E500F5567E /* PadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadView.m; sourceTree = "<group>"; };
-		BE7F1EDD18A48B6300F5567E /* PadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadViewController.h; sourceTree = "<group>"; };
-		BE7F1EDE18A48B6300F5567E /* PadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadViewController.m; sourceTree = "<group>"; };
 		BEB2F1DE18DD0E4000443F79 /* tom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = tom1.aif; sourceTree = "<group>"; };
 		BEC070F5189C541D00505F7D /* Tabla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tabla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC070F8189C541D00505F7D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -167,8 +164,6 @@
 		BE7F1EDC18A48B4600F5567E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BE7F1EDD18A48B6300F5567E /* PadViewController.h */,
-				BE7F1EDE18A48B6300F5567E /* PadViewController.m */,
 				BED9543F18ED6020001337AE /* WindowController.h */,
 				BED9544018ED6020001337AE /* WindowController.m */,
 			);
@@ -455,7 +450,6 @@
 				BED9544118ED6020001337AE /* WindowController.m in Sources */,
 				BE52D77718C327C4008C3C81 /* Sound.m in Sources */,
 				BE228C7A18FEE7B400BBF265 /* INAppStoreWindow.m in Sources */,
-				BE7F1EDF18A48B6300F5567E /* PadViewController.m in Sources */,
 				BE26B4C318C3F048008FF722 /* SoundView.m in Sources */,
 				BEC07105189C541D00505F7D /* main.m in Sources */,
 				BE7F1EDA18A481E500F5567E /* PadView.m in Sources */,

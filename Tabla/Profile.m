@@ -84,16 +84,29 @@ const NSInteger MAX_CONCENTRIC = 6;
      userInfo:userInfo];
 }
 
-- (Sound*)soundFor:(NSInteger)radial andConcentric:(NSInteger)concentric {
-    return [self sounds][[self hash:radial andConcentric:concentric]];
+- (Sound*)soundFor:(NSInteger)r andConcentric:(NSInteger)c {
+    return [self.sounds objectForKey:[self getHashForConcentric:c andRadial:r]];
 }
 
--(void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric {
-    [self sounds][[self hash:radial andConcentric:concentric]] = [[Sound alloc] initWithPath:url];
+- (void)setSound:(Sound *)s forConcentric:(NSInteger)c andRadial:(NSInteger)r {
+    [self.sounds setObject:s forKey:[self getHashForConcentric:c andRadial:r]];
+    // send a notification that a sound has been mapped to this zone
+    //NSData *data = [NSArchiver archivedDataWithRootObject:s.color];
+    NSDictionary *userInfo = @{@"concentric": [NSNumber numberWithInteger:c],
+                               @"radial": [NSNumber numberWithInteger:r],
+                               //@"color:": data};
+                               @"red": [NSNumber numberWithFloat:s.color.redComponent],
+                               @"green": [NSNumber numberWithFloat:s.color.greenComponent],
+                               @"blue": [NSNumber numberWithFloat:s.color.blueComponent]};
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"SetZone"
+     object:self
+     userInfo:userInfo];
 }
 
-- (NSString*) hash:(NSInteger)radial andConcentric:(NSInteger)concentric {
-    return [NSString stringWithFormat:@"%ld", ((1000 * concentric) + radial)]; // uniquely maps up to 1000 radial zones
+- (NSString*)getHashForConcentric:(NSInteger)c andRadial:(NSInteger)r {
+    // uniquely maps up to 1000 radial zones
+    return [NSString stringWithFormat:@"%ld", 1000 * c + r];
 }
 
 - (NSString*) json {
