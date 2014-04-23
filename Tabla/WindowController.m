@@ -51,10 +51,6 @@ static NSString *DATA_FOLDER = @"/Tabla";
     [self saveProfile];
 }
 
-- (BOOL)playSoundForRadial:(NSInteger)radial andConcentric:(NSInteger)concentric {
-    return [[[self profile] soundFor:radial andConcentric:concentric] play];
-}
-
 /*
  *  If ~/Library/Application Support/Tabla does not exist, it creates it and returns the name
  */

@@ -13,7 +13,6 @@
 
 @property Profile *profile;
 
-- (BOOL)playSoundForRadial:(NSInteger)radial andConcentric:(NSInteger)concentric;
 - (void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
 
 /* save and load profiles */

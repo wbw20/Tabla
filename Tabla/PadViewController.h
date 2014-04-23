@@ -13,7 +13,6 @@
     IBOutlet WindowController *windowController;
 }
 
-- (BOOL)playSoundForRadial:(NSInteger)radial andConcentric:(NSInteger)concentric;
 - (void)addSound:(NSURL *) url atRadial:(NSInteger)radial andContentric:(NSInteger)concentric;
 
 @end
