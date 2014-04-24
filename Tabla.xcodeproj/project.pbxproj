@@ -31,9 +31,7 @@
 		BEEB251518C94817000DB2D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251218C94817000DB2D5 /* Profile.m */; };
 		BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */; };
 		BEEB252018C9483A000DB2D5 /* SerialThread.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251D18C9483A000DB2D5 /* SerialThread.m */; };
-		BEEDCBB618B1270900B5D047 /* Line.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB518B1270900B5D047 /* Line.m */; };
 		BEEDCBB918B134F200B5D047 /* LineTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBB818B134F200B5D047 /* LineTests.m */; };
-		BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBBC18B15C5300B5D047 /* Circle.m */; };
 		BEEDCBC018B15D1800B5D047 /* CircleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEDCBBF18B15D1800B5D047 /* CircleTests.m */; };
 /* End PBXBuildFile section */
 
@@ -94,12 +92,8 @@
 		BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialDelegate.m; sourceTree = "<group>"; };
 		BEEB251C18C9483A000DB2D5 /* SerialThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialThread.h; sourceTree = "<group>"; };
 		BEEB251D18C9483A000DB2D5 /* SerialThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerialThread.m; sourceTree = "<group>"; };
-		BEEDCBB418B1270900B5D047 /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
-		BEEDCBB518B1270900B5D047 /* Line.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line.m; sourceTree = "<group>"; };
 		BEEDCBB818B134F200B5D047 /* LineTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineTests.m; sourceTree = "<group>"; };
 		BEEDCBBA18B1356500B5D047 /* LineTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineTests.h; sourceTree = "<group>"; };
-		BEEDCBBB18B15C5300B5D047 /* Circle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Circle.h; sourceTree = "<group>"; };
-		BEEDCBBC18B15C5300B5D047 /* Circle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Circle.m; sourceTree = "<group>"; };
 		BEEDCBBE18B15D1800B5D047 /* CircleTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTests.h; sourceTree = "<group>"; };
 		BEEDCBBF18B15D1800B5D047 /* CircleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,7 +211,6 @@
 				BEEB251718C94826000DB2D5 /* Serial */,
 				BEEB250D18C947BD000DB2D5 /* Player */,
 				BE52D77418C321AA008C3C81 /* Models */,
-				BEEDCBB318B126F000B5D047 /* Geometry */,
 				BE7F1EDC18A48B4600F5567E /* Controllers */,
 				BE7F1EDB18A48B3100F5567E /* Views */,
 				BEC225C418A1B28800DE83E8 /* Resources */,
@@ -306,17 +299,6 @@
 				BEEB251D18C9483A000DB2D5 /* SerialThread.m */,
 			);
 			name = Serial;
-			sourceTree = "<group>";
-		};
-		BEEDCBB318B126F000B5D047 /* Geometry */ = {
-			isa = PBXGroup;
-			children = (
-				BEEDCBB418B1270900B5D047 /* Line.h */,
-				BEEDCBB518B1270900B5D047 /* Line.m */,
-				BEEDCBBB18B15C5300B5D047 /* Circle.h */,
-				BEEDCBBC18B15C5300B5D047 /* Circle.m */,
-			);
-			name = Geometry;
 			sourceTree = "<group>";
 		};
 		BEEDCBB718B134D300B5D047 /* GeometryTests */ = {
@@ -442,10 +424,8 @@
 				BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */,
 				BEEB251518C94817000DB2D5 /* Profile.m in Sources */,
 				BEEB252018C9483A000DB2D5 /* SerialThread.m in Sources */,
-				BEEDCBB618B1270900B5D047 /* Line.m in Sources */,
 				BE228C7B18FEE7B400BBF265 /* INWindowButton.m in Sources */,
 				BE2CD57118E0D0CC00490820 /* CounterView.m in Sources */,
-				BEEDCBBD18B15C5300B5D047 /* Circle.m in Sources */,
 				BEC0710C189C541D00505F7D /* AppDelegate.m in Sources */,
 				BED9544118ED6020001337AE /* WindowController.m in Sources */,
 				BE52D77718C327C4008C3C81 /* Sound.m in Sources */,

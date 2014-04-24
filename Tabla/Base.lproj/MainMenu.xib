@@ -635,17 +635,11 @@
         <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
         <customObject id="qJn-js-SIJ" customClass="NSFontManager"/>
         <customObject id="BOY-y1-sfv" customClass="WindowController"/>
-        <customObject id="Pge-VH-kzi" customClass="PadViewController">
-            <connections>
-                <outlet property="view" destination="bkL-34-Vjb" id="85n-Wm-nPu"/>
-                <outlet property="windowController" destination="BOY-y1-sfv" id="oVz-QH-kcA"/>
-            </connections>
-        </customObject>
         <window title="Tabla" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="o3e-Cs-hA4" customClass="INAppStoreWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowPositionMask key="initialPositionMask" topStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="748" height="548"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1578"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
             <value key="minSize" type="size" width="800" height="548"/>
             <value key="maxSize" type="size" width="800" height="548"/>
             <view key="contentView" id="CNa-RQ-bea">
@@ -787,7 +781,7 @@
                         <binding destination="Nvy-lj-BAS" name="value" keyPath="representedObject.filepath" id="HGj-5U-IDT"/>
                     </connections>
                 </textField>
-                <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0H-P3-hDr">
+                <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0H-P3-hDr">
                     <rect key="frame" x="145" y="10" width="44" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>

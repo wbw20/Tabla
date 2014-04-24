@@ -21,6 +21,8 @@ static NSString *DATA_FOLDER = @"/Tabla";
         [self setProfile:model];
     }
     
+    NSLog(@"Init Window Controller");
+    
     // register NSNotification for playing a sound
     [[NSNotificationCenter defaultCenter]
      addObserverForName:@"ZoneClicked"

@@ -7,9 +7,6 @@
 //
 
 #import "math.h"
-
-#import "Line.h"
-#import "Circle.h"
 #import "PadView.h"
 
 #define KERF 2.0f
@@ -30,6 +27,8 @@ float theta;                    // angle of each zone
 - (id)initWithFrame:(NSRect)rect {
     if (![super initWithFrame:rect]) return nil;
     
+    NSLog(@"Init PadView");
+    
     concentric = 1;
     radial = 1;
     hoverRadial = 0;
@@ -40,12 +39,16 @@ float theta;                    // angle of each zone
     // locate the center of the view
     center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
     
+    theta = 2 * M_PI / radial;
+    rd = maxRadius / concentric;
+    
     // execute when radial is updated
     [[NSNotificationCenter defaultCenter]
      addObserverForName:@"UpdateRadial"
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
+         NSLog(@"View update radial");
          radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
          theta = 2 * M_PI / radial;
          [self setNeedsDisplay:YES];
@@ -57,6 +60,7 @@ float theta;                    // angle of each zone
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
+         NSLog(@"View update concentric");
          concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
          rd = maxRadius / concentric;
          [self setNeedsDisplay:YES];
@@ -68,6 +72,7 @@ float theta;                    // angle of each zone
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
+         NSLog(@"View set zone");
          NSDictionary *ui = note.userInfo;
          NSInteger c = [[ui objectForKey:@"concentric"] integerValue];
          NSInteger r = [[ui objectForKey:@"radial"] integerValue];
@@ -226,6 +231,7 @@ float theta;                    // angle of each zone
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
+    NSLog(@"Draw zones");
     [self drawCenterZone];
     for(int c = 2; c <= concentric; c++)
         for(int r = 1; r <= radial; r++)
@@ -233,6 +239,7 @@ float theta;                    // angle of each zone
 }
 
 - (void)drawCenterZone {
+    NSLog(@"Draw center zone");
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     [[self getColorForConcentric:1 Radial:1] setFill];
     
@@ -241,6 +248,7 @@ float theta;                    // angle of each zone
 }
 
 - (void)drawZoneAtConcentric:(int)c Radial:(int)r {
+    NSLog(@"Draw zone c:%d, r:%d", c, r);
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     [[self getColorForConcentric:c Radial:r] setFill];
     
@@ -267,7 +275,6 @@ float theta;                    // angle of each zone
 }
 
 - (NSColor*)getColorForConcentric:(int)c Radial:(int)r {
-    NSLog(@"Getting color for c:%d, r:%d", c, r);
     // retrive entry from dictionary
     NSData *data = [colors objectForKey:[self getHashForConcentric:c Radial:r]];
     // if nil, just use grey
