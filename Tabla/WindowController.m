@@ -108,6 +108,7 @@ static NSString *DATA_FOLDER = @"/Tabla";
 }
 
 - (void)addSound:(Sound *)s {
+    NSLog(@"Add sound");
     NSMutableArray *tempData = [NSMutableArray arrayWithArray:soundData];
     [tempData addObject:s];
     [self setSoundData:tempData];

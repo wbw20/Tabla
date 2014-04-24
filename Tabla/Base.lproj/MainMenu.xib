@@ -718,7 +718,7 @@
                             </textField>
                         </subviews>
                     </customView>
-                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YE-7l-0xX">
+                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YE-7l-0xX" customClass="SoundView">
                         <rect key="frame" x="20" y="28" width="195" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" ambiguous="YES" misplaced="YES" id="Wel-Ut-fUD">
@@ -744,6 +744,9 @@
                             <rect key="frame" x="234" y="1" width="15" height="143"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
+                        <connections>
+                            <outlet property="windowController" destination="BOY-y1-sfv" id="mgV-p9-F3p"/>
+                        </connections>
                     </scrollView>
                 </subviews>
             </view>
@@ -781,10 +784,10 @@
                         <binding destination="Nvy-lj-BAS" name="value" keyPath="representedObject.filepath" id="HGj-5U-IDT"/>
                     </connections>
                 </textField>
-                <colorWell fixedFrame="YES" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0H-P3-hDr">
+                <colorWell fixedFrame="YES" bordered="NO" continuous="NO" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0H-P3-hDr">
                     <rect key="frame" x="145" y="10" width="44" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="color" red="0.9056411537783744" green="1" blue="0.6464424389682224" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <binding destination="Nvy-lj-BAS" name="value" keyPath="representedObject.color" id="N6r-6B-mOE"/>
                     </connections>

@@ -27,7 +27,9 @@ NSString *drag_id = @"com.tabla.soundDnD";
 - (BOOL)performDragOperation:(id<NSDraggingInfo>)sender {
     NSURL* fileURL = [NSURL URLFromPasteboard: [sender draggingPasteboard]];
     if(fileURL != NULL) {
-//        [windowController addSound:fileURL];
+        NSLog(@"Sound dropped in library");
+        Sound *s = [[Sound alloc] initWithPath:fileURL];
+        [windowController addSound:s];
         return YES;
     }
     
