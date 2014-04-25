@@ -21,6 +21,7 @@
     
     SerialThread *thread = [[SerialThread alloc] init];
     [thread start];
+    NSLog(@"Application finished launching");
 }
 
 - (void) setupToolbar {

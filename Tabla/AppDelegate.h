@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Sound.h"
-#import "PadViewController.h"
 #import "INAppStoreWindow.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>

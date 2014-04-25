@@ -7,16 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "PadViewController.h"
 
 @interface PadView : NSView <NSDraggingDestination>
 {
-    IBOutlet PadViewController *controller;
-    IBOutlet NSWindow *window;
     NSTrackingArea *trackingArea;
 }
-
-- (NSPoint)center;
-- (void)redraw;
 
 @end

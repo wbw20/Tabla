@@ -10,12 +10,6 @@
 
 static NSColor *darkColor = nil;
 
-//bounds
-static int RADIAL_LOWER_BOUND = 1;
-static int RADIAL_UPPER_BOUND = 8;
-static int CONCENTRIC_LOWER_BOUND = 1;
-static int CONCENTRIC_UPPER_BOUND = 4;
-
 // runs on class load
 __attribute__((constructor))
 static void initialize_navigationBarImages() {
@@ -54,15 +48,6 @@ static void initialize_navigationBarImages() {
 
 @implementation CounterView
 
-- (id)initWithFrame:(NSRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self setValue:0];
-    }
-    return self;
-}
-
 - (void)drawRect:(NSRect)dirtyRect
 {
 	[super drawRect:dirtyRect];
@@ -74,49 +59,102 @@ static void initialize_navigationBarImages() {
     [[self label] setStringValue:@(value).stringValue];
 }
 
-@end
-
-@interface RadialCounterView : CounterView
-    @property (nonatomic) IBOutlet PadView* pad;
-@end
-
-@implementation RadialCounterView
-
+// virtual methods to be overriden by subclasses
 - (void)up {
-    if ([[super controller] radial] >= RADIAL_UPPER_BOUND) { return; } // bounds check
-    int x = [[super controller] radial];
-    [[super controller] setRadial:[[super controller] radial] + 1];
-    [super displayValue:[[super controller] radial]];
-    [[self pad] redraw];
+    @throw [NSException
+            exceptionWithName:NSInternalInconsistencyException
+            reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+            userInfo:nil
+            ];
 }
 
 - (void)down {
-    if ([[super controller] radial] <= RADIAL_LOWER_BOUND) { return; } // bounds check
-    [[super controller] setRadial:[[super controller] radial] - 1];
-    [super displayValue:[[super controller] radial]];
-    [[self pad] redraw];
+    @throw [NSException
+            exceptionWithName:NSInternalInconsistencyException
+            reason:[NSString stringWithFormat:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)]
+            userInfo:nil
+            ];
 }
 
 @end
 
+#pragma mark Radial Counter
+
+@interface RadialCounterView : CounterView
+@end
+
+@implementation RadialCounterView: CounterView
+
+// override default constructor for NSImageView
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if(!self) return nil;
+    // register NSNotification for updating radial
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"UpdateRadial"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         [super displayValue:[[[note userInfo] objectForKey:@"radial"] integerValue]];
+     }];
+    return self;
+}
+
+- (void)up {
+    // send a notification to try incrementing radial
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"TryIncrementRadial"
+     object:self
+     ];
+}
+
+- (void)down {
+    // send a notification to try decrementing radial
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"TryDecrementRadial"
+     object:self
+     ];
+}
+
+@end
+
+#pragma mark Concentric Counter
+
 @interface ConcentricCounterView : CounterView
-    @property (nonatomic) IBOutlet PadView* pad;
 @end
 
 @implementation ConcentricCounterView
 
+// override default constructor for NSImageView
+- (id)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if(!self) return nil;
+    // register NSNotification for updating radial
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"UpdateConcentric"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         [super displayValue:[[[note userInfo] objectForKey:@"concentric"] integerValue]];
+     }];
+    return self;
+}
+
+
 - (void)up {
-    if ([[super controller] concentric] >= CONCENTRIC_UPPER_BOUND) { return; } // bounds check
-    [[super controller] setConcentric:[[super controller] concentric] + 1];
-    [super displayValue:[[super controller] concentric]];
-    [[self pad] redraw];
+    // send a notification to try incrementing concentric
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"TryIncrementConcentric"
+     object:self
+     ];
 }
 
 - (void)down {
-    if ([[super controller] concentric] <= CONCENTRIC_LOWER_BOUND) { return; } // bounds check
-    [[super controller] setConcentric:[[super controller] concentric] - 1];
-    [super displayValue:[[super controller] concentric]];
-    [[self pad] redraw];
+    // send a notification to try decrementing concentric
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"TryDecrementConcentric"
+     object:self
+     ];
 }
 
 @end
