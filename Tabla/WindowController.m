@@ -54,6 +54,28 @@ static NSString *DATA_FOLDER = @"/Tabla";
          [self saveProfile];
      }];
     
+    // register NSNotificaiton for dropping a color
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"ColorDropped"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         NSDictionary *ui = [note userInfo];
+         NSInteger r = [[ui objectForKey:@"radial"] integerValue];
+         NSInteger c = [[ui objectForKey:@"concentric"] integerValue];
+         // NSData *data = [[[note userInfo] objectForKey:@"color"] data];
+         float red = [[ui objectForKey:@"red"] floatValue];
+         float green = [[ui objectForKey:@"green"] floatValue];
+         float blue = [[ui objectForKey:@"blue"] floatValue];
+         for(Sound *s in soundData) {
+             NSColor *sColor = s.color;
+             if(sColor.redComponent == red &&
+                sColor.greenComponent == green &&
+                sColor.blueComponent == blue) {
+                 [self.profile setSound:s forConcentric:c andRadial:r];
+             }
+         }
+     }];
     return self;
 }
 
@@ -108,7 +130,6 @@ static NSString *DATA_FOLDER = @"/Tabla";
 }
 
 - (void)addSound:(Sound *)s {
-    NSLog(@"Add sound");
     NSMutableArray *tempData = [NSMutableArray arrayWithArray:soundData];
     [tempData addObject:s];
     [self setSoundData:tempData];

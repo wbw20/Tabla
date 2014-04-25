@@ -88,7 +88,7 @@ float theta;                    // angle of each zone
      }];
     
     // register file URL drag type
-    [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, nil]];
+    [self registerForDraggedTypes:[NSArray arrayWithObjects:NSURLPboardType, NSColorPboardType, nil]];
     
     return self;
 }
@@ -121,24 +121,40 @@ float theta;                    // angle of each zone
 
 - (BOOL)performDragOperation:(id<NSDraggingInfo>)sender
 {
-    NSURL* fileURL = [NSURL URLFromPasteboard: [sender draggingPasteboard]];
-    if(fileURL != NULL) {
-        // get mouse location
-        NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
-        mouseLoc = [self convertPoint:mouseLoc fromView:nil];
-        // locate the corresponding zone
-        int concentric = [self getConcentric:mouseLoc];
-        int radial = [self getRadial:mouseLoc];
-        NSLog(@"%@ dropped at (%.2f,%.2f)", [fileURL absoluteString], mouseLoc.x, mouseLoc.y);
-        NSLog(@"Located in ring %d zone %d", concentric, radial);
-        if(concentric > 0 && radial > 0) {
+    // get mouse location
+    NSPoint mouseLoc = [self.window mouseLocationOutsideOfEventStream];
+    mouseLoc = [self convertPoint:mouseLoc fromView:nil];
+    // locate the corresponding zone
+    int concentric = [self getConcentric:mouseLoc];
+    int radial = [self getRadial:mouseLoc];
+    
+    if(concentric > 0 && radial > 0) {
+        // check if data is a URL
+        NSURL* fileURL = [NSURL URLFromPasteboard:[sender draggingPasteboard]];
+        if(fileURL != nil) {
             // send a notification that a sound has been dropped
             NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:radial],
                                        @"concentric": [NSNumber numberWithInt:concentric],
                                        @"file": [fileURL absoluteString]};
-            NSLog(@"Notify %@", [fileURL absoluteString]);
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"SoundDropped"
+             object:self
+             userInfo:userInfo];
+            return YES;
+        }
+        // check if data is a color
+        NSColor *color = [NSColor colorFromPasteboard:[sender draggingPasteboard]];
+        if(color != nil) {
+            // send a notification that a color has been dropped
+            // NSData *data = [NSArchiver archivedDataWithRootObject:color];
+            NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:radial],
+                                       @"concentric": [NSNumber numberWithInt:concentric],
+                                       //@"color": data};
+                                       @"red": [NSNumber numberWithFloat:color.redComponent],
+                                       @"green": [NSNumber numberWithFloat:color.greenComponent],
+                                       @"blue": [NSNumber numberWithFloat:color.blueComponent]};
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"ColorDropped"
              object:self
              userInfo:userInfo];
             return YES;
