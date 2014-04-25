@@ -27,6 +27,15 @@
     return self;
 }
 
+- (id)initWithPath:(NSURL *)url andColor:(NSColor *)c {
+    if([super initWithContentsOfFile:[url path] byReference:YES]) {
+        self.filepath = url;
+        self.name = [url lastPathComponent];
+        self.color = c;
+    }
+    return self;
+}
+
 - (NSString*) toString {
     return [NSString stringWithFormat:@"%@:%@", [self name], [[self filepath] path]];
 }

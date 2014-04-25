@@ -19,8 +19,6 @@ const NSInteger MAX_CONCENTRIC = 6;
     self = [super init];
     if(!self) return nil;
     
-    NSLog(@"Init Profile");
-    
     self.concentric = 1;
     self.radial = 1;
     self.sounds = [[NSMutableDictionary alloc] init];

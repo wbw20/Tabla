@@ -26,9 +26,7 @@ float theta;                    // angle of each zone
 
 - (id)initWithFrame:(NSRect)rect {
     if (![super initWithFrame:rect]) return nil;
-    
-    NSLog(@"Init PadView");
-    
+        
     concentric = 1;
     radial = 1;
     hoverRadial = 0;
@@ -247,7 +245,7 @@ float theta;                    // angle of each zone
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
-    NSLog(@"Draw zones");
+    //NSLog(@"Draw zones");
     [self drawCenterZone];
     for(int c = 2; c <= concentric; c++)
         for(int r = 1; r <= radial; r++)
@@ -255,7 +253,7 @@ float theta;                    // angle of each zone
 }
 
 - (void)drawCenterZone {
-    NSLog(@"Draw center zone");
+    //NSLog(@"Draw center zone");
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     [[self getColorForConcentric:1 Radial:1] setFill];
     
@@ -264,7 +262,7 @@ float theta;                    // angle of each zone
 }
 
 - (void)drawZoneAtConcentric:(int)c Radial:(int)r {
-    NSLog(@"Draw zone c:%d, r:%d", c, r);
+    //NSLog(@"Draw zone c:%d, r:%d", c, r);
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     [[self getColorForConcentric:c Radial:r] setFill];
     
