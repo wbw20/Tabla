@@ -151,10 +151,8 @@ float theta;                    // angle of each zone
         NSColor *color = [NSColor colorFromPasteboard:[sender draggingPasteboard]];
         if(color != nil) {
             // send a notification that a color has been dropped
-            // NSData *data = [NSArchiver archivedDataWithRootObject:color];
             NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:radial],
                                        @"concentric": [NSNumber numberWithInt:concentric],
-                                       //@"color": data};
                                        @"red": [NSNumber numberWithFloat:color.redComponent],
                                        @"green": [NSNumber numberWithFloat:color.greenComponent],
                                        @"blue": [NSNumber numberWithFloat:color.blueComponent]};

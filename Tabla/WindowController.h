@@ -20,7 +20,7 @@
 
 - (void)closeSound:(Sound *)s;
 
-- (void)addSound:(Sound *)s;
+- (BOOL)addSound:(Sound *)s;
 - (void)insertObject:(Sound *)s inSoundDataAtIndex:(NSInteger)index;
 - (void)removeObjectFromSoundDataAtIndex:(NSInteger)index;
 - (void)setSoundData:(NSMutableArray *) a;

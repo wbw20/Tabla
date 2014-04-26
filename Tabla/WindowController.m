@@ -67,9 +67,9 @@ float hue;
          // create new sound from file
          Sound *s = [[Sound alloc] initWithPath:f andColor:[self nextColor]];
          // add sound to the library
-         [self addSound:s];
+         BOOL added = [self addSound:s];
          // if a zone coordinate is specified
-         if(r > 0 && c > 0) {
+         if(added && r > 0 && c > 0) {
              // assign sound to zone
              [self.profile setSound:s forConcentric:c andRadial:r];
              // save the profile
@@ -170,10 +170,16 @@ float hue;
     soundData = a;
 }
 
-- (void)addSound:(Sound *)s {
+- (BOOL)addSound:(Sound *)s {
+    for(Sound *a in soundData) {
+        if([a.filepath.absoluteString isEqualToString:s.filepath.absoluteString]) {
+            return NO;
+        }
+    }
     NSMutableArray *tempData = [NSMutableArray arrayWithArray:soundData];
     [tempData addObject:s];
     [self setSoundData:tempData];
+    return YES;
 }
 
 - (NSArray *)soundData {
