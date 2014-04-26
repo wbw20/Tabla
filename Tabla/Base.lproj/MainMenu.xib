@@ -18,7 +18,9 @@
                     <menu key="submenu" title="Tabla" systemMenu="apple" id="57">
                         <items>
                             <menuItem title="About Tabla" id="58">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <string key="keyEquivalent" base64-UTF8="YES">
+CQ
+</string>
                                 <connections>
                                     <action selector="orderFrontStandardAboutPanel:" target="-2" id="142"/>
                                 </connections>
@@ -644,7 +646,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowPositionMask key="initialPositionMask" topStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="808" height="542"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <value key="minSize" type="size" width="800" height="548"/>
             <value key="maxSize" type="size" width="800" height="548"/>
             <view key="contentView" id="CNa-RQ-bea">
@@ -786,7 +788,7 @@
                     </connections>
                 </colorWell>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8G-Ae-BK2">
-                    <rect key="frame" x="4" y="9" width="17" height="17"/>
+                    <rect key="frame" x="4" y="9" width="17" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="inline" title="X" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TmQ-Hx-qgh">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

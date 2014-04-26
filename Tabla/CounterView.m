@@ -23,6 +23,7 @@ static void initialize_navigationBarImages() {
 	[super drawRect:dirtyRect];
     [darkColor set];
     [NSBezierPath fillRect: [self bounds]];
+    [[NSImage imageNamed:@"right_arrow.png"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 }
 
 - (void) mouseUp:(NSEvent *)event {
@@ -38,6 +39,7 @@ static void initialize_navigationBarImages() {
 	[super drawRect:dirtyRect];
     [darkColor set];
     [NSBezierPath fillRect: [self bounds]];
+    [[NSImage imageNamed:@"left_arrow.png"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 }
 
 - (void) mouseUp:(NSEvent *)event {
