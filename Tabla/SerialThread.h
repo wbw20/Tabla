@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PadView.h"
 
-@interface SerialThread : NSThread
+@interface SerialThread : NSThread {
+    IBOutlet PadView *pad;
+}
 
 @end

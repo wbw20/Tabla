@@ -13,7 +13,7 @@
 
 - (void)main {
     SerialDelegate *serial = [[SerialDelegate alloc] init];
-    [serial listen];
+    [serial listen:pad];
 }
 
 @end

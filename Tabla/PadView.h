@@ -13,4 +13,7 @@
     NSTrackingArea *trackingArea;
 }
 
+- (int)getRadial:(NSPoint)loc;
+- (int)getConcentric:(NSPoint)loc;
+
 @end

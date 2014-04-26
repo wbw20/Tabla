@@ -7,13 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
-#define BUFFER_SIZE 256
+#import "PadView.h"
 
 @interface SerialDelegate : NSObject {
     NSString *port;
 }
 
-- (void) listen;
+@property PadView *pad;
+
+- (void) listen:(PadView*)view;
 
 @end

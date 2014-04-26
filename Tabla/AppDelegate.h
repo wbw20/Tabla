@@ -9,10 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "Sound.h"
 #import "INAppStoreWindow.h"
+#import "SerialThread.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
     IBOutlet INAppStoreWindow* window;
+    IBOutlet SerialThread *thread;
 }
 
 @end

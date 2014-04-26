@@ -8,36 +8,52 @@
 
 #import "SerialDelegate.h"
 
-#define BUFFER_SIZE 256
-
 @implementation SerialDelegate
 
 int code = -1;
-char quiet=0;
 
 - (id) init {
-    port = @"/dev/tty.usbmodem1411";
+    port = @"/dev/tty.usbmodem1421";
     
     return self;
 }
 
-- (void) listen {
+- (void) listen:(PadView*)view {
     code = [self connect];
+    [self setPad:view];
 
     if( code == -1 ) {
         NSLog(@"serial port not opened");
     }
 
-    // printf("%c\n", [self read_char]);
+     [self read_char];
 }
 
 - (char) read_char {
-    char single[1]; // single char array at a time
+    NSMutableString *buffer = [[NSMutableString alloc] initWithString:@""];
+    unichar *single[1]; // single char array at a time
     while(1) {
         long result = read(code, single, 1);
-
-        if (result != 0) {
-            NSLog(@"%c\n", single[0]);
+        
+        if (result != -1) {
+            [buffer appendString:[NSString stringWithCharacters:single length:1]];
+        }
+        
+        if (single[0] == ']' && [buffer length] > 0) {
+            NSArray *parts = [buffer componentsSeparatedByString:@", "];
+            int x = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)] floatValue];
+            int y = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
+            
+            NSPoint point = CGPointMake(500 * x, 500 * y);
+            
+            NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:[[self pad] getRadial:point]],
+                                           @"concentric": [NSNumber numberWithInt:[[self pad] getConcentric:point]]};
+            [[NSNotificationCenter defaultCenter]
+            postNotificationName:@"ZoneClicked"
+            object:self
+            userInfo:userInfo];
+            
+            buffer = [[NSMutableString alloc] initWithString:@""];
         }
     }
     
