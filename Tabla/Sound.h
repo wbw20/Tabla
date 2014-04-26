@@ -14,7 +14,8 @@
 @property(nonatomic, retain) NSURL *filepath;
 @property(nonatomic, retain) NSColor *color;
 
-- (id) initWithPath:(NSURL*)filepath;
+- (id) initWithPath:(NSURL*)url;
+- (id) initWithPath:(NSURL*)url andColor:(NSColor*)color;
 - (NSString*) toString;
 
 @end

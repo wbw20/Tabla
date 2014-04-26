@@ -11,15 +11,13 @@
 @implementation Profile
 
 const NSInteger MIN_RADIAL = 1;
-const NSInteger MAX_RADIAL = 16;
+const NSInteger MAX_RADIAL = 8;
 const NSInteger MIN_CONCENTRIC = 1;
-const NSInteger MAX_CONCENTRIC = 6;
+const NSInteger MAX_CONCENTRIC = 4;
 
 - (id) init {
     self = [super init];
     if(!self) return nil;
-    
-    NSLog(@"Init Profile");
     
     self.concentric = 1;
     self.radial = 1;
@@ -93,10 +91,8 @@ const NSInteger MAX_CONCENTRIC = 6;
 - (void)setSound:(Sound *)s forConcentric:(NSInteger)c andRadial:(NSInteger)r {
     [self.sounds setObject:s forKey:[self getHashForConcentric:c andRadial:r]];
     // send a notification that a sound has been mapped to this zone
-    //NSData *data = [NSArchiver archivedDataWithRootObject:s.color];
     NSDictionary *userInfo = @{@"concentric": [NSNumber numberWithInteger:c],
                                @"radial": [NSNumber numberWithInteger:r],
-                               //@"color:": data};
                                @"red": [NSNumber numberWithFloat:s.color.redComponent],
                                @"green": [NSNumber numberWithFloat:s.color.greenComponent],
                                @"blue": [NSNumber numberWithFloat:s.color.blueComponent]};
@@ -104,6 +100,28 @@ const NSInteger MAX_CONCENTRIC = 6;
      postNotificationName:@"SetZone"
      object:self
      userInfo:userInfo];
+}
+
+- (void)removeSoundForConcentric:(NSInteger)c andRadial:(NSInteger)r {
+    [self.sounds removeObjectForKey:[self getHashForConcentric:c andRadial:r]];
+    // send a notification that this zone has been cleared
+    NSDictionary *userInfo = @{@"concentric": [NSNumber numberWithInteger:c],
+                               @"radial": [NSNumber numberWithInteger:r]};
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"ClearZone"
+     object:self
+     userInfo:userInfo];
+}
+
+- (void)removeSound:(Sound *)sound {
+    // loop through all possible zones
+    for(int c = 1; c <= MAX_CONCENTRIC; c++) {
+        for(int r = 1; r <= MAX_RADIAL; r++) {
+            // check if sound matches the one to be removed
+            if([self soundFor:r andConcentric:c].filepath == sound.filepath)
+                [self removeSoundForConcentric:c andRadial:r];
+        }
+    }
 }
 
 - (NSString*)getHashForConcentric:(NSInteger)c andRadial:(NSInteger)r {

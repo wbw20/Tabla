@@ -18,9 +18,7 @@
                                                  name:NSWindowWillCloseNotification
                                                object:window];
     [self setupToolbar];
-
     [thread start];
-    NSLog(@"Application finished launching");
 }
 
 - (void) setupToolbar {

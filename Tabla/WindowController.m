@@ -11,19 +11,23 @@
 
 @implementation WindowController
 
+#define GOLDEN_RATIO_CONJUGATE 0.618033988749895
+
 @synthesize soundData;
 static NSString *DATA_FOLDER = @"/Tabla";
+float hue;
 
 - (id)init {
     Profile* model = [[Profile alloc] init];
-
+    
     if ([super init]) {
         [self setProfile:model];
     }
     
-    NSLog(@"Init Window Controller");
+    // set initial hue to a random value between 0 and 1
+    hue = (float)rand()/RAND_MAX;
     
-    // register NSNotification for playing a sound
+    // play a sound when a zone is clicked
     [[NSNotificationCenter defaultCenter]
      addObserverForName:@"ZoneClicked"
      object:nil
@@ -31,11 +35,27 @@ static NSString *DATA_FOLDER = @"/Tabla";
      usingBlock:^(NSNotification *note) {
          NSInteger radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
          NSInteger concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         // look for sound mapped to this zone
          Sound *s = [self.profile soundFor:radial andConcentric:concentric];
+         // if there's a sound, play it
          if(s != nil) [s play];
      }];
     
-    // register NSNotification for dropping a sound
+    // unmap the sound when a zone is command clicked
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"ZoneCommandClicked"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         NSInteger radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         NSInteger concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         // look for sound mapped to this zone
+         Sound *s = [self.profile soundFor:radial andConcentric:concentric];
+         // if there's a sound, remove it
+         if(s != nil) [self.profile removeSoundForConcentric:concentric andRadial:radial];
+     }];
+    
+    // register NSNotification for dropping a sound on the pad or library
     [[NSNotificationCenter defaultCenter]
      addObserverForName:@"SoundDropped"
      object:nil
@@ -45,16 +65,19 @@ static NSString *DATA_FOLDER = @"/Tabla";
          NSInteger c = [[[note userInfo] objectForKey:@"concentric"] integerValue];
          NSURL *f = [NSURL URLWithString:[[note userInfo] objectForKey:@"file"]];
          // create new sound from file
-         Sound *s = [[Sound alloc] initWithPath:f];
+         Sound *s = [[Sound alloc] initWithPath:f andColor:[self nextColor]];
          // add sound to the library
-         [self addSound:s];
-         // assign sound to zone
-         [self.profile setSound:s forConcentric:c andRadial:r];
-         // save the profile
-         [self saveProfile];
+         BOOL added = [self addSound:s];
+         // if a zone coordinate is specified
+         if(added && r > 0 && c > 0) {
+             // assign sound to zone
+             [self.profile setSound:s forConcentric:c andRadial:r];
+             // save the profile
+             [self saveProfile];
+         }
      }];
     
-    // register NSNotificaiton for dropping a color
+    // register NSNotificaiton for dropping a color on the pad
     [[NSNotificationCenter defaultCenter]
      addObserverForName:@"ColorDropped"
      object:nil
@@ -63,17 +86,18 @@ static NSString *DATA_FOLDER = @"/Tabla";
          NSDictionary *ui = [note userInfo];
          NSInteger r = [[ui objectForKey:@"radial"] integerValue];
          NSInteger c = [[ui objectForKey:@"concentric"] integerValue];
-         // NSData *data = [[[note userInfo] objectForKey:@"color"] data];
          float red = [[ui objectForKey:@"red"] floatValue];
          float green = [[ui objectForKey:@"green"] floatValue];
          float blue = [[ui objectForKey:@"blue"] floatValue];
+         // find the sound with matching color
          for(Sound *s in soundData) {
              NSColor *sColor = s.color;
-             if(sColor.redComponent == red &&
-                sColor.greenComponent == green &&
-                sColor.blueComponent == blue) {
+             float dr = fabsf(red - sColor.redComponent);
+             float dg = fabsf(green - sColor.greenComponent);
+             float db = fabsf(blue - sColor.blueComponent);
+             // set the sound for specified zone
+             if(dr < 0.00001f && dg < 0.00001f && db < 0.00001f)
                  [self.profile setSound:s forConcentric:c andRadial:r];
-             }
          }
      }];
     return self;
@@ -85,6 +109,23 @@ static NSString *DATA_FOLDER = @"/Tabla";
     }
 
     return self;
+}
+
+- (void)closeSound:(Sound *)s {
+    // unmap all zones with this sound
+    [self.profile removeSound:s];
+    // remove the sound from library
+    [soundData removeObject:s];
+    [soundController removeObject:s];
+}
+
+// returns next color in the sequence
+- (NSColor *)nextColor {
+    hue += GOLDEN_RATIO_CONJUGATE;
+    hue = fmodf(hue, 1.0f);
+    NSColor *hsb = [NSColor colorWithHue:hue saturation:0.5f brightness:0.8f alpha:1.0f];
+    NSColor *rgb = [NSColor colorWithRed:hsb.redComponent green:hsb.greenComponent blue:hsb.blueComponent alpha:1.0f];
+    return rgb;
 }
 
 /*
@@ -129,10 +170,16 @@ static NSString *DATA_FOLDER = @"/Tabla";
     soundData = a;
 }
 
-- (void)addSound:(Sound *)s {
+- (BOOL)addSound:(Sound *)s {
+    for(Sound *a in soundData) {
+        if([a.filepath.absoluteString isEqualToString:s.filepath.absoluteString]) {
+            return NO;
+        }
+    }
     NSMutableArray *tempData = [NSMutableArray arrayWithArray:soundData];
     [tempData addObject:s];
     [self setSoundData:tempData];
+    return YES;
 }
 
 - (NSArray *)soundData {

@@ -1,11 +1,8 @@
 //
-//  Profile.h
-//  Tabla
+// File: Profile.h
+// Authors: William Wetterston and Michael Xu
 //
-//  Created by William Wettersten on 2/26/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
-//
-
+// Model for a sound profile
 #import <Foundation/Foundation.h>
 
 #import "Sound.h"
@@ -23,7 +20,8 @@ extern const NSInteger MAX_CONCENTRIC;
 
 - (Sound*)soundFor:(NSInteger)radial andConcentric:(NSInteger)concentric;
 - (void)setSound:(Sound *)s forConcentric:(NSInteger)c andRadial:(NSInteger)r;
-- (void)setSoundWithColor:(NSColor *)color forConcentric:(NSInteger)c andRadial:(NSInteger)r;
+- (void)removeSoundForConcentric:(NSInteger)c andRadial:(NSInteger)r;
+- (void)removeSound:(Sound *)sound;
 - (NSString*)json;
 
 @end

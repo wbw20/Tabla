@@ -635,7 +635,11 @@
         </customObject>
         <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
         <customObject id="qJn-js-SIJ" customClass="NSFontManager"/>
-        <customObject id="BOY-y1-sfv" customClass="WindowController"/>
+        <customObject id="BOY-y1-sfv" customClass="WindowController">
+            <connections>
+                <outlet property="soundController" destination="j9i-kt-sFA" id="nVw-B4-yEa"/>
+            </connections>
+        </customObject>
         <window title="Tabla" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="o3e-Cs-hA4" customClass="INAppStoreWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowPositionMask key="initialPositionMask" topStrut="YES"/>
@@ -644,11 +648,11 @@
             <value key="minSize" type="size" width="800" height="548"/>
             <value key="maxSize" type="size" width="800" height="548"/>
             <view key="contentView" id="CNa-RQ-bea">
-                <rect key="frame" x="0.0" y="0.0" width="748" height="548"/>
+                <rect key="frame" x="0.0" y="0.0" width="808" height="542"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkL-34-Vjb" customClass="PadView">
-                        <rect key="frame" x="228" y="28" width="500" height="500"/>
+                        <rect key="frame" x="288" y="22" width="500" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CPA-yo-3Vt" customClass="ConcentricCounterView">
@@ -720,14 +724,14 @@
                         </subviews>
                     </customView>
                     <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YE-7l-0xX" customClass="SoundView">
-                        <rect key="frame" x="20" y="28" width="195" height="500"/>
+                        <rect key="frame" x="20" y="22" width="258" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" ambiguous="YES" misplaced="YES" id="Wel-Ut-fUD">
-                            <rect key="frame" x="1" y="1" width="193" height="498"/>
+                            <rect key="frame" x="1" y="1" width="256" height="498"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <collectionView ambiguous="YES" id="vq7-of-fyB">
-                                    <rect key="frame" x="0.0" y="0.0" width="193" height="498"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="256" height="498"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <connections>
@@ -758,11 +762,11 @@
             </connections>
         </collectionViewItem>
         <view id="WKX-gA-DPZ">
-            <rect key="frame" x="0.0" y="0.0" width="195" height="64"/>
+            <rect key="frame" x="0.0" y="0.0" width="256" height="36"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lk-5N-tUa">
-                    <rect key="frame" x="10" y="38" width="129" height="17"/>
+                    <rect key="frame" x="27" y="10" width="189" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Name" id="S11-Uk-xRk">
                         <font key="font" metaFont="systemBold"/>
@@ -773,31 +777,43 @@
                         <binding destination="Nvy-lj-BAS" name="value" keyPath="representedObject.name" id="fty-Xd-Nmg"/>
                     </connections>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j7j-OG-swB">
-                    <rect key="frame" x="10" y="10" width="129" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="filepath" id="aKk-6z-ngK">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="Nvy-lj-BAS" name="value" keyPath="representedObject.filepath" id="HGj-5U-IDT"/>
-                    </connections>
-                </textField>
                 <colorWell fixedFrame="YES" bordered="NO" continuous="NO" enabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0H-P3-hDr">
-                    <rect key="frame" x="145" y="10" width="44" height="45"/>
+                    <rect key="frame" x="222" y="2" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="color" red="0.9056411537783744" green="1" blue="0.6464424389682224" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <binding destination="Nvy-lj-BAS" name="value" keyPath="representedObject.color" id="N6r-6B-mOE"/>
                     </connections>
                 </colorWell>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8G-Ae-BK2">
+                    <rect key="frame" x="4" y="9" width="17" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="inline" title="X" bezelStyle="inline" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TmQ-Hx-qgh">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="systemBold" size="10"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="Nvy-lj-BAS" name="argument" keyPath="representedObject" id="TgN-pH-UDO">
+                            <dictionary key="options">
+                                <string key="NSSelectorName">closeSound:</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="BOY-y1-sfv" name="target" keyPath="self" previousBinding="TgN-pH-UDO" id="b12-HC-poN">
+                            <dictionary key="options">
+                                <string key="NSSelectorName">closeSound:</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
             </subviews>
         </view>
         <arrayController id="j9i-kt-sFA">
             <connections>
-                <binding destination="BOY-y1-sfv" name="contentArray" keyPath="soundData" id="gYs-Sl-6zA"/>
+                <binding destination="BOY-y1-sfv" name="contentArray" keyPath="soundData" id="rnX-4M-uxF">
+                    <dictionary key="options">
+                        <bool key="NSDeletesObjectsOnRemove" value="YES"/>
+                    </dictionary>
+                </binding>
             </connections>
         </arrayController>
         <customObject id="JO4-Wf-NHf" customClass="SerialThread">

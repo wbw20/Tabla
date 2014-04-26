@@ -26,9 +26,7 @@ float theta;                    // angle of each zone
 
 - (id)initWithFrame:(NSRect)rect {
     if (![super initWithFrame:rect]) return nil;
-    
-    NSLog(@"Init PadView");
-    
+        
     concentric = 1;
     radial = 1;
     hoverRadial = 0;
@@ -48,7 +46,6 @@ float theta;                    // angle of each zone
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
-         NSLog(@"View update radial");
          radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
          theta = 2 * M_PI / radial;
          [self setNeedsDisplay:YES];
@@ -60,7 +57,6 @@ float theta;                    // angle of each zone
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
-         NSLog(@"View update concentric");
          concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
          rd = maxRadius / concentric;
          [self setNeedsDisplay:YES];
@@ -72,18 +68,26 @@ float theta;                    // angle of each zone
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
-         NSLog(@"View set zone");
          NSDictionary *ui = note.userInfo;
          NSInteger c = [[ui objectForKey:@"concentric"] integerValue];
          NSInteger r = [[ui objectForKey:@"radial"] integerValue];
-//         NSData *data = [[ui objectForKey:@"color"] data];
-//         NSColor *color = [NSUnarchiver unarchiveObjectWithData:data];
          float red = [[ui objectForKey:@"red"] floatValue];
          float green = [[ui objectForKey:@"green"] floatValue];
          float blue = [[ui objectForKey:@"blue"] floatValue];
          NSColor *color = [NSColor colorWithRed:red green:green blue:blue alpha:1.0f];
-         NSLog(@"Color at %ld, %ld is %@", c, r, color);
          [self setColor:color ForConcentric:c Radial:r];
+         [self setNeedsDisplay:YES];
+     }];
+    
+    // execute when a sound is cleared from a zone
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"ClearZone"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         NSInteger c = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         NSInteger r = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         [self removeColorForConcentric:c Radial:r];
          [self setNeedsDisplay:YES];
      }];
     
@@ -101,11 +105,12 @@ float theta;                    // angle of each zone
     int concentric = [self getConcentric:mouseLoc];
     int radial = [self getRadial:mouseLoc];
     if(radial != 0 && concentric != 0) {
-        // send a notification that a zone has been clicked
         NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:radial],
                                    @"concentric": [NSNumber numberWithInt:concentric]};
+        // determine if command key is down during event
+        NSString *note = [event modifierFlags] & NSCommandKeyMask ? @"ZoneCommandClicked" : @"ZoneClicked";
         [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"ZoneClicked"
+         postNotificationName:note
          object:self
          userInfo:userInfo];
     }
@@ -146,10 +151,8 @@ float theta;                    // angle of each zone
         NSColor *color = [NSColor colorFromPasteboard:[sender draggingPasteboard]];
         if(color != nil) {
             // send a notification that a color has been dropped
-            // NSData *data = [NSArchiver archivedDataWithRootObject:color];
             NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:radial],
                                        @"concentric": [NSNumber numberWithInt:concentric],
-                                       //@"color": data};
                                        @"red": [NSNumber numberWithFloat:color.redComponent],
                                        @"green": [NSNumber numberWithFloat:color.greenComponent],
                                        @"blue": [NSNumber numberWithFloat:color.blueComponent]};
@@ -247,7 +250,7 @@ float theta;                    // angle of each zone
  *  Draws zones to the graphics context
  **/
 - (void)drawZones {
-    NSLog(@"Draw zones");
+    //NSLog(@"Draw zones");
     [self drawCenterZone];
     for(int c = 2; c <= concentric; c++)
         for(int r = 1; r <= radial; r++)
@@ -255,7 +258,7 @@ float theta;                    // angle of each zone
 }
 
 - (void)drawCenterZone {
-    NSLog(@"Draw center zone");
+    //NSLog(@"Draw center zone");
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     [[self getColorForConcentric:1 Radial:1] setFill];
     
@@ -264,7 +267,7 @@ float theta;                    // angle of each zone
 }
 
 - (void)drawZoneAtConcentric:(int)c Radial:(int)r {
-    NSLog(@"Draw zone c:%d, r:%d", c, r);
+    //NSLog(@"Draw zone c:%d, r:%d", c, r);
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     [[self getColorForConcentric:c Radial:r] setFill];
     
@@ -290,11 +293,15 @@ float theta;                    // angle of each zone
     [colors setObject:data forKey:[self getHashForConcentric:c Radial:r]];
 }
 
+- (void)removeColorForConcentric:(NSInteger)c Radial:(NSInteger)r {
+    [colors removeObjectForKey:[self getHashForConcentric:c Radial:r]];
+}
+
 - (NSColor*)getColorForConcentric:(int)c Radial:(int)r {
     // retrive entry from dictionary
     NSData *data = [colors objectForKey:[self getHashForConcentric:c Radial:r]];
     // if nil, just use grey
-    NSColor *color = data == nil ? [NSColor colorWithWhite:0.5 alpha:1] : [NSUnarchiver unarchiveObjectWithData:data];
+    NSColor *color = data == nil ? [NSColor colorWithWhite:0.8 alpha:1] : [NSUnarchiver unarchiveObjectWithData:data];
     // if this zone is hovered over, blend with system highlight color
     if(hoverConcentric == c && hoverRadial == r)
         color = [color highlightWithLevel:0.5f];
