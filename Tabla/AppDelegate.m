@@ -17,10 +17,8 @@
                                                  name:NSWindowWillCloseNotification
                                                object:window];
     
-    
     SerialThread *thread = [[SerialThread alloc] init];
     [thread start];
-    NSLog(@"Application finished launching");
 }
 
 - (void) close {

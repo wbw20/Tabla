@@ -634,7 +634,11 @@
         </customObject>
         <userDefaultsController representsSharedInstance="YES" id="MuL-v0-Ib7"/>
         <customObject id="qJn-js-SIJ" customClass="NSFontManager"/>
-        <customObject id="BOY-y1-sfv" customClass="WindowController"/>
+        <customObject id="BOY-y1-sfv" customClass="WindowController">
+            <connections>
+                <outlet property="soundController" destination="j9i-kt-sFA" id="nVw-B4-yEa"/>
+            </connections>
+        </customObject>
         <window title="Tabla" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="o3e-Cs-hA4" customClass="INAppStoreWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowPositionMask key="initialPositionMask" topStrut="YES"/>
@@ -800,9 +804,14 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="BOY-y1-sfv" name="target" keyPath="self" id="jDE-6Z-zqZ">
+                        <binding destination="Nvy-lj-BAS" name="argument" keyPath="representedObject" id="TgN-pH-UDO">
                             <dictionary key="options">
-                                <string key="NSSelectorName">buttonClicked</string>
+                                <string key="NSSelectorName">closeSound:</string>
+                            </dictionary>
+                        </binding>
+                        <binding destination="BOY-y1-sfv" name="target" keyPath="self" previousBinding="TgN-pH-UDO" id="b12-HC-poN">
+                            <dictionary key="options">
+                                <string key="NSSelectorName">closeSound:</string>
                             </dictionary>
                         </binding>
                     </connections>
@@ -811,7 +820,11 @@
         </view>
         <arrayController id="j9i-kt-sFA">
             <connections>
-                <binding destination="BOY-y1-sfv" name="contentArray" keyPath="soundData" id="gYs-Sl-6zA"/>
+                <binding destination="BOY-y1-sfv" name="contentArray" keyPath="soundData" id="rnX-4M-uxF">
+                    <dictionary key="options">
+                        <bool key="NSDeletesObjectsOnRemove" value="YES"/>
+                    </dictionary>
+                </binding>
             </connections>
         </arrayController>
     </objects>

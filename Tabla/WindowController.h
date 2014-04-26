@@ -12,12 +12,13 @@
 
 @interface WindowController : NSWindowController {
     NSMutableArray *soundData;
+    IBOutlet NSArrayController *soundController;
 }
 
 @property(nonatomic, retain) Profile *profile;
 @property(nonatomic, retain) NSMutableArray *soundData;
 
-- (void)buttonClicked;
+- (void)closeSound:(Sound *)s;
 
 - (void)addSound:(Sound *)s;
 - (void)insertObject:(Sound *)s inSoundDataAtIndex:(NSInteger)index;

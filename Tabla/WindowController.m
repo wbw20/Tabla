@@ -111,8 +111,12 @@ float hue;
     return self;
 }
 
-- (void)buttonClicked {
-    NSLog(@"Button clicked!");
+- (void)closeSound:(Sound *)s {
+    // unmap all zones with this sound
+    [self.profile removeSound:s];
+    // remove the sound from library
+    [soundData removeObject:s];
+    [soundController removeObject:s];
 }
 
 // returns next color in the sequence

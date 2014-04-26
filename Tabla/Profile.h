@@ -24,6 +24,7 @@ extern const NSInteger MAX_CONCENTRIC;
 - (Sound*)soundFor:(NSInteger)radial andConcentric:(NSInteger)concentric;
 - (void)setSound:(Sound *)s forConcentric:(NSInteger)c andRadial:(NSInteger)r;
 - (void)removeSoundForConcentric:(NSInteger)c andRadial:(NSInteger)r;
+- (void)removeSound:(Sound *)sound;
 - (NSString*)json;
 
 @end

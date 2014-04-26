@@ -46,7 +46,6 @@ float theta;                    // angle of each zone
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
-         NSLog(@"View update radial");
          radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
          theta = 2 * M_PI / radial;
          [self setNeedsDisplay:YES];
@@ -58,7 +57,6 @@ float theta;                    // angle of each zone
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
-         NSLog(@"View update concentric");
          concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
          rd = maxRadius / concentric;
          [self setNeedsDisplay:YES];
@@ -77,7 +75,6 @@ float theta;                    // angle of each zone
          float green = [[ui objectForKey:@"green"] floatValue];
          float blue = [[ui objectForKey:@"blue"] floatValue];
          NSColor *color = [NSColor colorWithRed:red green:green blue:blue alpha:1.0f];
-         NSLog(@"Color at %ld, %ld is %@", c, r, color);
          [self setColor:color ForConcentric:c Radial:r];
          [self setNeedsDisplay:YES];
      }];
