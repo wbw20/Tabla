@@ -792,6 +792,21 @@
                         <binding destination="Nvy-lj-BAS" name="value" keyPath="representedObject.color" id="N6r-6B-mOE"/>
                     </connections>
                 </colorWell>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O8G-Ae-BK2">
+                    <rect key="frame" x="107" y="28" width="36" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="x" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TmQ-Hx-qgh">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="BOY-y1-sfv" name="target" keyPath="self" id="jDE-6Z-zqZ">
+                            <dictionary key="options">
+                                <string key="NSSelectorName">buttonClicked</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
             </subviews>
         </view>
         <arrayController id="j9i-kt-sFA">

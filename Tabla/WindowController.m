@@ -27,7 +27,7 @@ float hue;
     // set initial hue to a random value between 0 and 1
     hue = (float)rand()/RAND_MAX;
     
-    // register NSNotification for playing a sound
+    // play a sound when a zone is clicked
     [[NSNotificationCenter defaultCenter]
      addObserverForName:@"ZoneClicked"
      object:nil
@@ -39,6 +39,20 @@ float hue;
          Sound *s = [self.profile soundFor:radial andConcentric:concentric];
          // if there's a sound, play it
          if(s != nil) [s play];
+     }];
+    
+    // unmap the sound when a zone is command clicked
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"ZoneCommandClicked"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         NSInteger radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         NSInteger concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         // look for sound mapped to this zone
+         Sound *s = [self.profile soundFor:radial andConcentric:concentric];
+         // if there's a sound, remove it
+         if(s != nil) [self.profile removeSoundForConcentric:concentric andRadial:radial];
      }];
     
     // register NSNotification for dropping a sound on the pad or library
@@ -95,6 +109,10 @@ float hue;
     }
 
     return self;
+}
+
+- (void)buttonClicked {
+    NSLog(@"Button clicked!");
 }
 
 // returns next color in the sequence

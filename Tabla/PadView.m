@@ -70,18 +70,27 @@ float theta;                    // angle of each zone
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
-         NSLog(@"View set zone");
          NSDictionary *ui = note.userInfo;
          NSInteger c = [[ui objectForKey:@"concentric"] integerValue];
          NSInteger r = [[ui objectForKey:@"radial"] integerValue];
-//         NSData *data = [[ui objectForKey:@"color"] data];
-//         NSColor *color = [NSUnarchiver unarchiveObjectWithData:data];
          float red = [[ui objectForKey:@"red"] floatValue];
          float green = [[ui objectForKey:@"green"] floatValue];
          float blue = [[ui objectForKey:@"blue"] floatValue];
          NSColor *color = [NSColor colorWithRed:red green:green blue:blue alpha:1.0f];
          NSLog(@"Color at %ld, %ld is %@", c, r, color);
          [self setColor:color ForConcentric:c Radial:r];
+         [self setNeedsDisplay:YES];
+     }];
+    
+    // execute when a sound is cleared from a zone
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"ClearZone"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         NSInteger c = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         NSInteger r = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         [self removeColorForConcentric:c Radial:r];
          [self setNeedsDisplay:YES];
      }];
     
@@ -99,11 +108,12 @@ float theta;                    // angle of each zone
     int concentric = [self getConcentric:mouseLoc];
     int radial = [self getRadial:mouseLoc];
     if(radial != 0 && concentric != 0) {
-        // send a notification that a zone has been clicked
         NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:radial],
                                    @"concentric": [NSNumber numberWithInt:concentric]};
+        // determine if command key is down during event
+        NSString *note = [event modifierFlags] & NSCommandKeyMask ? @"ZoneCommandClicked" : @"ZoneClicked";
         [[NSNotificationCenter defaultCenter]
-         postNotificationName:@"ZoneClicked"
+         postNotificationName:note
          object:self
          userInfo:userInfo];
     }
@@ -286,6 +296,10 @@ float theta;                    // angle of each zone
 - (void)setColor:(NSColor*)color ForConcentric:(NSInteger)c Radial:(NSInteger)r {
     NSData *data = [NSArchiver archivedDataWithRootObject:color];
     [colors setObject:data forKey:[self getHashForConcentric:c Radial:r]];
+}
+
+- (void)removeColorForConcentric:(NSInteger)c Radial:(NSInteger)r {
+    [colors removeObjectForKey:[self getHashForConcentric:c Radial:r]];
 }
 
 - (NSColor*)getColorForConcentric:(int)c Radial:(int)r {

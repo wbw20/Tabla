@@ -91,15 +91,24 @@ const NSInteger MAX_CONCENTRIC = 6;
 - (void)setSound:(Sound *)s forConcentric:(NSInteger)c andRadial:(NSInteger)r {
     [self.sounds setObject:s forKey:[self getHashForConcentric:c andRadial:r]];
     // send a notification that a sound has been mapped to this zone
-    //NSData *data = [NSArchiver archivedDataWithRootObject:s.color];
     NSDictionary *userInfo = @{@"concentric": [NSNumber numberWithInteger:c],
                                @"radial": [NSNumber numberWithInteger:r],
-                               //@"color:": data};
                                @"red": [NSNumber numberWithFloat:s.color.redComponent],
                                @"green": [NSNumber numberWithFloat:s.color.greenComponent],
                                @"blue": [NSNumber numberWithFloat:s.color.blueComponent]};
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"SetZone"
+     object:self
+     userInfo:userInfo];
+}
+
+- (void)removeSoundForConcentric:(NSInteger)c andRadial:(NSInteger)r {
+    [self.sounds removeObjectForKey:[self getHashForConcentric:c andRadial:r]];
+    // send a notification that this zone has been cleared
+    NSDictionary *userInfo = @{@"concentric": [NSNumber numberWithInteger:c],
+                               @"radial": [NSNumber numberWithInteger:r]};
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"ClearZone"
      object:self
      userInfo:userInfo];
 }
