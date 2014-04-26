@@ -27,7 +27,6 @@
 		BEC07121189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC0711F189C541D00505F7D /* InfoPlist.strings */; };
 		BEC07123189C541D00505F7D /* TablaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC07122189C541D00505F7D /* TablaTests.m */; };
 		BED9544118ED6020001337AE /* WindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED9544018ED6020001337AE /* WindowController.m */; };
-		BEEB251018C947F6000DB2D5 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB250F18C947F6000DB2D5 /* Player.m */; };
 		BEEB251518C94817000DB2D5 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251218C94817000DB2D5 /* Profile.m */; };
 		BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251B18C9483A000DB2D5 /* SerialDelegate.m */; };
 		BEEB252018C9483A000DB2D5 /* SerialThread.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEB251D18C9483A000DB2D5 /* SerialThread.m */; };
@@ -84,8 +83,6 @@
 		BEC225C818A1C28600DE83E8 /* TestProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestProtocol.h; sourceTree = "<group>"; };
 		BED9543F18ED6020001337AE /* WindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowController.h; sourceTree = "<group>"; };
 		BED9544018ED6020001337AE /* WindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowController.m; sourceTree = "<group>"; };
-		BEEB250E18C947F6000DB2D5 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		BEEB250F18C947F6000DB2D5 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		BEEB251118C94817000DB2D5 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
 		BEEB251218C94817000DB2D5 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
 		BEEB251A18C9483A000DB2D5 /* SerialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerialDelegate.h; sourceTree = "<group>"; };
@@ -209,7 +206,6 @@
 			children = (
 				BE228C7518FEE7B400BBF265 /* INAppStoreWindow */,
 				BEEB251718C94826000DB2D5 /* Serial */,
-				BEEB250D18C947BD000DB2D5 /* Player */,
 				BE52D77418C321AA008C3C81 /* Models */,
 				BE7F1EDC18A48B4600F5567E /* Controllers */,
 				BE7F1EDB18A48B3100F5567E /* Views */,
@@ -279,15 +275,6 @@
 				BEC0710D189C541D00505F7D /* MainMenu.xib */,
 			);
 			name = Layouts;
-			sourceTree = "<group>";
-		};
-		BEEB250D18C947BD000DB2D5 /* Player */ = {
-			isa = PBXGroup;
-			children = (
-				BEEB250E18C947F6000DB2D5 /* Player.h */,
-				BEEB250F18C947F6000DB2D5 /* Player.m */,
-			);
-			name = Player;
 			sourceTree = "<group>";
 		};
 		BEEB251718C94826000DB2D5 /* Serial */ = {
@@ -419,7 +406,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEEB251018C947F6000DB2D5 /* Player.m in Sources */,
 				BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */,
 				BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */,
 				BEEB251518C94817000DB2D5 /* Profile.m in Sources */,

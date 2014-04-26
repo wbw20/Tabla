@@ -301,7 +301,7 @@ float theta;                    // angle of each zone
     // retrive entry from dictionary
     NSData *data = [colors objectForKey:[self getHashForConcentric:c Radial:r]];
     // if nil, just use grey
-    NSColor *color = data == nil ? [NSColor colorWithWhite:0.5 alpha:1] : [NSUnarchiver unarchiveObjectWithData:data];
+    NSColor *color = data == nil ? [NSColor colorWithWhite:0.8 alpha:1] : [NSUnarchiver unarchiveObjectWithData:data];
     // if this zone is hovered over, blend with system highlight color
     if(hoverConcentric == c && hoverRadial == r)
         color = [color highlightWithLevel:0.5f];

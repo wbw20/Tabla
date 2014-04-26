@@ -1,11 +1,8 @@
 //
-//  Profile.h
-//  Tabla
+// File: Profile.h
+// Authors: William Wetterston and Michael Xu
 //
-//  Created by William Wettersten on 2/26/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
-//
-
+// Model for a sound profile
 #import <Foundation/Foundation.h>
 
 #import "Sound.h"

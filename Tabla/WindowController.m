@@ -123,7 +123,7 @@ float hue;
 - (NSColor *)nextColor {
     hue += GOLDEN_RATIO_CONJUGATE;
     hue = fmodf(hue, 1.0f);
-    NSColor *hsb = [NSColor colorWithHue:hue saturation:0.3f brightness:0.99f alpha:1.0f];
+    NSColor *hsb = [NSColor colorWithHue:hue saturation:0.5f brightness:0.8f alpha:1.0f];
     NSColor *rgb = [NSColor colorWithRed:hsb.redComponent green:hsb.greenComponent blue:hsb.blueComponent alpha:1.0f];
     return rgb;
 }

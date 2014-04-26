@@ -11,9 +11,9 @@
 @implementation Profile
 
 const NSInteger MIN_RADIAL = 1;
-const NSInteger MAX_RADIAL = 16;
+const NSInteger MAX_RADIAL = 8;
 const NSInteger MIN_CONCENTRIC = 1;
-const NSInteger MAX_CONCENTRIC = 6;
+const NSInteger MAX_CONCENTRIC = 4;
 
 - (id) init {
     self = [super init];
@@ -115,8 +115,8 @@ const NSInteger MAX_CONCENTRIC = 6;
 
 - (void)removeSound:(Sound *)sound {
     // loop through all possible zones
-    for(int c = 1; c < MAX_CONCENTRIC; c++) {
-        for(int r = 1; r < MAX_RADIAL; r++) {
+    for(int c = 1; c <= MAX_CONCENTRIC; c++) {
+        for(int r = 1; r <= MAX_RADIAL; r++) {
             // check if sound matches the one to be removed
             if([self soundFor:r andConcentric:c].filepath == sound.filepath)
                 [self removeSoundForConcentric:c andRadial:r];
