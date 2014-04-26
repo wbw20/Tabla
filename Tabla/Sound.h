@@ -1,9 +1,10 @@
 //
-//  SoundModel.h
-//  Tabla
+// File: Sound.h
+// Authors: Michael Xu
 //
-//  Created by Mike on 3/2/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
+// Model for sound data
+// Specifies the file name and path of the sound
+// Associate a display color for the sound
 //
 
 #import <Foundation/Foundation.h>
@@ -14,8 +15,10 @@
 @property(nonatomic, retain) NSURL *filepath;
 @property(nonatomic, retain) NSColor *color;
 
-- (id) initWithPath:(NSURL*)url;
-- (id) initWithPath:(NSURL*)url andColor:(NSColor*)color;
-- (NSString*) toString;
+// constructor for the file URL and color
+- (id)initWithPath:(NSURL *)url andColor:(NSColor *)color;
+
+// returns a string representation of the data
+- (NSString *)toString;
 
 @end

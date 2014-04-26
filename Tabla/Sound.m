@@ -1,9 +1,10 @@
 //
-//  SoundModel.m
-//  Tabla
+// File: Sound.m
+// Authors: Michael Xu
 //
-//  Created by Mike on 3/2/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
+// Model for sound data
+// Specifies the file name and path of the sound
+// Associate a display color for the sound
 //
 
 #import "Sound.h"
@@ -14,19 +15,7 @@
 @synthesize filepath;
 @synthesize color;
 
-- (id) initWithPath:(NSURL*)url {
-    if ([super initWithContentsOfFile:[url path] byReference:YES]) {
-        self.filepath = url;
-        self.name = [url lastPathComponent];
-        float r = (float)rand() / RAND_MAX;
-        float g = (float)rand() / RAND_MAX;
-        float b = (float)rand() / RAND_MAX;
-        self.color = [NSColor colorWithRed:r green:g blue:b alpha:1.0f];
-    }
-
-    return self;
-}
-
+// construct with given file URL and color
 - (id)initWithPath:(NSURL *)url andColor:(NSColor *)c {
     if([super initWithContentsOfFile:[url path] byReference:YES]) {
         self.filepath = url;
@@ -36,8 +25,9 @@
     return self;
 }
 
-- (NSString*) toString {
-    return [NSString stringWithFormat:@"%@:%@", [self name], [[self filepath] path]];
+// returns a string representation of the object
+- (NSString *)toString {
+    return [NSString stringWithFormat:@"%@:%@ (%@)", [self name], [[self filepath] path], self.color];
 }
 
 @end

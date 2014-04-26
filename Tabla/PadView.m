@@ -1,14 +1,14 @@
 //
-//  RadialView.m
-//  Tabla
+// File: PadView.m
+// Authors: Michael Xu
 //
-//  Created by William Wettersten on 2/6/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
+// View for rendering the zones of the pad
 //
 
 #import "math.h"
 #import "PadView.h"
 
+// kerf is the spacing in between zones
 #define KERF 2.0f
 
 @implementation PadView
@@ -26,7 +26,8 @@ float theta;                    // angle of each zone
 
 - (id)initWithFrame:(NSRect)rect {
     if (![super initWithFrame:rect]) return nil;
-        
+    
+    // initialize variables
     concentric = 1;
     radial = 1;
     hoverRadial = 0;
@@ -47,6 +48,7 @@ float theta;                    // angle of each zone
      queue:nil
      usingBlock:^(NSNotification *note) {
          radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         // update theta value and redraw
          theta = 2 * M_PI / radial;
          [self setNeedsDisplay:YES];
      }];
@@ -58,6 +60,7 @@ float theta;                    // angle of each zone
      queue:nil
      usingBlock:^(NSNotification *note) {
          concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         // update rd value and redraw
          rd = maxRadius / concentric;
          [self setNeedsDisplay:YES];
      }];
@@ -74,7 +77,9 @@ float theta;                    // angle of each zone
          float red = [[ui objectForKey:@"red"] floatValue];
          float green = [[ui objectForKey:@"green"] floatValue];
          float blue = [[ui objectForKey:@"blue"] floatValue];
+         // reconstitute the color from its RGB components
          NSColor *color = [NSColor colorWithRed:red green:green blue:blue alpha:1.0f];
+         // set the color of the zone and redraw
          [self setColor:color ForConcentric:c Radial:r];
          [self setNeedsDisplay:YES];
      }];
@@ -87,6 +92,7 @@ float theta;                    // angle of each zone
      usingBlock:^(NSNotification *note) {
          NSInteger c = [[[note userInfo] objectForKey:@"concentric"] integerValue];
          NSInteger r = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         // unmap color from the zone and redraw
          [self removeColorForConcentric:c Radial:r];
          [self setNeedsDisplay:YES];
      }];
@@ -210,7 +216,7 @@ float theta;                    // angle of each zone
 }
 
 #pragma mark - Mouse Events
-
+// set a new tracking area
 - (void)updateTrackingAreas {
     [super updateTrackingAreas];
     if(trackingArea) {
@@ -222,11 +228,16 @@ float theta;                    // angle of each zone
     [self addTrackingArea:trackingArea];
 }
 
+// determine what zone is being moused over
 - (void)mouseMoved:(NSEvent *)e {
+    // get the mouse coordinates
     NSPoint loc = [self convertPoint:[e locationInWindow] fromView:nil];
+    // convert to zone coordinates
     int r = [self getConcentric:loc];
     int z = [self getRadial:loc];
+    // if the zone coordinates have changed
     if(r != hoverConcentric || z != hoverRadial) {
+        // update the hover variables and redraw
         hoverConcentric = r;
         hoverRadial = z;
         [self setNeedsDisplay:YES];
@@ -239,24 +250,24 @@ float theta;                    // angle of each zone
 {
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
     CGContextClearRect(context, [self frame]);
-
     NSRect bounds = [self bounds];
     [[NSColor windowBackgroundColor] set];
     [NSBezierPath fillRect: bounds];
     [self drawZones];
 }
 
-/**
- *  Draws zones to the graphics context
- **/
+// draw zones to the graphics context
 - (void)drawZones {
     //NSLog(@"Draw zones");
+    // draw the center
     [self drawCenterZone];
+    // draw each zone
     for(int c = 2; c <= concentric; c++)
         for(int r = 1; r <= radial; r++)
             [self drawZoneAtConcentric:c Radial:r];
 }
 
+// draws a circular zone in the center
 - (void)drawCenterZone {
     //NSLog(@"Draw center zone");
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
@@ -266,6 +277,7 @@ float theta;                    // angle of each zone
     CGContextFillPath(context);
 }
 
+// draw a specific zone
 - (void)drawZoneAtConcentric:(int)c Radial:(int)r {
     //NSLog(@"Draw zone c:%d, r:%d", c, r);
     CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
@@ -288,16 +300,20 @@ float theta;                    // angle of each zone
     CGContextFillPath(context);
 }
 
+// map the color to the zone
 - (void)setColor:(NSColor*)color ForConcentric:(NSInteger)c Radial:(NSInteger)r {
+    // archive the color data to store in dict
     NSData *data = [NSArchiver archivedDataWithRootObject:color];
     [colors setObject:data forKey:[self getHashForConcentric:c Radial:r]];
 }
 
+// unmap color from the zone
 - (void)removeColorForConcentric:(NSInteger)c Radial:(NSInteger)r {
     [colors removeObjectForKey:[self getHashForConcentric:c Radial:r]];
 }
 
-- (NSColor*)getColorForConcentric:(int)c Radial:(int)r {
+// returns the color mapped to the zone
+- (NSColor *)getColorForConcentric:(int)c Radial:(int)r {
     // retrive entry from dictionary
     NSData *data = [colors objectForKey:[self getHashForConcentric:c Radial:r]];
     // if nil, just use grey
@@ -308,11 +324,13 @@ float theta;                    // angle of each zone
     return color;
 }
 
+// hash the zone coordinates
 - (NSString*)getHashForConcentric:(NSInteger)c Radial:(NSInteger)r {
     // hash allows up to 1000 radial slices per concentric ring
     return [NSString stringWithFormat:@"%ld", 1000 * c + r];
 }
 
+// returns the proper angle at a given radius to maintain constant kerf spacing
 - (float)getKerfAngleForRadius:(float)r {
     return radial > 1 ? atanf(KERF / r) : 0;
 }

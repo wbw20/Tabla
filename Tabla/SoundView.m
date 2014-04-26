@@ -1,9 +1,8 @@
 //
-//  SoundView.m
-//  Tabla
+// File: SoundView.m
+// Authors: Michael Xu
 //
-//  Created by Mike on 3/2/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
+// View containing the sound library
 //
 
 #import "SoundView.h"
@@ -24,6 +23,7 @@ NSString *drag_id = @"com.tabla.soundDnD";
     return NSDragOperationCopy;
 }
 
+// respond to dropping a a file onto the view
 - (BOOL)performDragOperation:(id<NSDraggingInfo>)sender {
     NSURL* fileURL = [NSURL URLFromPasteboard: [sender draggingPasteboard]];
     if(fileURL != NULL) {

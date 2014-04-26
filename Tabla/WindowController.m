@@ -1,9 +1,10 @@
 //
-//  WindowController.m
-//  Tabla
+// File: WindowController.h
+// Authors: William Wetterston and Michael Xu
 //
-//  Created by William Wettersten on 4/3/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
+// Main Controller for the entire application
+// - adding and removing sounds from library
+// - mapping and unmapping sounds from zones
 //
 
 #import "WindowController.h"
@@ -11,18 +12,20 @@
 
 @implementation WindowController
 
+// golden ratio angle used for generating unique random colors
 #define GOLDEN_RATIO_CONJUGATE 0.618033988749895
 
 @synthesize soundData;
 static NSString *DATA_FOLDER = @"/Tabla";
+// hue value to use for next color
 float hue;
 
 - (id)init {
+    if (![super init]) return nil;
+
+    // initialize the profile data
     Profile* model = [[Profile alloc] init];
-    
-    if ([super init]) {
-        [self setProfile:model];
-    }
+    [self setProfile:model];
     
     // set initial hue to a random value between 0 and 1
     hue = (float)rand()/RAND_MAX;
@@ -33,10 +36,10 @@ float hue;
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
-         NSInteger radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
-         NSInteger concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         NSInteger r = [[[note userInfo] objectForKey:@"radial"] integerValue];
+         NSInteger c = [[[note userInfo] objectForKey:@"concentric"] integerValue];
          // look for sound mapped to this zone
-         Sound *s = [self.profile soundFor:radial andConcentric:concentric];
+         Sound *s = [self.profile soundForConcentric:c andRadial:r];
          // if there's a sound, play it
          if(s != nil) [s play];
      }];
@@ -47,15 +50,15 @@ float hue;
      object:nil
      queue:nil
      usingBlock:^(NSNotification *note) {
-         NSInteger radial = [[[note userInfo] objectForKey:@"radial"] integerValue];
-         NSInteger concentric = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         NSInteger c = [[[note userInfo] objectForKey:@"concentric"] integerValue];
+         NSInteger r = [[[note userInfo] objectForKey:@"radial"] integerValue];
          // look for sound mapped to this zone
-         Sound *s = [self.profile soundFor:radial andConcentric:concentric];
+         Sound *s = [self.profile soundForConcentric:c andRadial:r];
          // if there's a sound, remove it
-         if(s != nil) [self.profile removeSoundForConcentric:concentric andRadial:radial];
+         if(s != nil) [self.profile removeSoundForConcentric:c andRadial:r];
      }];
     
-    // register NSNotification for dropping a sound on the pad or library
+    // listen to notification for dropping a sound on the pad or library
     [[NSNotificationCenter defaultCenter]
      addObserverForName:@"SoundDropped"
      object:nil
@@ -68,7 +71,7 @@ float hue;
          Sound *s = [[Sound alloc] initWithPath:f andColor:[self nextColor]];
          // add sound to the library
          BOOL added = [self addSound:s];
-         // if a zone coordinate is specified
+         // if a sound was successfully added, and a zone coordinate is specified
          if(added && r > 0 && c > 0) {
              // assign sound to zone
              [self.profile setSound:s forConcentric:c andRadial:r];
@@ -77,7 +80,7 @@ float hue;
          }
      }];
     
-    // register NSNotificaiton for dropping a color on the pad
+    // listen to notification for dropping a color on the pad
     [[NSNotificationCenter defaultCenter]
      addObserverForName:@"ColorDropped"
      object:nil
@@ -95,7 +98,7 @@ float hue;
              float dr = fabsf(red - sColor.redComponent);
              float dg = fabsf(green - sColor.greenComponent);
              float db = fabsf(blue - sColor.blueComponent);
-             // set the sound for specified zone
+             // set the sound for specified zone if it matches
              if(dr < 0.00001f && dg < 0.00001f && db < 0.00001f)
                  [self.profile setSound:s forConcentric:c andRadial:r];
          }
@@ -103,29 +106,14 @@ float hue;
     return self;
 }
 
-- (id)initWithProfile:(Profile*)model {
-    if ([super init]) {
-        [self setProfile:model];
-    }
-
-    return self;
-}
-
-- (void)closeSound:(Sound *)s {
-    // unmap all zones with this sound
-    [self.profile removeSound:s];
-    // remove the sound from library
-    [soundData removeObject:s];
-    [soundController removeObject:s];
-}
-
 // returns next color in the sequence
 - (NSColor *)nextColor {
+    // increment hue by the golden ratio
     hue += GOLDEN_RATIO_CONJUGATE;
+    // modulo 1 to keep it in range
     hue = fmodf(hue, 1.0f);
-    NSColor *hsb = [NSColor colorWithHue:hue saturation:0.5f brightness:0.8f alpha:1.0f];
-    NSColor *rgb = [NSColor colorWithRed:hsb.redComponent green:hsb.greenComponent blue:hsb.blueComponent alpha:1.0f];
-    return rgb;
+    // generate the color in HSB space
+    return [NSColor colorWithHue:hue saturation:0.5f brightness:0.8f alpha:1.0f];;
 }
 
 /*
@@ -158,6 +146,7 @@ float hue;
 
 #pragma mark - Sound Library
 
+// KV compliance methods for modifying the sound array
 - (void)insertObject:(Sound *)s inSoundDataAtIndex:(NSInteger)index {
     [soundData insertObject:s atIndex:index];
 }
@@ -170,16 +159,27 @@ float hue;
     soundData = a;
 }
 
+// add a sound to the library, returns YES if successful or NO if not
 - (BOOL)addSound:(Sound *)s {
-    for(Sound *a in soundData) {
-        if([a.filepath.absoluteString isEqualToString:s.filepath.absoluteString]) {
+    // return NO if a sound already exists for this file
+    for(Sound *a in soundData)
+        if([a.filepath.absoluteString isEqualToString:s.filepath.absoluteString])
             return NO;
-        }
-    }
+    // insert it into the array
     NSMutableArray *tempData = [NSMutableArray arrayWithArray:soundData];
     [tempData addObject:s];
     [self setSoundData:tempData];
     return YES;
+}
+
+// remove a sound from the library
+- (void)removeSound:(Sound *)s {
+    // unmap all zones with this sound
+    [self.profile removeSound:s];
+    // remove the sound from library
+    [soundData removeObject:s];
+    // update the view
+    [soundController removeObject:s];
 }
 
 - (NSArray *)soundData {
