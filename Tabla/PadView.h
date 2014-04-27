@@ -1,18 +1,19 @@
 //
-//  RadialView.h
-//  Tabla
+// File: PadView.h
+// Authors: Michael Xu
 //
-//  Created by William Wettersten on 2/6/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
+// View for rendering the zones of the pad
 //
 
 #import <Cocoa/Cocoa.h>
 
 @interface PadView : NSView <NSDraggingDestination>
 {
+    // area to track mouse movement for mouseovers
     NSTrackingArea *trackingArea;
 }
 
+// expose methods for converting screen location to zone coordinates
 - (int)getRadial:(NSPoint)loc;
 - (int)getConcentric:(NSPoint)loc;
 

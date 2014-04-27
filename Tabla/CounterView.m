@@ -1,9 +1,8 @@
 //
-//  CounterView.m
-//  Tabla
+// File: CounterView.h
+// Authors: William Wettersten and Michael Xu
 //
-//  Created by William Wettersten on 3/24/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
+// View for counters to increment and decrement values
 //
 
 #import "CounterView.h"
@@ -52,10 +51,7 @@ static void initialize_navigationBarImages() {
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-	[super drawRect:dirtyRect];
-	
-    // Drawing code here.
-}
+	[super drawRect:dirtyRect];}
 
 - (void)displayValue:(NSInteger)value {
     [[self label] setStringValue:@(value).stringValue];

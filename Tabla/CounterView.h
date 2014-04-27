@@ -1,9 +1,8 @@
 //
-//  CounterView.h
-//  Tabla
+// File: CounterView.h
+// Authors: William Wettersten and Michael Xu
 //
-//  Created by William Wettersten on 3/24/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
+// View for counters to increment and decrement values
 //
 
 #import <Cocoa/Cocoa.h>

@@ -1,9 +1,8 @@
 //
-//  SoundView.h
-//  Tabla
+// File: SoundView.h
+// Authors: Michael Xu
 //
-//  Created by Mike on 3/2/14.
-//  Copyright (c) 2014 William Wettersten. All rights reserved.
+// View containing the sound library
 //
 
 #import <Cocoa/Cocoa.h>

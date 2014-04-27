@@ -14,7 +14,6 @@
 		BE2CD57118E0D0CC00490820 /* CounterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2CD57018E0D0CC00490820 /* CounterView.m */; };
 		BE52D77718C327C4008C3C81 /* Sound.m in Sources */ = {isa = PBXBuildFile; fileRef = BE52D77618C327C4008C3C81 /* Sound.m */; };
 		BE7F1ED218A46A2F00F5567E /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7F1ED118A46A2F00F5567E /* Quartz.framework */; };
-		BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED418A47C0100F5567E /* RadialLayer.m */; };
 		BE7F1EDA18A481E500F5567E /* PadView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7F1ED918A481E500F5567E /* PadView.m */; };
 		BEC070F9189C541D00505F7D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEC070F8189C541D00505F7D /* Cocoa.framework */; };
 		BEC07103189C541D00505F7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEC07101189C541D00505F7D /* InfoPlist.strings */; };
@@ -59,8 +58,6 @@
 		BE52D77518C327C4008C3C81 /* Sound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sound.h; sourceTree = "<group>"; };
 		BE52D77618C327C4008C3C81 /* Sound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sound.m; sourceTree = "<group>"; };
 		BE7F1ED118A46A2F00F5567E /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		BE7F1ED318A47C0100F5567E /* RadialLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadialLayer.h; sourceTree = "<group>"; };
-		BE7F1ED418A47C0100F5567E /* RadialLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadialLayer.m; sourceTree = "<group>"; };
 		BE7F1ED818A481E500F5567E /* PadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PadView.h; sourceTree = "<group>"; };
 		BE7F1ED918A481E500F5567E /* PadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PadView.m; sourceTree = "<group>"; };
 		BEB2F1DE18DD0E4000443F79 /* tom1.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = tom1.aif; sourceTree = "<group>"; };
@@ -228,8 +225,6 @@
 				BEC225C818A1C28600DE83E8 /* TestProtocol.h */,
 				BEC07110189C541D00505F7D /* Images.xcassets */,
 				BEC070FF189C541D00505F7D /* Supporting Files */,
-				BE7F1ED318A47C0100F5567E /* RadialLayer.h */,
-				BE7F1ED418A47C0100F5567E /* RadialLayer.m */,
 			);
 			path = Tabla;
 			sourceTree = "<group>";
@@ -419,7 +414,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE7F1ED518A47C0100F5567E /* RadialLayer.m in Sources */,
 				BEEB251F18C9483A000DB2D5 /* SerialDelegate.m in Sources */,
 				BEEB251518C94817000DB2D5 /* Profile.m in Sources */,
 				BEEB252018C9483A000DB2D5 /* SerialThread.m in Sources */,
