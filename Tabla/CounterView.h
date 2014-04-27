@@ -15,10 +15,16 @@
     - (void) down;
 @end
 
-@interface UpView : NSView
+@interface UpView : NSView {
+    NSTrackingArea* area;
+}
+
     @property (nonatomic, retain) IBOutlet CounterView* parent;
 @end
 
-@interface DownView : NSView
+@interface DownView : NSView {
+    NSTrackingArea* area;
+}
+
     @property (nonatomic, retain) IBOutlet CounterView* parent;
 @end

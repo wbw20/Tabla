@@ -7,50 +7,43 @@
 
 #import "CounterView.h"
 
-static NSColor *darkColor = nil;
-
-// runs on class load
-__attribute__((constructor))
-static void initialize_navigationBarImages() {
-    darkColor = [NSColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.3f];
-}
-
 @implementation UpView
 
-- (void)drawRect:(NSRect)dirtyRect
-{
+- (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
-    [darkColor set];
-    [NSBezierPath fillRect: [self bounds]];
-    [[NSImage imageNamed:@"right_arrow.png"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+    [[NSImage imageNamed:@"plus.png"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 }
 
 - (void) mouseUp:(NSEvent *)event {
     [[self parent] up];
 }
 
+- (void) resetCursorRects {
+    [self addCursorRect:[self bounds] cursor:[NSCursor pointingHandCursor]];
+}
+
 @end
 
 @implementation DownView
 
-- (void)drawRect:(NSRect)dirtyRect
-{
+- (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
-    [darkColor set];
-    [NSBezierPath fillRect: [self bounds]];
-    [[NSImage imageNamed:@"left_arrow.png"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+    [[NSImage imageNamed:@"minus.png"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 }
 
 - (void) mouseUp:(NSEvent *)event {
     [[self parent] down];
 }
 
+- (void) resetCursorRects {
+    [self addCursorRect:[self bounds] cursor:[NSCursor pointingHandCursor]];
+}
+
 @end
 
 @implementation CounterView
 
-- (void)drawRect:(NSRect)dirtyRect
-{
+- (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];}
 
 - (void)displayValue:(NSInteger)value {
