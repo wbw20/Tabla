@@ -658,7 +658,7 @@ CQ
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CPA-yo-3Vt" customClass="ConcentricCounterView">
-                                <rect key="frame" x="437" y="439" width="56" height="56"/>
+                                <rect key="frame" x="378" y="444" width="56" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Concentric Icon" id="pZn-b2-Pud"/>
                                 <connections>
@@ -668,7 +668,7 @@ CQ
                                 </connections>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hEg-RK-GmA" customClass="RadialCounterView">
-                                <rect key="frame" x="373" y="439" width="56" height="56"/>
+                                <rect key="frame" x="444" y="444" width="56" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="Radial Icon" id="AYz-ab-Dwc"/>
                                 <connections>
@@ -678,35 +678,35 @@ CQ
                                 </connections>
                             </imageView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QIi-lh-W42" customClass="DownView">
-                                <rect key="frame" x="376" y="442" width="25" height="25"/>
+                                <rect key="frame" x="447" y="447" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <outlet property="parent" destination="hEg-RK-GmA" id="AZD-AW-fWH"/>
                                 </connections>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DgD-z0-h9p" customClass="UpView">
-                                <rect key="frame" x="401" y="442" width="25" height="25"/>
+                                <rect key="frame" x="472" y="447" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <outlet property="parent" destination="hEg-RK-GmA" id="uUd-xr-xs8"/>
                                 </connections>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTJ-2c-bKo" customClass="DownView">
-                                <rect key="frame" x="440" y="442" width="25" height="25"/>
+                                <rect key="frame" x="381" y="447" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <outlet property="parent" destination="CPA-yo-3Vt" id="uBR-lf-iag"/>
                                 </connections>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EYQ-ge-Vf8" customClass="UpView">
-                                <rect key="frame" x="465" y="442" width="25" height="25"/>
+                                <rect key="frame" x="406" y="447" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <outlet property="parent" destination="CPA-yo-3Vt" id="vex-fo-YGi"/>
                                 </connections>
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xu7-Fs-VJ6">
-                                <rect key="frame" x="374" y="461" width="54" height="31"/>
+                                <rect key="frame" x="445" y="466" width="54" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="1" id="5vH-0l-SNZ">
                                     <font key="font" size="24" name="Helvetica"/>
@@ -715,7 +715,7 @@ CQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cgz-kf-QRJ">
-                                <rect key="frame" x="438" y="461" width="54" height="31"/>
+                                <rect key="frame" x="379" y="466" width="54" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="1" id="D6J-t0-UjP">
                                     <font key="font" size="24" name="Helvetica"/>
