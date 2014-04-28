@@ -63,7 +63,7 @@
     //Create the block that we wish to run on a different thread.
     void (^progressBlock)(void);
     progressBlock = ^{
-        while ([self progress] < 100) {
+        while ([self progress] < 110) {
             [NSThread sleepForTimeInterval:0.02];
             [self setProgress:[self progress] + 1];
         }
