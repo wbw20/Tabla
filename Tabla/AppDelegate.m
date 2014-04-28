@@ -48,14 +48,34 @@
 }
 
 - (IBAction)showSheetAction:(id)sender {
-    [self setProgress:50];
 	[NSApp beginSheet:self.sheet modalForWindow:window
 		modalDelegate:self didEndSelector:nil contextInfo:nil];
+    [self fakeLoad:sender];
 }
 
 - (IBAction)doneSheetAction:(id)sender {
 	[self.sheet orderOut:nil];
 	[NSApp endSheet:self.sheet];
+}
+
+- (void) fakeLoad:(id)sender {
+    //Create the block that we wish to run on a different thread.
+    void (^progressBlock)(void);
+    progressBlock = ^{
+        
+        [self setProgress:0];
+        
+        while ([self progress] < 100) {
+            [NSThread sleepForTimeInterval:0.02];
+            [self setProgress:[self progress] + 1];
+        }
+        
+        [self doneSheetAction:sender];
+    };
+    
+    //Finally, run the block on a different thread.
+    dispatch_queue_t queue = dispatch_get_global_queue(0,0);
+    dispatch_async(queue,progressBlock);
 }
 
 - (void) close {
