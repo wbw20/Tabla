@@ -45,9 +45,12 @@
      usingBlock:^(NSNotification *note) {
          [self showSheetAction:[note object]];
      }];
+    
+    [self setMyArray:@[@"Connecting", @"Fetching", @"Compiling sounds", @"Compiling sounds", @"Compiling sounds", @"Compiling sounds", @"Optimizing", @"Done"]];
 }
 
 - (IBAction)showSheetAction:(id)sender {
+    [[self status] setStringValue:[[self myArray] objectAtIndex:0]];
     [self setProgress:0];
 	[NSApp beginSheet:self.sheet modalForWindow:window
 		modalDelegate:self didEndSelector:nil contextInfo:nil];
@@ -63,9 +66,10 @@
     //Create the block that we wish to run on a different thread.
     void (^progressBlock)(void);
     progressBlock = ^{
-        while ([self progress] < 110) {
+        while ([self progress] < 110) { // 110 out of 100 because of animation hack
             [NSThread sleepForTimeInterval:0.02];
             [self setProgress:[self progress] + 1];
+            [[self status] setStringValue:[[self myArray] objectAtIndex:(([[self myArray] count] - 1) * [self progress] / 110)]];
         }
         
         [self doneSheetAction:sender];

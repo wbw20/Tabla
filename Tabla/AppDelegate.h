@@ -18,7 +18,9 @@
 }
 
 @property (assign) IBOutlet NSPanel *sheet;
+@property IBOutlet NSTextField *status;
 @property IBOutlet int progress;
+@property NSArray *myArray;
 
 - (IBAction)showSheetAction:(id)sender;
 - (IBAction)doneSheetAction:(id)sender;

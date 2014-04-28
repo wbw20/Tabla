@@ -632,6 +632,7 @@ CQ
         <customObject id="494" customClass="AppDelegate">
             <connections>
                 <outlet property="sheet" destination="5UQ-gC-M77" id="wU9-9C-690"/>
+                <outlet property="status" destination="lex-Yt-xUa" id="htu-zN-JXi"/>
                 <outlet property="thread" destination="JO4-Wf-NHf" id="BN8-2r-Dhd"/>
                 <outlet property="window" destination="o3e-Cs-hA4" id="ia2-8A-4eI"/>
             </connections>
@@ -840,6 +841,15 @@ CQ
                             <binding destination="494" name="value" keyPath="progress" id="atU-Ze-3Ii"/>
                         </connections>
                     </progressIndicator>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lex-Yt-xUa">
+                        <rect key="frame" x="61" y="51" width="144" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Status" id="W6e-aQ-BN7">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
         </window>
