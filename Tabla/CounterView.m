@@ -11,7 +11,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
-    [[NSImage imageNamed:@"plus.png"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+    [[NSImage imageNamed:@"right_arrow.png"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 }
 
 - (void) mouseUp:(NSEvent *)event {
@@ -28,7 +28,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
 	[super drawRect:dirtyRect];
-    [[NSImage imageNamed:@"minus.png"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
+    [[NSImage imageNamed:@"left_arrow.png"] drawInRect:dirtyRect fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 }
 
 - (void) mouseUp:(NSEvent *)event {
