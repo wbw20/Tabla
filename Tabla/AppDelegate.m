@@ -48,6 +48,7 @@
 }
 
 - (IBAction)showSheetAction:(id)sender {
+    [self setProgress:0];
 	[NSApp beginSheet:self.sheet modalForWindow:window
 		modalDelegate:self didEndSelector:nil contextInfo:nil];
     [self fakeLoad:sender];
@@ -62,9 +63,6 @@
     //Create the block that we wish to run on a different thread.
     void (^progressBlock)(void);
     progressBlock = ^{
-        
-        [self setProgress:0];
-        
         while ([self progress] < 100) {
             [NSThread sleepForTimeInterval:0.02];
             [self setProgress:[self progress] + 1];
