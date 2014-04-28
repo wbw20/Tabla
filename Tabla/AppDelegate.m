@@ -48,6 +48,7 @@
 }
 
 - (IBAction)showSheetAction:(id)sender {
+    [self setProgress:50];
 	[NSApp beginSheet:self.sheet modalForWindow:window
 		modalDelegate:self didEndSelector:nil contextInfo:nil];
 }

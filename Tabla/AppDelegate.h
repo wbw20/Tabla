@@ -18,6 +18,7 @@
 }
 
 @property (assign) IBOutlet NSPanel *sheet;
+@property IBOutlet int progress;
 
 - (IBAction)showSheetAction:(id)sender;
 - (IBAction)doneSheetAction:(id)sender;

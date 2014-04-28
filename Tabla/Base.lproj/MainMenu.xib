@@ -833,26 +833,13 @@ CQ
                 <rect key="frame" x="0.0" y="0.0" width="266" height="105"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vWy-yy-fCy">
-                        <rect key="frame" x="17" y="68" width="99" height="17"/>
+                    <progressIndicator fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="zx8-4K-gul">
+                        <rect key="frame" x="30" y="19" width="206" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="This is a sheet!" id="0FQ-Zb-Qyx">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l4e-mL-iGd">
-                        <rect key="frame" x="177" y="12" width="75" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                        <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aOK-cS-b3z">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
                         <connections>
-                            <action selector="doneSheetAction:" target="494" id="ShS-mu-6Mm"/>
+                            <binding destination="494" name="value" keyPath="progress" id="atU-Ze-3Ii"/>
                         </connections>
-                    </button>
+                    </progressIndicator>
                 </subviews>
             </view>
         </window>
