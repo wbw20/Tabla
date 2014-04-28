@@ -35,6 +35,6 @@
 
 /* save and load profiles */
 - (BOOL) saveProfile;
-- loadFromURL:(NSURL*)url;
+- (void)loadProfile:(NSURL*)url;
 
 @end

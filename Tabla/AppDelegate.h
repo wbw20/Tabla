@@ -9,11 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "Sound.h"
 #import "INAppStoreWindow.h"
+#import "WindowController.h"
 #import "SerialThread.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
     IBOutlet INAppStoreWindow* window;
+    IBOutlet WindowController* controller;
     IBOutlet SerialThread *thread;
 }
 
@@ -24,5 +26,7 @@
 
 - (IBAction)showSheetAction:(id)sender;
 - (IBAction)doneSheetAction:(id)sender;
+
+- (void)openDocument:(id)sender;
 
 @end

@@ -80,6 +80,10 @@
     dispatch_async(queue,progressBlock);
 }
 
+- (void)openDocument:(id)sender {
+    [controller loadProfile:nil];
+}
+
 - (void) close {
     [NSApp performSelector:@selector(terminate:) withObject:nil afterDelay:0.0];
 }

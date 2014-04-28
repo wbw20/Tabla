@@ -65,7 +65,7 @@ CQ
                             </menuItem>
                             <menuItem title="Open…" state="on" keyEquivalent="o" id="72">
                                 <connections>
-                                    <action selector="openDocument:" target="-1" id="374"/>
+                                    <action selector="openDocument:" target="-1" id="7wc-za-RTF"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open Recent" id="124">
@@ -125,6 +125,7 @@ CQ
         </menu>
         <customObject id="494" customClass="AppDelegate">
             <connections>
+                <outlet property="controller" destination="BOY-y1-sfv" id="K9I-G1-tPQ"/>
                 <outlet property="sheet" destination="5UQ-gC-M77" id="wU9-9C-690"/>
                 <outlet property="status" destination="lex-Yt-xUa" id="htu-zN-JXi"/>
                 <outlet property="thread" destination="JO4-Wf-NHf" id="BN8-2r-Dhd"/>
@@ -345,6 +346,16 @@ CQ
                         </textFieldCell>
                     </textField>
                 </subviews>
+            </view>
+        </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="eqk-7M-Xws" customClass="OpenFilePanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="132" width="368" height="164"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <view key="contentView" id="g8B-4y-6VW">
+                <rect key="frame" x="0.0" y="0.0" width="368" height="164"/>
+                <autoresizingMask key="autoresizingMask"/>
             </view>
         </window>
     </objects>

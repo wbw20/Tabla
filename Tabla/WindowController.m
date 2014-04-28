@@ -141,8 +141,8 @@ float hue;
                        encoding:NSUTF8StringEncoding error:NULL];
 }
 
-- loadFromURL:(NSURL*)url {
-    return NULL;
+- (void)loadProfile:(NSURL*)url {
+    NSLog(@"testing");
 }
 
 #pragma mark - Sound Library
