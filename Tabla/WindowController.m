@@ -103,6 +103,7 @@ float hue;
                  [self.profile setSound:s forConcentric:c andRadial:r];
          }
      }];
+    
     return self;
 }
 

@@ -36,6 +36,25 @@
     UploadButton* upload = [[UploadButton alloc] initWithFrame:segmentFrame];
     
     [titleBarView addSubview:upload];
+    
+    // listen to notification showing the upload sheet
+    [[NSNotificationCenter defaultCenter]
+     addObserverForName:@"UploadClicked"
+     object:nil
+     queue:nil
+     usingBlock:^(NSNotification *note) {
+         [self showSheetAction:[note object]];
+     }];
+}
+
+- (IBAction)showSheetAction:(id)sender {
+	[NSApp beginSheet:self.sheet modalForWindow:window
+		modalDelegate:self didEndSelector:nil contextInfo:nil];
+}
+
+- (IBAction)doneSheetAction:(id)sender {
+	[self.sheet orderOut:nil];
+	[NSApp endSheet:self.sheet];
 }
 
 - (void) close {

@@ -20,7 +20,10 @@
 }
 
 - (void) mouseDown:(NSEvent *)theEvent {
-    NSLog(@"testing");
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"UploadClicked"
+     object:self
+     userInfo:nil];
 }
 
 - (void) resetCursorRects {

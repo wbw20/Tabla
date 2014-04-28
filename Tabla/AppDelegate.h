@@ -17,4 +17,9 @@
     IBOutlet SerialThread *thread;
 }
 
+@property (assign) IBOutlet NSPanel *sheet;
+
+- (IBAction)showSheetAction:(id)sender;
+- (IBAction)doneSheetAction:(id)sender;
+
 @end
