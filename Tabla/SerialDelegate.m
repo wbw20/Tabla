@@ -35,11 +35,16 @@ int code = -1;
             NSArray *parts = [word componentsSeparatedByString:@","];
             
             if ([parts count] >= 2) {
-                int concentric = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)]floatValue];
-                int radial = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
+                int x = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)]floatValue];
+                int y = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
                 
-                NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric + 1],
-                                           @"concentric": [NSNumber numberWithInt:radial + 1]};
+                NSPoint point = CGPointMake(x * 5, y * 5);
+                
+                int radial = [[self pad] getRadial:point];
+                int concentric = [[self pad] getConcentric:point];
+                
+                NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric],
+                                           @"concentric": [NSNumber numberWithInt:radial]};
                 [[NSNotificationCenter defaultCenter]
                  postNotificationName:@"ZoneClicked"
                  object:self
