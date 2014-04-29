@@ -30,24 +30,22 @@ int code = -1;
 
     while(1) {
         NSString *word = [self readword];
-        
-        NSLog(word);
 
-//        if (![word isEqual:@""]) {
-//            NSArray *parts = [word componentsSeparatedByString:@","];
-//            
-//            if ([parts count] >= 2) {
-//                int concentric = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)]floatValue];
-//                int radial = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
-//                
-//                NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric + 1],
-//                                           @"concentric": [NSNumber numberWithInt:radial + 1]};
-//                [[NSNotificationCenter defaultCenter]
-//                 postNotificationName:@"ZoneClicked"
-//                 object:self
-//                 userInfo:userInfo];
-//            }
-//        }
+        if (![word isEqual:@""]) {
+            NSArray *parts = [word componentsSeparatedByString:@","];
+            
+            if ([parts count] >= 2) {
+                int concentric = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)]floatValue];
+                int radial = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
+                
+                NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric + 1],
+                                           @"concentric": [NSNumber numberWithInt:radial + 1]};
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"ZoneClicked"
+                 object:self
+                 userInfo:userInfo];
+            }
+        }
     }
 }
 
