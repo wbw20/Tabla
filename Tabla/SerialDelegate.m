@@ -29,7 +29,7 @@ int code = -1;
 //    [self incomingTextUpdateThread:[NSThread currentThread]];
 
     while(1) {
-        NSString *word = [self readline:[NSThread currentThread]];
+        NSString *word = [self readword];
         
         NSLog(word);
 
@@ -49,6 +49,27 @@ int code = -1;
 //            }
 //        }
     }
+}
+
+- (NSString*)readword {
+    NSMutableString *buffer = [[NSMutableString alloc] initWithString:@""];
+    NSString *chunk = [self readline:[NSThread currentThread]];
+    
+    if (!([chunk rangeOfString:@"["].location == NSNotFound)) {
+        while(1) {
+            if (![chunk  isEqual: @""]) {
+                [buffer appendString:chunk];
+            }
+            
+            if (!([chunk rangeOfString:@"]"].location == NSNotFound)) {
+                break;
+            }
+
+            chunk = [self readline:[NSThread currentThread]];
+        }
+    }
+    
+    return [NSString stringWithString:buffer];
 }
 
 // This selector will be called as another thread
