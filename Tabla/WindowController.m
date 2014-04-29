@@ -39,6 +39,7 @@ float hue;
          NSInteger r = [[[note userInfo] objectForKey:@"radial"] integerValue];
          NSInteger c = [[[note userInfo] objectForKey:@"concentric"] integerValue];
          // look for sound mapped to this zone
+         NSLog(@"r: %d, c: %d", r, c);
          Sound *s = [self.profile soundForConcentric:c andRadial:r];
          // if there's a sound, play it
          if(s != nil) [s play];

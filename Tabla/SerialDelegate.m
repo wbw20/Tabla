@@ -11,6 +11,12 @@
 @implementation SerialDelegate
 
 int code = -1;
+char byte_buffer[100];
+NSMutableString *buffer;
+NSMutableString *line_buffer;
+NSString *chunk;
+NSString *word;
+NSArray *parts;
 
 - (id) init {
     port = @"/dev/tty.usbmodem1421";
@@ -26,14 +32,19 @@ int code = -1;
         NSLog(@"serial port not opened");
     }
     
+    buffer = [[NSMutableString alloc] initWithString:@""];
+    line_buffer = [[NSMutableString alloc] initWithString:@""];
+    
 //    [self incomingTextUpdateThread:[NSThread currentThread]];
 
     while(1) {
-        NSString *word = [self readword];
+        word = [self readword];
+        [buffer setString:@""];
+        
 
         if (![word isEqual:@""]) {
-            NSLog(word);
-            NSArray *parts = [word componentsSeparatedByString:@","];
+//            NSLog(word);
+            parts = [word componentsSeparatedByString:@","];
             
             if ([parts count] >= 2) {
                 int x = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)]floatValue];
@@ -127,8 +138,10 @@ int code = -1;
                     radial = 8;
                 }
                 
-                NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric],
-                                           @"concentric": [NSNumber numberWithInt:radial]};
+//                NSLog(@"c: %d, r: %d\n", concentric, radial);
+                
+                NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:radial],
+                                           @"concentric": [NSNumber numberWithInt:concentric]};
                 [[NSNotificationCenter defaultCenter]
                  postNotificationName:@"ZoneClicked"
                  object:self
@@ -139,8 +152,7 @@ int code = -1;
 }
 
 - (NSString*)readword {
-    NSMutableString *buffer = [[NSMutableString alloc] initWithString:@""];
-    NSString *chunk = [self readline:[NSThread currentThread]];
+    chunk = [self readline:[NSThread currentThread]];
     
     if (!([chunk rangeOfString:@"["].location == NSNotFound)) {
         while(1) {
@@ -161,18 +173,18 @@ int code = -1;
 
 // This selector will be called as another thread
 - (NSString*)readline: (NSThread *) parentThread {
-    char byte_buffer[100]; // buffer for holding incoming data
+    [line_buffer setString:@""];
     int numBytes=1; // number of bytes read during read
-    NSMutableString *buffer = [[NSMutableString alloc] initWithString:@""];
+//    NSMutableString *buffer = [[NSMutableString alloc] initWithString:@""];
     
     numBytes = read(code, byte_buffer, 100);
     
     while(numBytes > 0) {
-        [buffer appendString:[NSString stringWithCString:byte_buffer length:numBytes]];
+        [line_buffer appendString:[NSString stringWithCString:byte_buffer length:numBytes]];
         numBytes = read(code, byte_buffer, 100);
     }
     
-    return buffer;
+    return line_buffer;
 }
 
 - (int) connect {
