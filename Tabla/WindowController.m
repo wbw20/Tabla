@@ -102,6 +102,8 @@ float hue;
              if(dr < 0.00001f && dg < 0.00001f && db < 0.00001f)
                  [self.profile setSound:s forConcentric:c andRadial:r];
          }
+         // save the profile
+         [self saveProfile];
      }];
     
     return self;
@@ -121,28 +123,86 @@ float hue;
  *  If ~/Library/Application Support/Tabla does not exist, it creates it and returns the name
  */
 - (NSString*)findOrCreateDataFolder {
-    NSString *folder = [[NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *folder = [[NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES)
+                         objectAtIndex:0]
                         stringByAppendingString:DATA_FOLDER];
     
-    if(![[NSFileManager defaultManager] fileExistsAtPath:folder]) {
+    NSLog(@"Profile saved to %@", folder);
+    
+    if(![fm fileExistsAtPath:folder]) {
         NSError *error;
-        [[NSFileManager defaultManager] createDirectoryAtPath:folder withIntermediateDirectories:YES attributes:nil error:&error];
+        [fm
+         createDirectoryAtPath:folder
+         withIntermediateDirectories:YES
+         attributes:nil
+         error:&error];
 
-        if (error) {
-            return NULL;
-        }
+        if (error) return NULL;
     }
     
     return folder;
 }
 
 - (BOOL)saveProfile {
-    return [[[self profile] json] writeToFile:[[self findOrCreateDataFolder] stringByAppendingPathComponent:@"test.json"] atomically:YES
-                       encoding:NSUTF8StringEncoding error:NULL];
+    return [[[self profile] json]
+            writeToFile:[[self findOrCreateDataFolder]
+                         stringByAppendingPathComponent:@"test.json"]
+            atomically:YES
+            encoding:NSUTF8StringEncoding
+            error:nil];
 }
 
 - (void)loadProfile:(NSURL*)url {
-    NSLog(@"testing");
+    // find json files in the data folder
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSURL *dataFolder = [NSURL
+                         fileURLWithPath:[self findOrCreateDataFolder]
+                         isDirectory:YES];
+    NSArray *data = [fm
+                     contentsOfDirectoryAtURL:dataFolder
+                     includingPropertiesForKeys:@[]
+                     options:NSDirectoryEnumerationSkipsHiddenFiles
+                     error:nil];
+    NSPredicate *json = [NSPredicate predicateWithFormat:@"pathExtension == 'json'"];
+    
+    // list the files
+    for(NSURL *file in [data filteredArrayUsingPredicate:json]) {
+        NSLog(@"Found file: %@", [file absoluteString]);
+    }
+    
+    // get data from first json file
+    NSData *JSONData = [NSData
+                        dataWithContentsOfURL:[data firstObject]
+                        options:NSDataReadingMappedIfSafe
+                        error:nil];
+    
+    // convert to a dict
+    NSDictionary *dict = [NSJSONSerialization
+                          JSONObjectWithData:JSONData
+                          options:0
+                          error:nil];
+    
+    // remove all current sounds
+    NSArray *copy = [NSArray arrayWithArray:soundData];
+    for(Sound *s in copy) [self removeSound:s];
+    
+    // create sounds from dict entries
+    for(NSString *key in dict) {
+        NSString *value = [dict objectForKey:key];
+        Sound *s = [self soundForFile:value];
+        if(s == nil) {
+            //NSURL *f = [NSURL fileURLWithPath:value];
+            NSURL *f = [NSURL URLWithString:value];
+            s = [[Sound alloc] initWithPath:f andColor:[self nextColor]];
+        }
+        [self addSound:s];
+        int hash = [key intValue];
+        int c = hash / 1000;
+        int r = hash - c * 1000;
+        NSLog(@"Set %@ to c:%d, r:%d", s.name, c, r);
+        [self.profile setSound:s forConcentric:c andRadial:r];
+    }
 }
 
 #pragma mark - Sound Library
@@ -181,6 +241,14 @@ float hue;
     [soundData removeObject:s];
     // update the view
     [soundController removeObject:s];
+}
+
+- (Sound *)soundForFile:(NSString *)filepath {
+    for(Sound *s in soundData) {
+        if([[s.filepath absoluteString] isEqualToString:filepath])
+            return s;
+    }
+    return nil;
 }
 
 - (NSArray *)soundData {

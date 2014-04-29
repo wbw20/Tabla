@@ -27,7 +27,7 @@
 
 // returns a string representation of the object
 - (NSString *)toString {
-    return [NSString stringWithFormat:@"%@:%@ (%@)", [self name], [[self filepath] path], self.color];
+    return [filepath absoluteString];
 }
 
 @end

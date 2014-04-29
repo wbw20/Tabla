@@ -152,19 +152,21 @@ const NSInteger MAX_CONCENTRIC = 4;
 
 // returns a JSON representation of the profile data
 - (NSString *) json {
-    NSMutableDictionary* copy = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* toJSON = [[NSMutableDictionary alloc] init];
     
-    for (NSString* key in [self sounds]) {
-        copy[key] = [[self sounds][key] toString];
-    }
+    for (NSString* key in [self sounds])
+        toJSON[key] = [[self sounds][key] toString];
     
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:copy options:NSJSONWritingPrettyPrinted error:NULL];
+    NSData *jsonData = [NSJSONSerialization
+                        dataWithJSONObject:toJSON
+                        options:NSJSONWritingPrettyPrinted
+                        error:nil];
     
-    if (jsonData) {
-        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
+    if(!jsonData) return nil;
     
-    return NULL;
+    return [[NSString alloc]
+            initWithData:jsonData
+            encoding:NSUTF8StringEncoding];
 }
 
 @end
