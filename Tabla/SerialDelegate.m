@@ -25,41 +25,51 @@ int code = -1;
     if( code == -1 ) {
         NSLog(@"serial port not opened");
     }
+    
+//    [self incomingTextUpdateThread:[NSThread currentThread]];
 
     while(1) {
-        NSString *word = [self read_char];
-
-        if (![word isEqual:@""]) {
-            NSArray *parts = [word componentsSeparatedByString:@","];
-            
-            if ([parts count] >= 2) {
-                int concentric = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)]floatValue];
-                int radial = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
-                
-                NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric + 1],
-                                           @"concentric": [NSNumber numberWithInt:radial + 1]};
-                [[NSNotificationCenter defaultCenter]
-                 postNotificationName:@"ZoneClicked"
-                 object:self
-                 userInfo:userInfo];
-            }
-        }
+        [self incomingTextUpdateThread:[NSThread currentThread]];
+////        NSString *word = [self read_char];
+//
+//        if (![word isEqual:@""]) {
+//            NSArray *parts = [word componentsSeparatedByString:@","];
+//            
+//            if ([parts count] >= 2) {
+//                int concentric = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)]floatValue];
+//                int radial = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
+//                
+//                NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric + 1],
+//                                           @"concentric": [NSNumber numberWithInt:radial + 1]};
+//                [[NSNotificationCenter defaultCenter]
+//                 postNotificationName:@"ZoneClicked"
+//                 object:self
+//                 userInfo:userInfo];
+//            }
+//        }
     }
 }
 
-- (NSString*) read_char {
-    char single[1];
-    char chars[9]; // single char array at a time
-    int count = 0;
-    long status;
+// This selector will be called as another thread
+- (void)incomingTextUpdateThread: (NSThread *) parentThread {
+    char byte_buffer[100]; // buffer for holding incoming data
+    int numBytes=1; // number of bytes read during read
+    
+    // create a pool so we can use regular Cocoa stuff
+    //   child threads can't re-use the parent's autorelease pool
+//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    // this will loop until the serial port closes
+    while(numBytes>0) {
+        // read() blocks until data is read or the port is closed
+        numBytes = read(code, byte_buffer, 100);
         
-    while (single[0] != ']' && status != -1l) {
-        status = read(code, single, 1);
-        chars[count] = single[0];
-        count++;
+        // you would want to do something useful here
+        NSLog([NSString stringWithCString:byte_buffer length:numBytes]);
     }
-
-    return [NSString stringWithCString:chars encoding:NSASCIIStringEncoding];
+    
+    // give back the pool
+//    [pool release];
 }
 
 - (int) connect {
