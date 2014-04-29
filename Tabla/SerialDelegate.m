@@ -32,16 +32,100 @@ int code = -1;
         NSString *word = [self readword];
 
         if (![word isEqual:@""]) {
+            NSLog(word);
             NSArray *parts = [word componentsSeparatedByString:@","];
             
             if ([parts count] >= 2) {
                 int x = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)]floatValue];
                 int y = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
                 
-                NSPoint point = CGPointMake(x * 5, y * 5);
+//                NSPoint point = [[self pad]convertPoint:CGPointMake((x * 5) + 250, (y * 5) + 250) fromView:nil];
+//                
+//                int radial = [[self pad] getRadial:point];
+//                int concentric = [[self pad] getConcentric:point];
                 
-                int radial = [[self pad] getRadial:point];
-                int concentric = [[self pad] getConcentric:point];
+                int radial = 1;
+                int concentric = 1;
+                
+                if (x == 57 && y == 16) {
+                    concentric = 2;
+                    radial = 1;
+                }
+                
+                if (x == 69 && y == 21) {
+                    concentric = 2;
+                    radial = 1;
+                }
+                
+                if (x == 79 && y == 31) {
+                    concentric = 2;
+                    radial = 2;
+                }
+                
+                if (x == 84 && y == 43) {
+                    concentric = 2;
+                    radial = 2;
+                }
+                
+                if (x == 84 && y == 57) {
+                    concentric = 2;
+                    radial = 3;
+                }
+                
+                if (x == 79 && y == 69) {
+                    concentric = 2;
+                    radial = 3;
+                }
+                
+                if (x == 57 && y == 84) {
+                    concentric = 2;
+                    radial = 4;
+                }
+                
+                if (x == 50 && y == 50) {
+                    concentric = 1;
+                    radial = 1;
+                }
+                
+                if (x == 43 && y == 84) {
+                    concentric = 2;
+                    radial = 4;
+                }
+                
+                if (x == 31 && y == 79) {
+                    concentric = 2;
+                    radial = 5;
+                }
+                
+                if (x == 21 && y == 69) {
+                    concentric = 2;
+                    radial = 5;
+                }
+                
+                if (x == 16 && y == 57) {
+                    concentric = 2;
+                    radial = 6;
+                }
+                
+                if (x == 16 && y == 43) {
+                    concentric = 2;
+                    radial = 6;
+                }
+                
+                if (x == 21 && y == 31) {
+                    concentric = 2;
+                    radial = 7;
+                }
+                
+                if (x == 31 && y == 21) {
+                    concentric = 2;
+                    radial = 7;
+                }
+                
+                if (x == 43 && y == 16) {
+                    concentric = 2;
+                    radial = 8;
+                }
                 
                 NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric],
                                            @"concentric": [NSNumber numberWithInt:radial]};
