@@ -13,7 +13,7 @@
 int code = -1;
 
 - (id) init {
-    port = @"/dev/tty.usbmodem1421";
+    port = @"/dev/tty.usbmodem1411";
     
     return self;
 }
@@ -30,30 +30,34 @@ int code = -1;
 }
 
 - (char) read_char {
-    NSMutableString *buffer = [[NSMutableString alloc] initWithString:@""];
-    unichar *single[1]; // single char array at a time
+    NSString *buffer;
+    char single[1];
+    char chars[7]; // single char array at a time
+    int count = 0;
+
     while(1) {
         long result = read(code, single, 1);
         
         if (result != -1) {
-            [buffer appendString:[NSString stringWithCharacters:single length:1]];
+            chars[count] = single[0];
+            count++;
         }
         
-        if (single[0] == ']' && [buffer length] > 0) {
-            NSArray *parts = [buffer componentsSeparatedByString:@", "];
-            int x = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)] floatValue];
-            int y = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
+        if (count == 6) {
+            buffer = [NSString stringWithCString:chars encoding:NSASCIIStringEncoding];
+            NSArray *parts = [buffer componentsSeparatedByString:@","];
+            int concentric = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)] floatValue];
+            int radial = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
             
-            NSPoint point = CGPointMake(500 * x, 500 * y);
-            
-            NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:[[self pad] getRadial:point]],
-                                           @"concentric": [NSNumber numberWithInt:[[self pad] getConcentric:point]]};
+            NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric + 1],
+                                           @"concentric": [NSNumber numberWithInt:radial + 1]};
             [[NSNotificationCenter defaultCenter]
             postNotificationName:@"ZoneClicked"
             object:self
             userInfo:userInfo];
             
             buffer = [[NSMutableString alloc] initWithString:@""];
+            count = 0;
         }
     }
     
