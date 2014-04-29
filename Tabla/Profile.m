@@ -138,7 +138,7 @@ const NSInteger MAX_CONCENTRIC = 4;
     for(int c = 1; c <= MAX_CONCENTRIC; c++) {
         for(int r = 1; r <= MAX_RADIAL; r++) {
             // check if sound matches the one to be removed
-            if([self soundForConcentric:r andRadial:c].filepath == sound.filepath)
+            if([self soundForConcentric:c andRadial:r].filepath == sound.filepath)
                 [self removeSoundForConcentric:c andRadial:r];
         }
     }
