@@ -26,42 +26,40 @@ int code = -1;
         NSLog(@"serial port not opened");
     }
 
-     [self read_char];
-}
-
-- (char) read_char {
-    NSString *buffer;
-    char single[1];
-    char chars[7]; // single char array at a time
-    int count = 0;
-
     while(1) {
-        long result = read(code, single, 1);
-        
-        if (result != -1) {
-            chars[count] = single[0];
-            count++;
-        }
-        
-        if (count == 6) {
-            buffer = [NSString stringWithCString:chars encoding:NSASCIIStringEncoding];
-            NSArray *parts = [buffer componentsSeparatedByString:@","];
-            int concentric = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)] floatValue];
-            int radial = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
+        NSString *word = [self read_char];
+
+        if (![word isEqual:@""]) {
+            NSArray *parts = [word componentsSeparatedByString:@","];
             
-            NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric + 1],
+            if ([parts count] >= 2) {
+                int concentric = [[[parts objectAtIndex:0] substringWithRange:NSMakeRange(1, [[parts objectAtIndex:0] length] - 1)]floatValue];
+                int radial = [[[parts objectAtIndex:1] substringWithRange:NSMakeRange(0, [[parts objectAtIndex:1] length] - 2)] floatValue];
+                
+                NSDictionary *userInfo = @{@"radial": [NSNumber numberWithInt:concentric + 1],
                                            @"concentric": [NSNumber numberWithInt:radial + 1]};
-            [[NSNotificationCenter defaultCenter]
-            postNotificationName:@"ZoneClicked"
-            object:self
-            userInfo:userInfo];
-            
-            buffer = [[NSMutableString alloc] initWithString:@""];
-            count = 0;
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"ZoneClicked"
+                 object:self
+                 userInfo:userInfo];
+            }
         }
     }
-    
-    return -1; // this should never happen
+}
+
+- (NSString*) read_char {
+    char single[1];
+    char chars[9]; // single char array at a time
+    int count = 0;
+    long status;
+        
+    while (single[0] != ']' && status != -1l) {
+        status = read(code, single, 1);
+        chars[count] = single[0];
+        count++;
+    }
+
+    return [NSString stringWithCString:chars encoding:NSASCIIStringEncoding];
 }
 
 - (int) connect {
