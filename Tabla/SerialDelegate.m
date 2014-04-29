@@ -13,7 +13,7 @@
 int code = -1;
 
 - (id) init {
-    port = @"/dev/tty.usbmodem1411";
+    port = @"/dev/tty.usbmodem1421";
     
     return self;
 }
@@ -29,9 +29,10 @@ int code = -1;
 //    [self incomingTextUpdateThread:[NSThread currentThread]];
 
     while(1) {
-        [self incomingTextUpdateThread:[NSThread currentThread]];
-////        NSString *word = [self read_char];
-//
+        NSString *word = [self readline:[NSThread currentThread]];
+        
+        NSLog(word);
+
 //        if (![word isEqual:@""]) {
 //            NSArray *parts = [word componentsSeparatedByString:@","];
 //            
@@ -51,25 +52,19 @@ int code = -1;
 }
 
 // This selector will be called as another thread
-- (void)incomingTextUpdateThread: (NSThread *) parentThread {
+- (NSString*)readline: (NSThread *) parentThread {
     char byte_buffer[100]; // buffer for holding incoming data
     int numBytes=1; // number of bytes read during read
+    NSMutableString *buffer = [[NSMutableString alloc] initWithString:@""];
     
-    // create a pool so we can use regular Cocoa stuff
-    //   child threads can't re-use the parent's autorelease pool
-//    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    numBytes = read(code, byte_buffer, 100);
     
-    // this will loop until the serial port closes
-    while(numBytes>0) {
-        // read() blocks until data is read or the port is closed
+    while(numBytes > 0) {
+        [buffer appendString:[NSString stringWithCString:byte_buffer length:numBytes]];
         numBytes = read(code, byte_buffer, 100);
-        
-        // you would want to do something useful here
-        NSLog([NSString stringWithCString:byte_buffer length:numBytes]);
     }
     
-    // give back the pool
-//    [pool release];
+    return buffer;
 }
 
 - (int) connect {
